@@ -1,0 +1,20 @@
+To: problem@BSDI.COM
+Subject: [50 character or so descriptive subject here (for reference)]
+
+
+WPHONE:	[Your work phone number]
+HPHONE:	[Your home phone number, if you wish to disclose it]
+
+Description:
+	[Detailed description of the problem, suggestion, or complaint.]
+
+Release:
+	[The release you are currently running (e.g., 1.1)]
+
+Repeat-By:
+	[Describe the sequence of events that causes the problem
+	to occur.]
+
+Fix:
+	[Description of how to fix the problem.  If you don't know a
+	fix for the problem, don't include this section.]

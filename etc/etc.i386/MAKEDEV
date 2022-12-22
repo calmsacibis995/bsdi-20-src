@@ -1,0 +1,449 @@
+#!/bin/sh -
+#
+#	BSDI MAKEDEV,v 2.1 1995/02/03 05:56:24 polk Exp
+#	from @(#)MAKEDEV     8.1 (Berkeley) 6/9/93
+#
+
+# Device "make" file.  Valid arguments:
+#	std	standard devices
+#	local	configuration specific devices
+#
+# Tapes:
+#	wt*	QIC-interfaced (e.g. not SCSI) 3M cartridge tape
+#	st*	generic SCSI tape
+#
+# Disks:
+#	wd*	"winchester" disk drives (ST506,IDE,ESDI,RLL,...)
+#	fd*	"floppy" disk drives (3 1/2", 5 1/4")
+#	sd*	generic SCSI disks
+#	mcd*	Mitsumi CDROM
+#
+# Terminal ports:
+#	com*	standard PC COM ports		 (tty[01][0-9])
+#			(tty* is alias for com*)
+#	rc*	SDL Communications RISCom/8	 (tty[a-f][0-7])
+#	si*	Specialix SLXOS serial adapter	 (tty[ab][0-31])
+#						 (tty[ab][0-31]_xp)
+#						 (si_control)
+#	ms*	MAXPEED SS-8/XU2, SS-4/XU2, etc. (tty[h-o][0-7])
+#	digi*	various Digiboard products	 (tty[A-D][00-3f])
+#		digi or digi0 or digi0.0	 (ttyA[00-0f])
+#		digi0.1	ports 16-31		 (ttyA[10-1f])
+#		digi0.3	ports 48-63		 (ttyA[30-3f])
+#		digi1.0 second digi board	 (ttyB[00-0f])
+#		digi3.0	fourth digi board	 (ttyD[00-0f])
+#
+# Pseudo terminals:
+#	pty*	set of 16 master and slave pseudo terminals
+#
+# Printers:
+#	lp*	standard PC LPT ports
+#
+# Call units:
+#
+# Special purpose devices:
+#	conskbd*	PC display console (and virtual screens)
+#	bpf*		Berkeley packet filter
+#
+
+PATH=/etc:/sbin:/usr/sbin:/bin/:/usr/bin
+umask 77
+for i
+do
+case $i in
+
+floppystd)
+	# Standard devices
+	mknod console		c 0 0
+	mknod drum		c 4 0	; chmod 640 drum ; chgrp kmem drum
+	mknod kmem		c 2 1	; chmod 640 kmem ; chgrp kmem kmem
+	mknod mem		c 2 0	; chmod 640 mem  ; chgrp kmem mem
+	mknod null		c 2 2	; chmod 666 null
+	mknod zero		c 2 12	; chmod 666 zero
+	mknod tty		c 1 0	; chmod 666 tty
+	mknod klog		c 7 0	; chmod 600 klog
+	mknod stdin		c 15 0	; chmod 666 stdin
+	mknod stdout		c 15 1	; chmod 666 stdout
+	mknod stderr		c 15 2	; chmod 666 stderr
+
+	# VGA and Keyboard
+	mknod vga		c 16 0	; chmod 600 vga
+	mknod kbd		c 17 0	; chmod 600 kbd
+	mknod pcaux0		c 13 0	; chmod 600 pcaux0
+	
+	# Parallel printer 
+	mknod lp0		c 20 0	; chmod 600 lp0
+	mknod lp1		c 20 1	; chmod 600 lp1
+	mknod lp2		c 20 2	; chmod 600 lp2
+
+
+	# Recursively make standard disks, tapes, etc.
+	sh $0 fd0 fd1 wd0 wd1 wd2 wd3 sd0 sd1 sd2 sd3 mcd0
+	sh $0 wt0 st0 st1
+	sh $0 com0 com1 pty0
+	sh $0 conskbd0 bpf
+	;;
+
+std)
+	# Recursively make all the devices on the std floppy
+	sh $0 floppystd
+
+	# More ptys
+	sh $0 pty1 pty2 pty3
+
+	# Add all the other regular devs
+	mkdir fd > /dev/null 2>&1
+	(cd fd && eval `echo "" | awk ' BEGIN { \
+		for (i = 0; i < 64; i++) \
+			printf("mknod %d c 15 %d;", i, i)}'`)
+	chown -R root.wheel fd
+	chmod 555 fd
+	chmod 666 fd/*
+
+	# Bus Mouse
+	mknod bms0		c 21 0  ; chmod 600 bms0
+	mknod lms0		c 25 0  ; chmod 600 lms0
+	ln -s bms0 mouse
+
+	# Sound Blaster Pro
+	mknod sb_fm		c 28 1	; chmod 664 sb_fm
+	mknod sb_dsp		c 28 2	; chmod 664 sb_dsp
+	mknod sb_midi		c 28 3	; chmod 664 sb_midi
+	mknod sb_mixer		c 28 4	; chmod 664 sb_mixer
+	;;
+
+wt*)
+	umask 0 ; unit=`expr $i : '..\(.*\)'`
+	name=wt; chr=10;
+	case $unit in
+	0|1)
+		mknod r${name}${unit} c $chr $unit 0; : same as _q150, default
+		mknod nr${name}${unit} c $chr $unit 1
+
+		mknod r${name}${unit}_q150 c $chr $unit 2
+		mknod nr${name}${unit}_q150 c $chr $unit 3
+
+		mknod r${name}${unit}_q120 c $chr $unit 4
+		mknod nr${name}${unit}_q120 c $chr $unit 5
+
+		mknod r${name}${unit}_q24 c $chr $unit 6
+		mknod nr${name}${unit}_q24 c $chr $unit 7
+
+
+		ln nr${name}$unit r${name}`expr $unit + 4` ; : old style no rewind 
+		;;
+	*)
+		echo bad unit for tape in: $i
+		;;
+	esac
+	umask 77
+	;;
+
+st*)
+	umask 0
+	unit=`expr $i : '..\(.*\)'`
+	chr=19
+	# SCSI density codes for QIC tape (incomplete)
+	# XXX block devices currently unsupported
+	qic11=4; qic24=5; qic120=15; qic150=16; qic525=17
+	fixed8mm=512;	# High bit indicates fixed length records
+	mknod rst${unit} c $chr $unit 0
+	mknod nrst${unit} c $chr $unit 1
+	mknod rst${unit}_f8mm c $chr $unit  $fixed8mm
+	mknod nrst${unit}_f8mm c $chr $unit `expr $fixed8mm + 1`
+	mknod rst${unit}_q11 c $chr $unit `expr $qic11 \* 2`
+	mknod nrst${unit}_q11 c $chr $unit `expr $qic11 \* 2 + 1`
+	mknod rst${unit}_q24 c $chr $unit `expr $qic24 \* 2`
+	mknod nrst${unit}_q24 c $chr $unit `expr $qic24 \* 2 + 1`
+	mknod rst${unit}_q120 c $chr $unit `expr $qic120 \* 2`
+	mknod nrst${unit}_q120 c $chr $unit `expr $qic120 \* 2 + 1`
+	mknod rst${unit}_q150 c $chr $unit `expr $qic150 \* 2`
+	mknod nrst${unit}_q150 c $chr $unit `expr $qic150 \* 2 + 1`
+	mknod rst${unit}_q525 c $chr $unit `expr $qic525 \* 2`
+	mknod nrst${unit}_q525 c $chr $unit `expr $qic525 \* 2 + 1`
+	umask 77
+	;;
+
+fd*|wd*|sd*|mcd*)
+	umask 2 ; unit=`expr $i : '[a-z][a-z]*\(.*\)'`
+	case $i in
+	fd*) name=fd; maj=9;;
+	wd*) name=wd; maj=3;;
+	sd*) name=sd; maj=18;;
+	mcd*) name=mcd; maj=23;;
+	esac
+	case $unit in
+	0|1|2|3|4|5|6|7)
+		mknod ${name}${unit}a	b $maj $unit 0
+		mknod ${name}${unit}b	b $maj $unit 1
+		mknod ${name}${unit}c	b $maj $unit 2
+		mknod ${name}${unit}d	b $maj $unit 3
+		mknod ${name}${unit}e	b $maj $unit 4
+		mknod ${name}${unit}f	b $maj $unit 5
+		mknod ${name}${unit}g	b $maj $unit 6
+		mknod ${name}${unit}h	b $maj $unit 7
+		mknod r${name}${unit}a	c $maj $unit 0
+		mknod r${name}${unit}b	c $maj $unit 1
+		mknod r${name}${unit}c	c $maj $unit 2
+		mknod r${name}${unit}d	c $maj $unit 3
+		mknod r${name}${unit}e	c $maj $unit 4
+		mknod r${name}${unit}f	c $maj $unit 5
+		mknod r${name}${unit}g	c $maj $unit 6
+		mknod r${name}${unit}h	c $maj $unit 7
+		chgrp operator ${name}${unit}[a-h] r${name}${unit}[a-h]
+		if [ $name = fd ]; then
+			chmod 666 ${name}${unit}[a-h] r${name}${unit}[a-h]
+			rm -f floppy${unit}
+			ln ${name}${unit}c floppy${unit}
+			rm -f rfloppy${unit}
+			ln r${name}${unit}c rfloppy${unit}
+			rm -f fd${unit}
+			ln ${name}${unit}c fd${unit}
+			rm -f rfd${unit}
+			ln r${name}${unit}c rfd${unit}
+			cpart=2
+			mknod rfd${unit}_1440_3.5  c $maj $unit `expr $cpart + 32`
+			mknod rfd${unit}_720_3.5   c $maj $unit `expr $cpart + 56`
+			mknod rfd${unit}_1200_5.25 c $maj $unit `expr $cpart + 16`
+			mknod rfd${unit}_720_5.25  c $maj $unit `expr $cpart + 40`
+			mknod rfd${unit}_360_5.25  c $maj $unit `expr $cpart + 48`
+			chgrp operator rfd${unit}_*
+			chmod 666 rfd${unit}_*
+		else
+			chmod 640 ${name}${unit}[a-h] r${name}${unit}[a-h]
+		fi
+		;;
+	*)
+		echo bad unit for disk in: $i
+		;;
+	esac
+	umask 77
+	;;
+
+com*|tty*)
+	unit=`expr $i : '[a-z][a-z][a-z]\(.*\)'`
+	case $unit in
+	[0-9])
+		mknod tty0${unit} c 8 $unit
+		;;
+	[01][0-9])
+		mknod tty${unit} c 8 $unit
+		;;
+	*)
+		echo bad unit for com in: $i
+		;;
+	esac
+	;;
+
+pty*)
+	class=`expr $i : 'pty\(.*\)'`
+	case $class in
+	0) offset=0 name=p;;
+	1) offset=16 name=q;;
+	2) offset=32 name=r;;
+	3) offset=48 name=s;;
+	4) offset=64 name=t;;
+	5) offset=80 name=u;;
+	6) offset=96 name=v;;
+	7) offset=112 name=w;;
+	8) offset=128 name=x;;
+	9) offset=144 name=y;;
+	10) offset=160 name=z;;
+	11) offset=176 name=P;;
+	12) offset=192 name=Q;;
+	13) offset=208 name=R;;
+	14) offset=224 name=S;;
+	15) offset=240 name=T;;
+	*) echo bad unit for pty in: $i;;
+	esac
+	case $class in
+	0|1|2|3|4)
+		umask 0
+		eval `echo $offset $name | awk ' { b=$1; n=$2 } END {
+			for (i = 0; i < 16; i++)
+				printf("mknod tty%s%x c 5 %d; \
+					mknod pty%s%x c 6 %d; ", \
+					n, i, b+i, n, i, b+i); }'`
+		umask 77
+		;;
+	esac
+	;;
+
+conskbd*)
+	unit=`expr $i : 'conskbd\(.*\)'`
+	name=conskbd
+	chr=12
+	case $unit in
+	0)
+		mknod ${name}${unit}	c $chr $unit
+        	for i in 2 3 4 5 6 7 8
+        	do
+                	if [ ! -f ttyc${i} ] ; then
+                        mknod ttyc${i} c ${chr} `expr ${i} - 1`
+                fi
+        done
+        umask 333
+		;;
+	*)
+		echo bad unit for $name in: $1
+		;;
+	esac
+	;;
+
+midi)
+        maj=22
+        umask 555
+        for i in 0 1 2 3 4 5 6 7
+        do
+                if [ ! -f midi${i} ] ; then
+                        mknod midi${i} c ${maj} ${i}
+                fi
+        done
+        umask 333
+        if [ ! -f midicntl ] ; then
+                mknod midicntl c ${maj} 128
+        fi
+        umask 111
+        if [ ! -f midicond ] ; then
+                mknod midicond c ${maj} 8
+        fi
+        ;;
+
+
+bpf*)
+	name=bpf
+	chr=14
+	for unit in 0 1 2 3 4 5 6 7 8 9
+	do
+		mknod ${name}${unit}	c $chr $unit
+		chmod 440 ${name}${unit}
+	done
+	;;
+
+rc*)
+	unit=`expr $i : 'rc\(.*\)'`
+	case $unit in
+	0) offset=0  name=a;;
+	1) offset=8  name=b;;
+	2) offset=16 name=e;;
+	3) offset=24 name=f;;
+	4) offset=32 name=g;;
+	*) echo bad unit for rc in: $i;;
+	esac
+	case $unit in
+	0|1|2|3|4|5)
+		umask 0
+		eval `echo $offset $name | awk ' { b=$1; n=$2 } END {
+			for (i = 0; i < 8; i++)
+				printf("mknod tty%s%x c 11 %d; ", \
+					n, i, b+i); }'`
+		umask 77
+		;;
+	esac
+	;;
+
+digi*)
+	if [ $i = "digi" ] ; then
+		i=digi0 
+	fi
+	unit=`expr $i : 'digi\([^.]*\)'`
+	case $unit in
+	0) name=A;;
+	1) name=B;;
+	2) name=C;;
+	3) name=D;;
+	*) echo bad unit for digi in: $i;;
+	esac
+	case $i in
+	digi[0123])
+		subunit=0; first=0; line=0;;
+	digi[0123].[0123])
+		subunit=`expr $i : 'digi[0123].\(.*\)'`
+		line=`expr $subunit \* 16`
+		;;
+	*)	echo bad subunit for digi in: $i
+		unit=-1;;
+	esac
+	case $unit in
+	0|1|2|3)
+		umask 0
+		for j in 0 1 2 3 4 5 6 7 8 9 a b c d e f 
+		do
+			mknod tty$name$subunit$j c 26 $unit $line
+			line=`expr $line + 1`
+		done
+		umask 77
+		;;
+	esac
+	;;
+
+si*)
+	unit=`expr $i : 'si\([^.]*\)'`
+	case $unit in
+	0) name=a;;
+	1) name=b;;
+	*) echo bad unit for si in: $i;;
+	esac
+	dev=`echo $i | sed 's/_xp$//'`
+	case $dev in
+	si[01])		subunit=0; first=0; last=31;;
+	si[01].[0-3])	subunit=`expr $dev : 'si[01].\(.*\)'`
+			first=`expr $subunit \* 8`
+			last=`expr $first + 7`
+			subunit=$first;;
+	*)		echo bad subunit for si in: $i
+			unit=-1;;
+	esac
+	case $i in
+	*_xp)	xp="_xp"; first=`expr $first + 64`
+		last=`expr $last + 64`;;
+	esac
+	case $unit in
+	0|1)
+		if [ ! -c si_control ]; then
+			mknod si_control c 27 0 128
+		fi
+		umask 0
+		eval `echo $unit $name $subunit $first $last $xp | \
+		awk ' { b=$1; n=$2; subunit=$3; first=$4; last=$5; xp=$6 } END {
+			s=subunit;
+			for (i=first; i <= last; i++)
+				printf("mknod tty%s%d%s c 27 %d %d; ", \
+					n, s++, xp, b, i); }'`
+		umask 77
+		;;
+	esac
+	;;
+
+ms*)
+	unit=`expr $i : 'ms\(.*\)'`
+	case $unit in
+	0) name=h;;
+	1) name=i;;
+	2) name=j;;
+	3) name=k;;
+	4) name=l;;
+	5) name=m;;
+	6) name=n;;
+	7) name=o;;
+	*) echo bad unit for ms in: $i;;
+	esac
+	case $unit in
+	0|1|2|3|4|5|6|7)
+		umask 0
+		eval `echo $unit $name | awk ' { b=$1; n=$2 } END {
+			for (i = 0; i < 8; i++)
+				printf("mknod tty%s%x c 24 %d %d; ", \
+					n, i, b, i); }'`
+		umask 77
+		;;
+	esac
+	;;
+
+local)
+	umask 0
+	sh MAKEDEV.local
+	;;
+
+esac
+done

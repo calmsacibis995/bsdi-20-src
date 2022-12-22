@@ -1,0 +1,5 @@
+D BIN                               	bin
+D CONF                              	conf
+D ETC                               	etc
+F README.GZ;1                       	README.gz
+F _MAP.GZ;1                         	.MAP.gz

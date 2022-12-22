@@ -1,0 +1,18 @@
+F COMMON_C.GZ;1                     	common.cc.gz
+F COMMON_H.GZ;1                     	common.h.gz
+D GROT                              	grot
+F LEX_CC.GZ;1                       	lex.cc.gz
+F MAIN_CC.GZ;1                      	main.cc.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/pic
+F OBJECT_C.GZ;1                     	object.cc.gz
+F OBJECT_H.GZ;1                     	object.h.gz
+F OUTPUT_H.GZ;1                     	output.h.gz
+F PIC_H.GZ;1                        	pic.h.gz
+F PIC_MAN.GZ;1                      	pic.man.gz
+F PIC_Y.GZ;1                        	pic.y.gz
+F POSITION.GZ;1                     	position.h.gz
+F TEXT_H.GZ;1                       	text.h.gz
+F TEX_CC.GZ;1                       	tex.cc.gz
+F TROFF_CC.GZ;1                     	troff.cc.gz
+F _MAP.GZ;1                         	.MAP.gz

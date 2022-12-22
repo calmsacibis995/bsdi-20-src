@@ -1,0 +1,14 @@
+F DC-ARRAY.GZ;1                     	dc-array.c.gz
+F DC-EVAL_.GZ;1                     	dc-eval.c.gz
+F DC-MISC_.GZ;1                     	dc-misc.c.gz
+F DC-NUMBE.GZ;1                     	dc-number.c.gz
+F DC-PROTO.GZ;1                     	dc-proto.h.gz
+F DC-REGDE.GZ;1                     	dc-regdef.h.gz
+F DC-STACK.GZ;1                     	dc-stack.c.gz
+F DC-STRIN.GZ;1                     	dc-string.c.gz
+F DC-VERSI.GZ;1                     	dc-version.h.gz
+F DC_1.GZ;1                         	dc.1.gz
+F DC_H.GZ;1                         	dc.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/bc/dc
+F _MAP.GZ;1                         	.MAP.gz

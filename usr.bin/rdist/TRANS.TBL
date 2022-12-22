@@ -1,0 +1,13 @@
+F CRON_ENT.GZ;1                     	cron.entry.gz
+F DEFS_H.GZ;1                       	defs.h.gz
+F DOCMD_C.GZ;1                      	docmd.c.gz
+F EXPAND_C.GZ;1                     	expand.c.gz
+F GRAM_Y.GZ;1                       	gram.y.gz
+F LOOKUP_C.GZ;1                     	lookup.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/rdist
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F RDIST_1.GZ;1                      	rdist.1.gz
+F SERVER_C.GZ;1                     	server.c.gz
+F _MAP.GZ;1                         	.MAP.gz

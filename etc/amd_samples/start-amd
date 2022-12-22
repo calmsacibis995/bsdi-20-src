@@ -1,0 +1,10 @@
+#!/bin/sh -
+# last mod Sun Jun 30 11:30:13 PDT 1991 -- jsp
+#
+m=/etc/amd-
+cd /
+amd -l /var/log/amd -r -a /amd -p > /var/run/amd.pid \
+	/home ${m}home \
+	/n ${m}n \
+	/vol ${m}vol \
+	&

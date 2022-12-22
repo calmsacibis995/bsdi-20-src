@@ -1,0 +1,6 @@
+F DVI_CC.GZ;1                       	dvi.cc.gz
+F GRODVI_M.GZ;1                     	grodvi.man.gz
+D GROT                              	grot
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/grodvi
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,14 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/vgrind
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F REGEXP_C.GZ;1                     	regexp.c.gz
+D RETEST                            	RETEST
+F TMAC_VGR.GZ;1                     	tmac.vgrind.gz
+F VFONTEDP.GZ;1                     	vfontedpr.c.gz
+F VGRINDEF.000;1                    	vgrindefs.5.gz
+F VGRINDEF.001;1                    	vgrindefs.c.gz
+F VGRINDEF.GZ;1                     	vgrindefs.src.gz
+F VGRIND_1.GZ;1                     	vgrind.1.gz
+F VGRIND_S.GZ;1                     	vgrind.sh.gz
+F _MAP.GZ;1                         	.MAP.gz

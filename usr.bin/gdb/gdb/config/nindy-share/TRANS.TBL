@@ -1,0 +1,14 @@
+F BLOCK_IO.GZ;1                     	block_io.h.gz
+F B_OUT_H.GZ;1                      	b.out.h.gz
+F COFF_H.GZ;1                       	coff.h.gz
+F DEMUX_H.GZ;1                      	demux.h.gz
+F ENV_H.GZ;1                        	env.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NINDY_C.GZ;1                      	nindy.c.gz
+F ONINDY_C.GZ;1                     	Onindy.c.gz
+F STOP_H.GZ;1                       	stop.h.gz
+F TTYBREAK.GZ;1                     	ttybreak.c.gz
+F TTYCNTL_.GZ;1                     	ttycntl.h.gz
+F TTYFLUSH.GZ;1                     	ttyflush.c.gz
+F VERSION.GZ;1                      	VERSION.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,9 @@
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKDEP_1.GZ;1                      	mkdep.1.gz
+F MKDEP_AP.GZ;1                     	mkdep.append.gz
+F MKDEP_GC.GZ;1                     	mkdep.gcc.sh.gz
+F MKDEP_OL.GZ;1                     	mkdep.old.compiler.gz
+F MKDEP_SH.GZ;1                     	mkdep.sh.gz
+F MKDEP_UL.GZ;1                     	mkdep.ultrix.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/mkdep
+F _MAP.GZ;1                         	.MAP.gz

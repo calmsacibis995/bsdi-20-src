@@ -1,0 +1,87 @@
+
+KERBEROS IV Server Configuration
+================================
+
+  Edit /etc/kerberosIV/krb.conf to define the local realm 
+  and the administration server for the realm, e.g.:
+	BSDI.COM
+	BSDI.COM BSDI.COM admin server
+  /etc/kerberosIV/krb.realms defines the mappings from host/domain
+  names to realms, e.g.,:
+	austin.BSDI.COM BSDI.COM
+
+  Run kdb_init(8) to initialize the master database on the server:
+	kdb_init BSDI.COM
+
+  Run kstash(8) to store the master key
+	kstash
+
+  Start the kerberos server by hand this time with the command:
+  	``kerberos >> /var/log/kerberos.log &'' 
+  It will be started automatically on future reboots.
+
+  Uncomment the lines for krbupdate and kpasswd in /etc/inetd.conf and
+  send inetd a SIGHUP.
+
+  Run ``kdb_edit -n'' and create entries for `rcmd.host' (where host is
+  the hostname) for each host that will run kerberos.  Create a
+  `kpasswd.host' for the main host (where host is the hostname).
+
+  Create a /.update.keyXX.XX.XX.XX file (where XX.XX.XX.XX is the ip
+  address of the server machine) on each machine that should be able to
+  run the register(1) program.  The contents are a single line with a
+  string that is the passwd.
+
+  Create /etc/kerberosIV/register_keys/.update.keyXX.XX.XX.XX on the master
+  kerberos machine for each of the machines from the previous step (the
+  passwds must match, of course).
+
+  Run ext_srvtab(8) for each of the client machines (and the server) copy
+  the srvtab.new files onto the appropriate machines make sure the client
+  machines also have the correct krb.conf files and have the correct
+  services in /etc/inetd.conf.  For example:
+	# extract srvtab for server
+	server# cd /etc/kerberosIV/srvtabs
+	server# ext_srvtab -n servername
+	server# mv servername-new-srvtab /etc/kerberosIV/srvtab
+
+	# extract srvtab for each client
+	server# cd /etc/kerberosIV/srvtabs
+	server# ext_srvtab -n hostname
+	...
+	client# mv hostname-new-srvtab /etc/kerberosIV/srvtab
+
+  Users should be able to create principals for themselves using
+  ``register'' on the machines that are set up to run it.
+
+  The kerberized passwd command will change the kerberos passwd --
+  use the -l flag to change the local passwd.
+
+  The su command uses roots .klogin file for authentication uses the root
+  instance for the current user for the passwd -- the entries in root's
+  .klogin file should be of the form:
+	      user.root@realm (e.g., polk.root@BSDI.COM)
+  You can create root instances using ``kdb_edit -n''.
+
+See Also
+--------
+
+kdestroy (1) - destroy Kerberos tickets
+kerberos (1) - introduction to the Kerberos system
+kinit (1) - Kerberos login utility
+klist (1) - list currently held Kerberos tickets
+ksrvtgt (1) - fetch and store Kerberos ticket-granting-ticket using a service key
+register (1) - register with Kerberos
+
+ext_srvtab (8) - extract service key files from Kerberos key distribution center database
+kdb_destroy (8) - destroy Kerberos key distribution center database
+kdb_edit (8) - Kerberos key distribution center database editing utility
+kdb_init (8) - Initialize Kerberos key distribution center database
+kdb_util (8) - Kerberos key distribution center database utility
+kpasswdd (8) - Kerberos password changing daemon
+kstash (8) - stash Kerberos key distribution center database master key
+make_keypair (8) - generate Kerberos host key pair
+registerd (8) - Kerberos registration daemon
+
+krb.conf (5) - Kerberos configuration file
+krb.realms (5) - host to Kerberos realm translation file

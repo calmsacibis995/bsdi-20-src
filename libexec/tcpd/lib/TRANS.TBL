@@ -1,0 +1,23 @@
+F 6COMPAT.C;1                       	6compat.c
+F CLEAN_EX.C;1                      	clean_exit.c
+F FIX_OPTI.C;1                      	fix_options.c
+F FROMHOST.C;1                      	fromhost.c
+F HOSTS_AC.3;1                      	hosts_access.3
+F HOSTS_AC.C;1                      	hosts_access.c
+F HOSTS_CT.C;1                      	hosts_ctl.c
+F HOSTS_IN.C;1                      	hosts_info.c
+F INIT_CLI.C;1                      	init_client.c
+F LOG_TCP.H;1                       	log_tcp.h
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/tcpd/lib
+F OPTIONS.C;1                       	options.c
+F OPTIONS.H;1                       	options.h
+F PATCHLEV.H;1                      	patchlevel.h
+F PERCENT_.C;1                      	percent_x.c
+F REFUSE.C;1                        	refuse.c
+F RFC931.C;1                        	rfc931.c
+F SHELL_CM.C;1                      	shell_cmd.c
+F SOCKET.C;1                        	socket.c
+F TLI.C;1                           	tli.c
+F WORKAROU.C;1                      	workarounds.c
+F _MAP.;1                           	.MAP

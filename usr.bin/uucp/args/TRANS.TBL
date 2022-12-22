@@ -1,0 +1,12 @@
+F ARGSUSAG.GZ;1                     	ArgsUsage.c.gz
+F ARGS_3.GZ;1                       	Args.3.gz
+F ARGS_C.GZ;1                       	Args.c.gz
+F DOARGS_C.GZ;1                     	DoArgs.c.gz
+F LIBC_H.GZ;1                       	libc.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MALLOC_C.GZ;1                     	Malloc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/uucp/args
+F SYSEXITS.GZ;1                     	sysexits.h.gz
+F TESTARGS.GZ;1                     	testArgs.c.gz
+F TRACE_H.GZ;1                      	trace.h.gz
+F _MAP.GZ;1                         	.MAP.gz

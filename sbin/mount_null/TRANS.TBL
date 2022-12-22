@@ -1,0 +1,5 @@
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MOUNT_NU.8;1                      	mount_null.8
+F MOUNT_NU.GZ;1                     	mount_null.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/mount_null
+F _MAP.GZ;1                         	.MAP.gz

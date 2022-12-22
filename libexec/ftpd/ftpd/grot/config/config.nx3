@@ -1,0 +1,48 @@
+#define HAVE_SYMLINK
+#include <sys/param.h>
+#undef  HAVE_DIRENT
+#undef  HAVE_D_NAMLEN
+#define HAVE_FLOCK
+#undef  HAVE_FTW
+#undef  HAVE_GETCWD
+#define HAVE_GETDTABLESIZE
+#undef  HAVE_PSTAT
+#define HAVE_REGEX_H
+#define HAVE_ST_BLKSIZE
+#undef  HAVE_SYSINFO
+#define HAVE_UT_UT_HOST
+#define HAVE_VPRINTF
+#define NO_CRYPT_PROTO
+#define NO_MALLOC_PROTO
+#define OVERWRITE
+#undef  REGEX
+#define SETPROCTITLE
+#undef  SHADOW_PASSWORD
+#define UPLOAD
+#undef  USG
+
+typedef int mode_t;
+typedef int pid_t;
+typedef void SIGNAL_TYPE;
+
+#define S_ISREG(m)	(((m)&S_IFMT) == S_IFREG)
+#define S_ISDIR(m)	(((m)&S_IFMT) == S_IFDIR)
+
+/* NeXT defines this to be (void *)0, which is o.k. by ANSI, but the ftpd
+ * code has lots of misuses of NULL for char and int 0 */
+#undef NULL
+#define NULL  (0)
+
+#define shutdown system_shutdown
+#include <libc.h>
+#undef shutdown
+
+#ifndef FACILITY
+#define FACILITY LOG_DAEMON
+#endif
+
+#ifndef NGROUPS_MAX
+#define NGROUPS_MAX NGROUPS
+#endif
+
+#include "../config.h"

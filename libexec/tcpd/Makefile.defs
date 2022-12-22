@@ -1,0 +1,16 @@
+#	BSDI	Makefile.defs,v 2.1 1995/02/03 06:51:12 polk Exp
+
+CFLAGS+=-DREAL_DAEMON_DIR=\"/usr/libexec\" -DDAEMON_UMASK=022
+CFLAGS+=-DFACILITY=LOG_DAEMON -DSEVERITY=LOG_INFO -DRFC931_TIMEOUT=10
+CFLAGS+=-DHOSTS_ACCESS -DPARANOID -DPROCESS_OPTIONS -DKILL_IP_OPTIONS
+CFLAGS+=-DHOSTS_DENY=\"/etc/hosts.deny\" -DHOSTS_ALLOW=\"/etc/hosts.allow\"
+
+.if exists(${.CURDIR}/../lib/obj)
+LIBWRAP=${.CURDIR}/../lib/obj/libwrap.a
+.else
+LIBWRAP=${.CURDIR}/../lib/libwrap.a
+.endif
+
+TCPD_BINDIR=/usr/libexec/tcpd_bin
+
+.include "../Makefile.inc"

@@ -1,0 +1,139 @@
+#!/bin/sh 
+
+cat > .bld.hlp <<EOF
+Usage: build <make-options> <target-platform>
+
+<target-platform> may be one of the following:
+  gen    : generic make (copy this when porting to a new system)
+  aix    : IBM AIX
+  bsd    : BSDI bsd/386
+  dyn    : Dynix
+  hpx    : HP-UX
+  lnx    : Linux (tested on 0.99p8)
+  nx2    : NeXTstep 2.x
+  nx3    : NeXTstep 3.x
+  osf    : OSF/1
+  ptx    : ???
+  sgi    : SGI Irix 4.0.5a
+  sny    : Sony NewsOS
+  sol    : SunOS 5.x / Solaris 2.x
+  s41    : SunOS 4.1.x (requires acc or gcc 2.3.3 or better)
+                       (if you must use gcc 1.4.2, mail me for a patch)
+  ult    : Ultrix 4.x
+  clean  : Clean up object files and such to reduce disk space after building.
+  install: Install ftpd.
+EOF
+
+maketarget="no-target"
+makeopts=""
+makeargs=""
+
+args=$#
+while [ $args -gt 0 ]
+do
+  case $1 in
+ 
+    help) cat .bld.hlp
+          exit ;;
+
+    -*) makeargs="$makeargs $1" ;;
+
+    install|clean|???)
+         if [ $maketarget != no-target ]
+         then
+             echo "Can only make one target system at a time"
+             echo 'Both "$maketarget" and "$1" where given'
+             exit
+         else
+             maketarget=$1
+         fi
+       ;;
+
+    *) makeopts="$makeopts $1" ;;
+
+  esac
+  
+  shift
+  
+  args=`expr $args - 1`
+
+done
+
+echo 'make args are : '$makeargs''
+echo 'make opts are : '$makeopts''
+
+case $maketarget in
+
+   ???) 
+        echo ''
+        echo "Linking Makefiles."
+		cd src
+		ln makefiles/Makefile.$maketarget Makefile
+		ln config/config.$maketarget config.h
+		cd ../support
+		ln makefiles/Makefile.$maketarget Makefile
+        echo ''
+        echo "Making support library."
+        cd ../support
+        make $makeargs $makeopts
+        echo ''
+        echo "Making ftpd."
+        cd ../src
+        make $makeargs $makeopts  ftpd
+        echo ''
+        echo "Making ftpcount."
+        make $makeargs $makeopts  ftpcount
+        echo ''
+        echo "Making ftpshut".
+        make $makeargs $makeopts  ftpshut
+        echo ''
+        echo "Making ckconfig."
+        make $makeargs $makeopts  ckconfig
+        cd ..
+        if [ ! -d bin ] ;  then    mkdir bin;        fi
+        cd bin
+        rm -f ftpd ftpcount ftpshut
+        if [ -s ../src/ftpd ] ;      then ln ../src/ftpd  ftpd      ; fi
+        if [ -s ../src/ftpcount ] ;  then ln ../src/ftpcount ftpcount ; fi
+        if [ -s ../src/ftpshut ] ;   then ln ../src/ftpshut ftpshut    ; fi
+        if [ -s ../src/ftpshut ] ;   then ln ../src/ftpcount ftpwho    ; fi
+		if [ -s ../src/ckconfig ] ;  then ln ../src/ckconfig ckconfig  ; fi
+        cd ..
+        echo ''
+        echo "Links to executables are in bin directory:"
+        size bin/ftpd bin/ftpcount bin/ftpshut bin/ftpwho bin/ckconfig
+        echo "Done"
+        ;;
+
+
+    clean) # This only sort of works 
+        echo "Cleaning root directory."
+        if [ -s .depend ] ;         then rm .depend  ; fi
+        if [ -s .bld.hlp ] ;        then rm .bld.hlp ; fi
+        echo "Cleaning support directory."
+        cd support
+        make -f makefiles/Makefile.gen $makeargs $makeopts clean
+		rm -f Makefile
+        echo "Cleaning src directory."
+        cd ../src
+        make -f makefiles/Makefile.gen $makeargs $makeopts clean
+		rm -f Makefile
+		rm -f Makefile.bak
+		rm -f config.h
+        echo "Cleaning bin directory."
+        cd ..
+        if [ -d bin ] ;  then    rm -rf bin;        fi
+        ;;
+
+    install)
+        make -f Makefile $makeargs $makeopts install
+        ;;
+
+    no-target)
+        echo "No target plaform for which to build ftpd given."
+        echo 'Give command "build help" for help.'
+        ;;
+
+    *)  echo 'Do not know how to make ftpd for target "'$maketarget'".'
+        ;;
+esac

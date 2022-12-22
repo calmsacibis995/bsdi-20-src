@@ -1,0 +1,14 @@
+F AUTOCONF.GZ;1                     	autoconf.gz
+F GUESS_SH.GZ;1                     	Guess.sh.gz
+F HPADJTIM.GZ;1                     	hpadjtime.sh.gz
+F INSTALL_.GZ;1                     	install.sh.gz
+F MAKECONF.GZ;1                     	makeconfig.sh.gz
+F MKLINKS.GZ;1                      	mklinks.gz
+F MKVERSIO.GZ;1                     	mkversion.gz
+D MONITORI                          	monitoring
+F NTP-GROP.GZ;1                     	ntp-groper.gz
+F NTP-REST.GZ;1                     	ntp-restart.gz
+F README.GZ;1                       	README.gz
+D STATS                             	stats
+D SUPPORT                           	support
+F _MAP.GZ;1                         	.MAP.gz

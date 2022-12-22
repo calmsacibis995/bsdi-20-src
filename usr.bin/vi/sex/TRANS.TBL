@@ -1,0 +1,8 @@
+F SEX_CONF.GZ;1                     	sex_confirm.c.gz
+F SEX_GET_.GZ;1                     	sex_get.c.gz
+F SEX_REFR.GZ;1                     	sex_refresh.c.gz
+F SEX_SCRE.000;1                    	sex_screen.c.gz
+F SEX_SCRE.GZ;1                     	sex_screen.h.gz
+F SEX_TERM.GZ;1                     	sex_term.c.gz
+F SEX_UTIL.GZ;1                     	sex_util.c.gz
+F _MAP.GZ;1                         	.MAP.gz

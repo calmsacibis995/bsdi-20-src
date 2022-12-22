@@ -1,0 +1,13 @@
+F CMDS_C.GZ;1                       	cmds.c.gz
+F CMDTAB_C.GZ;1                     	cmdtab.c.gz
+F DOMACRO_.GZ;1                     	domacro.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F FTP_1.GZ;1                        	ftp.1.gz
+F FTP_C.GZ;1                        	ftp.c.gz
+F FTP_VAR_.GZ;1                     	ftp_var.h.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/ftp
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F RUSERPAS.GZ;1                     	ruserpass.c.gz
+F _MAP.GZ;1                         	.MAP.gz

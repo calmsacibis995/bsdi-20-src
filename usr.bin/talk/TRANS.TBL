@@ -1,0 +1,17 @@
+F CTL_C.GZ;1                        	ctl.c.gz
+F CTL_TRAN.GZ;1                     	ctl_transact.c.gz
+F DISPLAY_.GZ;1                     	display.c.gz
+F GET_ADDR.GZ;1                     	get_addrs.c.gz
+F GET_NAME.GZ;1                     	get_names.c.gz
+F INIT_DIS.GZ;1                     	init_disp.c.gz
+F INVITE_C.GZ;1                     	invite.c.gz
+F IO_C.GZ;1                         	io.c.gz
+F LOOK_UP_.GZ;1                     	look_up.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MSGS_C.GZ;1                       	msgs.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/talk
+F TALK_1.GZ;1                       	talk.1.gz
+F TALK_C.GZ;1                       	talk.c.gz
+F TALK_CTL.GZ;1                     	talk_ctl.h.gz
+F TALK_H.GZ;1                       	talk.h.gz
+F _MAP.GZ;1                         	.MAP.gz

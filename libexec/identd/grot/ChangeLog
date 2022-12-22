@@ -1,0 +1,35 @@
+Tue Dec 13 14:03:20 1994  Peter Eriksson  <pen@lysator.liu.se>
+
+	* Released version 2.4.
+
+Thu Oct 27 10:36:09 1994  Peter Eriksson  <pen@lysator.liu.se>
+
+	* Added support for IBM AIX 3.2
+	
+Thu Oct 27 10:36:08 1994  Peter Eriksson  <pen@lysator.liu.se>
+
+	* Use "ChangeLog" instead of "WHATSNEW".
+
+	* Released version 2.4alpha.4
+
+	* Added support for FreeBSD 2.
+
+	* Released version 2.4alpha.3
+
+	* Some minor fixes
+
+	* Released version 2.4alpha.2
+
+	* Bug fix for the Solaris 2.4 support.
+
+	* Added the "itest" program.
+
+	* Released version 2.4alpha.1:
+
+	* Support for Solaris 2.4 added.
+
+	* src/kvm.h moved to src/kernel/kvm.h
+
+Thu Oct 27 10:36:07 1994  Peter Eriksson  <pen@lysator.liu.se>
+
+	* WHATSNEW/ChangeLog truncated (see pidentd-2.3 for old news)

@@ -1,0 +1,35 @@
+#define unix
+#define HAVE_SYMLINK
+#define AIX
+#undef  BSD
+#define HAVE_DIRENT
+#define HAVE_D_NAMLEN
+#undef  HAVE_FLOCK
+#define HAVE_FTW
+#define HAVE_GETCWD
+#define HAVE_GETDTABLESIZE
+#undef  HAVE_PSTAT
+#define HAVE_ST_BLKSIZE
+#undef  HAVE_SYSINFO
+#define HAVE_UT_UT_HOST
+#define HAVE_VPRINTF
+#define OVERWRITE
+#undef  REGEX
+#define SETPROCTITLE
+#undef  SHADOW_PASSWORD
+#undef  UPLOAD
+#define USG
+#define SVR4
+#define vfork fork
+
+#include <malloc.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#ifndef FACILITY
+#define FACILITY LOG_DAEMON
+#endif
+
+typedef void	SIGNAL_TYPE;
+
+#include "../config.h"

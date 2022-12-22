@@ -1,0 +1,5 @@
+F BASENAME.000;1                    	basename.c.gz
+F BASENAME.GZ;1                     	basename.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/basename
+F _MAP.GZ;1                         	.MAP.gz

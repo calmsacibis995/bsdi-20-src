@@ -1,0 +1,15 @@
+F DBGRPCLI.GZ;1                     	dbgRpcLib.h.gz
+F PTRACE_H.GZ;1                     	ptrace.h.gz
+F REG_H.GZ;1                        	reg.h.gz
+F VXTYPES_.GZ;1                     	vxTypes.h.gz
+F VXWORKS_.GZ;1                     	vxWorks.h.gz
+F WAIT_H.GZ;1                       	wait.h.gz
+F XDR_LD_C.GZ;1                     	xdr_ld.c.gz
+F XDR_LD_H.GZ;1                     	xdr_ld.h.gz
+F XDR_PTRA.000;1                    	xdr_ptrace.h.gz
+F XDR_PTRA.GZ;1                     	xdr_ptrace.c.gz
+F XDR_RDB_.000;1                    	xdr_rdb.c.gz
+F XDR_RDB_.GZ;1                     	xdr_rdb.h.gz
+F XDR_REGS.000;1                    	xdr_regs.c.gz
+F XDR_REGS.GZ;1                     	xdr_regs.h.gz
+F _MAP.GZ;1                         	.MAP.gz

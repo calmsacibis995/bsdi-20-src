@@ -1,0 +1,17 @@
+D AIX.3                             	aix.3.2
+D BSD.4                             	bsd.4.4
+D BSDI.1                            	bsdi.1.0
+D CLIB                              	clib
+D DGUX.5                            	dgux.5.4
+D HPUX.9                            	hpux.9.01
+D INCLUDE                           	include
+D IRIX.4                            	irix.4.05F
+D LINUX                             	linux
+F MAKEFILE.;1                       	Makefile
+D OSF.1                             	osf.1.0.2
+D PTX.2                             	ptx.2.0
+F README.;1                         	README
+D SINIX.5                           	sinix.5.41
+D SUNOS.4                           	sunos.4.1.1
+D SUNOS.5                           	sunos.5.2
+D ULTRIX.4                          	ultrix.4.2

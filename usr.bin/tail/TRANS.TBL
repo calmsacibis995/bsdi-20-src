@@ -1,0 +1,10 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F FORWARD_.GZ;1                     	forward.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/tail
+F READ_C.GZ;1                       	read.c.gz
+F REVERSE_.GZ;1                     	reverse.c.gz
+F TAIL_1.GZ;1                       	tail.1.gz
+F TAIL_C.GZ;1                       	tail.c.gz
+F _MAP.GZ;1                         	.MAP.gz

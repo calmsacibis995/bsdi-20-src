@@ -1,0 +1,37 @@
+#define HAVE_SYMLINK
+#undef  BSD
+#undef  HAVE_DIRENT
+#undef  HAVE_D_NAMLEN
+#undef  HAVE_FLOCK
+#define HAVE_FTW
+#define HAVE_GETCWD
+#undef  HAVE_GETDTABLESIZE
+#define HAVE_PSTAT
+#define HAVE_ST_BLKSIZE
+#undef  HAVE_SYSINFO
+#undef  HAVE_UT_UT_HOST
+#define HAVE_VPRINTF
+#define OVERWRITE
+#define REGEX
+#undef  SETPROCTITLE
+#undef  SHADOW_PASSWORD
+#define SVR4
+#define UPLOAD
+#define USG
+
+#define RLIM_INFINITY 0x7fffffff
+#define	seteuid(x)	setresuid(-1,x,-1)
+#define setegid(x)	setresgid(-1,x,-1)
+
+#include <malloc.h>
+#include <sys/signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#ifndef FACILITY
+#define FACILITY LOG_LOCAL5
+#endif
+
+typedef void	SIGNAL_TYPE;
+
+#include "../config.h"

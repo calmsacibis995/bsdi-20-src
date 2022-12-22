@@ -1,0 +1,38 @@
+#
+#	BSDI	aliases,v 2.1 1995/02/03 05:53:28 polk Exp
+#	@(#)aliases	8.2 (Berkeley) 3/5/94
+#
+#  Aliases in this file will NOT be expanded in the header from
+#  Mail, but WILL be visible over networks or from /bin/mail.
+#
+#	>>>>>>>>>>	The program "newaliases" must be run after
+#	>> NOTE >>	this file is updated for any changes to
+#	>>>>>>>>>>	show through to sendmail.
+#
+
+# Basic system aliases -- these MUST be present.
+MAILER-DAEMON: postmaster
+postmaster: root
+
+# General redirections for pseudo accounts.
+bin:		root
+daemon:		root
+games:		root
+ingres:		root
+nobody:		root
+system:		root
+toor:		root
+uucp:		root
+webmaster:	root
+archive:	root
+hostmaster:	root
+
+# Well-known aliases
+#root:
+manager:	root
+dumper:		root
+operator:	root
+
+
+# trap decode to catch security attacks
+decode:		root

@@ -1,0 +1,21 @@
+# Crontab file; see cron(8) for more information.
+#
+#	BSDI	crontab,v 2.1 1995/02/03 05:53:31 polk Exp
+#	@(#)crontab	8.1 (Berkeley) 6/9/93
+
+SHELL=/bin/sh
+
+0,15,30,45 * * * *	root /usr/bin/at
+0 2 * * *	root /bin/sh /etc/daily 2>&1 | tee /var/log/daily.out | /usr/sbin/sendmail root
+30 3 * * 6	root /bin/sh /etc/weekly 2>&1 | tee /var/log/weekly.out | /usr/sbin/sendmail root
+30 5 1 * *	root /bin/sh /etc/monthly 2>&1 | tee /var/log/monthly.out | /usr/sbin/sendmail root
+
+# INN (netnews) programs
+# (uncomment these to do normal news processing)
+#
+# daily cleanup and expiration
+#0 1 * * *       news /usr/contrib/lib/news/bin/news.daily
+# process articles posted while server not answering
+#15 3 * * *      news /usr/contrib/lib/news/rnews -U
+# process outgoing feeds every 15 mins...
+#3,18,33,48 * * * * news /usr/contrib/lib/news/bin/nntpsend

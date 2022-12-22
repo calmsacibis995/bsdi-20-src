@@ -1,0 +1,19 @@
+F ACKSEND_.GZ;1                     	acksend.c.gz
+F BYTEORDE.GZ;1                     	byteorder.c.gz
+F CANDIDAT.GZ;1                     	candidate.c.gz
+F CHANGES.GZ;1                      	CHANGES.gz
+F CKSUM_C.GZ;1                      	cksum.c.gz
+F CORRECT_.GZ;1                     	correct.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F GLOBALS_.GZ;1                     	globals.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MASTER_C.GZ;1                     	master.c.gz
+F MEASURE_.GZ;1                     	measure.c.gz
+F NETWORKD.GZ;1                     	networkdelta.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/timed/timed
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F READMSG_.GZ;1                     	readmsg.c.gz
+F SLAVE_C.GZ;1                      	slave.c.gz
+F TIMED_8.GZ;1                      	timed.8.gz
+F TIMED_C.GZ;1                      	timed.c.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,11 @@
+F HOST2TXT.GZ;1                     	host2txt.awk.gz
+F HOSTS_MA.GZ;1                     	hosts.make.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NDDUMP2H.GZ;1                     	nddump2host.awk.gz
+F NDREV_C.GZ;1                      	ndrev.c.gz
+F NICNET_A.GZ;1                     	nicnet.awk.gz
+F NICTXT2H.GZ;1                     	nictxt2host.awk.gz
+F TXT2HOST.GZ;1                     	txt2host.awk.gz
+F TXT2NAME.GZ;1                     	txt2named.awk.gz
+F UMICH_ND.GZ;1                     	umich_nddump.in.gz
+F _MAP.GZ;1                         	.MAP.gz

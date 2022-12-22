@@ -1,0 +1,27 @@
+#undef  BSD
+#define HAVE_DIRENT
+#define HAVE_FLOCK
+#define HAVE_FTW
+#undef  HAVE_GETCWD
+#define HAVE_GETDTABLESIZE
+#undef  HAVE_PSTAT
+#define HAVE_ST_BLKSIZE
+#undef  HAVE_SYSINFO
+#define HAVE_UT_UT_HOST
+#define HAVE_VPRINTF
+#define LINUX
+#define OVERWRITE
+#undef  REGEX
+#define SETPROCTITLE
+#undef  SHADOW_PASSWORD
+#define UPLOAD
+#undef  USG
+#define SVR4
+
+#include <varargs.h>
+#include <bsd.h>
+
+typedef	int	mode_t
+typedef int SIGNAL_TYPE
+
+#include "../config.h"

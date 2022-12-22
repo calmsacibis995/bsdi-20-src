@@ -1,0 +1,17 @@
+D CF                                	cf
+D CONTRIB                           	contrib
+D DOC                               	doc
+F FAQ.GZ;1                          	FAQ.gz
+D GROT                              	grot
+F KNOWNBUG.GZ;1                     	KNOWNBUGS.gz
+D MAILSTAT                          	mailstats
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.inc.gz
+D MAKEMAP                           	makemap
+D PRALIASE                          	praliases
+F README_B.GZ;1                     	README.BSDI.gz
+F READ_ME.GZ;1                      	READ_ME.gz
+F RELEASE_.GZ;1                     	RELEASE_NOTES.gz
+D SRC                               	src
+D TEST                              	test
+F _MAP.GZ;1                         	.MAP.gz

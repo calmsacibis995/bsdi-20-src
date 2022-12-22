@@ -1,0 +1,524 @@
+.\" Copyright (c) 1993,1994 Berkeley Software Design, Inc.
+.\" All rights reserved.
+.\"
+.\" BSDI	disksetup.8,v 2.1 1995/02/03 06:40:01 polk Exp
+.\"
+.TH DISKSETUP 8 "February 18,1993"
+.UC 8
+.SH NAME
+disksetup \- read and write disk labels
+.SH SYNOPSIS
+.B disksetup
+.I disk
+.br
+.B disksetup \-e 
+[
+.B \-I
+[\c
+.BR \-I ]
+]
+.I disk
+[
+.I xxboot
+.I bootxx
+[
+.I mboot
+] ]
+.br
+.B disksetup \-i
+[
+.B \-I
+[\c
+.BR \-I ]
+]
+.I disk
+.br
+.B disksetup \-R
+.I disk
+.I protofile
+[
+.I xxboot
+.I bootxx
+[
+.I mboot
+] ]
+.br
+.B disksetup 
+[
+.B \-NW
+]
+.I disk
+.br
+.B disksetup \-B
+.I disk
+[
+.I xxboot
+.I bootxx
+[
+.I mboot
+] ]
+.SH DESCRIPTION
+.PP
+The goal of the
+.I disksetup
+program is to define the FDISK table if needed (see below), the BSD
+partition tables (and geometry information), and to write the appropriate
+boot blocks to the disk.
+.PP
+.I Disksetup
+installs, examines, or modifies both the FDISK and BSD/OS disk labels on
+a disk drive.
+.I Disksetup
+can set or change the disk geometry, the sizes, types and offsets for the
+FDISK and BSD/OS partitions.  It can also write both BSD/OS boot blocks
+and, optionally, master boot record boot blocks.
+.PP
+A disk shared between BSD/OS and any other operating system(s) has a
+single FDISK partition table in its first physical sector.  This table
+defines 1 to 4 partitions which enumerate the extents of the sections of
+the disk used by various operating systems and the types of those
+sections.  Additionally, the FDISK table indicates which partition is
+currently `active' and will be used for the next reboot (unless
+overridden).  The FDISK partition table is used by BSD/OS only to find
+the location of the BSD part of the disk.  The four FDISK partitions are
+numbered `1' through `4'.
+.PP
+Disks used by BSD/OS also have a BSD label (in sector 1 of the bootable
+BSD partition) which describes the geometry of the entire disk (number of
+heads, sectors, tracks, etc.) and enumerates 1 to 8 BSD partitions which
+are named `a' through `h'.
+.PP
+BSD/OS uses the BSD partition definitions to access the disk (including
+access of MS-DOS files in other FDISK partitions).
+.PP
+In common usage, BSD/OS divides its part of the primary disk into three
+sections:  one for the root filesystem (always the `a' partition), one for
+swapping (and paging) (always the `b' partition), and one for /usr and
+other files (usually the `h' partition).  If BSD/OS is to access other
+parts of the disk (e.g., for MS-DOS co-residency), another partition is
+assigned to refer to that disk data (often the `d' partition).
+.PP
+More advanced users sometimes set up additional partitions, e.g., for
+the /var directories.
+.PP
+Confusingly enough, BSD/OS always defines one more partition:  the `c'
+partition.  The `c' partition refers to the entire disk (including the
+boot blocks and the bad sector table at the end of the disk).  This
+partition obviously overlaps with any other BSD partition on the disk.
+The `c' partition can be used to define a filesystem only on non-primary
+disks and only on disks that have no bad-block table (e.g., SCSI).  The
+`c' partition must not be used to store BSD/OS filesystems on IDE or ESDI
+drives (drives using the 
+.I wd 
+disk driver).  Instead, use a different,
+slightly shorter partition (e.g., define `h' to be the entire usable
+portion of the disk).
+In the interactive (\c
+.BR \-i )
+mode,
+.I disksetup
+enforces the correct maximum size.
+.SH "INVOKING \fIdisksetup\fP IN THE INTERACTIVE MODE
+.PP
+.I Disksetup
+is most often used in the interactive mode.  Invoke it by specifying
+the
+.B \-i
+flag and naming the disk to be set up.  The example below shows
+invocations for SCSI and non-SCSI primary drives, respectively:
+.br
+.nf
+.ft CW
+	# disksetup -i sd0
+\fPor\fP
+	# disksetup -i wd0
+.br
+.fi
+.ft
+.sp 0.5
+.PP
+If the 
+.B \-I
+option is also specified, 
+.I disksetup
+will ignore any existing BSD label on the disk.  This can be very useful
+if an incorrect geometry was previously specified, or if the current
+label is valid but incorrect for some reason.
+.PP
+If two
+.B \-I
+arguments are specified, 
+.I disksetup
+will ignore not only any existing BSD label, but any existing FDISK
+label as well.  It will also open the device with the O_NONBLOCK
+argument to inhibit the kernel from reading any existing label.
+.PP
+Other options are described below.
+.PP
+.I disksetup
+asks if the disk is to be used exclusively for BSD partitions or if it is
+to be shared with other operating systems.  Answer the question
+appropriately.
+.PP
+.I disksetup
+learns the drive's geometry either by reading it from an existing BSD
+label on the drive or by querying the user.  If no BSD label previously
+existed, no geometry information is available so
+.I disksetup
+asks the user to supply one.  Otherwise,
+.I disksetup
+proceeds to the sizing screens (see below).
+.PP
+When no geometry information is available,
+.I disksetup
+asks the user to choose from:
+.in +\w'\(bu\ 'u
+.ti -\w'\(bu\ 'u
+\(bu\ running the
+.I scsicmd
+utility (only for SCSI disks, of course) to query the drive for its
+geometry,
+.ti -\w'\(bu\ 'u
+\(bu\ supplying the name of a `disktab' entry that corresponds to the disk
+to be labeled (chosen from the file /etc/disktab),
+.ti -\w'\(bu\ 'u
+\(bu\ querying the kernel for the current geometry (the kernel may have
+information from an on-disk label or from the CMOS),
+.ti -\w'\(bu\ 'u
+\(bu\ querying an IDE/ESDI controller for the geometry,
+.ti -\w'\(bu\ 'u
+\(bu\ answering prompts about the geometry,
+.ti -\w'\(bu\ 'u
+\(bu\ naming a file containing a saved geometry (from a previous
+invocation of disksetup (described later) or some other command)
+.in -\w'\(bu\ 'u
+.PP
+Except for supplying the answers to prompts, all choices above proceed
+`automatically'.  When answering the prompts, the user must supply the
+following data:  interface type, vendor and type (e.g., `Maxtor P012S')
+which is only used to document the disk's vendor and type ID, bytes/sector
+(almost always 512, always a multiple of 512), number of cylinders (from the
+manual; must be the number of data cylinders on the drive \- it excludes
+those cylinders for the drive's own internal use such as for bad blocks),
+number of heads (also known as tracks/cylinder; from the manual), number
+of sectors per track (from the manual), and total data sectors (which
+might not be the same as the default in the unlikely case that the last
+cylinder is not a complete one).  The user then verifies that the
+information is correct before proceeding.
+.SH "INTERACTIVE SIZING
+.PP
+.I Disksetup
+displays one of two different screen sets for sizing, depending on
+whether the drive is to be shared between operating systems.  If the drive
+is used exclusively for BSD/OS, then
+.I disksetup
+displays the `BSD Partition Sizing' screen.  Otherwise, it displays the
+`FDISK Partition Sizing & BSD Partition Assignment' screen.
+Separate sections that follow document these two different execution
+paths.
+.PP
+In general, the interactive screens use `hot keys' for their commands
+and otherwise require a `return' to be entered after the input.
+A `return' with no input usually aborts the current operation;
+otherwise, it indicates acceptance of a default value which has been
+presented between square brackets.  Your backspace and line delete
+characters work correctly for input to these screens.
+.PP
+Numbers can be entered in many ways:  absolute, relative, and with a unit
+suffix.  Absolute numbers are entered without a sign and have a value
+identical to the number typed.  Relative numbers are preceded by a + or \-
+sign and specify a change to the current value (i.e., an increase or
+decrease). 
+.PP
+Normally, numbers represent sectors,  However, specifying a unit suffix
+can change the meaning of the numbered typed.  Use the `m' suffix to
+specify megabytes (1024*1024 bytes); `c' for cylinders, or `M' for
+cylinder-aligned-megabytes (the entered number multiplied by 1024*1024 and
+rounded up to the nearest cylinder boundary.
+.br
+.ne 23
+.SH "BSD PARTITION SIZING SCREEN'
+.PP
+In the BSD-only scenario, the sizing screen resembles this:
+.ft CW
+.nf
+                       BSD Partition Sizing
+.sp 0.5
+BSD Type      Size    MB     Start     End  Warnings
+ a  4.2      33600 (  16)        0   33599
+ b  swap    134400 (  65)    33600  167999
+ c  Unused  639450 ( 312)        0  639449
+ d  4.2      67200 (  32)   168000  235199
+ e  4.2      67200 (  32)   235200  302399
+ f   <unused>
+ g   <unused>
+ h  4.2     337050 ( 164)   302400  639449
+                Last Data Sector:   639449
+.sp 0.5
+Commands:  [T]ype  [S]tart  [L]ength  [N]ext phase
+Command>
+.sp 0.5
+Directions:
+   Use `L' and `S' to set the BSD partition Lengths and Starting sectors
+   Use `T' to set the BSD partition Types
+   Use `N' to move to the next phase:  Installing boot blocks
+   Use `X' to abort disksetup
+Numbers can be relative (with + or \-) or suffixed with c (cylinders),
+     m (megabytes), or M (megabytes rounded to cylinders)
+.fi
+.ft
+.sp 0.5
+The goal of this screen is to set the sizes, starting offsets (i.e.,
+starting sector numbers), and types of the BSD partitions.  All sizes
+and offsets are in terms of sectors.
+.PP
+This screen allows you to set up overlapping partitions and will
+display a warning in the `Warnings' column.  Unless you have specific
+needs for overlapping partitions, they are best avoided.
+.PP
+Use the `T', `S', and `L' keys to set the parameters you desire.  As a
+starting idea, consider using an 8 MB `a' (root) partition, 16 MB `b'
+(swap) partition (32MB if you will be using the X window system or MFS,
+the memory based filesystem), and allocating the remainder to the `h'
+partition for /usr directory and files owned by your system's users.
+.PP
+Enter `N' when the parameters shown meet your needs to move to the
+next phase:  boot block installation (if you are using BSD partitions
+only; skip the next section and move on to the discussion of boot
+blocks).
+.br
+.ne 26
+.SH "FDISK PARTITION SIZING & BSD PARTITION ASSIGNMENT SCREENS
+.PP
+The first FDISK & BSD sizing screen resembles this \- though your system
+may already have FDISK and/or BSD partitions which would then appear
+in the table (start and length values are in terms of sectors):
+.ft CW
+.nf
+            FDISK Partition Sizing & BSD Partition Assignment
+FDISK
+Part#  type        Start Length    MB BSD Partitions    Warnings
+  1  [--unused--]
+  2  [--unused--]
+  3  [--unused--]
+  4  [--unused--]
+Last data sector: 414364                               Gap at end: 414365
+.sp 0.5
+Unassigned BSD partitions:  a b d e f g h
+.sp 0.5
+Commands:  [T]ype  [S]tart  [L]ength  [A]ssign BSD partition  [N]ext
+phase
+.sp 0.5
+Command>
+.sp 0.5
+Directions:
+   Use `L' and `S' to set the FDISK partition Lengths and Starting sectors
+   Use `T' to set the FDISK partition Types
+   Use `A' to assign the BSD partitions to cover the FDISK partitions
+   -- One BSD partition for non-BSDI FDISK partitions -- One or more for BSDI
+   -- Assignment is to the end of the partition list
+   Use `N' to move to the next phase:  BSD partition sizing
+   Use `X' to abort disksetup
+.ft
+.sp 0.5
+.br
+.fi
+This screen has two goals.  It sets the starting sector, length, and type
+for each FDISK partition to be used.  It also assigns the name of the
+BSD partition(s) to be associated with each FDISK partition.
+.PP
+The \fIdisksetup\fP program does \fBnot\fP allow arbitrary disk layouts;
+instead it enforces common sense rules.  For instance, \fIdisksetup\fP
+does not allow partitions to overlap in any final configuration.
+.PP
+Automatically enforced rules:  \fIDisksetup\fP occasionally adjusts start
+addresses to various boundaries (a warning is shown).  Only the BSDI parts
+of the FDISK partition can have more than one associated BSD partition.
+.PP
+Figure out your disk's overall layout scheme (how much for MS/DOS; how
+much for BSD/OS; how much for any other system).  Enter the parameters
+using the `L' key to enter the FDISK partition size (do this first).
+Next, set the FDISK partition types using the `T' key.  Then, use `S' to
+enter the starting sectors.  Adhering to this order will minimize
+distractions when partition starting sectors are moved due to constraints
+inherent in the various operating systems.
+.PP
+Adjust the lengths and starting sectors to eliminate all warnings.
+.PP
+Finally, assign the BSD partition names (`a' through `h') that you wish to
+use to refer to the various partitions (and sub-partitions in the case of
+a BSD partition).  A typical scheme for BSD partition layout is:  `a',
+`b', and `h' for the BSDI portion of the disk; `d' for the first other
+operating system (e.g., MS/DOS), `e' for the next, and `f' for the next.
+Of course, it is common to have only two operating systems present.
+.PP
+You should only assign to FDISK partitions those BSD partitions that you
+plan to use.  You need not assign every single BSD partition.  It is very
+common to see some unused partitions.
+.PP
+When you have set up the FDISK partition sizes and the BSD partition
+assignments, use `N' to proceed to the next screeen.  You can not
+proceed in certain cases (e.g., no FDISK partitions assigned).
+Resolve the issue and then move on.
+.br
+.ne 19
+.PP
+The second screen resembles this:
+.ft CW
+.br
+.nf
+                           BSD Partition Sizing
+FDISK
+Part# Start  Length BSD Type    Length   MB  Warnings
+  1       0  347165  a  Unused       0    0
+                     b  Unused       0    0
+                     h  Unused       0    0  BSD partitions 347165 too short
+.sp 0.5
+Commands:  [a-h] Set BSD partition length   [N]ext phase
+           [A-H] Set BSD partition type     [P]revious page (sizing)
+.sp 0.5
+Command>
+.sp 0.5
+Directions:
+   Use `a' thru `h' to set the BSD partition lengths
+   Use `A' thru `H' to set the BSD partition types
+   Use `N' to move to the next phase: Installing boot blocks
+   Use `P' for previous page  (FDISK sizing and BSD partition assignment)
+   Use `X' to abort disksetup
+.ft
+.sp 0.5
+.br
+.fi
+It shows the FDISK partitions of type BSDI \- the partitions which will be
+subdivided into smaller BSD partitions.  The start and length of the FDISK
+partition are shown.  Only the length of the BSD partitions is shown; the
+offsets are computed automatically so that the partitions are packed as
+tightly as possible (and in the order shown).  Only the lengths and types
+of the BSD partitions can be set on the screen.  Return the previous
+screen (`P') to adjust the FDISK starting sector or length.  All start 
+and length values are in terms of sectors.
+.PP
+Use the lower case `a' through `h' keys to set lengths; use the upper case
+keys to set types.  Heed the warnings about aggregate lengths being too
+long or too short.  You can not proceed to the next phase if the BSD
+partitions will not fit in the FDISK partition.  Note that
+.I disksetup
+presents a default size value if you change the size of a BSD partition
+and it is possible for that partition to fill out the FDISK partition
+exactly.  This is handy for the `h' partition in this example; less handy
+for the rest.
+.PP
+Set the sizes and types and type `N' to move to boot block
+installation.
+.SH "INSTALLING BOOT BLOCKS
+.PP
+In the last phase \fIdisksetup\fP asks you which kind of boot blocks to
+install on your disk.  Make the correct menu choice.
+.PP
+Finally, if you are sharing the disk among multiple operating systems,
+\fIdisksetup\fP asks which master boot record you wish installed.  You can
+choose the default (using the return key) or you can enter the pathname of
+a different boot program.  You must tell which partitions are bootable and
+what identifying string should be displayed by the `bootany' program.
+.SH "OTHER MODES
+.PP
+You can invoke
+.I disksetup
+to see an ASCII representation of the entire FDISK and BSD setup
+information.  Use
+.br
+    \f(CWdisksetup\fP \fIdisk\fP
+.br
+to show the ASCII representation on standard output (which can be
+redirected to a file, say, \f(CWprotofile\fP).  Use
+.br
+    \f(CWdisksetup\fP -R \fIdisk\fP \f(CWprotofile\fP
+.br
+to set FDISK and BSD partition information to be that of the contents of
+\f(CWprotofile\fP.  Optional arguments can specify the primary and
+secondary BSD boot block files (two filenames are required if they are
+specified).  A final optional argument can specify a master boot record
+(only if you also specify the BSD boot files and only if the disk is
+shared between multiple operating systems).
+.PP
+Use of the 
+.B \-R
+option will cause disk disksetup to open the device with the O_NONBLOCK
+flag set (to inhibit the kernel from reading any existing label from the disk).
+.PP
+The
+.B \-e
+option (edit mode) combines the the previous two schemes.
+It creates a temporary file with the ASCII representation then invokes
+an editor ($EDITOR or 
+.IR vi ) 
+on that file.  Any changes made to the file
+are made to the FDISK and BSD labels.  The
+.B \-e
+option automatically installs boot blocks and may ask certain
+questions if more data is required.
+.PP
+The
+.B \-e
+and
+.B \-R
+options also expose all the internals of the DOS FDISK partition 
+table for editing.  There is no consistency checking to verify that
+the geometry used to compute these fields matches the geometry specified
+in the BSD label.  The range for the starting/ending cylinder field
+is 0-1023.  The range for the starting/ending head number is 0-255.  The
+range for the starting/ending sector number is 1-63 (Note that the origin 
+is 
+.I 1 
+.B not 
+.I 0 
+for sector numbers).  The only fields BSD will examine from 
+the FDISK table are the active flag, type, and offset fields.  BSD does not
+care about the others, but the BIOS and other operating systems (i.e., DOS)
+require them all to be correct.
+.PP
+Once changes are made which bypass the consistency checks, it is 
+possible that the interactive (\c
+.BR \-i ) 
+mode of disksetup will no longer
+be usable since that mode enforces many additional rules.  When using 
+the bypass modes, it is assumed that the user knows what he/she is doing,
+and it is quite possible to commit invalid labels to the disk.
+.PP
+With the
+.B \-W
+or
+.B \-N
+options, 
+.I disksetup
+will enable (\c
+.BR \-W ) 
+or disable (\c
+.BR \-N ) 
+writing of the disk label sector.  This
+can sometimes be helpful when the only way to proceed is to destroy
+the on-disk label (e.g., with the 
+.I dd
+command) and reboot to start with a clean slate.  The
+.B \-N
+and 
+.B \-W 
+options will cause the device to be opened with O_NONBLOCK set
+(to inhibit the kernel from reading any existing label from the disk).
+.PP
+With the 
+.B \-B
+option, 
+.I disksetup
+will re-write the boot blocks (leaving the existing label(s) intact).
+.SH FILES
+/etc/disktab
+.br
+/usr/bootstraps/\fIxx\fPboot
+.br
+/usr/bootstraps/boot\fIxx\fP
+.br
+/usr/bootstraps/bootany.sys
+.SH "SEE ALSO"
+disktab(5), disklabel(5), disksetup(8)
+.\".SH DIAGNOSTICS

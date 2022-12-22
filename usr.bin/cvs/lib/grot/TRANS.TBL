@@ -1,0 +1,10 @@
+F ALLOCA_C.GZ;1                     	alloca.c.gz
+F DUP2_C.GZ;1                       	dup2.c.gz
+F FTRUNCAT.GZ;1                     	ftruncate.c.gz
+F GETWD_C.GZ;1                      	getwd.c.gz
+F HOSTNAME.GZ;1                     	hostname.c.gz
+F MAKEFILE.GZ;1                     	Makefile.in.gz
+F MKDIR_C.GZ;1                      	mkdir.c.gz
+F RENAME_C.GZ;1                     	rename.c.gz
+F STRDUP_C.GZ;1                     	strdup.c.gz
+F _MAP.GZ;1                         	.MAP.gz

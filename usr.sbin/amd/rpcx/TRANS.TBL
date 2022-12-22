@@ -1,0 +1,11 @@
+F AMQ_CLNT.GZ;1                     	amq_clnt.c.gz
+F AMQ_H.GZ;1                        	amq.h.gz
+F AMQ_SVC_.GZ;1                     	amq_svc.c.gz
+F AMQ_X.GZ;1                        	amq.x.gz
+F AMQ_XDR_.GZ;1                     	amq_xdr.c.gz
+F MOUNT_H.GZ;1                      	mount.h.gz
+F MOUNT_XD.GZ;1                     	mount_xdr.c.gz
+F NFS_PROT.000;1                    	nfs_prot_xdr.c.gz
+F NFS_PROT.001;1                    	nfs_prot_svc.c.gz
+F NFS_PROT.GZ;1                     	nfs_prot.h.gz
+F _MAP.GZ;1                         	.MAP.gz

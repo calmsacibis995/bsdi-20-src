@@ -1,0 +1,14 @@
+F C-AUX-IN.GZ;1                     	c-aux-info.c.gz
+F C-CONVER.GZ;1                     	c-convert.c.gz
+F C-DECL_C.GZ;1                     	c-decl.c.gz
+F C-GPERF_.GZ;1                     	c-gperf.h.gz
+F C-ITERAT.GZ;1                     	c-iterate.c.gz
+F C-LANG_C.GZ;1                     	c-lang.c.gz
+F C-LEX_C.GZ;1                      	c-lex.c.gz
+F C-PARSE_.000;1                    	c-parse.gperf.gz
+F C-PARSE_.GZ;1                     	c-parse.y.gz
+F C-PRAGMA.GZ;1                     	c-pragma.c.gz
+F C-TYPECK.GZ;1                     	c-typeck.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/gcc2/cc1
+F _MAP.GZ;1                         	.MAP.gz

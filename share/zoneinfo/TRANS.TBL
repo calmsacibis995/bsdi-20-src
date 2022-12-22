@@ -1,0 +1,11 @@
+D DATFILES                          	datfiles
+F EMKDIR_C.GZ;1                     	emkdir.c.gz
+F IALLOC_C.GZ;1                     	ialloc.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/zoneinfo
+F PRIVATE_.GZ;1                     	private.h.gz
+F SCHECK_C.GZ;1                     	scheck.c.gz
+F TZFILE_5.GZ;1                     	tzfile.5.gz
+F ZIC_8.GZ;1                        	zic.8.gz
+F ZIC_C.GZ;1                        	zic.c.gz
+F _MAP.GZ;1                         	.MAP.gz

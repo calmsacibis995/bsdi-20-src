@@ -1,0 +1,14 @@
+L BIND.;1                           	BIND	..
+D DIFFS                             	Diffs
+D DIG                               	dig
+F MAKEFILE.000;1                    	Makefile.maninc.gz
+F MAKEFILE.001;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.inc.gz
+D NAMED                             	named
+D NAMED.REL                         	named.reload
+D NAMED.RES                         	named.restart
+D NAMED-XF                          	named-xfer
+D NDC                               	ndc
+D NSLOOKUP                          	nslookup
+F README.GZ;1                       	README.gz
+F _MAP.GZ;1                         	.MAP.gz

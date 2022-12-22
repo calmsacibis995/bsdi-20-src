@@ -1,0 +1,66 @@
+.TH HOSTS_ACCESS 3
+.SH NAME
+hosts_access, hosts_ctl \- access control library
+.SH SYNOPSIS
+.nf
+#include "log_tcp.h"
+
+extern int allow_severity;
+extern int deny_severity;
+
+int hosts_access(daemon, client)
+char *daemon;
+struct client_info *client;
+
+int hosts_ctl(daemon, client_name, client_addr, client_user)
+char *daemon;
+char *client_name;
+char *client_addr;
+char *client_user;
+.fi
+.SH DESCRIPTION
+The routines described in this document are part of the \fIlibwrap.a\fR
+library. They implement a pattern-based access control language with
+optional shell commands that are executed when a pattern fires.
+.PP
+In all cases, the daemon argument should specify a daemon process name
+(argv[0] value).  The client host address should be a valid address, or
+FROM_UNKNOWN if address lookup failed. The client host name and user
+name should be empty strings if no information is available,
+FROM_UNKNOWN if lookup failed, or an actual host or user name.
+.PP
+hosts_access() consults the access control tables described in the
+\fIhosts_access(5)\fR manual page.  hosts_access() returns zero if
+access should be denied.
+.PP
+hosts_ctl() is a wrapper around the hosts_access() routine with a
+perhaps more convenient interface (though it does not pass on enough
+information to support automated remote username lookups).  hosts_ctl()
+returns zero if access should be denied.
+.PP
+The \fIallow_severity\fR and \fIdeny_severity\fR variables determine
+how accepted and rejected requests may be logged. They must be provided
+by the caller and may be modified by rules in the access control
+tables.
+.SH DIAGNOSTICS
+Problems are reported via the syslog daemon.
+.SH SEE ALSO
+hosts_access(5), format of the access control tables.
+hosts_options(5), optional extensions to the base language.
+.SH FILES
+/etc/hosts.access, /etc/hosts.deny, access control tables.
+.SH BUGS
+The functions described here do not make copies of their string-valued
+arguments.  Beware of data from functions that overwrite their results
+upon each call.
+.sp
+hosts_access() uses the strtok() library function. This may interfere
+with other code that relies on strtok().
+.SH AUTHOR
+.na
+.nf
+Wietse Venema (wietse@wzv.win.tue.nl)
+Department of Mathematics and Computing Science
+Eindhoven University of Technology
+Den Dolech 2, P.O. Box 513, 5600 MB Eindhoven, The Netherlands
+\" @(#) hosts_access.3 1.5 93/12/13 22:23:07

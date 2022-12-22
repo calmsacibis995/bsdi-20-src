@@ -1,0 +1,5 @@
+F APROPOS_.000;1                    	apropos.c.gz
+F APROPOS_.GZ;1                     	apropos.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/apropos
+F _MAP.GZ;1                         	.MAP.gz

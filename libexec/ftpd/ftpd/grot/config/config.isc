@@ -1,0 +1,57 @@
+#ifdef ISC
+#include <sys/bsdtypes.h>
+#include <net/errno.h>
+#define DONT_HAVE_FTRUNCATE
+#define DONT_HAVE_VFORK
+#undef LOG_LOCAL7
+#endif
+
+#ifndef MAXPATHLEN
+#define MAXPATHLEN 1024
+#endif
+
+#ifndef L_SET
+#define L_SET 0
+#endif
+
+#ifndef L_INCR
+#define L_INCR 1
+#endif
+
+#ifdef DONT_HAVE_GID_T
+typedef int gid_t;
+#endif
+
+#ifdef DONT_HAVE_PID_T
+typedef int pid_t;
+#endif
+
+#ifdef DONT_HAVE_UID_T
+typedef int uid_t;
+#endif
+
+#ifndef S_ISDIR
+#define S_ISDIR(m)   (((m) & S_IFMT) == S_IFDIR)
+#endif
+
+#ifndef S_ISREG
+#define S_ISREG(m)   (((m) & S_IFMT) == S_IFREG)
+#endif
+
+#ifndef SIG_BLOCK
+#define SIG_BLOCK 0
+#endif
+
+#ifndef SIG_UNBLOCK
+#define SIG_UNBLOCK 1
+#endif
+
+#ifndef SIG_SETMASK
+#define SIG_SETMASK 2
+#endif
+
+#ifndef SIGNAL_TYPE
+#define SIGNAL_TYPE void *
+#endif
+
+#define vfork	fork

@@ -1,0 +1,10 @@
+F DISCLAIM.;1                       	DISCLAIMER
+D DOC                               	doc
+D ETC                               	etc
+D GROT                              	grot
+F MAKEFILE.;1                       	Makefile
+F README.;1                         	README
+D RPC                               	rpc
+D RPCGEN                            	rpcgen
+D RPCSVC                            	rpcsvc
+D SECURE_R                          	secure_rpc

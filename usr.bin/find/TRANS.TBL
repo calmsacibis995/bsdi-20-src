@@ -1,0 +1,13 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F FIND_1.GZ;1                       	find.1.gz
+F FIND_C.GZ;1                       	find.c.gz
+F FIND_H.GZ;1                       	find.h.gz
+F FUNCTION.GZ;1                     	function.c.gz
+F LS_C.GZ;1                         	ls.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/find
+F OPERATOR.GZ;1                     	operator.c.gz
+F OPTION_C.GZ;1                     	option.c.gz
+F _MAP.GZ;1                         	.MAP.gz

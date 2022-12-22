@@ -1,0 +1,12 @@
+F ADDUSER_.GZ;1                     	adduser_info.8.gz
+F INTRO_8.GZ;1                      	intro.8.gz
+F KERBEROS.GZ;1                     	kerberos.8.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+D MAN8.HP3                          	man8.hp300
+D MAN8.I38                          	man8.i386
+D MAN8.TAH                          	man8.tahoe
+D MAN8.VAX                          	man8.vax
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/man/man8
+F RC_8.GZ;1                         	rc.8.gz
+F STICKY_8.GZ;1                     	sticky.8.gz
+F _MAP.GZ;1                         	.MAP.gz

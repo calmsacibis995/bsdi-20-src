@@ -1,0 +1,12 @@
+F BOOTSECT.GZ;1                     	bootsect.h.gz
+F BPB_H.GZ;1                        	bpb.h.gz
+F DENODE_H.GZ;1                     	denode.h.gz
+F DIRENTRY.GZ;1                     	direntry.h.gz
+F FAT_H.GZ;1                        	fat.h.gz
+F MSDOSFSM.GZ;1                     	msdosfsmount.h.gz
+F MSDOSFS_.000;1                    	msdosfs_conv.c.gz
+F MSDOSFS_.001;1                    	msdosfs_denode.c.gz
+F MSDOSFS_.002;1                    	msdosfs_fat.c.gz
+F MSDOSFS_.003;1                    	msdosfs_lookup.c.gz
+F MSDOSFS_.004;1                    	msdosfs_vnops.c.gz
+F MSDOSFS_.GZ;1                     	msdosfs_vfsops.c.gz

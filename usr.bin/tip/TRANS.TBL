@@ -1,0 +1,24 @@
+D ACULIB                            	aculib
+F ACUTAB_C.GZ;1                     	acutab.c.gz
+F ACU_C.GZ;1                        	acu.c.gz
+F CMDS_C.GZ;1                       	cmds.c.gz
+F CMDTAB_C.GZ;1                     	cmdtab.c.gz
+F CU_C.GZ;1                         	cu.c.gz
+F HUNT_C.GZ;1                       	hunt.c.gz
+F LOG_C.GZ;1                        	log.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/tip
+F PARTAB_C.GZ;1                     	partab.c.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F README.GZ;1                       	README.gz
+F REMCAP_C.GZ;1                     	remcap.c.gz
+F REMOTE_C.GZ;1                     	remote.c.gz
+F TERMCTL_.GZ;1                     	termctl.c.gz
+F TIPOUT_C.GZ;1                     	tipout.c.gz
+F TIP_1.GZ;1                        	tip.1.gz
+F TIP_C.GZ;1                        	tip.c.gz
+F TIP_H.GZ;1                        	tip.h.gz
+F UUCPLOCK.GZ;1                     	uucplock.c.gz
+F VALUE_C.GZ;1                      	value.c.gz
+F VARS_C.GZ;1                       	vars.c.gz
+F _MAP.GZ;1                         	.MAP.gz

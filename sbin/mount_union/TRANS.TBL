@@ -1,0 +1,5 @@
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MOUNT_UN.000;1                    	mount_union.8.gz
+F MOUNT_UN.GZ;1                     	mount_union.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/mount_union
+F _MAP.GZ;1                         	.MAP.gz

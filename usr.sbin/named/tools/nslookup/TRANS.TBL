@@ -1,0 +1,13 @@
+F COMMANDS.GZ;1                     	commands.l.gz
+F DEBUG_C.GZ;1                      	debug.c.gz
+F GETINFO_.GZ;1                     	getinfo.c.gz
+F LIST_C.GZ;1                       	list.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NSLOOKUP.GZ;1                     	nslookup.help.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F RES_H.GZ;1                        	res.h.gz
+F SEND_C.GZ;1                       	send.c.gz
+F SKIP_C.GZ;1                       	skip.c.gz
+F SUBR_C.GZ;1                       	subr.c.gz
+F _MAP.GZ;1                         	.MAP.gz

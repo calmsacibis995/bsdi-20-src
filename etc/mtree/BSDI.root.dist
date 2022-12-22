@@ -1,0 +1,60 @@
+#	  fs: /
+#	  by: polk
+#	date: Wed Mar 10 13:46:43 MST 1993
+
+a	type=dir uname=root gname=wheel mode=0755
+..
+bin	type=dir uname=root gname=wheel mode=0755
+..
+cdrom	type=dir uname=root gname=wheel mode=0755
+..
+dev	type=dir uname=root gname=wheel mode=0755
+	fd	type=dir uname=root gname=wheel mode=0755
+	..
+..
+etc	type=dir uname=root gname=wheel mode=0755
+	adm	type=dir uname=root gname=wheel mode=0755
+		data	type=dir uname=root gname=wheel mode=0755
+		..
+		lib	type=dir uname=root gname=wheel mode=0755
+		..
+		proto	type=dir uname=root gname=wheel mode=0755
+			namedb	type=dir uname=root gname=wheel mode=0755
+			..
+		..
+	..
+	kerberosIV	type=dir uname=root gname=wheel mode=0755
+	..
+	mtree	type=dir uname=root gname=wheel mode=0755
+	..
+	namedb	type=dir uname=root gname=wheel mode=0755
+	..
+	amd_samples	type=dir uname=root gname=wheel mode=0755
+	..
+	ftpd_samples	type=dir uname=root gname=wheel mode=0755
+	..
+	sliphome	type=dir uname=root gname=wheel mode=0755
+	..
+	uucp	type=dir uname=root gname=uucp mode=0755
+		explain	type=dir uname=root gname=wheel mode=0755
+		..
+		params	type=dir uname=root gname=wheel mode=0755
+		..
+	..
+..
+mnt	type=dir uname=root gname=wheel mode=0755
+..
+root	type=dir uname=root gname=wheel mode=0755
+..
+sbin	type=dir uname=root gname=wheel mode=0755
+..
+shlib	type=dir uname=root gname=wheel mode=0755
+..
+stand	type=dir uname=root gname=wheel mode=0755
+..
+tmp	type=dir uname=root gname=wheel mode=01777
+..
+usr	type=dir uname=root gname=wheel mode=0755
+..
+var	type=dir uname=root gname=wheel mode=0755
+..

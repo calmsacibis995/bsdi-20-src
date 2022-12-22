@@ -1,0 +1,222 @@
+#!/bin/sh
+#	install	-	implementation of BSD install program for SYSV
+#
+# SYNTAX:
+#	install [-cs] [-g group] [-m mode] [-o owner] file1 file2
+#	install [-cs] [-g group] [-m mode] [-o owner] file1 ... directory
+#	install -d [-g group] [-m mode] [-o owner] directory
+#
+# RETURN VALUES:
+#	0	success
+#	1	failure
+#>
+#
+# HISTORY
+#	920709	BM	Version 0.1
+#	920710	BM	Version 1.0
+
+# ----------------------------- INITIALIZATION ------------------------------
+
+ME="`basename $0`"
+
+# ------------------------------- SUBROUTINES -------------------------------
+
+#
+# Usage		- print usage message
+#
+Usage()
+{
+	echo "Usage: ${ME} [-cs] [-g group] [-m mode] [-o owner] file1 file2"
+	echo "       ${ME} [-cs] [-g group] [-m mode] [-o owner] file1 ... directory"
+	echo "       ${ME} -d [-g group] [-m mode] [-o owner] directory"
+	exit 1
+}
+
+#
+# Warning		- print warning message
+#
+Warning()
+{
+	echo "${ME}: $*"
+}
+
+#
+# Die		- print message and exit with failure
+#
+Die()
+{
+	echo "${ME}: $*"
+	exit 1
+}
+# ------------------------------- MAIN PROGRAM -----------------------------
+
+#
+# We always need at least two arguments
+#
+if [ $# -lt 2 ]
+then
+	Usage
+	exit 1
+fi
+
+#
+# Process command line options
+#
+for ARG in $*; do
+	if [ "${FLAG}" = "on" ]; then
+		case ${ARG} in
+		-*)
+			Die "The -g, -m and -o flags each require an argument following"
+			exit 1
+			;;
+		*)
+			FLAG=off
+			continue
+			;;
+		esac
+	fi
+
+	case ${ARG} in
+	-cs | -s)
+		STRIP=on
+		shift
+		;;
+	-g)
+		GRP=$2
+		FLAG=on
+		shift 2
+		;;
+	-m)
+		MODE=$2
+		FLAG=on
+		shift 2
+		;;
+	-o)
+		OWNER=$2
+		FLAG=on
+		shift 2
+		;;
+	-d)
+		MKDIR=on
+		shift
+		;;	
+	-c)
+		# For backward compatibility only; ignore
+		shift
+		;;
+	-*)
+		Warning "unknown option ${ARG}"
+		Usage
+		exit 1 
+		;;
+	*)
+		break
+		;;
+	esac
+done
+
+#
+# Find out what the target is
+#
+FILES=$*
+NARGS=$#
+set `echo ${FILES}`
+i=1
+while [ $i -lt ${NARGS} ]; do
+	FLS="${FLS} $1"
+	shift
+	i=`expr $i + 1`
+done
+TARGET=$1
+
+#
+# If more than one file specified, target must be a directory
+#
+set `echo ${FLS}`
+if [ $# -gt 1 ]
+then
+	if [ ! -d ${TARGET} ]
+	then
+		Usage
+	fi
+fi
+
+#
+# If -d flag was present, see if directory exists. If not create it.
+# If group and/or mode and/or owner specified, set them for target
+#
+if [ "${MKDIR}" = "on" ]
+then
+	if [ ! -d ${TARGET} ]
+	then
+		mkdir -p ${TARGET}
+	fi
+
+	if [ "${GRP}" != "" ]
+	then
+		chgrp ${GRP} ${TARGET}
+	fi
+
+	if [ "${MODE}" != "" ]
+	then
+		chmod ${MODE} ${TARGET}
+	fi
+
+	if [ "${OWNER}" != "" ]
+	then
+		if [ "`id -un`" != "root" ]
+		then
+			Warning "-o: must be superuser to change owner"
+		else
+			chown ${OWNER} ${TARGET}
+		fi
+	fi
+fi
+
+#
+# Process each file, taking the command line options into account
+# If the target is a directory, set modes for file in that directory,
+# otherwise set modes for file.
+#
+for FILE in ${FLS}
+do
+	if [ "${STRIP}" = "on" ]
+	then
+		strip ${FILE}
+	fi
+
+	cp ${FILE} ${TARGET}
+
+	if [ "${GRP}" != "" ]
+	then
+		if [ ! -d ${TARGET} ]
+		then
+			chgrp ${GRP} ${FILE}
+		else
+			chgrp ${GRP} ${TARGET}/${FILE}
+		fi
+	fi
+	
+	if [ "${MODE}" != "" ]
+	then
+		if [ ! -d ${TARGET} ]
+		then
+			chmod ${MODE} ${FILE}
+		else
+			chmod ${MODE} ${TARGET}/${FILE}
+		fi
+	fi
+
+	if [ "${OWNER}" != "" ]
+	then
+		if [ "`id -un`" != "root" ]
+		then
+			Warning "-o: must be superuser to change owner"
+		elif [ ! -d ${TARGET} ]
+		then
+			chown ${OWNER} ${FILE}
+		else
+			chown ${OWNER} ${TARGET}/${FILE}
+		fi
+	fi
+done

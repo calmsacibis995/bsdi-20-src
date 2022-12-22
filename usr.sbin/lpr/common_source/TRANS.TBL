@@ -1,0 +1,9 @@
+F COMMON_C.GZ;1                     	common.c.gz
+F DISPLAYQ.GZ;1                     	displayq.c.gz
+F LP_H.GZ;1                         	lp.h.gz
+F LP_LOCAL.GZ;1                     	lp.local.h.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F PRINTCAP.GZ;1                     	printcap.c.gz
+F RMJOB_C.GZ;1                      	rmjob.c.gz
+F STARTDAE.GZ;1                     	startdaemon.c.gz
+F _MAP.GZ;1                         	.MAP.gz

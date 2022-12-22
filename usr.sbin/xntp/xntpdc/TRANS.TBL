@@ -1,0 +1,9 @@
+F MAKEFILE.000;1                    	Makefile.tmpl.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NTPDC_C.GZ;1                      	ntpdc.c.gz
+F NTPDC_H.GZ;1                      	ntpdc.h.gz
+F NTPDC_OP.GZ;1                     	ntpdc_ops.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/xntp/xntpdc
+F README.GZ;1                       	README.gz
+F XNTPDC_8.GZ;1                     	xntpdc.8.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,15 @@
+D ADDGROUP                          	addgroup
+D ADDUSER                           	adduser
+D CONFIGUR                          	configure_all
+D CONFIG_A                          	config_anonftp
+D CONFIG_D                          	config_dns
+D CONFIG_N                          	config_netstart
+D CONFIG_W                          	config_www
+D DATA                              	data
+D INSTALLF                          	installfloppy
+D LIB                               	lib
+F MAKEFILE.000;1                    	Makefile.inc.gz
+F MAKEFILE.001;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.common.gz
+D PROTO                             	proto
+F _MAP.GZ;1                         	.MAP.gz

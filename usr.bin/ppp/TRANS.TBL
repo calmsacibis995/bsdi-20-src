@@ -1,0 +1,18 @@
+F ACUTAB_C.GZ;1                     	acutab.c.gz
+F ACU_C.GZ;1                        	acu.c.gz
+F CLOCAL_C.GZ;1                     	clocal.c.gz
+F HUNT_C.GZ;1                       	hunt.c.gz
+F IFCONFIG.GZ;1                     	ifconfig.c.gz
+F LOG_C.GZ;1                        	log.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/ppp
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F PPP_8.GZ;1                        	ppp.8.gz
+F PPP_C.GZ;1                        	ppp.c.gz
+F PPP_DOWN.GZ;1                     	ppp.down.gz
+F PPP_H.GZ;1                        	ppp.h.gz
+F PPP_SYS_.GZ;1                     	ppp.sys.5.gz
+F PPP_UP.GZ;1                       	ppp.up.gz
+F READSYS_.GZ;1                     	readsys.c.gz
+F SYS.GZ;1                          	SYS.gz
+F _MAP.GZ;1                         	.MAP.gz

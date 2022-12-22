@@ -1,0 +1,6 @@
+F AFMTODIT.000;1                    	afmtodit.pl.gz
+F AFMTODIT.GZ;1                     	afmtodit.man.gz
+D GROT                              	grot
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/afmtodit
+F _MAP.GZ;1                         	.MAP.gz

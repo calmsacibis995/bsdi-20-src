@@ -1,0 +1,18 @@
+F CONF_H.GZ;1                       	conf.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MAKETIME.GZ;1                     	maketime.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/rcs/lib
+F PARTIME_.GZ;1                     	partime.c.gz
+F RCSBASE_.GZ;1                     	rcsbase.h.gz
+F RCSEDIT_.GZ;1                     	rcsedit.c.gz
+F RCSFCMP_.GZ;1                     	rcsfcmp.c.gz
+F RCSFNMS_.GZ;1                     	rcsfnms.c.gz
+F RCSGEN_C.GZ;1                     	rcsgen.c.gz
+F RCSKEEP_.GZ;1                     	rcskeep.c.gz
+F RCSKEYS_.GZ;1                     	rcskeys.c.gz
+F RCSLEX_C.GZ;1                     	rcslex.c.gz
+F RCSMAP_C.GZ;1                     	rcsmap.c.gz
+F RCSREV_C.GZ;1                     	rcsrev.c.gz
+F RCSSYN_C.GZ;1                     	rcssyn.c.gz
+F RCSUTIL_.GZ;1                     	rcsutil.c.gz
+F _MAP.GZ;1                         	.MAP.gz

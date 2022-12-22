@@ -1,0 +1,20 @@
+F CONFIG_8.GZ;1                     	config.8.gz
+F CONFIG_H.GZ;1                     	config.h.gz
+F FILES_C.GZ;1                      	files.c.gz
+F GRAM_Y.GZ;1                       	gram.y.gz
+F HASH_C.GZ;1                       	hash.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKHEADER.GZ;1                     	mkheaders.c.gz
+F MKIOCONF.GZ;1                     	mkioconf.c.gz
+F MKMAKEFI.GZ;1                     	mkmakefile.c.gz
+F MKSWAP_C.GZ;1                     	mkswap.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/config
+F PACK_C.GZ;1                       	pack.c.gz
+F SCAN_L.GZ;1                       	scan.l.gz
+F SEM_C.GZ;1                        	sem.c.gz
+F SEM_H.GZ;1                        	sem.h.gz
+F TEMPLATE.000;1                    	template.c.gz
+F TEMPLATE.GZ;1                     	template.h.gz
+F UTIL_C.GZ;1                       	util.c.gz
+F _MAP.GZ;1                         	.MAP.gz

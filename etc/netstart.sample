@@ -1,0 +1,85 @@
+#!/bin/sh -
+#
+#	BSDI netstart.sample,v 2.1 1995/02/03 05:54:18 polk Exp
+#	@(#)netstart    8.1 (Berkeley) 7/23/93
+#
+# These flags specify whether or not to run the daemons (values YES or NO),
+# and the flags with which to run them if another value.
+routedflags=-q		# YES by default; -q is quiet
+timedflags=NO
+rwhod=NO		# NO by default; -m sends via multicast
+rstatd=NO		# NO by default
+
+# Change the following line to reflect your hostname
+hostname=myhost.my.domain
+
+hostname $hostname
+
+# set the address for the loopback interface (you shouldn't change this line)
+ifconfig lo0 inet 127.1
+
+# NOTE: If you are using an /etc/resolv.conf file then you may need to
+# use internet numbers instead of host names in the following commands
+# (e.g., use 192.27.45.1 instead of myhost.domain).
+
+# Uncomment lines corresponding to the network interfaces you have installed,
+# you may also need to set a netmask if you are on a subnet.
+# Some adapters enable the BNC connector if given the link0 flag.
+# If you have multiple interfaces replace $hostname with the name or number
+
+# Western Digital/SMC Elite or Ultra, or 3Com 3C503; see we(4).
+# WD/SMC 8003/8013 flags:
+#	16-bit mode by default if configured by kernel
+#	link1 forces 8-bit operation of 16-bit config (but may not work well)
+#	link2 switches to 16-bit mode for access, in 8-bit mode otherwise
+#	Interface type is selected by jumper or setup program.
+# SMC Ultra and 3C503:
+#	link0 selects BNC; no flag selects AUI (or TP)
+#ifconfig we0 inet $hostname 			# WD8003/8013 & 3Com 3C503
+#ifconfig we0 inet $hostname link0		# SMC Ultra or 3Com 3C503 w/BNC
+#ifconfig we0 inet $hostname link2		# WD8013 switching 8/16-bit
+
+#ifconfig eo0 inet $hostname 			# 3Com 3C501
+#ifconfig ep0 inet $hostname 			# 3Com 3C505 EtherLink Plus
+#ifconfig el0 inet $hostname 			# 3Com 3C507
+
+# 3Com 3C509/3C579: link0 forces BNC; link1 forces TP;
+# default is AUI if present, else TP, else BNC
+#ifconfig ef0 inet $hostname 			# 3Com 3C509/579 EtherLink III
+#ifconfig ef0 inet $hostname link0		# 3Com 3C509/579 w/ BNC
+#ifconfig ef0 inet $hostname link1		# 3Com 3C509/579 w/ TP
+
+# Intel EtherExpress 16: by default, attempts to use pre-configured connector.
+# link flags: link0 selects BNC, link1 selects TP,
+# and link0 plus link1 selects AUI.
+#ifconfig ex0 inet $hostname 			# Intel EtherExpress 16
+
+#ifconfig ne0 inet $hostname 			# Novell NE1000/NE2000
+#ifconfig hpp0 inet $hostname 			# HP EtherTwist
+#ifconfig hpp0 inet $hostname link0		# HP EtherTwist w/ TP
+#ifconfig re0 inet $hostname 			# Allied Telesis RE2000/AT-1700
+#ifconfig tn0 inet $hostname 			# TNIC-1500
+#ifconfig pe0 inet $hostname 			# Xircom Pocket Ethernet 2
+#ifconfig xir0 inet $hostname 			# Xircom Pocket Ethernet 3
+
+#ifconfig rn0 inet $hostname __remotehost__	# RISCom/N1 HDLC
+#ifconfig rh0 inet $hostname __remotehost__	# RISCom/H2 HDLC, first port
+
+# Sample hardwired SL/IP connection
+#     link0 means compress TCP traffic
+#     link1 means suppress ICMP traffic
+#     link2 means auto-enable TCP compression
+#ifconfig sl0 $hostname __remotehost__ link2 up
+#stty -f /dev/tty00 clocal
+#slattach /dev/tty00 9600
+
+# Use loopback, not the wire; uncomment the next line
+# if the primary interface is neither Ethernet nor loopback.
+#route add $hostname localhost
+
+# If the primary interface supports multicast, uncomment the next line
+# to make it the default for multicast, or modify as necessary.
+#route add -net 224.0.0.0 -interface $hostname
+
+# configure a default route
+#route add default __gateway__

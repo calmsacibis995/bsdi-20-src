@@ -1,0 +1,23 @@
+F ACM_ME.GZ;1                       	acm.me.gz
+F CHARS_ME.GZ;1                     	chars.me.gz
+F DELTEXT_.GZ;1                     	deltext.me.gz
+F EQN_ME.GZ;1                       	eqn.me.gz
+F FLOAT_ME.GZ;1                     	float.me.gz
+F FOOTNOTE.GZ;1                     	footnote.me.gz
+F INDEX_ME.GZ;1                     	index.me.gz
+F LETTERHE.GZ;1                     	letterhead.me.gz
+F LOCAL_ME.GZ;1                     	local.me.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F ME_7.GZ;1                         	me.7.gz
+F NULL_ME.GZ;1                      	null.me.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/me
+F REFER_ME.GZ;1                     	refer.me.gz
+F REVISION.GZ;1                     	revisions.gz
+F SH_ME.GZ;1                        	sh.me.gz
+F STRIP_SE.GZ;1                     	strip.sed.gz
+F SUMMARY_.GZ;1                     	summary.external.gz
+F TBL_ME.GZ;1                       	tbl.me.gz
+D TEST                              	test
+F THESIS_M.GZ;1                     	thesis.me.gz
+F TMAC_ORI.GZ;1                     	tmac.orig_me.gz
+F _MAP.GZ;1                         	.MAP.gz

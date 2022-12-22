@@ -1,0 +1,8 @@
+F DO_UUCP_.GZ;1                     	do_uucp.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/uucp/uucp
+F UUCP_1.GZ;1                       	uucp.1.gz
+F UUCP_ARG.GZ;1                     	uucp_args.c.gz
+F UUCP_H.GZ;1                       	uucp.h.gz
+F _MAP.GZ;1                         	.MAP.gz

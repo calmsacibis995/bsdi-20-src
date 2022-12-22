@@ -1,0 +1,63 @@
+#!/bin/sh -
+#
+#	BSDI	weekly,v 2.1 1995/02/03 05:54:48 polk Exp
+#	from	@(#)weekly	8.2 (Berkeley) 1/2/94
+#
+
+PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/libexec:/usr/contrib/bin
+export PATH
+
+host=`hostname -s`
+echo "Subject: $host weekly run output"
+
+#
+# rotate /path/file 9 8 7 6 5 4 3 2 1 0
+#
+# if ziplog=YES then gzip the old logs
+# if /path/file.scan exists, run it with the latest logfile name as arg
+#
+ziplog=YES
+#
+rotate() {
+        file="$1"; shift
+        rm -f "$file.$1" "$file.$1.gz"
+        for i in "$@"; do
+                [ "$i" = "0" ] && j="" || j=".`expr $i - 1`"
+                [ -f "$file$j.gz" ] && mv -f "$file$j.gz" "$file.$i.gz"
+                [ -f "$file$j" ] && mv -f "$file$j" "$file.$i"
+                [ "$i" = "0" -a -x $file.scan ] && $file.scan "$file.$i"
+                [ -f "$file.$i" ] && [ "X$ziplog" = "XYES" ] && gzip "$file.$i"
+        done
+        cp /dev/null "$file"; chmod 644 "$file"
+}
+
+if [ -f /etc/uucp/weekly ]; then
+	echo ""; echo "Cleaning up UUCP:"
+	su -m uucp -fc /etc/uucp/weekly
+fi
+
+echo ""; echo "Rotating messages:"
+rotate /var/log/messages 3 2 1 0
+kill -1 `cat /var/run/syslog.pid`
+
+echo ""; echo "Rotating cron log:"
+rotate /var/log/cron 3 2 1 0
+kill -1 `cat /var/run/syslog.pid`
+
+if [ -f /var/log/xferlog ]; then
+	echo "Rotating xferlog:"
+	rotate /var/log/xferlog 3 2 1 0
+fi
+
+if [ -f /var/log/httpd/access_log ]; then
+	echo "Rotating httpd logfiles:"
+	rotate /var/log/httpd/access_log 3 2 1 0
+	rotate /var/log/httpd/error_log 3 2 1 0
+fi
+
+echo "Rebuilding whatis database for man..."
+/usr/bin/makewhatis >/dev/null 2>&1
+
+[ -f /etc/weekly.local ] && sh /etc/weekly.local
+
+exit 0

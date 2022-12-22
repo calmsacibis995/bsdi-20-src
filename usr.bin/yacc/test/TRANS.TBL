@@ -1,0 +1,9 @@
+F ERROR_OU.GZ;1                     	error.output.gz
+F ERROR_TA.000;1                    	error.tab.c.gz
+F ERROR_TA.GZ;1                     	error.tab.h.gz
+F ERROR_Y.GZ;1                      	error.y.gz
+F FTP_OUTP.GZ;1                     	ftp.output.gz
+F FTP_TAB_.000;1                    	ftp.tab.h.gz
+F FTP_TAB_.GZ;1                     	ftp.tab.c.gz
+F FTP_Y.GZ;1                        	ftp.y.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,104 @@
+#!/bin/sh -
+#
+#	BSDI	daily,v 2.1 1995/02/03 05:53:40 polk Exp
+#	from 	@(#)daily	8.2 (Berkeley) 1/25/94
+#
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:/usr/contrib/bin:/usr/local
+host=`hostname -s`
+echo "Subject: $host daily run output"
+bak=/var/backups
+
+#
+# rotate /path/file 9 8 7 6 5 4 3 2 1 0
+#
+# if ziplog=YES then gzip the old logs
+# if /path/file.scan exists, run it with the latest logfile name as arg
+#
+ziplog=YES
+#
+rotate() {
+        file="$1"; shift
+        rm -f "$file.$1" "$file.$1.gz"
+        for i in "$@"; do
+                [ "$i" = "0" ] && j="" || j=".`expr $i - 1`"
+                [ -f "$file$j.gz" ] && mv -f "$file$j.gz" "$file.$i.gz"
+                [ -f "$file$j" ] && mv -f "$file$j" "$file.$i"
+                [ "$i" = "0" -a -x $file.scan ] && $file.scan "$file.$i"
+                [ -f "$file.$i" ] && [ "X$ziplog" = "XYES" ] && gzip "$file.$i"
+        done
+        cp /dev/null "$file"; chmod 644 "$file"
+}
+
+cd /tmp
+msgs -c
+[ -f /etc/news.expire ] && /etc/news.expire
+
+[ -f /var/account/acct ] && {
+	echo ""; echo "Rotating accounting records:"
+	rotate /var/account/acct 3 2 1 0
+	accton /var/account/acct
+	sa -s /var/account/acct.0 > /dev/null
+}
+
+echo ""; echo "Backup passwd and group files:"
+if cmp -s $bak/master.passwd.bak /etc/master.passwd; then :; else
+	echo "$host passwd diffs:"
+	diff $bak/master.passwd.bak /etc/master.passwd
+	mv $bak/master.passwd.bak $bak/master.passwd.bak2
+	cp -p /etc/master.passwd $bak/master.passwd.bak
+fi
+if cmp -s $bak/group.bak /etc/group; then :; else
+	mv $bak/group.bak $bak/group.bak2
+	cp -p /etc/group $bak/group.bak
+fi
+if cmp -s $bak/aliases.bak /etc/aliases; then :; else
+	mv $bak/aliases.bak $bak/aliases.bak2
+	cp -p /etc/aliases $bak/aliases.bak
+fi
+if [ -f /etc/Distfile ]; then
+	if cmp -s $bak/Distfile.bak /etc/Distfile; then :; else
+		mv $bak/Distfile.bak $bak/Distfile.bak2
+		cp /etc/Distfile $bak/Distfile.bak
+	fi
+fi
+
+echo ""; echo "Running calendar:"
+calendar -a
+
+echo ""; echo "Rotating mail log:"
+rotate /var/log/maillog 7 6 5 4 3 2 1 0
+kill -1 `cat /var/run/syslog.pid`
+
+cd /
+echo ""; echo "Checking subsystem status:"
+echo ""; echo "disks:"
+BLOCKSIZE=1024 df
+echo ""
+[ -f /etc/dumpdates ] && dump W
+
+echo ""; echo "mail:"
+mailq
+
+if [ -f /etc/uucp/daily ]; then
+	echo ""; echo "Cleaning up UUCP:"
+	su -m uucp -fc /etc/uucp/daily
+fi
+
+echo ""; echo "network:"
+netstat -in
+echo ""
+ruptime
+
+echo ""; echo "Checking filesystems:"
+fsck -n | grep -v '^\*\* Phase'
+
+if [ -f /etc/Distfile ]; then
+	echo ""; echo "Running rdist:"
+	rdist -f /etc/Distfile
+fi
+
+[ -f /etc/daily.local ] && sh /etc/daily.local
+
+sh /etc/security 2>&1 | mail -s "$host daily insecurity output" root
+
+exit 0

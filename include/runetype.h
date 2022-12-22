@@ -1,0 +1,97 @@
+/*	BSDI runetype.h,v 2.1 1995/02/03 06:01:48 polk Exp	*/
+
+/*-
+ * Copyright (c) 1993
+ *	The Regents of the University of California.  All rights reserved.
+ *
+ * This code is derived from software contributed to Berkeley by
+ * Paul Borman at Krystal Technologies.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. All advertising materials mentioning features or use of this software
+ *    must display the following acknowledgement:
+ *	This product includes software developed by the University of
+ *	California, Berkeley and its contributors.
+ * 4. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ *
+ *	@(#)runetype.h	8.1 (Berkeley) 6/2/93
+ */
+
+#ifndef	_RUNETYPE_H_
+#define	_RUNETYPE_H_
+
+#include <machine/ansi.h>
+#include <sys/cdefs.h>
+
+#define	_CACHED_RUNES	(1 <<8 )	/* Must be a power of 2 */
+#define	_CRMASK		(~(_CACHED_RUNES - 1))
+
+/*
+ * The lower 8 bits of runetype[] contain the digit value of the rune.
+ */
+typedef struct {
+	_BSD_RUNE_T_	min;		/* First rune of the range */
+	_BSD_RUNE_T_	max;		/* Last rune (inclusive) of the range */
+	_BSD_RUNE_T_	map;		/* What first maps to in maps */
+	unsigned long	*types;		/* Array of types in range */
+} _RuneEntry;
+
+typedef struct {
+	int		nranges;	/* Number of ranges stored */
+	_RuneEntry	*ranges;	/* Pointer to the ranges */
+} _RuneRange;
+
+typedef struct {
+	char		magic[8];	/* Magic saying what version we are */
+	char		encoding[32];	/* ASCII name of this encoding */
+
+	_BSD_RUNE_T_	(*sgetrune)
+	    __P((const char *, unsigned int, char const **));
+	int		(*sputrune)
+	    __P((_BSD_RUNE_T_, char *, unsigned int, char **));
+	_BSD_RUNE_T_		invalid_rune;
+
+	unsigned long	runetype[_CACHED_RUNES];
+	_BSD_RUNE_T_	maplower[_CACHED_RUNES];
+	_BSD_RUNE_T_	mapupper[_CACHED_RUNES];
+
+	/*
+	 * The following are to deal with Runes larger than _CACHED_RUNES - 1.
+	 * Their data is actually contiguous with this structure so as to make
+	 * it easier to read/write from/to disk.
+	 */
+	_RuneRange	runetype_ext;
+	_RuneRange	maplower_ext;
+	_RuneRange	mapupper_ext;
+
+	void		*variable;	/* Data which depends on the encoding */
+	int		variable_len;	/* how long that data is */
+} _RuneLocale;
+
+#define	_RUNE_MAGIC_1	"RuneMagi"	/* Indicates version 0 of RuneLocale */
+
+extern _RuneLocale _DefaultRuneLocale;
+extern _RuneLocale *_CurrentRuneLocale;
+
+#endif	/* !_RUNETYPE_H_ */

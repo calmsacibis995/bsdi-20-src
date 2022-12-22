@@ -1,0 +1,8 @@
+F MAKEFILE.000;1                    	Makefile.tmpl.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NTPDATE_.000;1                    	ntpdate.8.gz
+F NTPDATE_.001;1                    	ntpdate.c.gz
+F NTPDATE_.GZ;1                     	ntpdate.h.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/xntp/ntpdate
+F README.GZ;1                       	README.gz
+F _MAP.GZ;1                         	.MAP.gz

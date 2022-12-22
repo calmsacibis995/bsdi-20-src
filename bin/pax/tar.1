@@ -1,0 +1,98 @@
+.\" Copyright (c) 1994 Berkeley Software Design, Inc. All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"     BSDI tar.1,v 2.1 1995/02/03 05:46:50 polk Exp
+.Dd January 3, 1994
+.Dt TAR 1
+.Os
+.Sh NAME
+.Nm tar
+.Nd write tar format archives
+.Sh SYNOPSIS
+.\" tar -{crtux}[befmopvwBHLPX] [tarfile] [blocksize] file1 file2...
+.Nm tar
+.No [-]{crtux}[befmopvwBHLPX]
+.Op Ar tarfile
+.Op Ar blocksize
+.Ar file1
+.Op Ar file2...
+.Sh DESCRIPTION
+The
+.Nm tar
+command is implemented as a front-end to
+.Xr pax 1 .
+.Pp
+.Nm Tar
+will read old or standard tar format archives,
+and write old tar archives.
+The default
+blocksize for character special archive files is 10240.  All blocksizes
+less than or equal to 32256 that are multiples of 512 are supported.
+.Sh OPTIONS
+As in historical tar implementations
+you may omit the initial dash `-' on the option bundle.
+One and only one of the following is required:
+.Bl -tag -width Ds
+.It Fl c
+Create a new tarfile.
+.It Fl r
+Append the named files.
+.It Fl t
+Print table of contents.
+.It Fl u
+Files are appended as with
+.Fl r .
+.It Fl x
+Extract the named files.
+.El
+.Pp
+The optional arguments are:
+.Bl -tag -width Ds
+.It Fl b
+Set blocking factor (requires argument
+.Ar blocksize ) .
+.It Fl e
+stop after first error
+.It Fl f
+Specify archive name (requires argument
+.Ar tarfile ) ,
+default is
+.Ev $TAPE .
+.It Fl m
+Do not preserve modification time of extracted files.
+.It Fl o
+Write very old style tar archive, omitting the storage of directories.
+.It Fl p
+Preserve file User Id, Group Id, file mode, and access/modification times.
+.It Fl v
+Verbose.
+.It Fl w
+Interactive file rename.
+.It Fl B
+Ignore blocking (this is the default, this option is for compatibility only).
+.It Fl H
+Only follow symlinks listed on the command line.
+.It Fl L
+Follow all symbolic links to perform a logical file system traversal.
+.It Fl P
+Do not follow symbolic links, perform a physical file system traversal.
+This is the default mode.
+.It Fl X
+Do not cross filesystem mount points.
+.El
+.Sh EXAMPLES
+.Bl -tag -width Ds -compact
+.It Li "tar cvf tarfile /usr"
+Archive everything under /usr.
+.It Li "tar tvf tarfile"
+List the contents of the
+.Ar tarfile
+archive.
+.El
+.Sh SEE ALSO
+.Xr pax 1
+.Sh BUGS
+A case can be made that
+.Nm tar
+should write standard archives by default,
+rather than old-style archives.

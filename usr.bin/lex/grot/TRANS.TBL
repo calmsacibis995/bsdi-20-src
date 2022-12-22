@@ -1,0 +1,13 @@
+F CONFIGUR.000;1                    	configure.in.gz
+F CONFIGUR.GZ;1                     	configure.gz
+F FLEXLEXE.GZ;1                     	FlexLexer.h.gz
+F FLEX_SKL.GZ;1                     	flex.skl.gz
+F INITSCAN.GZ;1                     	initscan.c.gz
+F INSTALL.GZ;1                      	INSTALL.gz
+F INSTALL_.GZ;1                     	install.sh.gz
+F MAKEFILE.GZ;1                     	Makefile.in.gz
+D MISC                              	MISC
+F MKINSTAL.GZ;1                     	mkinstalldirs.gz
+F MKSKEL_S.GZ;1                     	mkskel.sh.gz
+F NEWS.GZ;1                         	NEWS.gz
+F _MAP.GZ;1                         	.MAP.gz

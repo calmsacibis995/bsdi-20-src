@@ -1,0 +1,22 @@
+F B.GZ;1                            	B.gz
+F BI.GZ;1                           	BI.gz
+F CB.GZ;1                           	CB.gz
+F CO.GZ;1                           	CO.gz
+F CR.GZ;1                           	CR.gz
+F CW.GZ;1                           	CW.gz
+F DESC_IN.GZ;1                      	DESC.in.gz
+F EX.GZ;1                           	EX.gz
+D GENERATE                          	generate
+D GROT                              	grot
+F H.GZ;1                            	H.gz
+F HB.GZ;1                           	HB.gz
+F HI.GZ;1                           	HI.gz
+F I.GZ;1                            	I.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MI.GZ;1                           	MI.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/devdvi
+F R.GZ;1                            	R.gz
+F S.GZ;1                            	S.gz
+F SA.GZ;1                           	SA.gz
+F SB.GZ;1                           	SB.gz
+F _MAP.GZ;1                         	.MAP.gz

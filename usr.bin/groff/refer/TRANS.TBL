@@ -1,0 +1,14 @@
+F COMMAND_.000;1                    	command.h.gz
+F COMMAND_.GZ;1                     	command.cc.gz
+D GROT                              	grot
+F LABEL_Y.GZ;1                      	label.y.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/refer
+F REFER_CC.GZ;1                     	refer.cc.gz
+F REFER_H.GZ;1                      	refer.h.gz
+F REFER_MA.GZ;1                     	refer.man.gz
+F REF_CC.GZ;1                       	ref.cc.gz
+F REF_H.GZ;1                        	ref.h.gz
+F TOKEN_CC.GZ;1                     	token.cc.gz
+F TOKEN_H.GZ;1                      	token.h.gz
+F _MAP.GZ;1                         	.MAP.gz

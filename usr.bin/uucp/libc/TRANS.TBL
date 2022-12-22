@@ -1,0 +1,18 @@
+F CONCAT_C.GZ;1                     	concat.c.gz
+D GROT                              	grot
+F LFIND_C.GZ;1                      	lfind.c.gz
+F LISTSORT.GZ;1                     	listsort.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NEWNSTR_.GZ;1                     	newnstr.c.gz
+F NEWPRINT.GZ;1                     	newprintf.c.gz
+F NEWSTR_C.GZ;1                     	newstr.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/uucp/libc
+F OTOL_C.GZ;1                       	otol.c.gz
+F RFC822TI.GZ;1                     	rfc822time.c.gz
+F SOBUF_C.GZ;1                      	sobuf.c.gz
+F STRCLR_C.GZ;1                     	strclr.c.gz
+F STRCPYEN.GZ;1                     	strcpyend.c.gz
+F STRNCPYE.GZ;1                     	strncpyend.c.gz
+F UUCPLOCK.GZ;1                     	uucplock.c.gz
+F XTOL_C.GZ;1                       	xtol.c.gz
+F _MAP.GZ;1                         	.MAP.gz

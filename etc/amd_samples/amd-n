@@ -1,0 +1,4 @@
+# map for /n
+/defaults	opts:=rw,intr;fs:=${autodir}/${rhost}
+pissaro		rhost:=pissaro.CS.Berkeley.EDU;type:=host;rfs:=/
+*		rhost:=${key};type:=host;rfs:=/

@@ -1,0 +1,59 @@
+#
+#	BSDI	fstab.sample,v 2.1 1995/02/03 05:56:29 polk Exp
+#
+# File system mount information belongs in this file.  Each 
+# line is of the form:
+#
+#  device	mount_point	type	flags	dump	fsck_pass
+#
+# Note that multiple flags (when used) are specified as a 
+# comma separated list without spaces.  
+#
+# The `dump' field specifies how often dumps should be done on that
+# filesystem (it is used by dump [wW]; a value of 0 disables this
+# behavior).  
+#
+# See the fstab(5) man page for a complete description of the file
+# format.  See the dump(8) and the fsck(8) man page for descriptions
+# of fsck and dump behavior.
+#
+# Lines beginning with `#' are comments.  Uncomment the appropriate
+# lines below before rebooting.
+#
+# The following are sample entries for wd0 and sd0 root/usr partitions:
+#
+# /dev/wd0a	/		ufs	rw 	0 	1
+# /dev/wd0h	/usr		ufs	rw 	0 	2
+#
+# /dev/sd0a	/		ufs	rw 	0 	1
+# /dev/sd0h	/usr		ufs	rw 	0 	2
+#
+# The following will set up a memory based filesystem for /tmp
+#
+# /dev/wd0b	/tmp		mfs	rw,-s=4000	0 0
+# /dev/sd0b	/tmp		mfs	rw,-s=4000	0 0
+#
+# The following will mount an iso9660 CDROM on /cdrom (obviously, 
+# the device needs to be the correct CDROM device):
+# 
+# /dev/mcd0c	/cdrom		iso9660	ro,noexec,nosuid,nodev	0 0
+# /dev/sd1c	/cdrom		iso9660	ro,noexec,nosuid,nodev	0 0
+#
+# The following will mount an msdos partition on /msdos (obviously, 
+# the device/partition need to be a real DOS partition -- compressed
+# DOS filesystems are not supported, the /dos directory must also 
+# be created):
+# 
+# /dev/wd0d	/dos		msdos	ro		0 0
+# /dev/sd0d	/dos		msdos	ro		0 0
+#
+# The following will enable swapping on the `b' partition of the 
+# second hard disk.  For this to actually work, the additional 
+# partition must have been compiled into the currently running /bsd
+# via a `config bsd root on xx0a swap on xx0b and xx1b' style line
+# in the kernel config file.  Only one swap device is supported by
+# the generic kernel.
+#
+# /dev/wd1b	swap		swap	sw		0 0
+# /dev/sd1b	swap		swap	sw		0 0
+#

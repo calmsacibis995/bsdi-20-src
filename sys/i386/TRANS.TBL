@@ -1,0 +1,8 @@
+D CONF                              	conf
+D EISA                              	eisa
+D I386                              	i386
+D INCLUDE                           	include
+D ISA                               	isa
+F MAKEFILE.GZ;1                     	Makefile.gz
+D OBJ                               	OBJ
+D STAND                             	stand

@@ -1,0 +1,24 @@
+F ACKNOWLE.GZ;1                     	ACKNOWLEDGEMENTS.gz
+F CLOSURE_.GZ;1                     	closure.c.gz
+F DEFS_H.GZ;1                       	defs.h.gz
+F ERROR_C.GZ;1                      	error.c.gz
+F LALR_C.GZ;1                       	lalr.c.gz
+F LR0_C.GZ;1                        	lr0.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKPAR_C.GZ;1                      	mkpar.c.gz
+F NEW_FEAT.GZ;1                     	NEW_FEATURES.gz
+F NOTES.GZ;1                        	NOTES.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/yacc
+F OUTPUT_C.GZ;1                     	output.c.gz
+F READER_C.GZ;1                     	reader.c.gz
+F README.GZ;1                       	README.gz
+F SKELETON.GZ;1                     	skeleton.c.gz
+F SYMTAB_C.GZ;1                     	symtab.c.gz
+D TEST                              	test
+F VERBOSE_.GZ;1                     	verbose.c.gz
+F WARSHALL.GZ;1                     	warshall.c.gz
+F YACC_1.GZ;1                       	yacc.1.gz
+F YYFIX_1.GZ;1                      	yyfix.1.gz
+F YYFIX_SH.GZ;1                     	yyfix.sh.gz
+F _MAP.GZ;1                         	.MAP.gz

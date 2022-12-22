@@ -1,0 +1,24 @@
+# 
+# This is the configuration file for mtools.  Each drive and format
+# should be listed here with a line of the format:
+#
+# Drive  Path  Offset  FAT  Oflags  Tracks  Heads  Sectors
+#
+# Where 
+#	Drive	is the drive letter (e.g., A, B, C, ...)
+#	Path	is the path to the device (e.g., /dev/rfd0c)
+#	Offset	is the offset of the start of the DOS partition on the device
+#	FAT	is the FAT table encoding scheme
+#	Oflags	are any special open(2) flags to use with the device
+#	Tracks	is the number of tracks on the disk
+#	Heads	is the number of heads on the drive
+#	Sectors	is the number of sectors per track
+#
+# The following are configured for a two floppy BSDI system where the 
+# first drive is a 1.44MB/720K 3.5'' floppy and the second drive is a
+# 1.2MB/360K 5.25'' floppy.
+#
+A	/dev/rfd0c		0 12 0 		80 2 18		# 1.44MB 3.5''
+A	/dev/rfd0_720_3.5	0 12 0 		80 2 9		# 720K 3.5''
+B	/dev/rfd1c		0 12 0 		80 2 15		# 1.2MB 5.25''
+B	/dev/rfd1_360_5.25	0 12 0 		40 2 9		# 360K 5.25''

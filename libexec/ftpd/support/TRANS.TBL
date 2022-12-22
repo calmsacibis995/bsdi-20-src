@@ -1,0 +1,10 @@
+F AUTHUSER.C;1                      	authuser.c
+F AUTHUSER.H;1                      	authuser.h
+F FTP.H;1                           	ftp.h
+F FTW.C;1                           	ftw.c
+F FTW.H;1                           	ftw.h
+D GROT                              	grot
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/ftpd/support
+F STRCASES.C;1                      	strcasestr.c
+F _MAP.;1                           	.MAP

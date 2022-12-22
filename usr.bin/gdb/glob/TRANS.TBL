@@ -1,0 +1,16 @@
+F CHANGELO.GZ;1                     	ChangeLog.gz
+D CONFIG                            	config
+F CONFIGUR.GZ;1                     	configure.in.gz
+F CONFIG_S.GZ;1                     	config.status.gz
+F GLOB_C.GZ;1                       	glob.c.gz
+F GLOB_TEX.GZ;1                     	glob.texinfo.gz
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.in.gz
+F SYSDEP-A.000;1                    	sysdep-aix.h.gz
+F SYSDEP-A.GZ;1                     	sysdep-a68v.h.gz
+F SYSDEP-I.GZ;1                     	sysdep-irix.h.gz
+F SYSDEP-N.GZ;1                     	sysdep-norm.h.gz
+F SYSDEP-O.GZ;1                     	sysdep-obsd.h.gz
+F SYSDEP-S.GZ;1                     	sysdep-sco.h.gz
+F TILDE_C.GZ;1                      	tilde.c.gz
+F _MAP.GZ;1                         	.MAP.gz

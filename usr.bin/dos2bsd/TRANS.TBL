@@ -1,0 +1,5 @@
+F DOS2BSD_.000;1                    	dos2bsd.c.gz
+F DOS2BSD_.GZ;1                     	dos2bsd.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/dos2bsd
+F _MAP.GZ;1                         	.MAP.gz

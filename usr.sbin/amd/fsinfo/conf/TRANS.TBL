@@ -1,0 +1,7 @@
+F AUTOMOUN.GZ;1                     	automounts.gz
+F CSG_SUN3.GZ;1                     	csg_sun3.gz
+F CSG_VAX.GZ;1                      	csg_vax.gz
+F DISKLESS.GZ;1                     	diskless_sun3_sos4.gz
+D HOSTS                             	hosts
+F USERS.GZ;1                        	users.gz
+F _MAP.GZ;1                         	.MAP.gz

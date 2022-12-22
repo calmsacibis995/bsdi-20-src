@@ -1,0 +1,9 @@
+F DNS_ALIA.GZ;1                     	dns_aliases.cf.gz
+F DNS_DATA.GZ;1                     	dns_data.cf.gz
+F DNS_SOA_.GZ;1                     	dns_soa.cf.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NETSTART.GZ;1                     	netstart.cf.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/adm/data
+F PASSWD_C.GZ;1                     	passwd.cf.gz
+F WWW_CF.GZ;1                       	www.cf.gz
+F _MAP.GZ;1                         	.MAP.gz

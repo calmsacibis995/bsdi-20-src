@@ -1,0 +1,22 @@
+F BPF_FILT.GZ;1                     	bpf_filter.c.gz
+F BPF_IMAG.GZ;1                     	bpf_image.c.gz
+F ETHERENT.GZ;1                     	etherent.c.gz
+F ETHERTYP.GZ;1                     	ethertype.h.gz
+F GENCODE_.000;1                    	gencode.c.gz
+F GENCODE_.GZ;1                     	gencode.h.gz
+F GRAMMAR_.GZ;1                     	grammar.y.gz
+D GROT                              	grot
+F INET_C.GZ;1                       	inet.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NAMETOAD.GZ;1                     	nametoaddr.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/tcpdump/libpcap
+F OPTIMIZE.GZ;1                     	optimize.c.gz
+F PCAP-BPF.GZ;1                     	pcap-bpf.c.gz
+F PCAP-INT.GZ;1                     	pcap-int.h.gz
+F PCAP-NAM.GZ;1                     	pcap-namedb.h.gz
+F PCAP_C.GZ;1                       	pcap.c.gz
+F PCAP_H.GZ;1                       	pcap.h.gz
+F SAVEFILE.GZ;1                     	savefile.c.gz
+F SCANNER_.GZ;1                     	scanner.l.gz
+F TOKDEFS_.GZ;1                     	tokdefs.h.gz
+F _MAP.GZ;1                         	.MAP.gz

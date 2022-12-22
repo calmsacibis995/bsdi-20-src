@@ -1,0 +1,9 @@
+F COMPRESS.000;1                    	compress.c.gz
+F COMPRESS.GZ;1                     	compress.1.gz
+D DOC                               	doc
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/compress
+F ZCAT_SH.GZ;1                      	zcat.sh.gz
+F ZOPEN_3.GZ;1                      	zopen.3.gz
+F ZOPEN_C.GZ;1                      	zopen.c.gz
+F _MAP.GZ;1                         	.MAP.gz

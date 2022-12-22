@@ -1,0 +1,228 @@
+.\"	BSDI diskdefect.8,v 1.3 1992/01/04 19:13:09 kolstad Exp
+.\"
+.\" Copyright (c) 1980, 1988, 1991 Regents of the University of California.
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 3. All advertising materials mentioning features or use of this software
+.\"    must display the following acknowledgement:
+.\"	This product includes software developed by the University of
+.\"	California, Berkeley and its contributors.
+.\" 4. Neither the name of the University nor the names of its contributors
+.\"    may be used to endorse or promote products derived from this software
+.\"    without specific prior written permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.\"     from @(#)diskdefect.8	6.7 (Berkeley) 3/16/91
+.\"
+.Dd March 16, 1991
+.Dt DISKDEFECT 8
+.Os BSD 4
+.Sh NAME
+.Nm diskdefect
+.Nd read/write standard bad sector information
+.Sh SYNOPSIS
+.Nm diskdefect
+.Op Fl swcnvy
+.Op Fl b Ar 01234
+.Ar disk
+.Oo
+.Ar disk-snum
+.Op Ar bad-block ...
+.Oc
+.Nm diskdefect
+.Fl a
+.Op Fl swcnvy
+.Op Fl b Ar 01234
+.Ar disk
+.Op Ar bad-block ...
+.Sh DESCRIPTION
+.Nm Diskdefect
+can be used to inspect and/or change the information stored on a disk that is
+used by the disk drivers to implement bad sector forwarding.
+.Pp
+Available options:
+.Pp
+.Bl -tag -width Ds
+.It Fl a
+The argument list (and the results of the
+disk scan if the
+.Fl s
+option was given) consists of new bad sectors to be added to an
+existing bad-block table.  The new sectors are sorted into the table, which
+must have been in order.  Replacement sectors are moved to accommodate
+the additions; the new replacement sectors are cleared.
+.Pp
+If invoked without the
+.Fl a
+option
+.Nm diskdefect
+will overwrite the existing bad-block table and you must specify a new
+disk serial number to be stored with the bad-block table.
+.It Fl c
+Forces an attempt to copy the old sector to the replacement,
+and may be useful when replacing an unreliable sector.
+.It Fl w
+Enables write mode with the
+.Fl s
+(scan) option.  This is meaningless unless the
+.Fl s
+(scan) option is specified.
+.Pp
+WARNING: Use
+.Fl w
+with caution and only on idle disks.  Between reading data
+and writing it back out the system may have changed it.
+.It Fl s
+Scans the disk and collects sectors that
+could not be read (or with the
+.Fl w
+option written).  With the
+.Fl v
+(verbose) option or the
+.Fl n
+(nowrite) option
+.Fl s
+will print a cylinder map with periods (.) for good cylinders
+and x's for bad cylinders and at the end will print a bad-block
+summary containing the logical sector number, cylinder,
+head, and sector of the error.  When scanning sector by sector
+it spins the sequence '/', '-', '\\', '|'.
+.It Fl n
+Disables writing the bad-block table to disk (no write mode).
+This option is like the
+.Fl n
+option to the
+.Xr make 1
+and
+.Xr sh 1
+programs.
+This is independent of the
+.Fl w
+option.  Turns on the
+.Fl v
+option.
+.It Fl v
+The entire process is described as it happens in gory detail if
+.Fl v
+(verbose) is given.
+.It Fl y
+Don't ask any questions (assumes yes).
+.Fl b Ar 01234
+Specify which bad-block header to read.  The default is to search for
+a good header.
+.El
+.Pp
+The bad sector information is located in the first 5 even numbered sectors
+of the last track of the disk pack.  There are five identical copies of
+the information, described by the
+.Ar dkbad
+structure.
+.Pp
+Replacement sectors are allocated starting with the first sector before
+the bad sector information and working backwards towards the beginning
+of the disk.  A maximum of 126 bad sectors are supported.  The position
+of the bad sector in the bad sector table determines the replacement
+sector to which it corresponds.
+The bad sectors must be listed in ascending order.
+.Pp
+The bad sector information and replacement sectors are conventionally
+only accessible through the ``c'' file system partition of the disk.  If
+that partition is used for a file system, the user is responsible for
+making sure that it does not overlap the bad sector information or any
+replacement sectors.
+Thus, one track plus 126 sectors must be reserved to allow use
+of all of the possible bad sector replacements.
+.Pp
+The bad sector structure is as follows:
+.Bd -literal
+struct dkbad {
+	long	bt_csn;		 /* cartridge serial number */
+	u_short	bt_mbz;		 /* unused; should be 0 */
+	u_short	bt_flag;	 /* -1 => alignment cartridge */
+	struct bt_bad {
+	      u_short bt_cyl;    /* bad sector cylinder number */
+	      u_short bt_trksec; /* track and sector number */
+	} bt_bad[126];
+};
+.Ed
+.Pp
+Unused slots in the
+.Ar bt_bad
+array are filled with all bits set, a putatively
+illegal value.
+.Pp
+.Nm Diskdefect
+is invoked by giving a device name (e.g. wd0, wd1, etc.).
+With no optional arguments
+it reads the first sector of the last track
+of the corresponding disk and prints out the bad sector information.
+It issues a warning if the bad sectors are out of order.
+.Nm Diskdefect
+may also be invoked with a serial number for the pack and a list
+of bad sectors.
+It will write the supplied information into all copies
+of the bad-sector file, replacing any previous information.
+Note, however, that 
+.Nm diskdefect
+does not arrange for the specified sectors to be marked bad in this case.
+This procedure should only be used to restore known bad sector information
+which was destroyed.
+.Pp
+It is no longer necessary to reboot to allow the kernel
+to reread the bad-sector table from the drive.
+.Sh EXAMPLES
+.Bl -tag -width Ds
+.It diskdefect -swcv wd0 12345678
+Initialize the bad-block table to the result of the scan (erase any
+existing bad-block information).
+Set the disk serial number to 12345678.
+Attempt to copy the old data to the replacement sectors, if that
+fails zero the replacement sector.
+.It diskdefect -a -swcv wd0
+Scan the disk (read and write) and add any new bad sectors the the
+existing bad-block table.  Attempt to copy the old data to the replacement
+sectors, if that fails zero the replacement sector.
+.El
+.Sh SEE ALSO
+.Xr badsect 8 ,
+.Xr format 8
+.Sh BUGS
+It should be possible to format disks on-line under
+.Tn BSD .
+.Pp
+It should be possible to mark bad sectors on drives of all type.
+.Pp
+The drivers which write a system core image on disk after a crash do not
+handle errors; thus the crash dump area must be free of errors and bad
+sectors.
+.Pp
+You cannot run
+.Nm diskdefect
+on unlabeled disks.
+.Sh HISTORY
+The
+.Nm
+command appeared in
+.Bx 4.1 
+as bad144(8).  It has been merged with drck(8) at BSDI, and
+the name changed to be more intuitive and otherwise protect the
+innocent.

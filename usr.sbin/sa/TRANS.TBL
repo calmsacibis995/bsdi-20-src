@@ -1,0 +1,17 @@
+F ACCT_C.GZ;1                       	acct.c.gz
+F COMPARE_.000;1                    	compare.c.gz
+F COMPARE_.GZ;1                     	compare.i.gz
+F ERROR_C.GZ;1                      	error.c.gz
+F IO_C.GZ;1                         	io.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/sa
+F OPTIONS_.GZ;1                     	options.c.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F SA_8.GZ;1                         	sa.8.gz
+F SA_H.GZ;1                         	sa.h.gz
+F SIGNAL_C.GZ;1                     	signal.c.gz
+F SORT_C.GZ;1                       	sort.c.gz
+F SUMMARY_.GZ;1                     	summary.c.gz
+F USER_C.GZ;1                       	user.c.gz
+F _MAP.GZ;1                         	.MAP.gz

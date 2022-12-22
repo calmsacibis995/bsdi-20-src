@@ -1,0 +1,12 @@
+F CONV_C.GZ;1                       	conv.c.gz
+F DISPLAY_.GZ;1                     	display.c.gz
+F HEXDUMP_.000;1                    	hexdump.1.gz
+F HEXDUMP_.001;1                    	hexdump.c.gz
+F HEXDUMP_.GZ;1                     	hexdump.h.gz
+F HEXSYNTA.GZ;1                     	hexsyntax.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/hexdump
+F ODSYNTAX.GZ;1                     	odsyntax.c.gz
+F OD_1.GZ;1                         	od.1.gz
+F PARSE_C.GZ;1                      	parse.c.gz
+F _MAP.GZ;1                         	.MAP.gz

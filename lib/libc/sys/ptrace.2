@@ -1,0 +1,259 @@
+.\" Copyright (c) 1993 Berkeley Software Design, Inc. All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"	BSDI ptrace.2,v 2.1 1995/02/03 06:50:56 polk Exp
+.Dd March 6, 1993
+.Dt PTRACE 2
+.Os
+.Sh NAME
+.Nm ptrace
+.Nd debug user processes
+.Sh SYNOPSIS
+.Fd #include <sys/types.h>
+.Fd #include <sys/ptrace.h>
+.Ft int
+.Fn ptrace "int request" "pid_t pid" "void *addr" "int data"
+.Sh DESCRIPTION
+The
+.Fn ptrace
+system call permits a parent process to
+manipulate the state of a cooperative child process.
+It can read data from and write data to
+the child's address space,
+alter the child's register and signal state,
+stop and start the child at breakpoints,
+single-step the child or
+terminate it.
+The parent may access the child only when it is stopped;
+the parent can use
+.Xr wait 2
+to detect a stopped child.
+When traced, the child will stop when it receives any signal,
+so that the parent may examine the signal and take appropriate action.
+The signal
+.Dv SIGTRAP
+is sent when the child encounters a breakpoint.
+Debuggers use
+.Fn ptrace
+and
+.Xr wait
+to start and stop a child process at breakpoints.
+.Pp
+The
+.Fa request
+parameter determines the type of access.
+When used,
+.Fa pid
+is the process ID of the child,
+.Fa addr
+is the address or offset to be read or written, and
+.Fa data
+is data to be written, or a signal to be sent.
+The requests are as follows:
+.Bl -tag -width PT_TRACE_ME
+.It Dv PT_TRACE_ME
+Register intent to be traced.
+A child process performs this call
+to tell the system that its parent has permission to trace it.
+It is usually made after a
+.Xr fork 2
+and before an
+.Xr execve 2 .
+Only the
+.Fa request
+parameter is significant.
+.It Dv PT_CONTINUE
+Restart the child process with ID
+.Fa pid
+after it has stopped.
+If
+.Fa addr
+has the value
+.Dv PT_ADDR_ANY ,
+then the child continues execution
+at the point of the previous program counter.
+Otherwise,
+.Fa addr
+is the value of the new program counter.
+If
+.Fa data
+is nonzero, it is treated as a signal number
+to be sent to the child process just before it starts.
+A signal number of zero indicates that no signal is to be sent.
+.It Dv PT_STEP
+Single-step the child process.
+.Dv PT_STEP
+is just like
+.Dv PT_CONTINUE
+except that the child will stop with a
+.Dv SIGTRAP
+after executing one instruction.
+.It Dv PT_KILL
+Terminate the child process with ID
+.Fa pid .
+The child behaves just as though it had received a
+.Dv SIGKILL .
+The
+.Fa addr
+and
+.Fa data
+parameters are ignored.
+.It Dv PT_READ_U
+Read system data, including register state,
+from the child process with ID
+.Fa pid .
+The
+.Fa addr
+parameter is an offset into system data for the child
+.Pq see Aq Pa sys/user.h .
+One word of data from the given aligned offset is returned
+as the value of the
+.Fn ptrace
+call.
+The
+.Fa data
+parameter is ignored.
+.It Dv PT_WRITE_U
+Write the given
+.Fa data
+into the system data area for the child process with ID
+.Fa pid .
+The
+.Fa addr
+parameter is used as in
+.Dv PT_READ_U
+but most system data is restricted from writing.
+General register state may always be written, however.
+.It Dv PT_READ_I
+Read instructions from the child process with ID
+.Fa pid .
+The
+.Fa addr
+parameter gives the location of the relevant data
+in the child's address space.
+One word of data from the given address
+is returned as the value of the
+.Fn ptrace
+call.
+.It Dv PT_READ_D
+Read data from the child.
+On machines that distinguish instruction space from data space,
+this request fetches from data space;
+otherwise it is identical to
+.Dv PT_READ_I .
+.It Dv PT_WRITE_I
+Write to the instruction space of the child process with ID
+.Fa pid .
+This request is similar to
+.Dv PT_READ_I ,
+except the value of
+.Fa data
+is written to the given address.
+The parent may write into locations that
+are read-only in the child.
+This request is typically used to install breakpoint instructions,
+which generate
+.Dv SIGTRAP
+when executed.
+.It Dv PT_WRITE_D
+Write to data space in the child.
+This request works like
+.Dv PT_WRITE_I
+for data space.
+.El
+.Pp
+Processes being traced are given some special handling in the kernel.
+Any signal sent to a traced process will cause it to stop;
+the parent gets to examine the signal and
+may or may not choose to deliver it.
+Debuggers typically do not pass on a
+.Dv SIGTRAP
+that is due to a known breakpoint or a single step,
+for example.
+If a traced process calls
+.Xr execve 2
+to read in a new executable file and run it,
+the system will ignore any setuid or setgid bits
+in the file's mode.
+If the parent of a traced child exits,
+the system sends a
+.Dv SIGKILL
+to the child.
+This prevents traced children from being orphaned;
+since only the parent can restart a stopped traced child,
+an unparented traced process would get stuck.
+Finally, a traced process which calls
+.Xr execve 2
+is stopped automatically after the first instruction
+executed in the new image so that
+a debugger can insert breakpoints.
+Without this aid, a naive process might
+never stop to let a debugger work on it.
+.Sh RETURN VALUES
+A \-1 return value
+indicates that an error occurred and
+.Va errno
+is set to indicate the reason.
+Otherwise, if the request solicited data,
+then the return value is the requested data;
+if the request doesn't solicit data,
+the return value is zero.
+.Sh ERRORS
+.Fn Ptrace
+will fail if any of the following occur:
+.Bl -tag -width Er
+.It Bq Er EIO
+The
+.Fa request
+was not valid.
+.It Bq Er EIO
+An offset into system data for
+.Dv PT_READ_U
+or
+.Dv PT_WRITE_U
+is out of range, unaligned or
+.Pq for Dv PT_WRITE_U
+restricted against writes.
+.It Bq Er EIO
+An invalid signal number for the child was given with
+.Dv PT_CONTINUE
+or
+.Dv PT_STEP .
+.It Bq Er ESRCH
+For any request other than
+.Dv PT_TRACE_ME ,
+the system could not locate a process with ID
+.Fa pid .
+.It Bq Er EPERM
+The process with ID
+.Fa pid
+is not a child of the calling process.
+.It Bq Er EPERM
+The child process has not arranged to be traced by requesting
+.Dv PT_TRACE_ME .
+.It Bq Er EPERM
+The calling process tried to set a process status bit
+in the child process that is privileged.
+.It Bq Er EBUSY
+The child isn't stopped.
+.It Bq Er EINVAL
+The address
+.Fa addr
+points outside the user part of the address space.
+.It Bq Er ENOMEM
+The address
+.Fa addr
+was invalid.
+.El
+.Sh SEE ALSO
+.Xr wait 2
+.Sh HISTORY
+The
+.Nm ptrace
+function call appeared in
+.At v7 .
+.Sh BUGS
+The manipulation of registers by reading and writing
+an internal system data structure is undocumented and grotesque.
+The system should provide a completely different debugging interface
+that corrects both of these problems.

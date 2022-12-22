@@ -1,0 +1,5 @@
+F DISKTAB.;1                        	disktab
+F FSTAB.000;1                       	fstab.sample.wd0
+F FSTAB.001;1                       	fstab.sample.sd0
+F FSTAB.SAM;1                       	fstab.sample
+F MAKEDEV.;1                        	MAKEDEV

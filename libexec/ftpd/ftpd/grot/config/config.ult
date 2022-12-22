@@ -1,0 +1,32 @@
+#define HAVE_FLOCK
+#define HAVE_GETDTABLESIZE
+#define HAVE_ST_BLKSIZE
+#define HAVE_SYMLINK
+#define HAVE_UT_UT_HOST
+#define HAVE_VPRINTF
+#define NO_MALLOC_PROTO
+#define OVERWRITE
+#define SETPROCTITLE
+#define UPLOAD
+#undef  HAVE_DIRENT
+#undef  HAVE_D_NAMLEN
+#undef  HAVE_FTW
+#undef  HAVE_GETCWD
+#undef  HAVE_PSTAT
+#undef  HAVE_SYSINFO
+#undef  REGEX
+#undef  SHADOW_PASSWORD
+#undef  ULTRIX_AUTH
+#undef  USG
+
+#include <malloc.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#ifndef FACILITY
+#define FACILITY LOG_DAEMON
+#endif
+
+typedef void	SIGNAL_TYPE;
+
+#include "../config.h"

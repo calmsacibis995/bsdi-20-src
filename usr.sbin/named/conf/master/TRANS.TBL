@@ -1,0 +1,8 @@
+F NAMED_BO.000;1                    	named.boot.gz
+F NAMED_BO.GZ;1                     	named.boot.master.gz
+F NAMED_HO.GZ;1                     	named.hosts.gz
+F NAMED_LO.GZ;1                     	named.local.gz
+F NAMED_RE.GZ;1                     	named.rev.gz
+F README.GZ;1                       	README.gz
+F ROOT_CAC.GZ;1                     	root.cache.gz
+F _MAP.GZ;1                         	.MAP.gz

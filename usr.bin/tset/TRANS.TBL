@@ -1,0 +1,11 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MAP_C.GZ;1                        	map.c.gz
+F MISC_C.GZ;1                       	misc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/tset
+F SET_C.GZ;1                        	set.c.gz
+F TERM_C.GZ;1                       	term.c.gz
+F TSET_1.GZ;1                       	tset.1.gz
+F TSET_C.GZ;1                       	tset.c.gz
+F WRTERM_C.GZ;1                     	wrterm.c.gz
+F _MAP.GZ;1                         	.MAP.gz

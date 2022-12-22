@@ -1,0 +1,111 @@
+9/14/92
+Pace Willisson <pace@bsdi.com>
+Berkeley Software Design, Inc.
+
+
+This is the experimental cdrom library.  The functions defined and
+their calling conventions are likely to change as we gain experience
+with using cdroms.  This file describes the current interface.  When
+things settle down, we'll write a regular man page.
+
+This library currently contains functions only for cdaudio, but it
+will eventually grow to include functions useful to cdrom's as well.
+
+A program that wants to use this library should include the file
+<cdrom.h>.  The first function called should be 
+
+	struct cdinfo *cdopen (char *filename)
+
+If filename is NULL, then the library will try the environment 
+variable CDROM, and finally try /dev/rcdrom.
+
+Next, the library does ioctl's to determine what type of cdrom is
+attached.  So far, the library handles these types:
+
+	SCSI:
+		Any drive supporting November 1991 SCSI-2 draft
+			(such as Sony CDU-541)
+		Toshiba 3201B
+
+	Non-scsi:
+		Mitsumi
+
+All time measurements in the library are in units of "frames".  On
+a data track, a frame is one 2048 sector.  On an audio track, a frame
+contains the data for 1/75'th of a second of stereo audio.  Frame
+numbers are used both as seek locations, as well as durations.
+
+The following constants and functions are defined for dealing with
+frames:
+
+	#define FRAMES_PER_SECOND 75
+	#define FRAMES_PER_MINUTE (FRAMES_PER_SECOND * 60)
+	
+	void frame_to_msf (int frame, int *minp, int *secp, int *framep);
+	int msf_to_frame (int min, int sec, int frame);
+
+The return value from cdopen is a structure that contains these public
+fields:
+
+	struct cdinfo {
+		int total_frames;
+		int ntracks;
+		struct track_info *tracks;
+	};
+
+ntracks is the number of data or audio tracks on the disk
+
+total_frames is the total number of frames on the disk
+
+The track_info structure contains these public fields:
+
+	struct track_info {	
+		int track_num;
+		int control;
+		int start_frame;
+		int nframes;
+	};
+
+track_num is the track number that this entry describes.  Usually,
+the first track on a disk is 1, so cdinfo->tracks[0].track_num == 1.
+
+control is the "control" byte from the table of contents entry.  The
+interesting bit is 0x4, which is set for data disks, and clear for 
+audio disks.
+
+start_frame is the starting frame number for this track.  The
+specifications are confusing, but suggest that if you want to play
+this track, you might want to play starting at frame start_frame -
+FRAMES_PER_SECOND.  Apparantly, there is guaranteed to be 2 seconds of
+silence before every track, so this is safe.  In my limited
+experiments, it does not appear to be necessary to back up like this.
+
+nframes is the length of this track in frames.  It includes the 2
+seconds of silence at the end, which is required before the start of
+the next track.
+
+After a successful call to cdopen, you can use these functions:
+
+int cdclose (struct cdinfo *);
+	Close device and dealloate memory.
+
+int cdstop (struct cdinfo *);
+	Stop playing.
+
+int cdplay (struct cdinfo *, int start_frame, int end_frame);
+	Play from start_frame through end_frame.
+
+int cdstatus (struct cdinfo *, struct cdstatus *);
+	Return the subcode q channel data from the current
+	block.  You can use this to update a display that shows the
+	current tack number and track-relative elaspe time.
+
+int cdeject (struct cdinfo *);
+	Eject the cd caddy (if supported by the drive).
+
+int cdvolume (struct cdinfo *, int volume);
+	Set the volume level (if supported by the drive).
+	0 = off .. 100 = max.  Most drives seem to default to the maximum 
+	volume level and become silent at a level less than about 90.
+
+Look at the program cdctl and xcdplayer for an example uses of this library.

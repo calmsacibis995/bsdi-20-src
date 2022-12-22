@@ -1,0 +1,5 @@
+F MFSIOM_H.GZ;1                     	mfsiom.h.gz
+F MFSNODE_.GZ;1                     	mfsnode.h.gz
+F MFS_EXTE.GZ;1                     	mfs_extern.h.gz
+F MFS_VFSO.GZ;1                     	mfs_vfsops.c.gz
+F MFS_VNOP.GZ;1                     	mfs_vnops.c.gz

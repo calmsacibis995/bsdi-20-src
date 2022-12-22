@@ -1,0 +1,23 @@
+F BOX_CC.GZ;1                       	box.cc.gz
+F BOX_H.GZ;1                        	box.h.gz
+F DELIM_CC.GZ;1                     	delim.cc.gz
+F EQN_H.GZ;1                        	eqn.h.gz
+F EQN_MAN.GZ;1                      	eqn.man.gz
+F EQN_Y.GZ;1                        	eqn.y.gz
+D GROT                              	grot
+F LEX_CC.GZ;1                       	lex.cc.gz
+F LIMIT_CC.GZ;1                     	limit.cc.gz
+F LIST_CC.GZ;1                      	list.cc.gz
+F MAIN_CC.GZ;1                      	main.cc.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MARK_CC.GZ;1                      	mark.cc.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/eqn
+F OTHER_CC.GZ;1                     	other.cc.gz
+F OVER_CC.GZ;1                      	over.cc.gz
+F PBOX_H.GZ;1                       	pbox.h.gz
+F PILE_CC.GZ;1                      	pile.cc.gz
+F SCRIPT_C.GZ;1                     	script.cc.gz
+F SPECIAL_.GZ;1                     	special.cc.gz
+F SQRT_CC.GZ;1                      	sqrt.cc.gz
+F TEXT_CC.GZ;1                      	text.cc.gz
+F _MAP.GZ;1                         	.MAP.gz

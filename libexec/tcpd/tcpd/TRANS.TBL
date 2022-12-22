@@ -1,0 +1,7 @@
+F HOSTS_AC.5;1                      	hosts_access.5
+F HOSTS_OP.5;1                      	hosts_options.5
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/tcpd/tcpd
+F TCPD.8;1                          	tcpd.8
+F TCPD.C;1                          	tcpd.c
+F _MAP.;1                           	.MAP

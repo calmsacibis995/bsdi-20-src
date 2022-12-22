@@ -1,0 +1,10 @@
+F CKSUM_1.GZ;1                      	cksum.1.gz
+F CKSUM_C.GZ;1                      	cksum.c.gz
+F CRC_C.GZ;1                        	crc.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/cksum
+F PRINT_C.GZ;1                      	print.c.gz
+F SUM1_C.GZ;1                       	sum1.c.gz
+F SUM2_C.GZ;1                       	sum2.c.gz
+F _MAP.GZ;1                         	.MAP.gz

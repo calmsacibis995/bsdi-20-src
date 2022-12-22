@@ -1,0 +1,25 @@
+#	BSDI Makefile.libio,v 2.1 1995/02/03 07:00:30 polk Exp
+
+# libio sources.
+LIBIO=	${.CURDIR}/../D/libio
+
+# C here stands for "code" (all source code), not specifially "C code".
+LIBIO_C=cleanup.c filedoalloc.c fileops.c floatconv.c genops.c iofclose.c \
+	iofdopen.c iofflush.c iofgetpos.c iofgets.c iofopen.c iofprintf.c \
+	iofputs.c iofread.c iofscanf.c iofsetpos.c ioftell.c iofwrite.c \
+	iogetdelim.c iogetline.c iogets.c ioignore.c iopadn.c ioperror.c \
+	iopopen.c ioprims.c ioprintf.c ioputs.c ioscanf.c ioseekoff.c \
+	ioseekpos.c iosetbuffer.c iosetvbuf.c iosprintf.c iosscanf.c \
+	iostrerror.c ioungetc.c iovfprintf.c iovfscanf.c iovsprintf.c \
+	iovsscanf.c outfloat.c stdfiles.c strops.c \
+	PlotFile.cc SFile.cc builtinbuf.cc editbuf.cc filebuf.cc fstream.cc \
+	indstream.cc ioassign.cc ioextend.cc iomanip.cc iostream.cc \
+	isgetline.cc isgetsb.cc isscan.cc osform.cc parsestream.cc \
+	pfstream.cc procbuf.cc sbform.cc sbgetline.cc sbscan.cc \
+	stdiostream.cc stdstrbufs.cc stdstreams.cc stream.cc streambuf.cc \
+	strstream.cc
+
+LIBIO_H=PlotFile.h SFile.h builtinbuf.h editbuf.h floatio.h fstream.h \
+	indstream.h iolibio.h iomanip.h iostdio.h iostream.h iostreamP.h \
+	istream.h libio.h libioP.h ostream.h parsestream.h pfstream.h \
+	procbuf.h stdiostream.h stream.h streambuf.h strfile.h strstream.h

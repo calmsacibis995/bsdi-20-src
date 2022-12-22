@@ -1,0 +1,37 @@
+#!/bin/sh -
+#
+#	BSDI daily.local,v 2.1 1995/02/03 05:53:44 polk Exp
+#
+# daily.local
+#
+
+#
+# Uncomment to enable removing "standard" backup files on all local partitions
+#
+#find / ! -fstype local -a -prune -o \
+#	\( -fstype rdonly -a -prune \) -o \
+#	\( -name '[#,]*' -o -name '.#*' -o -name a.out -o -name \*.core \
+#	   -o -name '*.CKP' -o -name '.emacs_[0-9]*' \) \
+#		-a -atime +3 -print | xargs rm -f --
+
+
+# Function to clean a directory of old files.
+# Usage: cleandir /path +age
+cleandir() {
+	[ $# -eq 2 ] || { echo "usage: cleandir /path +age"; return 1; }
+	path="$1"; age="$2"
+	[ -d $path ] && cd $path && {
+		find -x . -type f -atime $age | xargs /bin/rm -f --
+		find -x . ! -name . -type d -mtime +1 | xargs /bin/rmdir --
+	} >/dev/null 2>&1
+}
+
+echo ""; echo "Removing scratch and junk files:"
+# Uncomment to enable removing old files from the specified directory
+#cleandir /tmp +3
+#cleandir /var/tmp +7
+#cleandir /scratch +1
+#cleandir /var/preserve +7
+cleandir /var/rwho +7
+
+exit 0

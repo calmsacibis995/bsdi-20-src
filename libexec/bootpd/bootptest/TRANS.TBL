@@ -1,0 +1,8 @@
+F BOOTPTES.8;1                      	bootptest.8
+F BOOTPTES.C;1                      	bootptest.c
+F BOOTPTES.H;1                      	bootptest.h
+F GETETHER.C;1                      	getether.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/bootpd/bootptest
+F PRINT-BO.C;1                      	print-bootp.c
+F _MAP.;1                           	.MAP

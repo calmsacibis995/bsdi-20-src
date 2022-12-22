@@ -1,0 +1,10 @@
+F BOOT_HP3.GZ;1                     	boot_hp300.8.gz
+F BOOT_I38.GZ;1                     	boot_i386.8.gz
+F BOOT_SPA.GZ;1                     	boot_sparc.8.gz
+F BOOT_TAH.GZ;1                     	boot_tahoe.8.gz
+F BOOT_VAX.GZ;1                     	boot_vax.8.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/reboot
+F REBOOT_8.GZ;1                     	reboot.8.gz
+F REBOOT_C.GZ;1                     	reboot.c.gz
+F _MAP.GZ;1                         	.MAP.gz

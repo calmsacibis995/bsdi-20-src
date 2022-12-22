@@ -1,0 +1,15 @@
+F EXPR_C.GZ;1                       	expr.c.gz
+F EXTR_H.GZ;1                       	extr.h.gz
+F INT2STR_.GZ;1                     	int2str.c.gz
+F LOOK_C.GZ;1                       	look.c.gz
+F M4_1.GZ;1                         	m4.1.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MDEF_H.GZ;1                       	mdef.h.gz
+F MISC_C.GZ;1                       	misc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/m4
+F OURLIMS_.GZ;1                     	ourlims.h.gz
+D PSD.DOC                           	PSD.doc
+F SERV_C.GZ;1                       	serv.c.gz
+D TEST                              	TEST
+F _MAP.GZ;1                         	.MAP.gz

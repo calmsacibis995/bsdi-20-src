@@ -1,0 +1,375 @@
+#
+#	BSDI disktab,v 2.1 1995/02/03 05:56:27 polk Exp
+#	from @(#)disktab     8.1 (Berkeley) 6/9/93
+
+#
+# Disk geometry and partition layout tables. 
+# Key:
+#	dt	controller type
+#	ty	type of disk (fixed, removeable, simulated)
+#	d[0-4]	drive-type-dependent parameters
+#	ns	#sectors/track
+#	nt	#tracks/cylinder
+#	nc	#cylinders/disk
+#	sc	#sectors/cylinder, nc*nt default
+#	su	#sectors/unit, sc*nc default
+#	se	sector size, DEV_BSIZE default
+#	rm	rpm, 3600 default
+#	sf	supports diskdefect-style bad sector forwarding
+#	sk	sector skew per track, default 0
+#	cs	sector skew per cylinder, default 0
+#	hs	headswitch time, default 0
+#	ts	one-cylinder seek time, default 0
+#	il	sector interleave (n:1), 1 default
+#	bs	boot block size, default BBSIZE
+#	sb	superblock size, default SBSIZE
+#	o[a-h]	partition offsets in sectors
+#	p[a-h]	partition sizes in sectors
+#	b[a-h]	partition block sizes in bytes
+#	f[a-h]	partition fragment sizes in bytes
+#	t[a-h]	partition types (filesystem, swap, etc)
+#
+# For disks using 'diskdefect' bad sector tables, there should be 1 track +
+# 126 sectors reserved from partitions at the end of the disk,
+# except for the c partition (used by diskdefect to access bad sector tables).
+#
+
+floppy|floppy144|1.44MB 3.5" Floppy:\
+	:ty=removable:dt=floppy:se#512:nt#2:rm#300:ns#18:nc#80:\
+	:pa#2880:oa#0:ba#4096:fa#512:\
+	:pc#2880:oc#0:
+	
+floppy720|720K 3.5" Floppy:\
+	:ty=removable:dt=floppy:se#512:nt#2:rm#300:ns#9:nc#80:\
+	:pa#1440:oa#0:ba#4096:fa#512:\
+	:pc#1440:oc#0:
+
+floppy12|floppy15|1.2MB 5.25" Floppy:\
+	:ty=removable:dt=floppy:se#512:nt#2:rm#300:ns#15:nc#80:\
+	:pa#2400:oa#0:ba#4096:fa#512:\
+	:pc#2400:oc#0:
+	
+floppy360|360K 5.25" Floppy:\
+	:ty=removable:dt=floppy:se#512:nt#2:rm#300:ns#9:nc#40:\
+	:pa#720:oa#0:ba#4096:fa#512:\
+	:pc#720:oc#0:
+	
+miniscribe9380|compaq38|Miniscribe 9380 ESDI:\
+	:ty=winchester:dt=ESDI:se#512:cs#12:nt#15:ns#35:nc#1222:rm#3600:\
+	:pa#16800:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#67200:ob#16800:tb=swap:\
+	:pc#641550:oc#0:\
+	:ph#557375:oh#84000:bh#8192:fh#1024:th=4.2BSD:
+
+type17|40 MB IDE Winchester:\
+	:ty=winchester:dt=ST506:se#512:nt#5:ns#17:nc#977:\
+	:pa#63750:oa#0:ba#4096:fa#512:ta=4.2BSD:\
+	:pb#19125:ob#63750:tb=swap:\
+	:pc#83045:oc#0:
+
+nec300|NEC 300 MB ESDI:\
+	:ty=winchester:dt=ESDI:se#512:nt#16:ns#63:nc#611:\
+	:pa#16128:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#32256:ob#16128:tb=swap:\
+	:pc#615888:oc#0:\
+	:ph#567315:oh#48384:bh#4096:fh#1024:th=4.2BSD:
+
+seagate300:Seagate 300 MB drive:\
+	:ty=winchester:dt=ST506:se#512:nt#14:ns#54:nc#873:\
+	:pa#22680:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#45360:ob#22680:tb=swap:\
+	:pc#659988:oc#0:\
+	:pd#45360:od#68040:bd#4096:fd#1024:td=4.2BSD:\
+	:ph#546372:oh#113400:bh#4096:fh#1024:th=4.2BSD:
+
+maxtor8760|Maxtor XT8760E|Maxtor 650 MB ESDI:\
+	:ty=winchester:dt=ESDI:se#512:nt#15:ns#53:nc#1630:\
+	:pa#16695:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#66780:ob#16695:tb=swap:\
+	:pc#1295850:oc#0:\
+	:ph#1212163:oh#83475:bh#4096:fh#1024:th=4.2BSD:
+
+maxtor8800|Maxtor XT8800E|Maxtor 660 MB ESDI:\
+	:ty=winchester:dt=ESDI:cs#13:\
+	:se#512:nt#15:ns#69:nc#1272:\
+	:pa#16560:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#66240:ob#16560:tb=swap:\
+	:pc#1316520:oc#0:\
+	:ph#1233513:oh#82800:bh#4096:fh#1024:th=4.2BSD:
+
+wd200|Western Digital generic 200 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#12:ns#35:nc#987:\
+	:pa#16800:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#33600:ob#16800:tb=swap:\
+	:pc#414540:oc#0:\
+	:ph#363965:oh#50400:bh#8192:fh#1024:th=4.2BSD:\
+
+#
+# from pc@hillside.ck.uk (Peter Collinson)
+#
+type38|400 Mb IDE Winchester:\
+	:ty=winchester:dt=ST506:se#512:nt#15:ns#62:nc#895:\
+	:pa#22320:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#55800:ob#22320:tb=swap:\
+	:pc#832350:oc#0:\
+	:ph#753174:oh#78120:bh#4096:fh#1024:th=4.2BSD:
+
+#
+# from jtkohl@antipodes.berkeley.edu (John T. Kohl)
+#
+maxtor213a|Maxtor LXT213A|Maxtor 200 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#16:ns#38:nc#683:\
+	:pa#17024:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#66880:ob#17024:tb=swap:\
+	:pc#415264:oc#0:\
+	:ph#331170:oh#83904:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from moraes@cs.toronto.edu
+#
+cp3204f|Conner 207 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#16:ns#38:nc#682:\
+	:pa#16800:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#67200:ob#16800:tb=swap:\
+	:pc#414656:oc#0:\
+	:ph#330466:oh#84000:bh#8192:fh#1024:th=4.2BSD:\
+
+bt9220|Brand Technologies 200Mb IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#14:ns#36:nc#777:\
+	:pa#16800:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#67200:ob#16800:tb=swap:\
+	:pc#391608:oc#0:\
+	:ph#307418:oh#84000:bh#8192:fh#1024:th=4.2BSD:\
+
+#
+# from sysadmin!bjorn@uunet.uu.net (Bjorn Satdeva)
+#
+maxtor4380|Maxtor XT4380E|Maxtor 380 MB ESDI:\
+	:ty=winchester:dt=ESDI:se#512:nt#15:ns#36:nc#1222:rm#3600:\
+	:pa#16812:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#67212:ob#16812:tb=swap:\
+	:pc#659880:oc#0:\
+	:pd#575676:od#84024:bd#8192:fd#1024:td=4.2BSD:
+	
+#
+# from husemann@informatik.uni-erlangen.de
+#
+compaq120|120 MB drive of Compaq SLT 386s/20:\
+	:ty=winchester:dt=ST506:se#512:nt#8:ns#39:nc#760:\
+	:pa#17472:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#62400:ob#17472:tb=swap:\
+	:pc#237120:oc#0:\
+	:ph#157083:oh#79872:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from champlin@wrl.dec.com
+#
+cp30104|Conner 120 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#8:ns#39:nc#761:\
+	:pa#16224:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#64272:ob#16224:tb=swap:\
+	:pc#237432:oc#0:\
+	:ph#156741:oh#80496:bh#8192:fh#1024:th=4.2BSD:
+	
+	
+#
+# from mark@cpqhou.compaq.COM
+#
+cp3301|Conner 340MB IDE|Compaq Type 63:\
+	:ty=winchester:dt=ST506:se#512:nt#16:ns#63:nc#659:rm#3800:\
+	:pa#16800:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#134400:ob#33600:tb=swap:\
+	:pc#664272:oc#0:\
+	:ph#513072:oh#151200:bh#8192:fh#1024:th=4.2BSD:\
+
+#
+# from eric@ms.uky.edu
+#
+micropolis1518|Micropolis 1518-15 24MHz 1354 MB ESDI:\
+	:ty=winchester:dt=ESDI:se#512:nt#15:ns#83:\
+	:nc#2098:rm#3600:\
+	:pa#37350:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#124500:ob#37350:bb#8192:fb#1024:tb=4.2BSD:\
+	:pc#2612010:oc#0:\
+	:pd#622500:od#161850:bd#8192:fd#1024:td=4.2BSD:\
+	:pe#622500:oe#784350:be#8192:fe#1024:te=4.2BSD:\
+	:pf#622500:of#1406850:bf#8192:ff#1024:tf=4.2BSD:\
+	:pg#211650:og#2029350:bg#8192:fg#1024:tg=4.2BSD:\
+	:ph#370801:oh#2241000:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from markl@spuddy.uucp
+#
+seagate211|Seagate ST1239A 211mb IDE:\
+	:ty=winchester:tn=ST506:ns#36:nt#9:nc#1272:se#512:\
+	:pa#20480:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#65536:ob#20480:tb=swap:\
+	:pc#412128:oc#0:\
+	:ph#325950:oh#86016:bh#8192:fh#1024:th=4.2BSD:
+	
+#
+# from jr@upl.com
+#
+im94186-766E|imprimis 94186-766E 640 MB ESDI:\
+	:ty=winchester:dt=ESDI:se#512:nt#15:ns#53:nc#1629:\
+	:pa#20670:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#82680:ob#20670:tb=swap:\
+	:pc#1295055:oc#0:\
+	:pg#475410:og#103350:bg#8192:fg#1024:tg=4.2BSD:\
+	:ph#715500:oh#578760:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from polk@bsdi.com
+#
+nb80|Toshiba T2200SX Notebook 80 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#4:ns#16:nc#2616:\
+	:pa#16384:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#32768:ob#16384:tb=swap:\
+	:pc#167424:oc#0:\
+	:ph#118080:oh#49152:bh#8192:fh#1024:th=4.2BSD:
+
+# a:~8MB  swap:~32MB  h:~162MB
+wdcav|wdCav|Western Digital Caviar 200 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#12:ns#35:nc#989:\
+	:pa#16800:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#65520:ob#16800:tb=swap:\
+	:pc#415380:oc#0:\
+	:ph#332899:oh#82320:bh#8192:fh#1024:th=4.2BSD:
+
+# after we throw away space for the disk/controller bad block table
+# this is what we can really get out of the disk.
+# a:~60MB swap:~32MB h:~230MB
+mic1558|mic1558a|Micropolis 1558 ESDI:\
+	:ty=winchester:dt=ESDI:se#512:nt#15:ns#36:nc#1220:\
+	:pa#122580:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#65340:ob#122580:tb=swap:\
+	:pc#658800:oc#0:\
+	:ph#470718:oh#187920:ba#8192:fa#1024:ta=4.2BSD:
+
+#
+# from mccanne@horse.ee.lbl.gov
+#
+wd340|Western Digital generic 340 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#12:ns#55:nc#1010:\
+	:pa#16500:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#99000:ob#16500:tb=swap:\
+	:pc#666600:oc#0:\
+	:ph#550440:oh#115500:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from bdale@gag.com
+#
+nb60|Toshiba T2200SX Notebook 60 MB IDE:\
+	:ty=winchester:dt=ST506:se#512:nt#4:ns#38:nc#822:\
+	:pa#16264:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#24016:ob#16264:tb=swap:\
+	:pc#124944:oc#0:\
+	:ph#84360:oh#40280:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from Hans Nasten, nasten@everyware.se
+#
+ST41200|Wren VII:\
+	:ty=winchester:dt=SCSI:\
+	:se#512:nt#15:ns#70:nc#1931:\
+	:pa#33600:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#100800:ob#33600:tb=swap:\
+	:pc#2027550:oc#0:\
+	:pf#304500:of#134400:bf#8192:ff#1024:tf=4.2BSD:\
+	:pg#811650:og#438900:bg#8192:fg#1024:tg=4.2BSD:\
+	:ph#777000:oh#1250550:bh#8192:fh#1024:th=4.2BSD:
+
+#
+# from Hans Nasten, nasten@everyware.se
+#
+miniscribe7080|MiniScribe 7080 IDE:\
+	:ty=winchester:dt=IDE:se#512:nt#10:ns#17:nc#981:rm#3600:\
+	:pa#32640:oa#0:ba#4096:fa#512:ta=4.2BSD:\
+	:pb#16320:ob#32640:tb=swap:\
+	:pc#166770:oc#0:\
+	:ph#117470:oh#48960:bh#4096:fh#512:th=4.2BSD:
+
+#
+# from Hans Nasten, nasten@everyware.se
+#
+cp3540|Conner Peripherals 540MB SCSI:\
+	:ty=winchester:dt=SCSI:se#512:nt#12:ns#49:nc#1806:rm#4500: \
+	:pa#18816:oa#0:ta=4.2BSD:ba#4096:fa#512: \
+	:pb#75264:ob#18816:tb=swap: \
+	:pc#1061928:oc#0: \
+	:pf#217560:of#94080:tf=4.2BSD:bf#4096:ff#512: \
+	:pg#199920:og#311640:tg=4.2BSD:bg#4096:fg#512: \
+	:ph#550368:oh#511560:th=4.2BSD:bh#4096:fh#512:
+
+#
+# from Hans Nasten, nasten@everyware.se
+#
+cp3544|Conner Peripherals 540MB IDE:\
+	:ty=winchester:dt=IDE:se#512:nt#12:ns#49:nc#1806:rm#4500: \
+	:pa#18816:oa#0:ta=4.2BSD:ba#4096:fa#512: \
+	:pb#75264:ob#18816:tb=swap: \
+	:pc#1061928:oc#0: \
+	:pf#217560:of#94080:tf=4.2BSD:bf#4096:ff#512: \
+	:pg#199920:og#311640:tg=4.2BSD:bg#4096:fg#512: \
+	:ph#550368:oh#511560:th=4.2BSD:bh#4096:fh#512:
+
+#
+# from Hans Nasten, nasten@everyware.se
+#
+MK2124FC|Toshiba MK2124FC 2.5 Inch 120 MB IDE:\
+	:ty=winchester:dt=IDE:se#512:nt#16:ns#17:nc#934:rm#3600:\
+	:pa#17408:oa#0:ba#4096:fa#512:ta=4.2BSD:\
+	:pb#34816:ob#17408:tb=swap:\
+	:pc#254048:oc#0:\
+	:ph#201280:oh#52224:bh#4096:fh#512:th=4.2BSD:
+
+#
+# From: Paul A Vixie <vixie@pa.dec.com>
+#
+rz35|dec rz35 scsi:\
+	:ty=winchester:dt=scsi:se#512:ns#57:nt#14:nc#2086:rm#5400:sk#7:\
+	:pa#16384:oa#0:ta=4.2BSD:ba#8192:fa#4096:\
+	:pb#262144:ob#16384:tb=swap:\
+	:pc#1664628:oc#0:\
+	:pd#693050:od#278528:td=4.2bsd:bd#8192:fd#4096:\
+	:pe#693050:oe#971578:te=4.2bsd:be#8192:fe#4096:\
+	:ph#1386100:oh#278528:th=4.2bsd:bh#8192:fh#4096:
+
+#
+# From: Landon Curt Noll <chongo@toad.com>
+#
+segate1480|SEGATE ST1480 5|Segate ST1480N:\
+	:ty=winchester:dt=SCSI:ns#65:nt#9:nc#1475:\
+	:sc#584:se#512:rm#4412:sk#7:cs#26:\
+	:pa#33288:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#131400:ob#33288:tb=swap:\
+	:pc#844759:oc#0:tc=unused:\
+	:pd#348064:od#164688:bd#8192:fd#1024:td=4.2BSD:\
+	:pe#331712:oe#512752:be#8192:fe#1024:te=4.2BSD:
+
+#
+# From: Landon Curt Noll <chongo@toad.com>
+#
+fujitsu2623|FUJITSU M2623S-5|Fujitsu M2623SA:\
+	:ty=winchester:dt=SCSI:ns#66:nt#9:nc#1428:\
+	:sc#591:se#512:rm#4398:sk#10:cs#22:\
+	:pa#33687:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#128247:ob#33687:tb=swap:\
+	:pc#830340:oc#0:tc=unused:\
+	:pd#351054:od#161934:bd#8192:fd#1024:td=4.2BSD:\
+	:pe#316776:oe#512988:be#8192:fe#1024:te=4.2BSD:
+
+#
+# From: Landon Curt Noll <chongo@toad.com>
+#
+quantum1080|QUANTUM EMPIRE_1080S|Quantum Empire-1080S:\
+	:ty=winchester:dt=SCSI:ns#94:nt#8:nc#2872:\
+	:sc#748:se#512:rm#5400:sk#10:cs#13:\
+	:pa#32912:oa#0:ba#8192:fa#1024:ta=4.2BSD:\
+	:pb#131648:ob#32912:tb=swap:\
+	:pc#2109376:oc#0:tc=unused:\
+	:pd#348568:od#164560:bd#8192:fd#1024:td=4.2BSD:\
+	:pe#550528:oe#513128:be#8192:fe#1024:te=4.2BSD:\
+	:pf#348568:of#1063656:bf#8192:ff#1024:tf=4.2BSD:\
+	:pg#348568:og#1412224:bg#8192:fg#1024:tg=4.2BSD:\
+	:ph#348568:oh#1760792:bh#8192:fh#1024:th=4.2BSD:

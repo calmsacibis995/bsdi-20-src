@@ -1,0 +1,9 @@
+F BI-PARSE.000;1                    	bi-parser.h.gz
+F BI-PARSE.GZ;1                     	bi-parser.c.gz
+F C-PARSE_.000;1                    	c-parse.c.gz
+F C-PARSE_.001;1                    	c-parse.h.gz
+F C-PARSE_.GZ;1                     	c-parse.in.gz
+F CEXP_C.GZ;1                       	cexp.c.gz
+D CP                                	cp
+F OBJC-PAR.GZ;1                     	objc-parse.c.gz
+F _MAP.GZ;1                         	.MAP.gz

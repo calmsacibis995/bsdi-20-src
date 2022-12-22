@@ -1,0 +1,5 @@
+F MAKEFILE.;1                       	Makefile
+F MOUNT_FD.8;1                      	mount_fdesc.8
+F MOUNT_FD.C;1                      	mount_fdesc.c
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/mount_fdesc
+F _MAP.;1                           	.MAP

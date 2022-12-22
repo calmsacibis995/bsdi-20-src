@@ -1,0 +1,5 @@
+F AREACODE.000;1                    	areacode.sh.gz
+F AREACODE.GZ;1                     	areacode.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/areacode
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,14 @@
+D BFD                               	bfd
+D GDB                               	gdb
+D GLOB                              	glob
+D GROT                              	grot
+D INCLUDE                           	include
+D LIBIBERT                          	libiberty
+F MAKEFILE.000;1                    	Makefile.in.gz
+F MAKEFILE.001;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.gnu.gz
+D MMALLOC                           	mmalloc
+D READLINE                          	readline
+F README_C.GZ;1                     	README.cygnus.gz
+F README_L.GZ;1                     	README.LBL.gz
+F _MAP.GZ;1                         	.MAP.gz

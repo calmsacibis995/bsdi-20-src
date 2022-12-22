@@ -1,0 +1,24 @@
+.\" SCCSID: @(#)ftphosts.5 1.2 1/26/93
+.\" 
+.\" 
+.TH ftphosts 5 
+.SH Name
+ftphosts \- ftpd individual user host access file
+.SH Description
+The ftphosts file is used to allow or deny access to certain
+accounts from various hosts.
+.SH Access Capabilities
+.TP 0.5i
+.B allow <username> <addrglob> [<addrglob> ...]
+Only allow host(s) matching <addrglob> to log in as <username>.
+.TP 0.5i
+.B deny <username> <addrglob> [<addrglob> ...]
+Always deny host(s) matching <addrglob> to log in as <username>.
+.SH Files
+FTPLIB/ftphosts
+.SH See Also
+.MS ftpd 1 ,
+.MS ftpaccess 5 ,
+.MS ftplog 5 ,
+.MS ftpconversions 5 ,
+.MS ftpshut 8

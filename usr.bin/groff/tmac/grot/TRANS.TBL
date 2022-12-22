@@ -1,0 +1,16 @@
+F DOC-COMM.GZ;1                     	doc-common.gz
+F DOC-DITR.GZ;1                     	doc-ditroff.gz
+F DOC-NROF.GZ;1                     	doc-nroff.gz
+F DOC-SYMS.GZ;1                     	doc-syms.gz
+F FIXMACRO.GZ;1                     	fixmacros.sed.gz
+F MAKEFILE.GZ;1                     	Makefile.sub.gz
+F MAN_LOCA.GZ;1                     	man.local.gz
+F MAN_ULTR.GZ;1                     	man.ultrix.gz
+F ME_MAN.GZ;1                       	me.man.gz
+F MM_DIFF.GZ;1                      	mm.diff.gz
+F STRIP_SE.GZ;1                     	strip.sed.gz
+F TMAC_AND.GZ;1                     	tmac.andoc.gz
+F TMAC_DOC.GZ;1                     	tmac.doc.gz
+F TMAC_PSF.GZ;1                     	tmac.psfig.gz
+F TODO.GZ;1                         	TODO.gz
+F _MAP.GZ;1                         	.MAP.gz

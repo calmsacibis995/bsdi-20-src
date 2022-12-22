@@ -1,0 +1,10 @@
+F CHANGELO.;1                       	ChangeLog
+F CONFIGUR.;1                       	configure
+F CONFIGUR.IN;1                     	configure.in
+F COPYING.LIB;1                     	COPYING.LIB
+F DOC.;1                            	DOC
+F INSTALL.;1                        	INSTALL
+F INSTALL.RX;1                      	INSTALL.rx
+F MAKEFILE.IN;1                     	Makefile.in
+F RX.C;1                            	rx.c
+F RX.H;1                            	rx.h

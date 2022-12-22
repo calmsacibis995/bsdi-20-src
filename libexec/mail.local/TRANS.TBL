@@ -1,0 +1,6 @@
+F MAIL_LOC.8;1                      	mail.local.8
+F MAIL_LOC.C;1                      	mail.local.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/mail.local
+F PATHNAME.H;1                      	pathnames.h
+F _MAP.;1                           	.MAP

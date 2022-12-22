@@ -1,0 +1,37 @@
+#
+# Internet server configuration database
+#
+#	BSDI	inetd.conf.nowrappers,v 2.1 1995/02/03 05:54:03 polk Exp
+#	@(#)inetd.conf  8.2 (Berkeley) 3/18/94
+#
+ftp	stream	tcp	nowait	root	/usr/libexec/ftpd	ftpd -l -A
+telnet	stream	tcp	nowait	root	/usr/libexec/telnetd	telnetd
+shell	stream	tcp	nowait	root	/usr/libexec/rshd	rshd
+login	stream	tcp	nowait	root	/usr/libexec/rlogind	rlogind -a
+exec	stream	tcp	nowait	root	/usr/libexec/rexecd	rexecd
+#uucpd	stream	tcp	nowait	root	/usr/libexec/uucpd	uucpd
+finger	stream	tcp	nowait	nobody	/usr/libexec/fingerd	fingerd
+#tftp	dgram	udp	wait	nobody	/usr/libexec/tftpd	tftpd
+comsat	dgram	udp	wait	root	/usr/libexec/comsat	comsat
+ntalk	dgram	udp	wait	root	/usr/libexec/ntalkd	ntalkd
+pop	stream	tcp	nowait	root	/usr/libexec/popper	popper
+ident	stream	tcp	nowait	sys	/usr/libexec/identd	identd -l
+#bootp	dgram	udp	wait	root	/usr/libexec/bootpd	bootpd -t 1
+echo	stream	tcp	nowait	root	internal
+discard	stream	tcp	nowait	root	internal
+chargen	stream	tcp	nowait	root	internal
+daytime	stream	tcp	nowait	root	internal
+tcpmux	stream	tcp	nowait	root	internal
+time	stream	tcp	nowait	root	internal
+echo	dgram	udp	wait	root	internal
+discard	dgram	udp	wait	root	internal
+chargen	dgram	udp	wait	root	internal
+daytime	dgram	udp	wait	root	internal
+time	dgram	udp	wait	root	internal
+# Kerberos authenticated services
+#klogin	stream	tcp	nowait	root	/usr/libexec/rlogind	rlogind -k
+#eklogin	stream	tcp	nowait	root	/usr/libexec/rlogind	rlogind -k -x
+#kshell	stream	tcp	nowait	root	/usr/libexec/rshd 	rshd -k
+# Services run ONLY on the Kerberos server
+#krbupdate stream tcp	nowait	root	/usr/libexec/registerd	registerd
+#kpasswd	stream	tcp	nowait	root	/usr/libexec/kpasswdd	kpasswdd

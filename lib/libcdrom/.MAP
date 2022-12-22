@@ -1,0 +1,11 @@
+F CDROM.3;1                         	cdrom.3
+F COMMON.C;1                        	common.c
+F DEVS.H;1                          	devs.h
+F MAKEFILE.;1                       	Makefile
+F MISC.C;1                          	misc.c
+F MITSUMI.C;1                       	mitsumi.c
+F PANASONI.C;1                      	panasonic.c
+F README.;1                         	README
+F SCSI2.C;1                         	scsi2.c
+F SUSP.C;1                          	susp.c
+F TOSHIBA.C;1                       	toshiba.c

@@ -1,0 +1,13 @@
+F ARGS_C.GZ;1                       	args.c.gz
+F INDENT_1.GZ;1                     	indent.1.gz
+F INDENT_C.000;1                    	indent.c.gz
+F INDENT_C.GZ;1                     	indent_codes.h.gz
+F INDENT_G.GZ;1                     	indent_globs.h.gz
+F IO_C.GZ;1                         	io.c.gz
+F LEXI_C.GZ;1                       	lexi.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/indent
+F PARSE_C.GZ;1                      	parse.c.gz
+F PR_COMME.GZ;1                     	pr_comment.c.gz
+F README.GZ;1                       	README.gz
+F _MAP.GZ;1                         	.MAP.gz

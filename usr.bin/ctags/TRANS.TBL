@@ -1,0 +1,13 @@
+F CTAGS_1.GZ;1                      	ctags.1.gz
+F CTAGS_C.GZ;1                      	ctags.c.gz
+F CTAGS_H.GZ;1                      	ctags.h.gz
+F C_C.GZ;1                          	C.c.gz
+F FORTRAN_.GZ;1                     	fortran.c.gz
+F LISP_C.GZ;1                       	lisp.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/ctags
+F PRINT_C.GZ;1                      	print.c.gz
+D TEST                              	test
+F TREE_C.GZ;1                       	tree.c.gz
+F YACC_C.GZ;1                       	yacc.c.gz
+F _MAP.GZ;1                         	.MAP.gz

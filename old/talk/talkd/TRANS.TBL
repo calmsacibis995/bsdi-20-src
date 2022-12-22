@@ -1,0 +1,8 @@
+F ANNOUNCE.C;1                      	announce.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/old/talk/talkd
+F PRINT.C;1                         	print.c
+F PROCESS.C;1                       	process.c
+F TABLE.C;1                         	table.c
+F TALKD.C;1                         	talkd.c
+F _MAP.;1                           	.MAP

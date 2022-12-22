@@ -1,0 +1,9 @@
+F COMMON_C.GZ;1                     	common.cc.gz
+D GROT                              	grot
+F INDEX_CC.GZ;1                     	index.cc.gz
+F LINEAR_C.GZ;1                     	linear.cc.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MAP_C.GZ;1                        	map.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/libbib
+F SEARCH_C.GZ;1                     	search.cc.gz
+F _MAP.GZ;1                         	.MAP.gz

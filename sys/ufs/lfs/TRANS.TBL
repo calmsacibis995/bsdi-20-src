@@ -1,0 +1,15 @@
+F LFS_ALLO.GZ;1                     	lfs_alloc.c.gz
+F LFS_BALL.GZ;1                     	lfs_balloc.c.gz
+F LFS_BIO_.GZ;1                     	lfs_bio.c.gz
+F LFS_CKSU.GZ;1                     	lfs_cksum.c.gz
+F LFS_DEBU.GZ;1                     	lfs_debug.c.gz
+F LFS_EXTE.GZ;1                     	lfs_extern.h.gz
+F LFS_H.GZ;1                        	lfs.h.gz
+F LFS_INOD.GZ;1                     	lfs_inode.c.gz
+F LFS_SEGM.GZ;1                     	lfs_segment.c.gz
+F LFS_SUBR.GZ;1                     	lfs_subr.c.gz
+F LFS_SYSC.GZ;1                     	lfs_syscalls.c.gz
+F LFS_VFSO.GZ;1                     	lfs_vfsops.c.gz
+F LFS_VNOP.GZ;1                     	lfs_vnops.c.gz
+F README.GZ;1                       	README.gz
+F TODO.GZ;1                         	TODO.gz

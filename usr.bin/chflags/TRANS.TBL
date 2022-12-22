@@ -1,0 +1,5 @@
+F CHFLAGS_.000;1                    	chflags.c.gz
+F CHFLAGS_.GZ;1                     	chflags.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/chflags
+F _MAP.GZ;1                         	.MAP.gz

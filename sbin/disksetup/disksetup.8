@@ -1,0 +1,839 @@
+.\"	BSDI	disksetup.8,v 2.1 1995/02/03 07:14:33 polk Exp
+.\"
+.\" Copyright (c) 1995 Berkeley Software Design, Inc. All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"
+.Dd January 30, 1995
+.Dt DISKSETUP 8
+.Os
+.Sh NAME
+.Nm disksetup
+.Nd setup and label disk drives
+.Sh SYNOPSIS
+.Nm disksetup
+.Fl i
+.Op Fl K
+.Op Fl D
+.Op Fl s
+.Op Fl I
+.Op Fl II
+.Op Fl n
+.Op Fl E
+.Op Fl P
+.Op Fl F
+.Op Fl M Ar memsize
+.Op Fl A Ar bootany
+.Op Ar disk
+.Nm disksetup
+.Op Fl N
+.Op Fl W
+.Ar disk
+.Nm disksetup
+.Op Fl K
+.Op Fl D
+.Op Fl s
+.Op Fl I
+.Op Fl II
+.Ar disk
+.Nm disksetup
+.Fl R
+.Op Fl K
+.Op Fl D
+.Op Fl s
+.Op Fl I
+.Op Fl II
+.Op Fl n
+.Ar disk
+.Ar proto-file
+.Op Ar xxboot Ar bootxx Op Ar mboot
+.Nm disksetup
+.Fl e
+.Op Fl K
+.Op Fl D
+.Op Fl s
+.Op Fl I
+.Op Fl II
+.Op Fl n
+.Op Ar disk Op Ar xxboot Ar bootxx Op Ar mboot
+.Nm disksetup
+.Fl B
+.Ar disk
+.Op Ar xxboot Ar bootxx Op Ar mboot
+.Sh DESCRIPTION
+.Pp
+The
+.Nm disksetup
+program is used to examine and alter the various disk labels on a disk drive
+specified by
+.Ar disk .
+If
+.Ar disk
+is indicated as optional, disksetup will either assume the only hard
+drive on the system is the target, or, if there is more than one drive,
+prompt for which drive should be used.
+.Pp
+.Nm Disksetup
+can be called in a variety of ways.  After a short description of the 6
+major ways
+.Nm disksetup
+may be called, a combined list of options will be presented, followed
+by a short introduction on interactively setting up disks.
+.\"
+.\"
+.\"
+.Ss Method 1 \(em Interactive mode
+.Pp
+When the
+.Fl i
+flag is specified,
+.Nm disksetup
+will interactively setup the disk.
+See the section below on interactive setup.
+.\"
+.\"
+.\"
+.Ss Method 2 \(em Mark disk writable/not writable
+.Pp
+Normally the second sector the disk (or BSD/OS FDISK partition,)
+which contains the BSD/OS disk label, is not writable.  Using
+.Nm disksetup
+with the
+.Fl W
+or
+.Fl N
+flag makes this sector writable/not writable.
+When disksetup needs to write the BSD/OS disk label, it automatically
+enables the ability to write it.
+.\"
+.\"
+.\"
+.Ss Method 3 \(em Displaying existing labels 
+.Pp
+In this mode, disksetup outputs the existing label in ASCII, suitable
+for use as a
+.Ar proto-file .
+.\"
+.\"
+.\"
+.Ss Method 4 \(em Restoring disk label
+.Pp
+When the
+.Fl R
+flag is specified,
+.Nm disksetup
+will restore the label from the file specified by
+.Ar proto-file ,
+which is usually generated using Method 3 (above).
+See the section below on installing boot blocks for information
+on the other optional arguments.
+.\"
+.\"
+.\"
+.Ss Method 5 \(em Editing disk label
+.Pp
+When the
+.Fl e
+flag is specified, a temporary ASCII version of the disklabel
+is created and an editor (either
+the contents of the
+.Ev EDITOR
+environment variable or
+.Nm vi )
+is invoked on that file.  After exiting the editor,
+.Nm disksetup
+will label the disk the with altered label.
+See the section below on installing boot blocks for information
+on the other optional arguments.
+.\"
+.\"
+.\"
+.Ss Method 6 \(em Install boot blocks.
+.Pp
+When the
+.Fl B
+flag is specified,
+.Nm disksetup
+will only install boot blocks, and possibly a Master Boot Record (MBR).
+An MBR is only needed when the disk is set up for co-residency using the
+DOS style FDISK table.
+The
+.Ar xxboot
+and
+.Ar bootxx
+arguments specify the primary and secondary bootstraps.  The bootstraps
+are normally found in /usr/bootstraps.
+If the primary and secondary bootstraps are not specified,
+.Nm disksetup
+will prompt for the type of bootstrap to install.
+The
+.Ar mboot
+argument is used to specify a new MBR.  The standard MBR used by
+BSD/OS is
+.Nm bootany.sys .
+If an FDISK table exists and
+.Ar mboot
+is not specified, disksetup will prompt for the file containing the
+MBR, with the option to keep the existing MBR.
+If
+.Nm bootany.sys
+is chosen as the MBR, the
+.Xr bootany 8
+program will be run to install and initialize the MBR.
+.sp
+.\"
+.\"
+.\"
+.Ss Flags and Options
+.Pp
+.Bl -tag -width Fl M Ar memsize
+.It Fl A Ar bootany
+Use
+.Ar bootany
+as the path to the program to install
+.Nm bootany.sys .
+.It Fl D
+Only read the on disk label.
+.It Fl E
+Expert mode.  Turn off some consistency checks, such as partition overlap,
+partition length, etc.  Only useful with the
+.Fl i
+flag.
+.It Fl F
+Edit the FDISK table.  Implies the
+.Fl i
+flag.
+.It Fl I
+Ignore the on-disk BSD/OS disk label.  Also causes the device to
+be open non-blocking.
+.It Fl II
+In addition to the the effects of the
+.Fl I
+flag, ignore any FDISK table on the disk.
+.It Fl K
+Only read the kernel's (in-core) disk label.
+.It Fl M Ar memsize
+In interactive mode, the amount of memory in the system is used to help
+determine the size of some partitions.  When 
+.Fl M is supplied,
+.Ar memsize 
+(specified in megabytes) will be used instead of the actual size of memory.
+.It Fl N
+Disable write the to BSD/OS label sector.
+.It Fl P
+Edit the BSD/OS partition table.  Implies the
+.Fl i
+flag.
+.It Fl W
+Enable writes the to BSD/OS label sector.
+.It Fl n
+Do not write any output to the disk.
+.It Fl s
+Write only the kernel's in-core label.
+.El 
+.\"
+.\"
+.\"
+.Sh INTRODUCTION TO INTERACTIVE DISK SETUP
+.Pp
+Although
+.Nm disksetup
+attempts to be self explanatory (via prompts
+and help screens), it is useful to understand the basics of how the
+interactive mode works and the goal of setting up a disk.
+.Pp
+.Nm Disksetup 
+will present a series of questions, with a default or
+recommended response enclosed in brackets
+.Op like\ this .
+To use the default response, simply press the
+.Nm <Enter>
+key.
+If you enter an invalid response,
+.Nm disksetup
+will prompt you again until a valid response is received.
+.Pp
+When requesting information about the geometry, or when editing FDISK
+and BSD/OS partition tables,
+.Nm disksetup
+will go into a full screen mode.
+Use the
+.Nm <Tab>
+key to change fields.
+Generally the
+.Nm <Esc>
+key will cancel the current changes.
+When editing the partition tables, the
+.Nm ?
+key may be pressed for context sensitive help.
+You may want to read through these help screens as they contain
+valuable tips.
+.Pp
+A common problem is encountered when poeple wish to increase the
+size of either a BSD/OS or FDISK partition.  Although it is tempting
+to increase the size of one partition and then shrink the following
+partition to make room,
+.Nm disksetup
+requires that at no time should two partitions overlap.  This
+implies you must first shrink the second partition and then increase
+the first partition.  Future releases of the system may relax this
+requirement.
+.\"
+.\"
+.\"
+.Ss Goals in Setting up a Disk
+.Pp
+The goal of
+.Nm disksetup
+is to partition a disk into filesystems for use by BSD/OS.  A
+secondary goal is to partition the disk into logical disks to allow
+BSD/OS to be co-resident with other operating systems.  Since
+co-residency affects nearly every part of partitioning a disk, it
+is the first question that is asked.
+.Pp
+If you are not going to use co-residency you may want to skip
+the next section and continue on with "Selecting Geometries." Do
+not worry about the references to the FDISK table if you are not 
+sharing the disk with other operating systems.
+.\"
+.\"
+.\"
+.Ss Goals of Co-residency
+.Pp
+When a disk is to be set up for co-residency, an FDISK partition
+table must be created.  The FDISK partition table may describe up
+to 4 partitions, each treated as a logical disk.  In order to
+install BSD/OS, a partition must be assigned to BSD/OS.  Typically
+there is no need to create more than a single BSD/OS partition.
+.Nm Disksetup
+can greatly ease the creation the the FDISK table when the choice
+is to simply install DOS and BSD/OS.  If this is your setup you
+can simply assign some space for DOS and BSD/OS will be assigned
+the rest of the space.  You may also easily share a swap partition
+between DOS and BSD/OS by simply assigning some space when asked.
+See "Sharing a Swap Partition" below for more information on this
+feature.  Before partitioning the disk, you should know approximately
+how much space you will be assigning to each FDISK partition and
+you should ensure there is enough space assigned to BSD/OS for
+installation of the software.  The amount of space required by
+BSD/OS can range from under 100MB to many hundreds of megabytes
+depending on the features selected.
+.Pp
+BSD/OS is most often placed at the end of the disk.  This is
+convenient for leaving space for the bad sector table on non-SCSI
+disks.  126 sectors plus the number of sectors in one track are
+required at the end of the disk for the bad sector table.
+.Pp
+The standard Master Boot Record (MBR) found on most systems will
+always boot the operating system located in the FDISK partition
+which is marked active.  Although you may use the
+.Xr bootany 8
+command to alter the active partition from BSD/OS, it is typically
+more convenient to use the MBR provided with BSD/OS called
+.Nm bootany.sys .
+The
+.Nm bootany.sys
+MBR, which
+.Nm disksetup
+installs by calling the
+.Xr bootany 8
+utility, enables booting of up to 4 operating systems from either
+of the disks recognized by the BIOS (often called \fBC:\fP and
+\fBD:\fP).  During the standard installation process, you will only
+have the option of booting from the first disk ( \fBC:\fP).  See
+the
+.Xr bootany 8
+manual page for more information on booting from the second drive.
+.\"
+.\"
+.\"
+.Ss Selecting Geometries
+.Pp
+Due to the complexity of modern drives, mainly SCSI and large IDE
+drives, the geometry (number of heads, sectors per track, and total
+number of cylinders) is often largely fictitious.  When used with
+co-residency,
+.Nm disksetup
+operates with two potentially different geometries.  One is used
+for producing the FDISK table while the other is used when describing
+BSD/OS partitions.  Note that the FDISK table can only describe
+partitions which are contained within the first 1024 cylinders.
+When
+.Nm disksetup
+first examines a disk, it determines up to 4 geometries associated
+with the disk:
+.Bl -tag -width BSD/OSXX
+.It CMOS
+This geometry is reported by the INT41 and INT46 interrupt vectors.
+This is assumed to be the same geometry that is displayed under
+the CMOS setup screen for the drive.  Not all disks will have this
+geometry reported.
+.It BIOS
+This geometry is reported by the BIOS and is what is used by DOS
+and any other operating system which uses the BIOS to access the
+disk.  The FDISK partition table is almost always expressed in
+terms of this geometry.  Up to 2 disks may report BIOS geometries.
+The BIOS geometry does not always agree with the CMOS geometry.
+.It FDISK
+This geometry is derived from an existing FDISK table.  The total
+number of cylinders may be less than the actual number of cylinders
+the drive has.  This geometry is only defined if there was a
+pre-existing FDISK table on the disk.
+.It BSD/OS
+This geometry is retrieved from a previous BSD/OS label on this
+drive.  This geometry is only defined if there was pre-existing
+BSD/OS label on the disk.
+.El
+.Pp
+When choosing a geometry, several other mechanisms are available
+to determine a geometry:
+.Bl -tag -width BSD/OSXX
+.It Probe
+Try to determine the geometry by probing the actual disk.  On SCSI
+disks which are zone recorded (the size of a cylinder varies over
+the disk) this will always return 2048 sectors per track, 1 track
+per cylinder.
+.Pp
+\fBWARNING: DO NOT PROBE A SCSI DISK ON AN ACTIVE SYSTEM.  IT CAN
+CAUSE DISK CORRUPTION OR CAUSE THE SYSTEM TO CRASH OR HANG.  A
+SMALL NUMBER OF DISK CONTROLLERS (INCLUDING NON-SCSI) WILL HANG IF
+PROBED AT ANY TIME, BE PREPARED TO RESET THE MACHINE IN THIS CASE.\fP
+.Pp
+Probing of large disks may take many minutes, so don't be in too
+much of a hurry to reset the machine.
+.It Internal
+Use the geometry that BSD/OS is currently using for the disk.  This
+geometry might not be found on the disk and might be grossly
+inaccurate on a new disk.
+.It File
+Use the geometry described by an ASCII disk label previously produced
+by the disksetup program.
+.It Disktab
+Use the geometry found by searching for a name in the
+.Pa /etc/disktab
+file.
+.It Hand
+Enter the geometry by hand.  This is often the choice used for more
+troublesome drives.
+.El
+.Pp
+As mentioned in the table above, the FDISK geometry to be used
+should typically match the BIOS geometry.  If
+.Nm disksetup
+discovers an existing FDISK table, it will, by default, continue
+to use that geometry.  If there was no FDISK table already on the
+disk,
+.Nm disksetup
+will use the BIOS geometry, if defined, or the CMOS geometry if
+not.  (This implies that on some disks there will be no default
+geometry if all three are undefined.)
+.Pp
+The geometry used by BSD/OS should almost always be the geometry
+determined by probing the disk.  Please see the warning above on
+probing disks.
+.Pp
+Note that the FDISK table is read by a master boot record which
+uses the BIOS.  This means that the disk geometry (number of heads,
+sectors per track, and tracks per cylinder) used by
+.Nm disksetup
+to generate the FDISK table must match the geometry used by the BIOS 
+(see the table of geometries above).  BSD/OS does not use the BIOS
+to access the disk, so the geometry used for the BSD/OS label on 
+the disk need not (and often will not) match the BIOS geometry.
+.\"
+.\"
+.\"
+.Ss Goals of BSD/OS Partitioning
+.Pp
+Once the FDISK partitions have been assigned or if the entire disk
+is to be used by BSD/OS, the space assigned to BSD/OS must be
+partitioned into filesystems.
+.Nm Disksetup
+can automatically split the disk into the required partitions for
+installation.  These partitions are the
+.Pa /
+(root) partition, the
+.Pa swap
+partition and the
+.Pa /usr
+partition.
+.Pp
+.Bl -tag -width /usr/home
+.It Pa /
+The
+.Pa /
+(root) partition contains the operating system, configuration files
+and the programs required to boot the system.  While this can be
+made as small as 4 or 5MB, 8MB is a more common value.  This
+filesystem may need to be made larger to accommodate large password
+or other configuration files.
+.Pp
+Keeping this partition small and uncluttered makes it possible to
+do full backups of
+.Pa /
+every night; which in turn makes recovery from disk crashes less
+painful in the event that something goes wrong.  Since almost all
+the configuration files are kept here (including the password file)
+you will want to keep the backups of this partition up-to-date.
+.It Pa swap
+The
+.Pa swap
+partition is used when the virtual memory system exhausts real
+memory.  The amount of swap space needed can vary widely, based on
+use of the machine.  Typically a minimum of 24MB will be sufficient,
+though the X Window System and C++ can use up large amounts of
+space.  It is always recommended that swap be at least as large as
+main memory so that in the unfortunate event that the system panics,
+a copy of main memory can be saved in the swap partition for
+retrieval when the system is brought back up.
+.It Pa /usr
+The
+.Pa /usr
+partition contains the bulk of the system programs and data used
+in normal system operations.
+.Pa /usr
+is designed so that it can be shared among machines (via NFS),
+although in the standard system it is all the disk space not used
+by
+.Pa root
+or
+.Pa swap .
+You will need to split up the
+.Pa /usr
+partition if you plan to share it.  (See below)
+.Pp
+.Pa /usr
+needs to be between 100MB and 200MB depending on the features
+installed.  Add another 300MB to 450MB if sources are to be loaded
+as well.
+.El
+.Pp
+While
+.Pa / ,
+.Pa swap ,
+and
+.Pa /usr
+are the standard partitions, many sites choose to have more.  Common
+examples are:
+.Bl -tag -width /usr/local
+.It Pa /var
+Used to contain volatile files specific to this machine, such as
+log files and spool files.  In the standard setup
+.Pa /var
+is actually a symbolic link to
+.Pa /usr/var
+and these files are stored there.
+.Pp
+BSD/OS requires at least 4MB for this partition.  However, one you
+toss in
+.Pa /var/tmp
+(for editor files),
+.Pa /var/mail
+(for e-mail files), and
+.Pa /var/spool
+(for mail, printer, and uucp queues), you can easily push the
+requirements up to 50MB or beyond.  Don't let
+.Pa /var
+run low on disk space; many system functions require disk space in
+.Pa /var
+to maintain normal operation.  Be sure there is at least 10MB
+of 'breathing room' on the
+.Pa /var
+partition.
+.It Pa /usr/src
+Since sources may take up so much space, often they are placed in
+their own partition.  One common approach is to mount
+.Pa /usr/src
+from the CD-ROM as this partition.
+.It Pa /usr/obj
+During a build from BSD/OS sources, object files are normally placed
+in this directory.  Creating a separate filesystem keeps these
+files from cluttering up the
+.Pa /usr
+filesystem.
+.It Pa /usr/home
+By default user accounts are created in
+.Pa /usr/home .
+To separate user accounts from the rest of the system, a separate
+partition may be created for them.  Using
+.Pa /usr/home
+is not a hard and fast rule.  Other possibilities often seen are
+.Pa /home ,
+.Pa /home/hostname ,
+.Pa /u1 ,
+and
+.Pa /u2
+(when using multiple filesystems for home directories).
+.It Pa /usr/local
+There are always local customizations to any system.  It makes life
+a lot easier when it's upgrade time if you can concentrate your
+changes into as few places as possible.  Placing local files in
+their own filesystem, e.g.,
+.Pa /usr/local ,
+makes it easier to upgrade the system later on.
+.Pa /usr/local
+need not be an actual filesystem but could also be a symbolic link
+to some other directory that is not on the
+.Pa /usr
+filesystem.
+.Pp
+The required size of this filesystem will vary with your site, of
+course.
+.It Pa /var/news
+Usenet news tends to create a very large number of smaller-than-average
+files.  A full news feed can consume an enormous amount of disk
+space (not to mention network bandwidth).  You will probably need
+to alter the default
+.Xr newfs 8
+parameters when creating the filesystem to get the best results.
+.Pp
+By default,
+.Xr newfs 8
+allocates one inode for every four disk fragments.  A fragment is
+the smallest unit of disk allocation while a block is the largest
+unit of I/O.  The default is 1K/8K, but for news filesystems you
+probably want to use 512/4K.
+.Pp
+One inode is required per allocated file; when you run out of
+inodes, it's like running out of disk space (only it's more annoying
+because you have disk space left).  For filesystems containing news
+the average file size is only about 3K so you will need to increase
+the total number of inodes available (by decreasing the bytes per
+inode value) or else you will probably run out of inodes.
+.Pp
+The following command will create a filesystem with a fragment size
+of 512 bytes and allocate an inode for each 2048 bytes of data on
+the filesystem.  This should be reasonable for most news partitions:
+.Bd -literal
+# newfs -f 512 -b 4096 -i 2048 /dev/rsd0e
+.Ed
+.Pp
+Of course, you'll want to substitute the correct disk partition
+name.
+.It Pa /tmp
+Machines with at least 16MB of ram may want to use an MFS (memory
+based filesystem) for
+.Pa /tmp .
+See
+.Xr mfs 8 .
+Using an MFS for
+.Pa /tmp
+can improve system performance since it speeds access for the many small
+files that are created and destroyed during normal system operation.
+You will want
+to allocate extra
+.Pa swap
+space if you plan to use an MFS.
+.Pp
+More active systems will want
+.Pa /tmp
+to be at least 8MB and hence will most likely not want
+.Pa /tmp
+to be on the root partition (where it is by default).  Less busy,
+single user systems, can usually leave
+.Pa /tmp
+on the root filesystem.
+.Pp
+It should alway be assumed that all the data in
+.Pa /tmp
+will be lost across reboots.  Do not store important files here!
+.El
+.Pp
+There are a few conventions which should alway be followed when
+setting up BSD/OS partitions.  The
+.Em a
+partition should always be the
+.Pa /
+(root) filesystem.  The
+.Em b
+partition should always be a
+.Pa swap
+partition.  The
+.Em c
+partition should always reflect the entire disk, even when using
+co-residency.  If you wish to use the entire disk as a single
+partition, do not directly mount the
+.Em c
+partition.  Rather, create a
+.Em d
+partition which spans the disk (excluding the bad block area) and
+use it.  It is important that the bad block area not be included
+in any partition (other than the
+.Em c
+partition).  Note that
+.Nm disksetup
+will normally not allow you to assign partitions which overlap the
+bad block table.  It is safe to use the 
+.Em c
+partition as a single large filesystem on SCSI or other disks which 
+do not require a bad block table.
+.Pp
+If you are using co-residency, you might find it convenient to
+assign BSD/OS partition letters to some of your FDISK partitions.
+This is very useful when the FDISK partition represents a DOS FAT
+filesystem which BSD/OS can mount.  You may do this by using the
+.Li [I]mport
+command when assigning BSD/OS partitions.  By convention, these
+partitions start with the
+.Em d
+partition and number upwards.  Note that extended DOS partitions
+are actually like separate disks themselves and start with an FDISK
+partition table.
+.Nm Disksetup
+offers no way to edit this recursive table (use DOS's FDISK command
+for that).  Since the typical scenario is to have a single DOS
+partition inside of the extended DOS partition, the actual DOS
+filesystem will start one track beyond the start of the extended
+DOS partition.  To do this, after you have imported the partition,
+decrease the size of the partition by one track by using the
+keystrokes
+.Li <-><1><t><Enter> .
+(Note that you do not type the
+.Li <
+or
+.Li > , they are used to delineate individual
+keystrokes, e.g.,
+.Li <Enter>
+is a single key.) Then use the
+.Li <Tab>
+key to move over to the starting sector and increase it by one
+track with the keystrokes
+.Li <+><1><t><Enter> .
+.\"
+.\"
+.\"
+.Ss Sharing a Swap Partition
+.Pp
+When using co-residency, particularly on notebooks with small disks,
+it is often desirable to share disk space for a MS Windows swap
+file and the BSD/OS swap partition.  This is accomplished by creating
+an Extended DOS FDISK partition which is one cylinder larger than
+the size desired for the BSD/OS swap partition.  When assigning
+BSD/OS partitions, the
+.Em b
+partition should be imported from the Extended DOS FDISK partition.
+The start of the
+.Em b
+partition should be 1 cylinder in from the start of the Extended
+DOS FDISK partition.  You will need to use the DOS FDISK utility
+to install and then format the Extended DOS partition.  You should
+never create a subdirectory in this DOS partition as BSD/OS will
+likely destroy it when it uses the swap space.  Any file put in
+this DOS partition will likely be destroyed by BSD/OS.  You should,
+however, assign a temporary swap file in this DOS partition for
+use by Windows.  You may assign all the available space to the
+Windows temporary swap file.
+
+.Ss Sample FDISK Partitioning with Shared Swap
+.Pp
+The following sample screen shows 500MB disk partitioned by
+.Nm disksetup
+using the defaults and using the recommended shared swap partition.
+.Pp
+.Bd -literal
+    FDISK Partitioning                       wd0 Device to Partition
+                                              63 Sectors/Track
+    <?> for help                            1008 Sectors/Cylinder
+                                              16 Heads
+                                            1015 Cylinders
+|.1------2-------3--------------------------------------------------------|
+   |    Type of    |  Length of Partition in   | Starting|  Ending| Sector
+P# |    Partition  |  Sectors ( MBytes    Cyls)|   Sector|  Sector|    Gap
+---|---------------|---------------------------|---------|--------|-------
+1  | 01 DOS-FAT12  |    81585 (   39.8    80.9)|       63|   81647|
+2  | 05 DOS-EXTEND |    97776 (   47.7    97.0)|    81648|  179423|
+3* | 9F BSD/OS     |   844515 (  412.4   837.8)|   179424| 1023938|
+   |               |                           |         |        |
+   |  Size of Disk |  1023939 (  500.0  1015.8)|        0| 1023939|
+---|---------------|---------------------------|---------|--------|-------
+
+ At this point you should define, alter, or delete the partitions for
+ this disk so that you have enough space reserved for each of your
+ operating systems. Press N when you are done or X if you wish to cancel.
+
+ If you do not understand this screen, press X and then Y to confirm
+ the cancel.  When asked if you want the standard setup, answer YES.
+
+ [A]dd [D]elete [E]dit [N]ext [X]Abort [*]Mark Active [?]Help
+.Ed
+.Ss Sample BSD/OS Partitioning with above FDISK Partitioning
+.Pp
+Using the above FDISK partitioning, the following screen shows the
+standard BSD/OS partitioning that
+.Nm disksetup
+would use.
+Note that the swap partition is overlayed on the DOS-EXTEND partition,
+but starts one cylinder in.  This allows preservation of the FAT used
+by DOS.
+.Pp
+.Bd -literal
+    BSD Partitioning                         wd0 Device to Partition
+    <?> for help
+|.d------2b-----a-h-----------------------------------------------------|
+  FS    Mount    |  Length of File System in | Starting|  Ending| Sector
+  Type  Point    |  Sectors ( MBytes    Cyls)|   Sector|  Sector|    Gap
+-----------------|---------------------------|---------|--------|-------
+a 4.2   /        |    20160 (    9.8    20.0)|   179424|  199583|
+b swap           |    96768 (   47.2    96.0)|    82656|  179423|
+c -----          |  1024128 (  500.1  1016.0)|        0| 1024127|
+d msdos /dos     |    81585 (   39.8    80.9)|       63|   81647|
+e -----          |                           |         |        |
+f -----          |                           |         |        |
+g -----          |                           |         |        |
+h 4.2   /usr     |   824355 (  402.5   817.8)|   199584| 1023938|
+-----------------|---------------------------|---------|--------|-------
+
+  At this point you should define, alter, or delete the file systems.
+  BSD/OS requires at least a root filesystem (/), a swap partition and
+  a /usr filesystem.
+
+  If you do not understand this screen, press X and then Y to confirm
+  the cancel.  When asked if you want the standard setup, answer YES.
+
+  [I]mport [A]dd [D]elete [E]dit [N]ext [X]Abort [?]Help
+.Ed
+.Ss Sample BSD/OS Partitioning Using the Whole Disk
+.Pp
+The following screen displays the standard partitioning of a 500MB
+disk when it entire disk is used by BSD/OS.  Note that final BSD/OS
+partition (partition h) does not use the final 189 sectors of the
+disk.  This is to allow for the bad sector table of 126 sectors
+plus the size of one track, 63 sectors in this sample.
+.Pp
+.Bd -literal
+    BSD Partitioning                         wd0 Device to Partition
+    <?> for help
+|a-b-------h-------------------------------------------------------------|
+  FS    Mount    |  Length of File System in | Starting|  Ending | Sector
+  Type  Point    |  Sectors ( MBytes    Cyls)|   Sector|  Sector |    Gap
+-----------------|---------------------------|---------|---------|-------
+a 4.2   /        |    20160 (    9.8    20.0)|        0|   20159 |
+b swap  swap     |    98784 (   48.2    98.0)|    20160|  118943 |
+c -----          |  1024128 (  500.1  1016.0)|        0| 1024127 |
+d -----          |                           |         |         |
+e -----          |                           |         |         |
+f -----          |                           |         |         |
+g -----          |                           |         |         |
+h 4.2   /usr     |   904995 (  441.9   897.8)|   118944| 1023938 |
+-----------------|---------------------------|---------|---------|-------
+
+  At this point you should define, alter, or delete the file systems.
+  BSD/OS requires at least a root filesystem (/), a swap partition and
+  a /usr filesystem.
+
+  If you do not understand this screen, press X and then Y to confirm
+  the cancel.  When asked if you want the standard setup, answer YES.
+
+  [I]mport [A]dd [D]elete [E]dit [N]ext [X]Abort [?]Help
+.Ed
+.Sh FILES
+.Pa /etc/disktab
+.br
+.Pa /usr/bootstraps/\fIxx\fPboot
+.br
+.Pa /usr/bootstraps/boot\fIxx\fP
+.br
+.Pa /usr/bootstraps/bootany.sys
+.Sh SEE ALSO
+.Xr disktab 5 ,
+.Xr disklabel 5

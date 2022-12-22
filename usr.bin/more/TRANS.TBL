@@ -1,0 +1,24 @@
+F CH_C.GZ;1                         	ch.c.gz
+F COMMAND_.GZ;1                     	command.c.gz
+F DECODE_C.GZ;1                     	decode.c.gz
+F HELP_C.GZ;1                       	help.c.gz
+F INPUT_C.GZ;1                      	input.c.gz
+F LESS_H.GZ;1                       	less.h.gz
+F LINENUM_.GZ;1                     	linenum.c.gz
+F LINE_C.GZ;1                       	line.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MORE_1.GZ;1                       	more.1.gz
+F MORE_HEL.GZ;1                     	more.help.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/more
+F OPTION_C.GZ;1                     	option.c.gz
+F OS_C.GZ;1                         	os.c.gz
+F OUTPUT_C.GZ;1                     	output.c.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F POSITION.GZ;1                     	position.c.gz
+F PRIM_C.GZ;1                       	prim.c.gz
+F SCREEN_C.GZ;1                     	screen.c.gz
+F SIGNAL_C.GZ;1                     	signal.c.gz
+F TAGS_C.GZ;1                       	tags.c.gz
+F TTYIN_C.GZ;1                      	ttyin.c.gz
+F _MAP.GZ;1                         	.MAP.gz

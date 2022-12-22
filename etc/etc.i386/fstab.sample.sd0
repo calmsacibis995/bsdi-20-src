@@ -1,0 +1,2 @@
+/dev/sd0a	/	ufs	rw 	0 1
+/dev/sd0h	/usr	ufs	rw 	0 2

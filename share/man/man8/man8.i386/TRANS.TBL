@@ -1,0 +1,5 @@
+F BOOT_8.GZ;1                       	boot.8.gz
+F MAKEDEV_.GZ;1                     	MAKEDEV.8.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/man/man8/man8.i386
+F _MAP.GZ;1                         	.MAP.gz

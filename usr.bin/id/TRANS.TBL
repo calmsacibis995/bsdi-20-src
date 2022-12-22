@@ -1,0 +1,9 @@
+F GROUPS_1.GZ;1                     	groups.1.gz
+F GROUPS_S.GZ;1                     	groups.sh.gz
+F ID_1.GZ;1                         	id.1.gz
+F ID_C.GZ;1                         	id.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/id
+F WHOAMI_1.GZ;1                     	whoami.1.gz
+F WHOAMI_S.GZ;1                     	whoami.sh.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,13 @@
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MAKEWHAT.000;1                    	makewhatis.gz
+F MAKEWHAT.001;1                    	makewhatis.sed.gz
+F MAKEWHAT.GZ;1                     	makewhatis.perl.gz
+D MAN0                              	man0
+D MAN1                              	man1
+D MAN3                              	man3
+D MAN4                              	man4
+D MAN5                              	man5
+D MAN7                              	man7
+D MAN8                              	man8
+D TOOLS                             	tools
+F _MAP.GZ;1                         	.MAP.gz

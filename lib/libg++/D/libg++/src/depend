@@ -1,0 +1,283 @@
+
+
+# DO NOT DELETE THIS LINE -- g++dep uses it.
+# DO NOT PUT ANYTHING AFTER THIS LINE, IT WILL GO AWAY.
+
+ACG.o : ACG.cc \
+  ACG.h \
+  RNG.h 
+AllocRing.o : AllocRing.cc \
+  std.h \
+  AllocRing.h \
+  new.h
+Binomial.o : Binomial.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Binomial.h
+BitSet.o : BitSet.cc \
+  BitSet.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h \
+  Obstack.h \
+  AllocRing.h \
+  new.h \
+  builtin.h \
+  $(srcdir)/../$(IO_DIR)/strstream.h
+BitString.o : BitString.cc \
+  BitString.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h \
+  Obstack.h \
+  AllocRing.h \
+  new.h \
+  builtin.h \
+  $(srcdir)/../$(IO_DIR)/strstream.h
+Complex.o : Complex.cc \
+  Complex.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h \
+  builtin.h
+CursesW.o : CursesW.cc \
+  builtin.h \
+  std.h \
+  $(srcdir)/../$(IO_DIR)/strstream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  CursesW.h 
+DiscUnif.o : DiscUnif.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  DiscUnif.h
+Erlang.o : Erlang.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Erlang.h
+Fix.o : Fix.cc \
+  Fix.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h \
+  Integer.h \
+  builtin.h \
+  Obstack.h \
+  AllocRing.h \
+  $(srcdir)/../$(IO_DIR)/strstream.h
+Fix16.o : Fix16.cc \
+  Fix16.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h 
+Fix24.o : Fix24.cc \
+  Fix24.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h 
+Geom.o : Geom.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Geom.h
+GetOpt.o : GetOpt.cc \
+  GetOpt.h \
+  std.h 
+HypGeom.o : HypGeom.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  HypGeom.h
+Integer.o : Integer.cc \
+  Integer.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h \
+  Obstack.h \
+  AllocRing.h \
+  new.h \
+  builtin.h
+LogNorm.o : LogNorm.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Normal.h \
+  LogNorm.h
+MLCG.o : MLCG.cc \
+  MLCG.h \
+  RNG.h 
+NegExp.o : NegExp.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  NegExp.h
+Normal.o : Normal.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Normal.h
+Obstack.o : Obstack.cc \
+  builtin.h \
+  std.h \
+  Obstack.h
+Poisson.o : Poisson.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Poisson.h
+RNG.o : RNG.cc \
+  builtin.h \
+  std.h \
+  RNG.h
+Random.o : Random.cc \
+  Random.h \
+  RNG.h 
+Rational.o : Rational.cc \
+  Rational.h \
+  Integer.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  std.h \
+  builtin.h 
+Regex.o : Regex.cc \
+  std.h \
+  new.h \
+  builtin.h \
+  Regex.h
+RndInt.o : RndInt.cc \
+  RndInt.h \
+  RNG.h 
+Sample.o : Sample.cc \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  SmplStat.h \
+  builtin.h \
+  std.h \
+  SmplHist.h
+SmplHist.o : SmplHist.cc \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  SmplHist.h \
+  SmplStat.h \
+  builtin.h \
+  std.h 
+SmplStat.o : SmplStat.cc \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  SmplStat.h \
+  builtin.h \
+  std.h 
+String.o : String.cc \
+  String.h \
+  $(srcdir)/../$(IO_DIR)/stream.h \
+  $(srcdir)/../$(IO_DIR)/iostream.h \
+  $(srcdir)/../$(IO_DIR)/streambuf.h \
+  Regex.h \
+  std.h \
+  new.h \
+  builtin.h
+Uniform.o : Uniform.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Uniform.h
+Weibull.o : Weibull.cc \
+  builtin.h \
+  std.h \
+  Random.h \
+  RNG.h \
+  Weibull.h
+builtin.o : builtin.cc \
+  builtin.h \
+  std.h 
+chr.o : chr.cc \
+  builtin.h \
+  std.h \
+  AllocRing.h
+compare.o : compare.cc \
+  compare.h \
+  builtin.h \
+  std.h 
+drt0.o : drt0.c \
+  init_main.c \
+  dldefs.h \
+  init.c \
+  dldefs.h \
+  dynamic_lib.c \
+  dldefs.h
+dtoa.o : dtoa.cc \
+  builtin.h \
+  std.h \
+  AllocRing.h
+dynamic_lib.o : dynamic_lib.c \
+  dynamic_lib.c
+error.o : error.cc \
+  builtin.h \
+  std.h 
+except.o : except.c
+fmtq.o : fmtq.cc \
+  builtin.h \
+  std.h \
+  AllocRing.h
+gcd.o : gcd.cc \
+  builtin.h \
+  std.h 
+hash.o : hash.cc \
+  builtin.h \
+  std.h 
+init.o : init.c \
+  dldefs.h
+init_main.o : init_main.c \
+  dldefs.h
+ioob.o : ioob.cc \
+  Obstack.h \
+  std.h 
+lg.o : lg.cc \
+  builtin.h \
+  std.h 
+malloc.o : malloc.c 
+math.o : math.cc 
+minmax.o : minmax.cc \
+  minmax.h
+new.o : new.cc \
+  new.h \
+  std.h 
+pow.o : pow.cc \
+  builtin.h \
+  std.h 
+sqrt.o : sqrt.cc \
+  builtin.h \
+  std.h 
+str.o : str.cc \
+  builtin.h \
+  std.h \
+  AllocRing.h
+timer.o : timer.c
+xyzzy.o : xyzzy.cc \
+  xyzzy.cc
+
+# IF YOU PUT ANYTHING HERE IT WILL GO AWAY

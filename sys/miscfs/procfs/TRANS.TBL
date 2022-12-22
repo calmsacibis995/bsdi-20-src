@@ -1,0 +1,11 @@
+F PROCFS_C.GZ;1                     	procfs_ctl.c.gz
+F PROCFS_F.GZ;1                     	procfs_fpregs.c.gz
+F PROCFS_H.GZ;1                     	procfs.h.gz
+F PROCFS_M.GZ;1                     	procfs_mem.c.gz
+F PROCFS_N.GZ;1                     	procfs_note.c.gz
+F PROCFS_R.GZ;1                     	procfs_regs.c.gz
+F PROCFS_S.000;1                    	procfs_status.c.gz
+F PROCFS_S.GZ;1                     	procfs_subr.c.gz
+F PROCFS_V.000;1                    	procfs_vfsops.c.gz
+F PROCFS_V.GZ;1                     	procfs_vnops.c.gz
+F README.GZ;1                       	README.gz

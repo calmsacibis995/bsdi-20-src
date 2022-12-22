@@ -1,0 +1,8 @@
+F BUILD.;1                          	build
+F CKCONFIG.C;1                      	ckconfig.c
+D DOC                               	doc
+F FIXES-2.4;1                       	FIXES-2.4
+F INSTALL.;1                        	INSTALL
+F MAKEFILE.;1                       	Makefile
+F README.;1                         	README
+D UTIL                              	util

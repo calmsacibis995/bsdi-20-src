@@ -1,0 +1,109 @@
+.\" Copyright (c) 1993 Berkeley Software Design, Inc. All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"
+.\"	BSDI expr.1,v 2.1 1995/02/03 05:44:23 polk Exp
+.\"
+.Dd January 9, 1993
+.Os
+.Dt EXPR 1
+.Sh NAME
+.Nm expr
+.Nd "simple expression evaluator
+.Sh SYNOPSIS
+.Nm expr
+.Ar expression
+.Sh DESCRIPTION
+.Nm Expr
+parses an expression provided as arguments and
+prints the result on the standard output.
+.Pp
+.Nm Expr
+recognizes three types of operators,
+relational operators, arithmetic operators and string operators.
+The following left-associative binary operators
+are listed from lowest to highest precedence:
+.Pp
+.Bl -tag -width <,<=,=,!=,>=,> -compact
+.It Ar |
+If the left operand is 0 or the empty string,
+produce the right operand,
+otherwise produce the left operand.
+.It Ar &
+If both operands are nonzero and nonempty,
+produce the left operand; otherwise produce 0.
+.It Ar <,<=,=,!=,>=,>
+If both operands are numbers,
+produce 1 if the relation holds between the left and right operands,
+otherwise produce 0.
+If one or both operands is not a number,
+compare operands as ASCII strings and
+produce 1 if the relation holds,
+otherwise produce 0.
+.It Ar +,-
+Produce the sum (respectively, difference) of the operands.
+Both operands must be numbers.
+.It Ar *,/,%
+Produce the product (respectively, quotient, remainder)
+of the operands.
+Both operands must be numbers.
+.It Ar \&:
+Match a string (left operand) against a pattern (right operand).
+Patterns are
+.Xr ed 1 -style
+regular expressions,
+implicitly anchored to the start of the string.
+If the pattern contains matching quoted parentheses,
+.Li \e(
+and
+.Li \e) ,
+then if the string matches the pattern,
+.Nm expr
+produces the substring which matches
+the part of the pattern between the parentheses,
+otherwise it produces the empty string.
+If the pattern contains no quoted parentheses,
+.Nm expr
+produces a count of the characters in the string
+that the pattern matches.
+.El
+.Pp
+.Nm Expr
+also permits expressions in parentheses.
+Parentheses permit the user to override precedence.
+.Sh EXAMPLES
+.Bd -literal -compact
+$ expr 1 + 2
+3
+$ expr 9 / 3 '&' 9 % 2
+3
+$ expr 9 / 3 '&' 9 % 3
+0
+$ expr abcdefg : '[a-e]*'
+5
+$ expr abcdefg : 'a\e([a-e]*\e)'
+bcde
+$ 
+.Ed
+.Sh DIAGNOSTICS
+.Bd -literal -compact
+first operand `%s' to `%s' is not a number
+second operand `%s' to `%s' is not a number
+second operand to `%s' is 0
+out of memory
+error in regular expression: %s
+internal inconsistency in RE prep
+syntax error, last argument was `%s'
+.Ed
+.Sh SEE ALSO
+.Xr bc 1 ,
+.Xr sed 1 ,
+.Xr test 1
+.Sh BUGS
+Many of the operators are special to the shells
+and have to be quoted.
+.Pp
+Operators can't be used as (string) operands.
+.Pp
+The diagnostic complaints about syntax errors are
+sometimes quite opaque.

@@ -1,0 +1,9 @@
+F CMP_1.GZ;1                        	cmp.1.gz
+F CMP_C.GZ;1                        	cmp.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/cmp
+F REGULAR_.GZ;1                     	regular.c.gz
+F SPECIAL_.GZ;1                     	special.c.gz
+F _MAP.GZ;1                         	.MAP.gz

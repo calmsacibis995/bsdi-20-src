@@ -1,0 +1,73 @@
+#	BSDI remote,v 2.1 1995/02/03 05:54:31 polk Exp
+#
+#	@(#)remote      8.1 (Berkeley) 6/10/93
+#
+# remote -- remote host description file
+#           see tip(1), remote(5), phones(5)
+#
+# at	ACU type
+# br	baud rate (defaults to 300)
+# cu	call unit (default is dv)
+# du	make a call flag (dial up)
+# dv	device to use
+# ms	stty-style mode string (e.g., :ms=-icanon,cs8,-parenb,-istrip:)
+# pn	phone numbers (@ means look up the system name in the phones file)
+#       The PHONE environment variable can be used to specify the phones file.
+# tc	to continue a capability
+
+# Access to hardwired devices on the standard serial ports
+tty00:dv=/dev/tty00:br#9600:
+tty01:dv=/dev/tty01:br#9600:
+
+# EXAMPLE: #1
+# If you define a phone number for "remote" in /etc/phones then
+# ``tip remote'' will dial this system at 9600 baud.  You could
+# also plug the phone number in place of the `@'.
+remote:pn=@:br#9600:tc=modem0:
+
+# EXAMPLE: #2
+# Same thing only at 57600 baud.  Note that @remote overrides the default
+# so it still gets the phone number for the system named "remote" instead
+# of trying "remote57600", but it dials on the other modem.
+remote57600:pn=@remote:br#57600:tc=modem1:
+
+# Whenever you need to reference a modem use one of these.
+# They make it easy to move modems around and change types.
+#    hayes modem on tty00:
+modem0:dv=/dev/tty00:tc=hayes:
+#    ventel modem on tty01:
+modem1:dv=/dev/tty01:tc=ventel:
+
+# These are used by ``tip -speed phone''.
+# ``tip -speed @system'' will look up "system" in the phones file.
+tip300:br#300:tc=modem0:
+tip1200:br#1200:tc=modem0:
+tip2400:br#2400:tc=modem0:
+tip9600:br#9600:tc=modem0:
+tip19200:br#19200:tc=modem0:
+tip38400:br#38400:tc=modem0:
+tip57600:br#57600:tc=modem0:
+
+cu300:br#300:tc=modem0:
+cu1200:br#1200:tc=modem0:
+cu2400:br#2400:tc=modem0:
+cu9600:br#9600:tc=modem0:
+cu19200:br#19200:tc=modem0:
+cu38400:br#38400:tc=modem0:
+cu57600:br#57600:tc=modem0:
+
+# hayes modem on tty00
+hayes:at=hayes:du:tc=stdchar:
+
+# ventel modem on tty00
+ventel:at=ventel:du:tc=stdchar:
+
+# courier modem on tty00
+courier:at=courier:du:tc=stdchar:
+# COURIER switch settings:
+# switch:	1 2 3 4 5 6 7 8 9 10
+# setting:	D U D U D D U D U U
+# Rackmount:	U U D U D U D D U D
+
+# standard tty characters
+stdchar:el=^U^C^R^O^D^S^Q:ie=%$:oe=^D:

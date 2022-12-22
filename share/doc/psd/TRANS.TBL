@@ -1,0 +1,13 @@
+F 00_CONTE.GZ;1                     	00.contents.gz
+D 05.SYS                            	05.sysman
+D 10.GDB                            	10.gdb
+D 12.MAK                            	12.make
+D 13.RCS                            	13.rcs
+D 17.M4                             	17.m4
+D 18.GPR                            	18.gprof
+D 19.CUR                            	19.curses
+D 20.IPC                            	20.ipctut
+D 21.IPC                            	21.ipc
+F MAKEFILE.GZ;1                     	Makefile.gz
+F TITLE.GZ;1                        	Title.gz
+F _MAP.GZ;1                         	.MAP.gz

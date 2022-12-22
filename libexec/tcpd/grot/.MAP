@@ -1,0 +1,13 @@
+F BLURB.;1                          	BLURB
+F CHANGES.;1                        	CHANGES
+F DISCLAIM.;1                       	DISCLAIMER
+F ENVIRON.C;1                       	environ.c
+F MAKEFILE.;1                       	Makefile
+F MISCD.C;1                         	miscd.c
+F PTX.C;1                           	ptx.c
+F README.;1                         	README
+F STRCASEC.C;1                      	strcasecmp.c
+F STRTOK.C;1                        	strtok.c
+F TLI-SEQU.C;1                      	tli-sequent.c
+F TLI-SEQU.H;1                      	tli-sequent.h
+F VFPRINTF.C;1                      	vfprintf.c

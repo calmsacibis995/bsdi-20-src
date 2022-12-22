@@ -1,0 +1,10 @@
+D ETC.NAM                           	etc.named
+F GENDNS.GZ;1                       	gendns.gz
+F GENSTATI.GZ;1                     	genstatic.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MAKE_REV.GZ;1                     	make_rev.gz
+F POKE_NS_.GZ;1                     	poke_ns.c.gz
+F READINFO.GZ;1                     	readinfo.gz
+F README.GZ;1                       	README.gz
+F UPDATEHO.GZ;1                     	updatehosts.gz
+F _MAP.GZ;1                         	.MAP.gz

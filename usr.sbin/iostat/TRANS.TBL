@@ -1,0 +1,5 @@
+F IOSTAT_8.GZ;1                     	iostat.8.gz
+F IOSTAT_C.GZ;1                     	iostat.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/iostat
+F _MAP.GZ;1                         	.MAP.gz

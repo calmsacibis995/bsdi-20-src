@@ -1,0 +1,7 @@
+F DOMAIN_D.GZ;1                     	domain.db.gz
+F LOCALHOS.GZ;1                     	localhost.rev.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/adm/proto/namedb
+F REVERSE_.GZ;1                     	reverse.db.gz
+F ROOT_CAC.GZ;1                     	root.cache.gz
+F _MAP.GZ;1                         	.MAP.gz

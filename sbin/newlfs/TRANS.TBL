@@ -1,0 +1,9 @@
+F CONFIG_H.GZ;1                     	config.h.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F LFS_C.GZ;1                        	lfs.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+F NEWFS_C.GZ;1                      	newfs.c.gz
+F NEWLFS_8.GZ;1                     	newlfs.8.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/newlfs
+F _MAP.GZ;1                         	.MAP.gz

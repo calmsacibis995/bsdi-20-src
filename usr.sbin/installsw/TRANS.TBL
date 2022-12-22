@@ -1,0 +1,10 @@
+F CHECKGET.GZ;1                     	checkget.c.gz
+F INSTALLS.000;1                    	installsw.8.gz
+F INSTALLS.001;1                    	installsw.c.gz
+F INSTALLS.GZ;1                     	installsw.h.gz
+F INTERACT.GZ;1                     	interactive.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/installsw
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F Z_C.GZ;1                          	z.c.gz
+F _MAP.GZ;1                         	.MAP.gz

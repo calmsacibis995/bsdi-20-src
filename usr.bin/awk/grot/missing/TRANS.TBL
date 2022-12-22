@@ -1,0 +1,13 @@
+F MEMCMP_C.GZ;1                     	memcmp.c.gz
+F MEMCPY_C.GZ;1                     	memcpy.c.gz
+F MEMSET_C.GZ;1                     	memset.c.gz
+F RANDOM_C.GZ;1                     	random.c.gz
+F STRCHR_C.GZ;1                     	strchr.c.gz
+F STRERROR.GZ;1                     	strerror.c.gz
+F STRFTIME.000;1                    	strftime.3.gz
+F STRFTIME.GZ;1                     	strftime.c.gz
+F STRNCASE.GZ;1                     	strncasecmp.c.gz
+F STRTOD_C.GZ;1                     	strtod.c.gz
+F SYSTEM_C.GZ;1                     	system.c.gz
+F TZSET_C.GZ;1                      	tzset.c.gz
+F _MAP.GZ;1                         	.MAP.gz

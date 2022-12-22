@@ -1,0 +1,8 @@
+F CONFIG.H;1                        	config.h
+D FTPCOUNT                          	ftpcount
+D FTPD                              	ftpd
+D FTPSHUT                           	ftpshut
+D GROT                              	grot
+F MAKEFILE.;1                       	Makefile
+D SUPPORT                           	support
+F _MAP.;1                           	.MAP

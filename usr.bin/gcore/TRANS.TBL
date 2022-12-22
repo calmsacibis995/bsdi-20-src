@@ -1,0 +1,12 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F GCORE_1.GZ;1                      	gcore.1.gz
+F GCORE_C.GZ;1                      	gcore.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MD-HP300.GZ;1                     	md-hp300.c.gz
+F MD-I386_.GZ;1                     	md-i386.c.gz
+F MD-LUNA6.GZ;1                     	md-luna68k.c.gz
+F MD-MIPS_.GZ;1                     	md-mips.c.gz
+F MD-NOP_C.GZ;1                     	md-nop.c.gz
+F MD-SPARC.GZ;1                     	md-sparc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/gcore
+F _MAP.GZ;1                         	.MAP.gz

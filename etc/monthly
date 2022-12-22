@@ -1,0 +1,47 @@
+#!/bin/sh -
+#
+#	BSDI	monthly,v 2.1 1995/02/03 05:54:09 polk Exp
+#	from @(#)monthly	8.1 (Berkeley) 6/9/93
+#
+
+
+PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/libexec:/usr/contrib/bin
+export PATH
+
+host=`hostname -s`
+echo "Subject: $host monthly run output"
+
+#
+# rotate /path/file 9 8 7 6 5 4 3 2 1 0
+#
+# if ziplog=YES then gzip the old logs
+# if /path/file.scan exists, run it with the latest logfile name as arg
+#
+ziplog=YES
+#
+rotate() {
+        file="$1"; shift
+        rm -f "$file.$1" "$file.$1.gz"
+        for i in "$@"; do
+                [ "$i" = "0" ] && j="" || j=".`expr $i - 1`"
+                [ -f "$file$j.gz" ] && mv -f "$file$j.gz" "$file.$i.gz"
+                [ -f "$file$j" ] && mv -f "$file$j" "$file.$i"
+                [ "$i" = "0" -a -x $file.scan ] && $file.scan "$file.$i"
+                [ -f "$file.$i" ] && [ "X$ziplog" = "XYES" ] && gzip "$file.$i"
+        done
+        cp /dev/null "$file"; chmod 644 "$file"
+}
+
+# echo ""; echo "Doing login accounting:"
+# ac -p | sort -nr +1
+
+echo ""; echo -n "Rotating log files:"
+for i in ftp.log kerberos.log lpd-errs wtmp; do
+	echo -n " $i"
+	rotate /var/log/$i 5 4 3 2 1 0
+done
+echo ""
+
+[ -f /etc/monthly.local ] && sh /etc/monthly.local
+
+exit 0

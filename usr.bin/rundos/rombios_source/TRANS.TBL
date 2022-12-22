@@ -1,0 +1,5 @@
+F DIST_EXE.GZ;1                     	dist.exe.gz
+D LDPACK                            	ldpack
+D ROMBIOS                           	rombios
+D XMS                               	xms
+F _MAP.GZ;1                         	.MAP.gz

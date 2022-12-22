@@ -1,0 +1,12 @@
+F DISKTAPE.GZ;1                     	disktape.h.gz
+F DISK_H.GZ;1                       	disk.h.gz
+F PRINTER_.GZ;1                     	printer.h.gz
+F PROCESSO.GZ;1                     	processor.h.gz
+F SCSIVAR_.GZ;1                     	scsivar.h.gz
+F SCSI_H.GZ;1                       	scsi.h.gz
+F SCSI_IOC.GZ;1                     	scsi_ioctl.h.gz
+F SCSI_SUB.GZ;1                     	scsi_subr.c.gz
+F SDTRACE_.GZ;1                     	sdtrace.h.gz
+F SD_C.GZ;1                         	sd.c.gz
+F ST_C.GZ;1                         	st.c.gz
+F TAPE_H.GZ;1                       	tape.h.gz

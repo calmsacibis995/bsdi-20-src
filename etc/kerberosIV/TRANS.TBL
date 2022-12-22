@@ -1,0 +1,5 @@
+F KRB.CON;1                         	krb.conf
+F KRB.REA;1                         	krb.realms
+F README.;1                         	README
+F README.INS;1                      	README.install
+F _MAP.;1                           	.MAP

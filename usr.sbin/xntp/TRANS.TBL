@@ -1,0 +1,13 @@
+F COPYRIGH.GZ;1                     	COPYRIGHT.gz
+D GROT                              	grot
+D INCLUDE                           	include
+D LIB                               	lib
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKVERSIO.GZ;1                     	mkversion.gz
+D NTPDATE                           	ntpdate
+D NTPQ                              	ntpq
+D NTPTRACE                          	ntptrace
+F VERSION.GZ;1                      	VERSION.gz
+D XNTPD                             	xntpd
+D XNTPDC                            	xntpdc
+F _MAP.GZ;1                         	.MAP.gz

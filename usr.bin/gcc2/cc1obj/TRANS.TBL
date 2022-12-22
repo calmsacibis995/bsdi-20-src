@@ -1,0 +1,5 @@
+F OBJC-ACT.000;1                    	objc-act.h.gz
+F OBJC-ACT.GZ;1                     	objc-act.c.gz
+F OBJC-PAR.GZ;1                     	objc-parse.y.gz
+F OBJC-TRE.GZ;1                     	objc-tree.def.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,19 @@
+F CONFIG.GZ;1                       	CONFIG.gz
+F DAILY_SH.GZ;1                     	daily.sh.gz
+D EXPLAIN                           	explain
+F L-DEVICE.GZ;1                     	L-devices.gz
+F L-DIALCO.GZ;1                     	L-dialcodes.gz
+F L_ALIASE.GZ;1                     	L.aliases.gz
+F L_CMDS.GZ;1                       	L.cmds.gz
+F L_SYS.GZ;1                        	L.sys.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/uucp/admin
+F REMOTE_U.GZ;1                     	remote.unknown.gz
+F USERFILE.GZ;1                     	USERFILE.gz
+F UUAGE_SH.GZ;1                     	uuage.sh.gz
+F UUPICK_S.GZ;1                     	uupick.sh.gz
+F UUTO_1.GZ;1                       	uuto.1.gz
+F UUTO_SH.GZ;1                      	uuto.sh.gz
+F UUXQT_HO.GZ;1                     	uuxqt_hook.sh.gz
+F WEEKLY_S.GZ;1                     	weekly.sh.gz
+F _MAP.GZ;1                         	.MAP.gz

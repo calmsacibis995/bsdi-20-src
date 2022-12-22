@@ -1,0 +1,6 @@
+F GBL-CTOR.GZ;1                     	gbl-ctors.h.gz
+F LIBGCC2_.GZ;1                     	libgcc2.c.gz
+F LONGLONG.GZ;1                     	longlong.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/gcc2/libgcc2
+F _MAP.GZ;1                         	.MAP.gz

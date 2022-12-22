@@ -1,0 +1,8 @@
+F BUGS_CUR.GZ;1                     	bugs.current.gz
+F CHANGELO.GZ;1                     	changelog.gz
+F EV.GZ;1                           	ev.gz
+F FEATURES.GZ;1                     	features.gz
+D INTERNAL                          	internals
+F README.GZ;1                       	README.gz
+D TUTORIAL                          	tutorial
+F _MAP.GZ;1                         	.MAP.gz

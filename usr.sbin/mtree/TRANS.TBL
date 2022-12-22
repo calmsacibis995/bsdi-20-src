@@ -1,0 +1,12 @@
+F COMPARE_.GZ;1                     	compare.c.gz
+F CREATE_C.GZ;1                     	create.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+F MTREE_8.GZ;1                      	mtree.8.gz
+F MTREE_C.GZ;1                      	mtree.c.gz
+F MTREE_H.GZ;1                      	mtree.h.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/mtree
+F SPEC_C.GZ;1                       	spec.c.gz
+F VERIFY_C.GZ;1                     	verify.c.gz
+F _MAP.GZ;1                         	.MAP.gz

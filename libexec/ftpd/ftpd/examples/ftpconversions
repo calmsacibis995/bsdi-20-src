@@ -1,0 +1,7 @@
+#strip prefix:strip postfix:addon prefix:addon postfix:external command:
+#types:options:description
+ :.Z:  :  :/bin/compress -d -c %s:T_REG|T_ASCII:O_UNCOMPRESS:UNCOMPRESS
+ :-z:  :  :/bin/compress -d -c %s:T_REG|T_ASCII:O_UNCOMPRESS:UNCOMPRESS
+ :  :  :.Z:/bin/compress -c %s:T_REG:O_COMPRESS:COMPRESS
+ :  :  :.tar:/bin/tar -c -f - %s:T_REG|T_DIR:O_TAR:TAR
+ :  :  :.tar.Z:/bin/tar -c -Z -f - %s:T_REG|T_DIR:O_COMPRESS|O_TAR:TAR+COMPRESS

@@ -1,0 +1,21 @@
+#	BSDI	networks,v 2.1 1995/02/03 05:54:20 polk Exp
+#	@(#)networks    8.1 (Berkeley) 6/9/93
+#
+
+loopback-net	127
+
+#
+# Your Local Networks Database
+#
+#your-net	xx.xx.xx.xx			# your comment
+#your-netmask	255.255.255			# subnet mask for your-net
+
+#
+# Your subnets
+#
+#subnet1		xx.xx.xx.xx	alias1		# comment 1
+#subnet2		xx.xx.xx.xx	alias2		# comment 2
+
+#
+# Internet networks (rs.internic.net)
+#

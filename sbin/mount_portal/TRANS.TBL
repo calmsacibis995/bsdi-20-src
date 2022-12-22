@@ -1,0 +1,14 @@
+F ACTIVATE.GZ;1                     	activate.c.gz
+F CONF_C.GZ;1                       	conf.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MOUNT_PO.000;1                    	mount_portal.c.gz
+F MOUNT_PO.GZ;1                     	mount_portal.8.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/mount_portal
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F PORTALD_.GZ;1                     	portald.h.gz
+F PORTAL_C.GZ;1                     	portal.conf.gz
+F PT_CONF_.GZ;1                     	pt_conf.c.gz
+F PT_EXEC_.GZ;1                     	pt_exec.c.gz
+F PT_FILE_.GZ;1                     	pt_file.c.gz
+F PT_TCP_C.GZ;1                     	pt_tcp.c.gz
+F _MAP.GZ;1                         	.MAP.gz

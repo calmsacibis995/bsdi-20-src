@@ -1,0 +1,5 @@
+F .CVS;1                            	.cvsignore
+F CONFIGUR.IN;1                     	configure.in
+F G++DEP.SH;1                       	g++dep.sh
+F GENDEPEN.;1                       	gendepend
+F MAKEFILE.IN;1                     	Makefile.in

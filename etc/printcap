@@ -1,0 +1,94 @@
+#	BSDI	printcap,v 2.1 1995/02/03 05:54:23 polk Exp
+#
+#	from 	@(#)printcap    8.1 (Berkeley) 6/9/93
+#
+# Capability Highlights [for a complete description see printcap(5)]
+#
+#  Name        Type       Default                Description
+#    af         str       NULL                   accounting file
+#    br         num       none                   baud rate
+#    hw        bool       false                  hardwired serial port
+#    lf         str       /dev/console           error logging file name
+#    lp         str       /dev/lp                device name to open for output
+#    ms         str       NULL                   mode string
+#    sd         str       /var/spool/lpd         spool directory
+#    sh        bool       false                  suppress burst header page
+#
+# Be sure to adjust these /etc/printcap entries to reflect your hardware
+# configuration.  Common things that need adjusting are: ``lp'' (defines
+# what device your printer is attached to), ``br'' (defines what baud rate
+# to use, only for serial printers), ``hw'' (tells lpr that it's a hardwired
+# printer), and ``ms'' (the stty(1)-style mode string for adjusting the stty
+# settings of serial devices; e.g., to use hardware flow control add
+# ``cts_oflow,rts_iflow'' to the mode string).
+#
+# See stty(1) and com(4) for more information on these flags.
+
+#
+# Sample dumb line printer on the parallel port (no baud rate)
+#	To print plain text:	lpr
+#	To print man pages:	man 5 printcap | lpr
+#
+lp|local line printer:\
+	:lp=/dev/lp0:sd=/var/spool/lpd:lf=/var/log/lpd-errs:\
+	:if=/usr/libexec/lpr/lpf:
+
+#
+# HP LaserJet II on the parallel port (no baud rate)
+#	To print plain text:	lpr
+#	To print DVI files:	lpr -d
+#	To print PostScript:	lpr -v
+# Examples:
+#	man 5 printcap | lpr
+#	groff -Tdvi -mdvi ... | lpr -d
+#	lpr -v file.ps
+#
+lj|HP LaserJet II:\
+	:sh:lp=/dev/lp0:sd=/var/spool/lpd:lf=/var/log/lpd-errs:\
+	:if=/usr/libexec/lpr/txt2jep-filter:\
+	:df=/usr/libexec/lpr/dvi2jep-filter:\
+	:vf=/usr/libexec/lpr/ps2jep-filter:
+
+#
+# PostScript printer on tty01 at 9600 baud
+#	To print plain text:	lpr
+#	To print PostScript:	lpr
+#	To print DVI files:	lpr -d
+# Examples:
+#	man 5 printcap | lpr
+#	groff -Tps -mps ... | lpr
+#	lpr -d file.dvi
+#
+ps|PostScript|PostScript serial printer:\
+	:lp=/dev/tty01:br#9600:hw:sb:sf:rw:mx#0:\
+	:sd=/var/spool/lpd:lf=/var/log/lpd-errs:af=/dev/null:\
+	:ms=raw,opost,onlcr,ixon,igncr,cstopb,-echok:\
+	:if=/usr/contrib/lib/lprps/psif:\
+	:of=/usr/contrib/lib/lprps/psof:\
+	:df=/usr/libexec/lpr/dvi2ps-filter:
+# The /usr/contrib/lib/lprps/psif-* filters, used by lprps,
+# reverse the pages.  If you do not want the pages reversed
+# then edit those scripts and remove the call to `psrev'.
+# If your printer stacks face up then add :hl: to print the
+# banner page at the end of the job.
+
+# For conversions from PostScript to other devices use ghostscript
+# (for help type: /usr/contrib/bin/gs -h).  This example converts a
+# PostScript file to a ppmraw image:
+#
+#   { echo showpage; echo quit; } |
+#	gs -sDEVICE=ppmraw -r90x90 -sOutputFile=output.ppm input.ps
+#
+# Ghostscript currently supports the following output devices:
+#   x11 bj10e deskjet dfaxhigh dfaxlow djet500 djet500c epson
+#   eps9high epsonc laserjet la50 la75 lbp8 ln03 lj250 ljet2p ljet3
+#   ljetplus necp6 paintjet pjetxl r4081 tek4696 bit gifmono gif8
+#   pcxmono pcx16 pcx256 pbm pbmraw pgm pgmraw ppm ppmraw
+#
+# See /usr/libexec/lpr/ps2jep-filter for an example.
+
+#
+# Remote printer ``lp'' on ``lphost''
+#
+#rp|remote printer:\
+#        :lp=:rm=lphost:rp=lp:sd=/var/spool/lpd:lf=/var/log/lpd-errs:

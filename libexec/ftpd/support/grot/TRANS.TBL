@@ -1,0 +1,11 @@
+F FNMATCH.C;1                       	fnmatch.c
+F GETUSERS.C;1                      	getusershell.c
+D MAKEFILE                          	makefiles
+F MAKEFILE.;1                       	Makefile
+D MAN                               	man
+F SCO.C;1                           	sco.c
+F STRDUP.C;1                        	strdup.c
+F STRERROR.C;1                      	strerror.c
+F STRSEP.C;1                        	strsep.c
+F SYSLOG.C;1                        	syslog.c
+F _MAP.;1                           	.MAP

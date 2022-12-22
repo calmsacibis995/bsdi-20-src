@@ -1,0 +1,13 @@
+F DECPA_DA.GZ;1                     	decpa.data.gz
+F DISTFILE.GZ;1                     	Distfile.datadir.gz
+F HOST_C.GZ;1                       	host.c.gz
+F HUP-NAME.GZ;1                     	hup-named.c.gz
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.datadir.gz
+F MKDB_PL.GZ;1                      	mkdb.pl.gz
+F MKSERVER.GZ;1                     	mkservers.pl.gz
+F MX_DATA.GZ;1                      	mx_data.gz
+F PASERVER.GZ;1                     	paservers.gz
+F README.GZ;1                       	README.gz
+F VERSION.GZ;1                      	version.gz
+F _MAP.GZ;1                         	.MAP.gz

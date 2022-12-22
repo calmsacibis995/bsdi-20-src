@@ -1,0 +1,85 @@
+Fri Dec  2 17:56:05 1994  Mike Stump  <mrs@cygnus.com>
+
+	* typeinfo.{cc, h} (__rtti_match): Change interface to compiler
+        for dynamic_casting to gear up for exception handling's use of
+        rtti for argument matching.
+
+Tue Nov 29 16:49:32 1994  Per Bothner  <bothner@kalessin.cygnus.com>
+
+	* configure.in (configdirs):  Add stl.
+	* Makefile.in:  Build stl, and merge .o files from it.
+
+Thu Nov 17 15:30:57 1994  Jason Merrill  <jason@phydeaux.cygnus.com>
+
+	* bastring.hI: Add iterator, const_iterator, begin() and end() to
+        basic_string.
+
+Mon Nov  7 16:50:33 1994  Jason Merrill  <jason@phydeaux.cygnus.com>
+
+	* Makefile.in, configure.in, config/*.ml, tests/Makefile.in,
+	tests/configure.in: Various changes to handle --enable-shared.
+
+Fri Nov  4 19:13:33 1994  Mike Stump  (mrs@cygnus.com)
+
+	* exception{,.cc}: Added to support catching bad_cast's.
+
+Thu Nov  3 17:42:13 1994  Mike Stump  (mrs@cygnus.com)
+
+	* typeinfo.h (type_info::{name, before}): Add to match draft.
+
+Thu Nov  3 00:56:34 1994  Jason Merrill  (jason@phydeaux.cygnus.com)
+
+	* Makefile.in (LIBIBERTY_OBJS): Add strerror.o.
+
+Mon Oct 31 15:33:06 1994  Kung Hsu  (kung@mexican.cygnus.com)
+
+	* typeinfo.cc: Fix a bug in the final return.
+	* typeinfo.cc: Fix the ANSI header version number.
+	* typeinfo.h: ditto.
+
+Fri Oct 28 14:23:12 1994  Mike Stump  <mrs@cygnus.com>
+
+	* type_info.{cc,h}: Rename to typeinfo to better match current draft.
+
+Wed Oct 26 11:13:53 1994  Kung Hsu  (kung@mexican.cygnus.com)
+
+	* type_info.h: new header file for rtti.
+	* type_info.cc: new code file for rtti.
+	* Makefile.in: change to include type_info.o in libstdc++ for rtti.
+
+Sat Oct 15 16:09:51 1994  Jason Merrill  (jason@phydeaux.cygnus.com)
+
+	* cinst.hI: Also declare instantiations of out-of-line functions.
+
+Fri Oct 14 15:00:09 1994  Jason Merrill  (jason@phydeaux.cygnus.com)
+
+	* configure.in (CXXINCLUDES): Use {} to wrap variable name.
+	* tests/configure.in (CXXINCLUDES): Ditto.
+
+	* cinst.hI: Declare instantiations of two-argument functions so
+        overload resolution will work.
+	* complext.hI: Always include cinst.hI.
+
+	* bastring.ccI (operator>>): Tweak.
+
+Tue Oct 11 17:07:49 1994  Jason Merrill  (jason@phydeaux.cygnus.com)
+
+	* stddef*: Do the #pragma i/i thang.
+
+	* bastring.hI (basic_string::put_at): Use operator[].
+	(basic_string::terminate): Don't necessarily copy the rep.
+
+	* bastring.ccI (operator>>): Avoid shrinking and then re-expanding
+        the string.
+
+	* bastring.*I, sinst.cc: Only allow allocation policy control if
+	_G_ALLOC_CONTROL is defined.
+
+	* Makefile.in (libstdc++.a): Depend on iostream.list and libiberty.a.
+	(../libio/iostream.list): New rule.
+	(../libiberty/libiberty.a): New rule.
+	(OBJS): Add stddef.o.
+
+Sat Oct  8 23:59:45 1994  Jason Merrill (jason@phydeaux.cygnus.com)
+
+	* *: First checkin.

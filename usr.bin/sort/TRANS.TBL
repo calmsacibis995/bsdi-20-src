@@ -1,0 +1,17 @@
+F APPEND_C.GZ;1                     	append.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F FIELDS_C.GZ;1                     	fields.c.gz
+F FILES_C.GZ;1                      	files.c.gz
+F FSORT_C.GZ;1                      	fsort.c.gz
+F FSORT_H.GZ;1                      	fsort.h.gz
+F INIT_C.GZ;1                       	init.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MSORT_C.GZ;1                      	msort.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/sort
+F ON_ERR_C.GZ;1                     	on_err.c.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F SORT_1.GZ;1                       	sort.1.gz
+F SORT_C.GZ;1                       	sort.c.gz
+F SORT_H.GZ;1                       	sort.h.gz
+F TMP_C.GZ;1                        	tmp.c.gz
+F _MAP.GZ;1                         	.MAP.gz

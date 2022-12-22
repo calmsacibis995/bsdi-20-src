@@ -1,0 +1,58 @@
+1. Rewrite realpath() so it's not such a piece of junk
+
+2. Write a password editor for the groupaccess file
+
+3. Add logging on commands, connect, disconnect, refusals, etc. to logfile.
+   Make logfile ftplog rather than xferlog.
+
+4. Add multi-class code.
+
+5. Enhance ftp-pid files to become single file with continuous process
+   status.
+
+6. Write xferstats in C for speed and more options.
+
+7. Write ftpstat program, including -k option to kill off all FTP daemons
+
+8. Add checksuming capabilities for transmitted files.
+   SITE CHECKMETHOD <method> 
+   SITE CHECKSUM [<file>]
+
+   If <file> not specified, return checksum for last transmitted file.
+
+9. Write dynamic ftp monitoring program
+
+10. Add ability to log different info to different files
+
+11. Write ftplogd.  Ftp processes send log info to ftplogd which configurably
+    writes data to a lot of different places (syslog[@loghost], logfile(s)).
+
+12. Add ability to limit total connections from any domain.
+
+13. Limit the number of files/bytes a user can transfer at one sitting.
+
+14. Limit the total time a session can take.
+
+15. Add byte, file and time quotas.
+
+16. Add "guestuser" command to complement "guestgroup".
+
+17. Keep track of total file transfer and command response byte counts
+
+18. Include descriptive ls program, add ".private" file to disable
+    directory listings...
+
+19. Include system load as a limit parameter (load < xxx, maxusers = nnn)
+
+20. Allow access control commands to specify remote 
+    addresses by network+netmask.
+
+21. Allow access control by remote username (if authenticated)
+
+22. Log more information into PID files:
+        - files/bytes transferred
+        - current action (a la SETPROCNAME)
+        - remote host
+        - classes
+
+23. write an ftp status program to take advantage of new PID file

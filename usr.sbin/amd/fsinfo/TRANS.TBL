@@ -1,0 +1,18 @@
+D CONF                              	conf
+F FSINFO_8.GZ;1                     	fsinfo.8.gz
+F FSINFO_C.GZ;1                     	fsinfo.c.gz
+F FSINFO_H.GZ;1                     	fsinfo.h.gz
+F FSI_ANAL.GZ;1                     	fsi_analyze.c.gz
+F FSI_DATA.GZ;1                     	fsi_data.h.gz
+F FSI_DICT.GZ;1                     	fsi_dict.c.gz
+F FSI_GRAM.GZ;1                     	fsi_gram.y.gz
+F FSI_LEX_.GZ;1                     	fsi_lex.l.gz
+F FSI_UTIL.GZ;1                     	fsi_util.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/amd/fsinfo
+F WR_ATAB_.GZ;1                     	wr_atab.c.gz
+F WR_BPARA.GZ;1                     	wr_bparam.c.gz
+F WR_DUMPS.GZ;1                     	wr_dumpset.c.gz
+F WR_EXPOR.GZ;1                     	wr_exportfs.c.gz
+F WR_FSTAB.GZ;1                     	wr_fstab.c.gz
+F _MAP.GZ;1                         	.MAP.gz

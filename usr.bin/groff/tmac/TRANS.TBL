@@ -1,0 +1,22 @@
+F EQNRC.GZ;1                        	eqnrc.gz
+D GROT                              	grot
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MS_MAN.GZ;1                       	ms.man.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/tmac
+F TMAC_AN.GZ;1                      	tmac.an.gz
+F TMAC_DVI.GZ;1                     	tmac.dvi.gz
+F TMAC_E.GZ;1                       	tmac.e.gz
+F TMAC_LAT.GZ;1                     	tmac.latin1.gz
+F TMAC_PIC.GZ;1                     	tmac.pic.gz
+F TMAC_PS.GZ;1                      	tmac.ps.gz
+F TMAC_PSA.GZ;1                     	tmac.psatk.gz
+F TMAC_PSN.GZ;1                     	tmac.psnew.gz
+F TMAC_PSO.GZ;1                     	tmac.psold.gz
+F TMAC_PSP.GZ;1                     	tmac.pspic.gz
+F TMAC_S.GZ;1                       	tmac.s.gz
+F TMAC_TTY.000;1                    	tmac.tty-char.gz
+F TMAC_TTY.GZ;1                     	tmac.tty.gz
+F TMAC_X.GZ;1                       	tmac.X.gz
+F TMAC_XPS.GZ;1                     	tmac.Xps.gz
+F TROFFRC.GZ;1                      	troffrc.gz
+F _MAP.GZ;1                         	.MAP.gz

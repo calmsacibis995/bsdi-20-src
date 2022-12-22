@@ -1,0 +1,7 @@
+F CD_1.GZ;1                         	cd.1.gz
+F INTRO_1.GZ;1                      	intro.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MAKEWHAT.GZ;1                     	makewhatis.1.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/man/man1
+F WAIT_1.GZ;1                       	wait.1.gz
+F _MAP.GZ;1                         	.MAP.gz

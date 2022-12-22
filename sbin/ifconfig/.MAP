@@ -1,0 +1,4 @@
+F IFCONFIG.8;1                      	ifconfig.8
+F IFCONFIG.C;1                      	ifconfig.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/ifconfigptompactgermmon6/includes

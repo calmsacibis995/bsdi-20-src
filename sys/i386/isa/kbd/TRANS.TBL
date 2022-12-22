@@ -1,0 +1,15 @@
+F PCCONSTA.000;1                    	pcconstab.DE.gz
+F PCCONSTA.001;1                    	pcconstab.FR.gz
+F PCCONSTA.002;1                    	pcconstab.JP.gz
+F PCCONSTA.003;1                    	pcconstab.JP.ctl.gz
+F PCCONSTA.004;1                    	pcconstab.RU.gz
+F PCCONSTA.005;1                    	pcconstab.SE.gz
+F PCCONSTA.006;1                    	pcconstab.SP.gz
+F PCCONSTA.007;1                    	pcconstab.UK.gz
+F PCCONSTA.008;1                    	pcconstab.US.gz
+F PCCONSTA.009;1                    	pcconstab.US.ctl.gz
+F PCCONSTA.00A;1                    	pcconstab.USJP.gz
+F PCCONSTA.00B;1                    	pcconstab.BE.gz
+F PCCONSTA.00C;1                    	pcconstab.BG.gz
+F PCCONSTA.00D;1                    	pcconstab.NO.8859.gz
+F PCCONSTA.GZ;1                     	pcconstab.USJP.ctl.gz

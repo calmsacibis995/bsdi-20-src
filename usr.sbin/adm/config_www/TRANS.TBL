@@ -1,0 +1,5 @@
+F CONFIG_W.000;1                    	config_www.pl.gz
+F CONFIG_W.GZ;1                     	config_www.8.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/adm/config_www
+F _MAP.GZ;1                         	.MAP.gz

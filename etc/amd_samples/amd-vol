@@ -1,0 +1,7 @@
+# map for /vol
+/defaults	type:=nfs;opts:=rw,intr,rsize=4096,wsize=4096
+
+bsdi		rhost:=BSDI.COM;rfs:=/bsdi
+bsdi.sw		rhost:=BSDI.COM;rfs:=/bsdi.sw
+net2		rhost:=BSDI.COM;rfs:=/bsdi/NET2
+master		rhost:=BSDI.COM;rfs:=/bsdi/MASTER/BSDI_OS

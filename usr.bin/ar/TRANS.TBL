@@ -1,0 +1,18 @@
+F APPEND_C.GZ;1                     	append.c.gz
+F ARCHIVE_.000;1                    	archive.h.gz
+F ARCHIVE_.GZ;1                     	archive.c.gz
+F AR_1.GZ;1                         	ar.1.gz
+F AR_5_5.GZ;1                       	ar.5.5.gz
+F AR_C.GZ;1                         	ar.c.gz
+F CONTENTS.GZ;1                     	contents.c.gz
+F DELETE_C.GZ;1                     	delete.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F EXTRACT_.GZ;1                     	extract.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+F MOVE_C.GZ;1                       	move.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/ar
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F PRINT_C.GZ;1                      	print.c.gz
+F REPLACE_.GZ;1                     	replace.c.gz
+F _MAP.GZ;1                         	.MAP.gz

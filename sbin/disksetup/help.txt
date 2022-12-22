@@ -1,0 +1,1402 @@
+:
+: Copyright (c) 1994 Berkeley Software Design, Inc. All rights reserved.
+: The Berkeley Software Design Inc. software License Agreement specifies
+: the terms and conditions for redistribution.
+:
+:	BSDI help.txt,v 2.1 1995/02/03 07:15:26 polk Exp
+:
+#
+# press_return_to_continue
+Press return to continue:
+#
+# cross_part_error
+The partition you have defined crosses a partition boundry.
+Please alter the length, the starting offset, or both.  You
+may also use <ESC> to cancel this edit session.
+#
+# overlap_filesys
+This filesystem overlaps with another defined filesystem.
+Please alter the length, the starting offset, or both.  You
+may also use <ESC> to cancel this edit session.
+#
+# bad_root_part_fdisk
+By convention, the root filesystem (/) is mounted on the
+``a'' partition.  The root filesystem must start at the begining
+of a BSD FDISK partition.
+#
+# bad_root_part
+By convention, the root filesystem (/) is mounted on the
+``a'' partition.  The root filesystem must start at the begining
+of the disk.
+#
+# root_on_bsd_only
+By convention, the root filesystem (/) is mounted on the
+``a'' partition.  The root filesystem must start at the begining
+of a BSD FDISK partition.  The root filesystem defined does not
+start the begining of a BSD FDISK partition.
+#
+# bsd_qhelp
+At this point you should define, alter, or delete the file systems.
+BSD/OS requires at least a root filesystem (/), a swap partition and
+a /usr filesystem.
+
+If you do not understand this screen, press X and then Y to confirm
+the cancel.  When asked if you want the standard setup, answer YES.
+
+[I]mport [A]dd [D]elete [E]dit [N]ext [X]Abort [?]Help
+#
+# bsd_help
+The BSD Partitioning screen is used to define filesystems to be mounted
+by BSD/OS.  To install BSD/OS you must have at least a root filesystem (/),
+a swap partition, and a /usr filesystem.  Typically the root filesystem
+is at least 8MB, swap is at least the size of memory, and /usr is the
+remainder of the space allocated to BSD/OS.  If you plan to have /tmp
+mounted in memory, you should make the swap partition at least 16 MB,
+preferably more.  For more information on determining sizes, please
+refer to the installation guide for help in determining how much disk
+space you will need to install BSD/OS.
+
+At this point you may either go on to the next phase, alter a filesystem
+displayed in the filesystem table, define a filesystem, delete the
+description of a filesystem, or exit this phase with out making any
+changes.
+
+You may use one of the following commands:
+
+A   Use 'A' to add a new partition.  Disksetup will default the new
+    partition to the next needed partition.
+
+D   Use 'D' to delete the definition of a partition.  You will need to
+    do this if your disk has old data on it that you no longer want.
+    Deleting a partition will cause you to lose all the data contained
+    in that partition.
+
+E   Use 'E' to change any of the parameters of a partition.  Generally
+    you will only need to delete and add partitions.
+
+I   Use 'I' to import an FDISK partition as a BSD/OS partition.  Use
+    this to assign a DOS partition to a BSD/OS partition (typically
+    the 'd' partition) to allow BSD/OS to mount the DOS partition.
+    Currently Extended DOS partitions will need hand management once
+    imported.  If there is only one extended DOS partition, it will
+    actually start 1 track farther in than the imported partition's
+    starting offset.
+
+N   Use 'N' to record the changes you have made and go on to the next
+    phase of disksetup.  The changes will actually be applied when
+    you finish setting up your disk.  At that time you will have one
+    more chance to request that these changes (and all other changes
+    during this session of disksetup) to not be made.
+
+X   Discard all changes to the partition table and exit this phase of
+    the program.  No changes to the partition table will be written to
+    the disk.
+#
+# fdisk_qhelp
+At this point you should define, alter, or delete the partitions for
+this disk so that you have enough space reserved for each of your
+operating systems. Press N when you are done or X if you wish to cancel.
+
+If you do not understand this screen, press X and then Y to confirm
+the cancel.  When asked if you want the standard setup, answer YES.
+
+[A]dd [D]elete [E]dit [N]ext [X]Abort [*]Mark Active [?]Help
+#
+# fdisk_help
+The FDISK screen is used to divide (partition) your hard disk for
+use by one or more operating systems.  To install BSD/OS, you must have a
+partition assigned to BSD/OS which has enough space to install its
+filesystems on this disk.  Please refer to the installation guide for
+help in determining how much disk space you will need to install BSD/OS.
+
+At this point you may either go on to the next phase, alter a partition
+displayed in the partition table, add a partition to the partition
+table, delete a partition from the partition table, or exit this phase
+with out making any changes.
+
+You may use one of the following commands:
+
+A   Use 'A' to add a new partition.  For instance, you will need to have
+    at least one partition for BSD/OS.  If you want to run DOS (or some
+    other O/S) you will need a partition for it as well.
+
+D   Use 'D' to delete the definition of a partition.  You will need to
+    do this if your disk has old data on it that you no longer want.
+    Deleting a partition will cause you to lose all the data contained
+    in that partition.
+
+*   Use '*' to assign the active boot partition.  The standard master
+    boot record (MBR) will boot from which ever partition is marked
+    active.  If you use the BOOTANY bootstrap, the active partition
+    determines the default partition to boot from.
+
+E   Use 'E' to change any of the parameters of a partition.  Generally
+    you will only need to delete and add partitions.
+
+N   Use 'N' to record the changes you have made and go on to the next
+    phase of disksetup.  The changes will actually be applied when
+    you finish setting up your disk.  At that time you will have one
+    more chance to request that these changes (and all other changes
+    during this session of disksetup) to not be made.
+
+X   Discard all changes to the partition table and exit this phase of
+    the program.  No changes to the partition table will be written to
+    the disk.
+#
+# fdisk_length_help
+Edit the length of the partition.  The length may be an arbitrary number
+of sectors.  You may enter numbers in megabytes or cylinders by pressing
+m or c after typing in the number.  This will convert your number to the
+correct number of sectors.  Pressing the upper case letters M and C you
+can convert to the appropriate number of sectors such that the partition
+will end on a cylinder boundary.  You can alter the current length by a
+relative amount by preceding the number with a + or -.
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the starting offset of the partition
+
+[0-9.] Use the number keys to enter the length of the partition.  When
+       entering in megabytes or cylinders you may use a floating point
+       number.
+
++ or - Start a entering a value which will be relative to the current
+       length displayed.
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the partition length and redisplay
+       the value that was displayed upon entering this field.
+
+X      Set partition length to the maximum value given the current
+       starting offset.  The maximum value is one which will not cause
+       this partition to overlap any other partition or run off the end
+       of the disk.
+
+    The following modifiers are always entered after a number has been
+    entered.  When the modifier is entered whatever number that is
+    currently displayed is converted to sectors.
+
+S or = Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in sectors.
+
+T      Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in tracks.
+
+c      Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in cylinders.
+C      ... and adjust the length such that the partition will end on a
+       cylinder boundary.
+
+m      Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in megabytes.
+M      ... and adjust the length such that the partition will end on a
+       cylinder boundary.
+#
+# fdisk_length_qhelp
+Edit the length of the partition.  You may enter the number of sectors
+(e.g., 1234s), or the number of megabytes (e.g., 10M) or the number of
+cylinders (e.g., 32C).  You can also adjust the value relatively (e.g.,
+-37s or +5M).
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# fdisk_offset_qhelp
+Edit the starting offset of the partition.  You may enter the number of
+sectors (e.g., 1234s), or the number of megabytes (e.g., 10M) or the
+number of cylinders (e.g., 32C).  You can also adjust the value
+relatively (e.g., -37s or +5M).
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# fdisk_offset_help
+Edit the starting offset of the partition.  The starting offset will be
+automatically adjusted according to the rules associated with the type
+of partition.  You may enter numbers in megabytes or cylinders by
+pressing m or c after typing in the number.  This will convert you
+number to the correct number of sectors.  Pressing the upper case letter
+M can convert to the appropriate number of sectors such that the
+partition will start on a cylinder boundary.  You may alter the current
+offset by a relative amount by preceding the number with a + or -.
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the type of the partition
+
+[0-9.] Use the number keys to enter the offset of the partition.  When
+       entering in megabytes or cylinders you may use a floating point
+       number.
+
++ or - Start entering a value which will be relative to the current
+       offset displayed.
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the partition offset and redisplay
+       the value that was displayed upon entering this field.
+
+X      Set partition offset to the value which will increase the size
+       of the partition to the maximum space available.  This is done
+       by decreasing the the starting offset of the partition to start
+       just after the previous partition, if possible.
+
+    The following modifiers are always entered after a number has been
+    entered.  When the modifier is entered whatever number that is
+    currently displayed is converted to sectors.
+
+S or = Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in sectors.
+
+T      Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in tracks.
+
+C      Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in cylinders.
+
+m      Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in megabytes.
+M      ... and adjust the offset such that the partition will start on a
+       cylinder boundary.
+#
+# fdisk_type_help
+Enter the partition type either symbolically (e.g.,  BSD/OS or DOS) or a
+hexadecimal constant (e.g., 0x9f or 0x04).  You must provide a
+partition type other than 0 to continue on with editing the partition.
+
+The special keystrokes are:
+
+^T     List the available types
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the starting offset of the partition
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+#
+# fdisk_type_qhelp
+Enter in the partition type.  The type may either be symbolic (e.g.,
+BSD/OS or DOS) or a hexadecimal constant (e.g., 0x9f or 0x04).  You must
+provide a partition type other than 0 to continue on with editing the
+partition.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# fdisk_edit_help
+At this point you should select the partition you wish to modify by
+pressing the number which corresponds to that partition.  The partition
+numbers are displayed in the far left column of the partition table.
+You may press <ESC> if you do not wish to modify any partition.
+#
+# fdisk_active_help
+At this point you should select the partition you wish to mark as active
+by pressing the number which corresponds to that partition.
+
+The standard master boot record (MBR) will boot from which ever
+partition is marked active.  If you use the BOOTANY bootstrap, the
+active partition determines the default partition to boot from.
+
+You may press <ESC> if you do not wish to set the active partition.
+#
+# fdisk_delete_help
+At this point you should select the partition entry you wish to delete
+by pressing the number which corresponds to that partition.  The
+partition numbers are displayed in the far left column of the partition
+table.
+
+                           ** WARNING **
+You will lose any data stored on a partition you delete.  If you do not
+want to delete any partition, press <ESC> now.
+
+You may press <ESC> if you do not wish to delete any partition.
+#
+# fdisk_loose_changes
+Are you sure you would like to lose all the changes
+you have made to the FDISK Partition Table?
+#
+# fdisk_need_active_partition
+There must be an active partition defined.  This is the default
+partition to boot from when booting the machine.
+#
+# fdisk_save_changes
+Are you sure you wish to save this table as the new
+FDISK Partition Table for this drive?
+Doing so will cause you to lose any data stored in
+any partition that you have modified or deleted.
+If you have not backed up any data you wish to save,
+then exit this program now with CTRL-C
+and save your data appropriately.
+
+Do you still wish to save this table?
+#
+# fdisk_delete_which
+Enter the partition number you wish to delete
+#
+# fdisk_active_which
+Enter the partition number you wish to mark as active
+#
+# fdisk_edit_which
+Enter the partition number you wish to edit
+#
+# fdisk_really_edit
+By altering this entry you will
+lose all data already stored in this partition.
+If you have not backed up any data you
+wish to save from this partition,
+then exit this program now with CTRL-C
+and save your data appropriately.
+
+Do you still wish to apply this change?
+#
+# fdisk_cant_add
+There are already 4 FDISK partition entries defined.
+There may be no more than 4 entries.
+#
+# bsd_save_changes
+Are you sure you wish to save this table as the new
+BSD Partition Table for this drive?
+Doing so will cause you to lose any data stored in
+any partition that you have modified or deleted.
+If you have not backed up any data you wish to save,
+then exit this program now with CTRL-C
+and save your data appropriately.
+
+Do you still wish to save this table?
+#
+# bsd_loose_changes
+Are you sure you would like to lose all the changes
+you have made to the BSD Partition Table?
+#
+# bsd_edit_help
+At this point you should select the partition you wish to modify by
+pressing the letter which corresponds to that partition.  The partition
+letters are displayed in the far left column of the partition table.
+You may press <ESC> if you do not wish to modify any partition.
+#
+# bsd_which_edit
+Please enter the letter of the partition you wish to edit
+#
+# bsd_really_edit
+By altering this entry you will
+lose all data already stored in this partition.
+If you have not backed up any data you
+wish to save from this partition,
+then exit this program now with CTRL-C
+and save your data appropriately.
+
+Do you still wish to apply this change?
+#
+# bsd_import_help
+At this point you should select an FDISK partition you would like
+to import.  When importing an FDISK partition, you are defining a
+BSD partition which will reside within that FDISK partition.  This
+does not affect the data within the FDISK partition.  You select
+the FDISK partition by pressing the number of the partition you
+wish to import.
+#
+# bsd_cant_import
+There are no FDISK partitions which have
+unassigned freespace to import.
+#
+# bsd_wont_import
+There are no unassigned BSD partitions into
+which an FDISK partition may be imported.
+unassigned freespace to import.
+#
+# bsd_import_which
+Please enter the FDISK partition number to import
+#
+# bsd_cant_add
+There is no freespace left in any of the
+FDISK partitions marked for BSD.
+
+(Use the [I]mport command to add a BSD partition
+which resides in a non-BSD FDISK partition.)
+#
+# bsd_wont_add
+There are no unassigned BSD partitions.
+There may be no more than 8 BSD partitions per disk.
+#
+# bsd_fdisk_add
+Please enter the FDISK partition number to use
+#
+# bsd_delete_help
+At this point you should select the partition entry you wish to delete
+by pressing the letter which corresponds to that partition.  The
+partition letters are displayed in the far left column of the partition
+table.
+
+                           ** WARNING **
+You will lose any data stored on a partition you delete.  If you do not
+want to delete any partition, press <ESC> now.
+
+You may press <ESC> if you do not wish to delete any partition.
+#
+# bsd_delete_which
+Please enter the letter of the BSD Partition you wish to delete
+#
+# fdisk_cant_delete
+There are no FDISK partitions left to delete!
+#
+# bsd_cant_delete
+There are no BSD partitions left that can be deleted!
+#
+# bsd_length_help
+Edit the length of the partition.  The length may be an arbitrary number
+of sectors.  You may enter numbers in megabytes or cylinders by pressing
+m or c after typing in the number.  This will convert your number to the
+correct number of sectors.  Pressing the upper case letters M and C you
+can convert to the appropriate number of sectors such that the partition
+will end on a cylinder boundary.  You can alter the current length by a
+relative amount by preceding the number with a + or -.
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the starting offset of the partition
+
+[0-9.] Use the number keys to enter the length of the partition.  When
+       entering in megabytes or cylinders you may use a floating point
+       number.
+
++ or - Start a entering a value which will be relative to the current
+       length displayed.
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the partition length and redisplay
+       the value that was displayed upon entering this field.
+
+X      Set partition length to the maximum value given the current
+       starting offset.  The maximum value is one which will not cause
+       this partition to overlap any other partition or run off the end
+       of the disk.
+
+    The following modifiers are always entered after a number has been
+    entered.  When the modifier is entered whatever number that is
+    currently displayed is converted to sectors.
+
+S or = Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in sectors.
+
+T      Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in tracks.
+
+c      Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in cylinders.
+C      ... and adjust the length such that the partition will end on a
+       cylinder boundary.
+
+m      Apply the current, possibly relative, number to the length of the
+       partition.  Treat the current value displayed in megabytes.
+M      ... and adjust the length such that the partition will end on a
+       cylinder boundary.
+#
+# bsd_length_qhelp
+Edit the length of the partition.  You may enter the number of sectors
+(e.g., 1234s), or the number of megabytes (e.g., 10M) or the number of
+cylinders (e.g., 32C).  You can also adjust the value relatively (e.g.,
+-37s or +5M).
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# bsd_end_help
+Edit the ending sector of the partition.  The ending sector may be
+an arbitrary sector beyond the offset of the partition.  You may
+enter numbers in megabytes or cylinders by pressing m or c after
+typing in the number.  This will convert your number to the correct
+number of sectors.  Pressing the upper case letters M and C you
+can convert to the appropriate number of sectors such that the
+partition will end on a cylinder boundary.  You can alter the
+current ending sector by a relative amount by preceding the number
+with a + or -.
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the letter the partition is assigned to
+
+[0-9.] Use the number keys to enter the ending sector of the partition. 
+       When entering in megabytes or cylinders you may use a floating
+       point number.
+
++ or - Start a entering a value which will be relative to the current
+       ending sector displayed.
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the partition ending sector and
+       redisplay the value that was displayed upon entering this field.
+
+X      Set partition ending sector to the maximum value given the current
+       starting offset.  The maximum value is one which will not cause
+       this partition to overlap any other partition or run off the end
+       of the disk.
+
+    The following modifiers are always entered after a number has been
+    entered.  When the modifier is entered whatever number that is
+    currently displayed is converted to sectors.
+
+S or = Apply the current, possibly relative, number to the ending
+       sector of the partition.  Treat the current value displayed
+       in sectors.
+
+T      Apply the current, possibly relative, number to the ending
+       sector of the partition.  Treat the current value displayed
+       in tracks.
+
+c      Apply the current, possibly relative, number to the ending
+       sector of the partition.  Treat the current value displayed
+       in cylinders.
+C      ... and adjust the ending sector such that the partition will
+       end on a cylinder boundary.
+
+m      Apply the current, possibly relative, number to the ending
+       sector of the partition.  Treat the current value displayed
+       in megabytes.
+M      ... and adjust the ending sector such that the partition will
+       end on a cylinder boundary.
+#
+# bsd_end_qhelp
+Edit the ending sector of the partition.  You may enter the sector number
+(e.g., 1234s), or the number of megabytes (e.g., 10M) or the number of
+cylinders (e.g., 32C).  You can also adjust the value relatively (e.g.,
+-37s or +5M).
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# bsd_offset_qhelp
+Edit the starting offset of the partition.  You may enter the number of
+sectors (e.g., 1234s), or the number of megabytes (e.g., 10M) or the
+number of cylinders (e.g., 32C).  You can also adjust the value
+relatively (e.g., -37s or +5M).
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# bsd_offset_help
+Edit the starting offset of the partition.  The starting offset will be
+automatically adjusted according to the rules associated with the type
+of partition.  You may enter numbers in megabytes or cylinders by
+pressing m or c after typing in the number.  This will convert you
+number to the correct number of sectors.  Pressing the upper case letter
+M can convert to the appropriate number of sectors such that the
+partition will start on a cylinder boundary.  You may alter the current
+offset by a relative amount by preceding the number with a + or -.
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the ending sector of the partition
+
+[0-9.] Use the number keys to enter the offset of the partition.  When
+       entering in megabytes or cylinders you may use a floating point
+       number.
+
++ or - Start entering a value which will be relative to the current
+       offset displayed.
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the partition offset and redisplay
+       the value that was displayed upon entering this field.
+
+X      Set partition offset to the value which will increase the size
+       of the partition to the maximum space available.  This is done
+       by decreasing the the starting offset of the partition to start
+       just after the previous partition, if possible.
+
+    The following modifiers are always entered after a number has been
+    entered.  When the modifier is entered whatever number that is
+    currently displayed is converted to sectors.
+
+S or = Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in sectors.
+
+T      Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in tracks.
+
+C      Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in cylinders.
+
+m      Apply the current, possibly relative, number to the offset of the
+       partition.  Treat the current value displayed in megabytes.
+M      ... and adjust the offset such that the partition will start on a
+       cylinder boundary.
+#
+# bsd_type_help
+Enter the filesystem type symbolically.  The available types are:
+``4.2'', ``swap'', ``msdos'', and ``unknown''.
+
+The special keystrokes are:
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the mount point of the partition
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+#
+# bsd_type_qhelp
+Enter in the filelsystem type.  The available types are:
+``4.2'', ``swap'', ``msdos'', and ``unknown''.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# bsd_mount_help
+Enter the path to where this filesystem should be mounted (it at all).
+Typically mount points are:
+
+    /        For the ``a'' partition
+    swap     For the ``b'' partition
+    /usr     For the ``h'' partition
+    /var     For the ``g'' partition
+
+The special keystrokes are:
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the length of the partition
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+#
+# bsd_mount_qhelp
+Enter the mount point for the filelsystem.  Typical mount points are:
+``/'', ``swap'', ``/usr'', ``/var''
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# bsd_partition_help
+Enter the partition letter you wished this partition assigned to.
+You may not assign the partition to a letter already assigned to
+another partition.
+
+ESC    Cancel all changes to this partition.
+ENTER  Apply changes to this partition.
+TAB    Go on to editing the type of the partition.
+
+[A-H]  The partition letters.
+#
+# bsd_partition_qhelp
+Enter in the letter [A-H] to assign this partition to.
+You may not assign the partition to a letter already assigned to
+another partition.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# main_multipleos_long
+BSD/OS may be installed as
+
+    * The only operating system on the disk
+    * Sharing the disk with other operating systems, such as DOS.
+
+#
+# main_multipleos_long_fdisk
+Disksetup has detected an FDISK label on your disk.  This may be an indication
+of another operating system already installed on the disk.  BSD/OS may
+installed either as the only operating system on the disk, or it may share the
+disk with other operating systems, such as DOS.
+#
+# main_multipleos
+Do you wish to share this disk with other operating systems?
+#
+# main_newfdisk_long
+Disksetup has detected an FDISK table on your disk.  You may either start
+with this FDISK table or create a new FDISK table.  If you create a new
+FDISK table you will lose all information on this disk.
+#
+# main_newfdisk
+Use the current FDISK label?
+#
+# main_typical_long
+A typical multi-OS installation includes only BSD/OS and DOS with an
+optional shared swap partition.
+#
+# main_typical
+Is this your configuration?
+#
+# main_space_long
+Disksetup will intitialize your disk with 2 FDISK partitions.  You
+must choose how much space to assign BSD/OS and how much for DOS.
+BSD/OS requires between 60 and 300 MB of disk space depending on the
+installation options chosen.  Typically you should try to have at least
+120 MB for BSD/OS, 200 if you plan to use the X Window System.
+#
+# main_space
+How much space would you like to assign to DOS?
+#
+# main_coswap_long
+Disksetup recommends %dMB be reserved for swap.
+Some users have found that they would like to share a partition for
+BSD/OS's swap partition with an extended DOS partition used for a
+windows temporary swap file.  This typically would be done on a
+system with disk space concerns, such as a laptop.
+#
+# main_coswap
+How much space would you like to assign to swap (0 -> no shared swap)?
+#
+# main_swap_to_small
+You have not assigned enough space to the shared swap partition.
+#
+# main_get_dos_geom_long
+The geometry (number of heads, sectors per track and number of
+cylinders) of the disk that will be used by the generic boot
+block (and DOS as well as other systems which use the BIOS)
+must be known in order to create an FDISK partition.  Disksetup
+will try to automatically determine this geometry...
+
+#
+# main_get_dos_geom
+Would you like to view or change the BIOS geometry for the disk?
+#
+# main_get_bsd_geom_long
+The geometry (number of heads, sectors per track and number of
+cylinders) of the disk that will be used by BSD/OS must be known in
+order to properly create a disk label.
+
+#
+# main_possible_geometries
+The geometry (number of heads, sectors per track and number of
+cylinders) for the disk is needed.  Disksetup will do its best
+to assist you in picking the geometry.  It is possible to find
+the geometry from several places.  Below is a table of geometries
+easily determined by disksetup.  (The BSD/OS geometry is only defined
+if this disk has been previously labeled.)
+
+#
+# will_use_fdisk_geometry
+Disksetup recommends the geometry determined from the FDISK table for DOS.
+#
+# will_use_bios_geometry
+Disksetup recommends the geometry determined from the BIOS for
+the FDISK table.
+#
+# will_use_cmos_geometry
+Disksetup recommends the geometry determined from the CMOS for
+the FDISK table.
+#
+# will_use_bsd_geometry
+Disksetup will use the BSD/OS geometry for the FDISK table, but you
+should verify this is correct for your BIOS and change the geometry
+if not.
+
+Press <ENTER> to continue:
+#
+# main_default_bsd_geom
+Disksetup will default the DOS geometry to the geometry to be used by
+BSD/OS.  It is possible this the wrong geometry, so please check
+the geometry by using it.
+Press <ENTER> to continue.
+#
+# main_get_bsd_geom
+Would you like to view or change the BSD geometry for this disk?
+#
+# alter_geometry
+Would you like to view or change the geometry retrieved?
+#
+# geometry_file
+The file name entered must reference a file which contains a valid
+disk label of the kind produced by disksetup.
+Please enter the file name:
+#
+# disktab_entry
+The type entered must be one of the types of a disk found in
+the /etc/disktab file.
+Please enter the disk type:
+#
+# no_label_file
+The file %s cannot be opened for reading.
+%s
+#
+# bad_label_file
+The file %s is not a valid label file.
+#
+# pick_geometry
+There are several methods of initializing the geometry.  Note that
+probing some SCSI disks or busy SCSI disks, may have undesired results
+(such has hanging) hence you should only probe a disk from single user.
+
+Your options are:
+#
+# invalid_geometry
+The geometry retrieved was invalid.
+#
+# main_need_bsd_geom_long
+The geometry of the drive must now be determined.  lf this disk was
+previously labeled, you should try using the [I]nternal geometry.
+A new disk typically should be [P]robed.  Problem disks should be
+entered by hand.
+#
+# main_need_bsd_geom_coex_long
+The geometry of the drive that will be used by BSD/OS must now be determined.
+lf this disk was previously labeled, you should try using the [I]nternal
+geometry.  A new disk typically should be [P]robed.  You may wish to enter
+the BIOS geometry (if defined)  if you want the geometry to match that of
+your other operating system.
+#
+# main_need_dos_geom_long
+Enter the geometry that will be used by the other OS.  This should
+be what you will set the CMOS geometry to, or, if it will be
+determined by a driver, the geometry that driver will expect.
+#
+# geom_type_qhelp
+Enter the vendor and type of disk (informational only)
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# geom_type_help
+Edit the vendor and type of the the disk.  This value is informational
+only in nature.
+
+ESC    Cancel all changes to the geometry.
+ENTER  Apply changes to the geometry.
+TAB    Go on to editing the number of heads per cylinder.
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+#
+# geom_head_qhelp
+Enter the number of heads on the disk.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# geom_head_help
+Edit the number of heads on the disk.  The number of heads is typically
+between 1 and 16, though it may be more.  You may adjust the number of
+heads by a relative amount by preceding the number with a + or -, or
+adjust it by a multiple by preceding the number with a * or /.
+
+ESC    Cancel all changes to the geometry.
+ENTER  Apply changes to the geometry.
+TAB    Go on to editing the number of sectors per track.
+
+[0-9] Use the number keys to enter the number of head of the disk.
+
++ or - Start entering a value which will be relative to the current
+       number of heads displayed.
+
+* or / Start entering a multiple of the current number of heads
+       displayed.
+
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the number of heads and redisplay
+       the value that was displayed upon entering this field.
+
+    The following modifier is always entered after a number has been
+    entered.
+
+=      Apply the current, possibly relative, number to heads.
+#
+# geom_sectors_qhelp
+Enter the number of sectors per track on the disk.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# geom_sectors_help
+Edit the number of sectors per track on the disk.  The number of sectors
+per track is typically between 1 and 255. You may adjust the number of
+sectors per track by a relative amount by preceding the number with a
++ or -, or adjust it by a multiple by preceding the number with a * or /.
+
+ESC    Cancel all changes to the geometry.
+ENTER  Apply changes to the geometry.
+TAB    Go on to editing the number of cylinders per track.
+
+[0-9] Use the number keys to enter the number of sectors per track
+      of the disk.
+
++ or - Start entering a value which will be relative to the current
+       number of sectors per track displayed.
+
+* or / Start entering a multiple of the current number of sectors
+       per track displayed.
+
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the number of sectors per track and
+       redisplay the value that was displayed upon entering this field.
+
+    The following modifier is always entered after a number has been
+    entered.
+
+=      Apply the current, possibly relative, number to the sectors
+       per track of the disk.
+#
+# geom_cylinders_qhelp
+Enter the number of cylinders on the disk.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# geom_cylinders_help
+Edit the number of cylinders on the disk.  You may adjust the
+number of cylinders by a relative amount by preceding the number
+with a + or -, or adjust it by a multiple by preceding the number
+with a * or /.
+
+ESC    Cancel all changes to the geometry.
+ENTER  Apply changes to the geometry.
+TAB    Go on to editing the number of sectors on the disk.
+
+[0-9] Use the number keys to enter the number of cylinders of the disk.
+
++ or - Start entering a value which will be relative to the current
+       number of cylinders displayed.
+* or / Start entering a multiple of the current number of cylinders
+       displayed.
+
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the number of cylinders and
+       redisplay the value that was displayed upon entering this field.
+
+    The following modifier is always entered after a number has been
+    entered.
+
+=      Apply the current, possibly relative, number to the number of
+       cylinders.
+#
+# geom_total_qhelp
+Enter the number of sectors on the disk.
+
+[ESC]cancel [ENTER]apply [TAB]next [?]Help
+#
+# geom_total_help
+Edit the number of sectors on the disk.  The number of sectors
+is typically around the value of the head x sectors per track x
+cylinders. You may adjust the number of sectors by a relative
+amount by preceding the number with a + or -, or adjust it by a
+multiple by preceding the number with a * or /.
+
+ESC    Cancel all changes to the geometry.
+ENTER  Apply changes to the geometry.
+TAB    Go on to editing the type of the disk.
+
+[0-9] Use the number keys to enter the number of sectors of the disk.
+
++ or - Start entering a value which will be relative to the current
+       number of sectors displayed.
+* or / Start entering a multiple of the current number of sectors
+       displayed.
+
+
+^H     Delete the last character typed.
+DEL    Delete the last character typed.
+
+^U     Clear the field.
+^W     Clear the field.
+
+U      Undo the current changes to the number of sectors and
+       redisplay the value that was displayed upon entering this field.
+
+    The following modifier is always entered after a number has been
+    entered.
+
+=      Apply the current, possibly relative, number to the number of
+       sectors.
+#
+# geom_bad_heads
+The number of heads must be between 1 and 64
+#
+# geom_bad_sectors
+The number of sectors per track must be between 1 and 255
+#
+# geom_bad_cylinders
+There must be at least 1 cylinder
+#
+# geom_bad_size
+There must be at least 1 sector on the disk
+#
+# edit_redit
+Re-edit the label?
+#
+# edit_invalid
+The disk label just edited is invalid.
+#
+# edit_invalid_exit
+The disk label just edited is invalid.
+Will not write a corrupt disk label.  Quitting.
+#
+# main_view_fdisk
+Would you like to view/alter the FDISK table created?
+#
+# main_cant_keep_existing_bsd_long
+Your disk appears to have a valid BSD partition table.
+It appears that you have altered (or added) the FDISK table and
+hence this partition table is probably no longer valid and you
+should start with a clean table.  Note that starting with a clean
+table will cause all data on the disk to be lost.
+
+#
+# main_keep_existing_bsd_long
+Your disk appears to have a valid BSD partition table.
+You may either start with this table or start with a clean table.
+Note that starting with a clean table, or altering any partitions
+in the current table, will cause the data associated with the changed
+partitions (all partitions if you clean the table) to be lost.
+
+#
+# main_keep_existing_bsd
+Do you wish to start with a clean table?
+#
+# main_standard_bsd_long
+A standard BSD partition table includes room for the root filesystem,
+swap space, and a /usr partition.
+
+#
+# main_standard_bsd
+Would you like to use the standard BSD partition table?
+#
+# main_view_bsd
+Would you like to view/alter the BSD partition table?
+#
+# main_view_new_bsd
+Would you like to view/alter the BSD partition table created?
+#
+# main_redo_fdisk_long
+You have aborted the FDISK editor.  Any modifications made to
+the FDISK table have been forgotten.  You now have the option
+of either exiting disksetup or restarting the editing of the FDISK
+table for this disk.  If you aborted the editor because the
+label originally displayed was what you wanted, re-edit the
+FDISK label and use <N> to go on to the next phase.
+
+#
+# main_redo_fdisk
+Would you like to retry the FDISK portion?
+#
+# main_need_fdisk_for_cores
+Disksetup cannot continue as an FDISK table must be specified and
+accepted in order to continue with the options that have been chosen.
+Please rerun disksetup when you have decided on a new course of action.
+#
+# main_need_bsd_part
+There is no partition defined in the FDISK table for BSD/OS.
+There must be a BSD/OS FDISK partition defined in order to install
+BSD/OS.  If you continue on with this FDISK table you will not be able
+to install BSD/OS.
+
+Do you wish to modify the table in order to add a BSD/OS partition?
+#
+# main_aborted_fdisk_long
+You have aborted the FDISK editor.  If you have done this because
+you had altered the standard layout that was provided and thought
+that was a mistake, it is safe to go on.  If on the other had you
+aborted the FDISK editor because you did not want any changes made
+to the FDISK table, you should not continue.
+
+#
+# main_aborted_fdisk
+Do you wish to continue disksetup with the standard layout provided?
+#
+# main_redo_bsd_long
+You have aborted the BSD partition editor.  Any modifications made
+to the BSD partition table have been forgotten.  You now have the
+option to either exiting disksetup or restarting the editing of
+the BSD partition table for this disk.  If you aborted the editor
+because the table originally displayed was what you wanted, re-edit
+the BSD label and use <N> to go on to the next phase.
+
+#
+# main_redo_bsd
+Would you like to retry the BSD partition table portion?
+#
+# main_no_root_long
+There does not appear to be a root filesystem (BSD partition a)
+on this disk.  Without a root filesystem this disk will not be
+bootable to BSD.  You may edit the BSD partition table if you wish
+to still add a partition for the root system, or press CTRL-C if you
+wish to exit disksetup.
+
+#
+# no_root_here_long
+There is no root filesysetm (BSD paritition a) defined for the
+BSD partition.  It is highly unlikely that this partition is
+actually bootable.
+
+#
+# no_root_here
+Still make this partition bootable?
+#
+# main_no_root
+Edit BSD partitions to allow adding of a valid root filesystem?
+#
+# main_need_bsd
+Disksetup cannot continue as a BSD partition table must be specified
+and accepted in order to continue with options that have been
+chosen.  Please rerun disksetup when you have decided on a new
+course of action.
+#
+# main_aborted_bsd_long
+You have aborted the BSD partition editor.  If you have done this
+because you had altered the standard layout that was provided and
+thought that was a mistake, it is safe to go on.  If on the other
+had you aborted the BSD partition editor because you did not want
+any changes made to the BSD partition table, you should not continue.
+
+#
+# main_aborted_bsd
+Do you wish to continue disksetup with the standard layout provided?
+#
+# geom_bad_geometry
+The geometry you have entered is bad. The number of heads must
+be between 1 and 64, the number of sectors per track must be
+between 1 and 255 and the number of cylinders must be at least 1.
+#
+# fdisk_negative_length
+Partitions must have a length of at least 1 sector.
+#
+# fdisk_negative_offset
+Partitions must have a non-negative starting sector.
+#
+# fdisk_too_long
+Partitions must not extend beyond the end of the disk.
+#
+# disk_bad_fdisk_long
+Though there appear to be FDISK table entries on this disk,
+disksetup cannot verify that they are valid entries.  You
+may choose to either start with these entries or ignore them.
+Disksetup was not able to deterimine the geometry that might
+be used with these entries, so you should be prepared to
+supply them if you keep this table.
+
+#
+# disk_bad_fdisk
+Preserve possibly invalid FDISK table?
+#
+# main_new_master_long
+The master boot record is located at the beginning of the disk with
+the FDISK table.  The master boot record determines which FDISK
+partition to boot from.  You may choose to either use the existing
+master boot record or install a new master boot record.  The master
+boot record provided with BSD/OS allows up to 4 operating systems to
+be booted.  (Some operating systems have been noted to not work with
+this master boot record.)
+
+#
+# main_new_master
+Do you wish to install a new master boot record?
+#
+# main_bsd_master_long
+The default master boot record provided with BSD/OS is bootany.sys.
+To accept this, simply press <ENTER>, else provide the name of the
+file which contains the master boot record you wish to use.
+
+#
+# main_bsd_master
+Please enter the name of the master boot record to install:
+#
+# bootany_long
+
+Once you have installed the MBR for this disk, disksetup will run
+the bootany(8) utility to install the bootany MBR and allow you to
+set up which partitions are bootable.
+
+Press <ENTER> to continue.
+#
+# bootany_run
+
+The bootany(8) utility will now be run.  This utility will allow you
+to assign up to 4 partitions to be selectable as the boot partition
+at boot time.  If you do not select any partition, your disk will
+not be bootable.
+
+#
+# bootany_boot
+Is this partition bootable?
+#
+# bootany_name
+
+There is a 15 character limit to identifiers.
+Enter string to identify this partition:
+#
+# main_new_bootblocks_long
+If this disk is to be bootable to BSD/OS, you must assure that
+boot blocks have been installed at the start of the BSD/OS partition.
+
+#
+# main_no_bootblocks_long
+There were no apparent BSD/OS boot blocks on this disk.
+#
+# main_new_bootblocks
+Do you wish to install new BSD/OS boot blocks?
+#
+# main_moved_bootblocks_long
+The location for the BSD/OS boot blocks has moved and hence the
+old boot blocks will not work.
+#
+# no_place_to_label
+Disksetup can find no place to label this disk.  This implies that
+there is an FDISK table, but not partitions marked for use by BSD/OS,
+but a BSD/OS label is still required.  Disksetup can still label the
+disk, but this will destroy any information on sector 1 of the disk.
+Disksetup will not write any BSD/OS boot blocks to this disk.
+
+#
+# label_at_0
+Place the BSD/OS label in sector 1 of the disk?
+#
+# wrong_boot_part
+Disksetup has determined that the BSD/OS disk label must be placed on
+on a BSD/OS FDISK partition which is not the same BSD/OS partition
+that contains the BSD/OS root filesystem.  No BSD/OS boot blocks will
+be written to this disk.
+
+Press <ENTER> to continue:
+#
+# wont_boot_part
+Disksetup has determined there is no BSD/OS root filesystem on any
+of the BSD/OS FDISK partitions.  No BSD/OS boot blocks will
+be written to this disk.
+#
+# main_new_bootblocks_choice_long
+The following types of bootblocks are available:
+
+    bios  BIOS boot blocks (any disk recognized by the BIOS, such as C:,
+	                    Adaptec 152x, EIDE w/co-residency)
+    fd    Floppy boot blocks
+    wd    IDE/ESDI/MFM/RLL/ST506/etc boot blocks
+    aha   ISA SCSI boot blocks (Adaptec 154x, all Buslogic)
+    eaha  EISA SCSI boot blocks (Adaptec 174x)
+
+#
+# main_new_bootblocks_choice
+What type of boot blocks do you wish to install?
+#
+# main_ask_type_long
+Disksetup was not able to determine the type of this disk.  This
+may be because you are running disksetup on a regular file or
+you do not have fully configured /dev directory for this device
+type.  The types of disks are:
+
+	SCSI	Any SCSI disk
+	IDE	Any IDE or ST506 disk
+	ST506	Synonym for IDE
+	ESDI	Any ESDI disk
+	FLOPPY	Any Floppy disk
+
+#
+# main_ask_type
+What type of disk is this?
+#
+# main_no_fdisk_on_floppy
+It is not possible to place an FDISK partition table on a floppy.
+Disksetup cannot continue.
+#
+# disk_conflict_geom
+WARNING: The geometry discoverd from the FDISK partition table does not
+match the geometry that it appears the BIOS will use.  The geometry
+discovered from the FDISK table has:
+
+#
+# disk_conflict_geom_pgeom
+    %3d heads, %3d sectors/track, %4d cylinders
+
+#
+# disk_conflict_geom_1
+It appears the BIOS would use:
+
+#
+# disk_conflict_geom_2
+Disksetup will use the geometry determined by looking at the FDISK table.
+If this is wrong, please change the BIOS by examining and editing the
+FDISK geometry  when asked about it.
+
+Press <ENTER> to continue.
+#
+# main_bootany_no_fdisk
+It appears that somehow bootany expects to be installed but there is
+no FDISK table to install.  This probably indicates a logic error
+someplace in disksetup.  Please inform support@bsdi.com of this and
+how you got to this point.  Disksetup will not be modifying the
+boot record to contain the bootany data.  When asked about installing
+the Master Boot Record, you are advised to answer no.
+
+Press <ENTER> to continue.
+#
+# no_room_for_label
+The secondary bootstrap did not leave enough room for the disk label.
+#
+# need_secondary_bootstrap
+Disksetup cannot write just the primary bootstrap when the
+BSD/OS FDISK partition being labeled is at the start of the
+disk.
+#
+# okay_to_write_mbr
+Okay to write new MBR?
+#
+# okay_to_write_dlbb
+Okay to write new disk label and BSD/OS boot blocks
+#
+# okay_to_write_dl
+Okay to write new disk label?
+#
+# use_old_label
+Although the disklabel is not supposed to be written, no label was found
+at the location it is expected to be.  However, a label at the start of
+the disk was found.  This label will be installed in the new location.
+
+Press <ENTER> to continue.
+#
+# mbr_stays_same
+The new MBR and old MBR appear identical.  No MBR will be written.
+
+Press <ENTER> to continue.
+#
+# incore_and_bootblocks_long
+Disksetup has been requested to both install bootblocks/MBR and at the
+same time to only update the in core label.  The specified MBR and/or
+bootblocks will be ignored.
+
+Press <ENTER> to continue.
+#
+# must_use_bios_boot
+It appears that this disk will be used for co-residency and uses
+a mapped geometry.  In order for this disk to boot you must use
+the BIOS boot blocks.
+
+Press <ENTER> to continue.

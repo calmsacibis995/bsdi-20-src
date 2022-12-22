@@ -1,0 +1,8 @@
+F HPUX.MT;1                         	hpux.mt
+F ISC.MT;1                          	isc.mt
+F LINUX.MT;1                        	linux.mt
+F MT-PAPIC.;1                       	mt-papic
+F MT-SPARC.;1                       	mt-sparcpic
+F MT-X86PI.;1                       	mt-x86pic
+F NETWARE.MT;1                      	netware.mt
+F SCO4.MT;1                         	sco4.mt

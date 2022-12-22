@@ -1,0 +1,9 @@
+F DISKDEFE.8;1                      	diskdefect.8
+F DISKDEFE.C;1                      	diskdefect.c
+F DISKDEFE.H;1                      	diskdefect.h
+F DRCK_SCA.C;1                      	drck_scan.c
+F ERRLIB.C;1                        	errlib.c
+F ERRLIB.H;1                        	errlib.h
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/diskdefect
+F _MAP.;1                           	.MAP

@@ -1,0 +1,5 @@
+F HEAD_1.GZ;1                       	head.1.gz
+F HEAD_C.GZ;1                       	head.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/head
+F _MAP.GZ;1                         	.MAP.gz

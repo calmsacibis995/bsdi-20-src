@@ -1,0 +1,12 @@
+F CHUINIT_.GZ;1                     	chuinit.c.gz
+F CLKINIT_.GZ;1                     	clkinit.c.gz
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.tmpl.gz
+F README.GZ;1                       	README.gz
+F README_K.GZ;1                     	README.kern.gz
+F README_S.GZ;1                     	README.streams.gz
+F TTY_CHU_.000;1                    	tty_chu.c.gz
+F TTY_CHU_.GZ;1                     	tty_chu_STREAMS.c.gz
+F TTY_CLK_.000;1                    	tty_clk.c.gz
+F TTY_CLK_.GZ;1                     	tty_clk_STREAMS.c.gz
+F _MAP.GZ;1                         	.MAP.gz

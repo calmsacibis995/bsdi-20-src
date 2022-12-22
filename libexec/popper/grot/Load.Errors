@@ -1,0 +1,45 @@
+Popper compile/load errors and fixes:
+
+
+1. Make error on non-BSD 4.3 Unix systems:
+
+People often see the following error message when compiling and
+loading popper:
+
+        ld: Undefined symbol
+           __res
+        *** Error code 2
+
+The simplest fix is to edit the Makefile and remove the "-DBIND43"
+flag from the compiler options.
+
+Another solution that works on some systems is to add this line to
+the Makefile:
+
+       LIBES  = -lresolv
+
+Then do:
+
+       rm *.o
+       make
+
+If you skip the "rm *.o" step you will get the message that popper is
+up to date and the change to the Makefile will have no effect.
+
+- Cliff Frost <cliff@cmsa.berkeley.edu> (31 Aug 1992/10 May 1993)
+
+
+2. C2 security & SunOS 4.1.x
+
+When running with C2 security (/etc/security/passwd.adjunct) under
+SunOS 4.1.x you can't use the -DBIND43 option in Makefile.  The
+crypt() function that is called from pop_pass.c calls pwdauth() to
+authenticate the password if it's stored in /etc/security/passwd.adjunct.
+pwdauth() does a gethostbyname() while conntecting to the rpc process
+to check out the password.  This gethostbyname() fails when popper
+is compiled with -DBIND43.  It appears that the options set in the
+Code inside the BIND43 ifdef's messes with the later gethostbyname
+in pwdauth.  popper seems to work fine when compiled without the
+BIND43 define.
+
+- Brett McCoy <brtmac@maverick.ksu.ksu.edu> (25 Aug 1992)

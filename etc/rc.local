@@ -1,0 +1,42 @@
+#
+# site-specific startup actions, daemons
+#
+#	BSDI	rc.local,v 2.1 1995/02/03 05:54:29 polk Exp
+#	@(#)rc.local    8.1 (Berkeley) 6/10/93
+#
+
+T=/tmp/_motd
+rm -f $T
+sysctl -n kern.version | head -1 > $T
+echo "" >> $T
+sed '1,/^$/d' < /etc/motd >> $T
+cp $T /etc/motd
+rm -f $T
+
+# Uncomment and modify as needed to setup digi boards
+# echo 'configuring digi serial cards'
+# /usr/sbin/digisetup /dev/ttyA00		# first digi board      
+# /usr/sbin/digisetup /dev/ttyB00		# second digi board
+# /usr/sbin/digisetup /dev/ttyC00		# third digi board
+# /usr/sbin/digisetup /dev/ttyD00		# fourth digi board
+# /usr/sbin/digisetup -l 32 /dev/ttyA00		# xem with more than 16 lines
+# /usr/sbin/digisetup -a /dev/ttyA00		# use alt pin configuration
+
+echo -n 'starting local daemons:'
+
+# Uncomment the following lines to run snmpd and smux...
+# echo -n " snmpd";	/usr/contrib/isode/sbin/snmpd -t >/dev/null 2>&1 &
+# echo -n " smux";	/usr/contrib/isode/sbin/smux.unixd >/dev/null 2>&1 &
+
+# Uncomment the following line to run pcnfsd -- don't forget to
+# add the -n argument to mountd in /etc/rc as well...
+# echo -n " pcnfsd";	/usr/contrib/bin/pcnfsd
+
+# Put additional local daemons here...
+
+echo '.'
+
+# Uncomment the following to start INN (netnews)
+# /var/news/etc/rc.news
+
+# Put other local customizations here...

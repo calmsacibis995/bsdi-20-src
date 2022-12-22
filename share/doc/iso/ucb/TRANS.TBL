@@ -1,0 +1,9 @@
+F ADDR_NR.GZ;1                      	addr.nr.gz
+F DEF_NR.GZ;1                       	def.nr.gz
+F INTRO_NR.GZ;1                     	intro.nr.gz
+F IPC_NR.GZ;1                       	ipc.nr.gz
+F MACROS_N.GZ;1                     	macros.nr.gz
+F NET_SERV.GZ;1                     	net_serv.nr.gz
+F PROGRAM_.GZ;1                     	program.nr.gz
+F TRANS_SE.GZ;1                     	trans_serv.nr.gz
+F _MAP.GZ;1                         	.MAP.gz

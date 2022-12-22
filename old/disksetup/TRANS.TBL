@@ -1,0 +1,12 @@
+F BOOTANY.H;1                       	bootany.h
+F CHECKGET.C;1                      	checkget.c
+F DISKSETU.8;1                      	disksetup.8
+F DISKSETU.C;1                      	disksetup.c
+F DKCKSUM.C;1                       	dkcksum.c
+F INTERACT.C;1                      	interactive.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/old/disksetup
+F PATHNAME.H;1                      	pathnames.h
+F STRUCTS.H;1                       	structs.h
+F Z.C;1                             	z.c
+F _MAP.;1                           	.MAP

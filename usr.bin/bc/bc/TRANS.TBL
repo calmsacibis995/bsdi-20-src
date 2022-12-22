@@ -1,0 +1,21 @@
+F BCDEFS_H.GZ;1                     	bcdefs.h.gz
+F BC_1.GZ;1                         	bc.1.gz
+F BC_Y.GZ;1                         	bc.y.gz
+F CONFIG_H.GZ;1                     	config.h.gz
+F CONST_H.GZ;1                      	const.h.gz
+F EXECUTE_.GZ;1                     	execute.c.gz
+F GLOBAL_C.GZ;1                     	global.c.gz
+F GLOBAL_H.GZ;1                     	global.h.gz
+F LIBMATH_.GZ;1                     	libmath.h.gz
+F LOAD_C.GZ;1                       	load.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NUMBER_C.GZ;1                     	number.c.gz
+F NUMBER_H.GZ;1                     	number.h.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/bc/bc
+F PROTO_H.GZ;1                      	proto.h.gz
+F SCAN_L.GZ;1                       	scan.l.gz
+F STORAGE_.GZ;1                     	storage.c.gz
+F UTIL_C.GZ;1                       	util.c.gz
+F VERSION_.GZ;1                     	version.h.gz
+F _MAP.GZ;1                         	.MAP.gz

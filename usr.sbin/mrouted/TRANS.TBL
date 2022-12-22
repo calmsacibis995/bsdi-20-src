@@ -1,0 +1,8 @@
+D COMMON                            	common
+F LICENSE.GZ;1                      	LICENSE.gz
+F MAKEFILE.000;1                    	Makefile.inc.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+D MAP-MBON                          	map-mbone
+D MRINFO                            	mrinfo
+D MROUTED                           	mrouted
+F _MAP.GZ;1                         	.MAP.gz

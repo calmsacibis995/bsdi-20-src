@@ -1,0 +1,26 @@
+F CHARINFO.GZ;1                     	charinfo.h.gz
+F COLUMN_C.GZ;1                     	column.cc.gz
+F DICTIONA.000;1                    	dictionary.cc.gz
+F DICTIONA.GZ;1                     	dictionary.h.gz
+F DIV_CC.GZ;1                       	div.cc.gz
+F DIV_H.GZ;1                        	div.h.gz
+F ENV_CC.GZ;1                       	env.cc.gz
+F ENV_H.GZ;1                        	env.h.gz
+D GROT                              	grot
+F HVUNITS_.GZ;1                     	hvunits.h.gz
+F HYPHEN_U.GZ;1                     	hyphen.us.gz
+F INPUT_CC.GZ;1                     	input.cc.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NODE_CC.GZ;1                      	node.cc.gz
+F NODE_H.GZ;1                       	node.h.gz
+F NUMBER_C.GZ;1                     	number.cc.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/groff/troff
+F REG_CC.GZ;1                       	reg.cc.gz
+F REG_H.GZ;1                        	reg.h.gz
+F REQUEST_.GZ;1                     	request.h.gz
+F SYMBOL_C.GZ;1                     	symbol.cc.gz
+F SYMBOL_H.GZ;1                     	symbol.h.gz
+F TOKEN_H.GZ;1                      	token.h.gz
+F TROFF_H.GZ;1                      	troff.h.gz
+F TROFF_MA.GZ;1                     	troff.man.gz
+F _MAP.GZ;1                         	.MAP.gz

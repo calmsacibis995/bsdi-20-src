@@ -1,0 +1,184 @@
+#	BSDI gettytab,v 2.1 1995/02/03 05:53:51 polk Exp
+#	@(#)gettytab	5.14 (Berkeley) 3/27/91
+#
+# Most of the table entries here are just copies of the old getty table,
+# it is by no means certain, or even likely, that any of them are optimal
+# for any purpose whatever.  Nor is it likely that more than a couple are
+# even correct.
+#
+# If parity is not specified in the gettytab (either in the default
+# or the specific entry used) then getty will use the system defaults
+# (which can be set with ``stty -D'' in /etc/rc.local).  Changing
+# the parity (or other tty settings) in gettytab will leave it set
+# for the rest of the login session.
+#
+# The default gettytab entry is used to set defaults for all other
+# entries and in cases where getty is called with no table name.
+#
+default:\
+	:sp#9600:im=\r\n\r\nBSDI BSD/OS 2.0 (%h) (%t)\r\n\r\n:
+
+P|Pc|pccons|Pc console:\
+	:np:sp#9600:
+
+#
+# Fixed speed entries
+#
+#	The "std.NNN" names are known to the special case
+#	portselector code in getty, however they can
+#	be assigned to any table desired.
+#	The "NNN-baud" names are known to the special case
+#	autobaud code in getty, and likewise can
+#	be assigned to any table desired (hopefully the same speed).
+#
+a|std.110|110-baud:\
+	:sp#110:
+b|std.134|134.5-baud:\
+	:ep:sp#134:ht:nl:
+1|std.150|150-baud:\
+	:ep:sp#150:ht:nl:lm=\E\72\6\6\17login\72 :
+c|std.300|300-baud:\
+	:sp#300:
+d|std.600|600-baud:\
+	:sp#600:
+f|std.1200|1200-baud:\
+	:sp#1200:
+6|std.2400|2400-baud:\
+	:sp#2400:
+7|std.4800|4800-baud:\
+	:sp#4800:
+2|std.9600|9600-baud:\
+	:sp#9600:
+g|std.19200|19200-baud:\
+	:sp#19200:
+h|std.38400|38400-baud:\
+	:sp#38400:
+i|std.57600|57600-baud:\
+	:sp#57600:
+j|std.76800|76800-baud:\
+	:sp#76800:
+k|std.115200|115200-baud:\
+	:sp#115200:
+
+# Hardwired terminals (no hardware carrier detect)
+hw.9600:\
+	:hw:tc=9600-baud:
+hw.19200:\
+	:hw:tc=19200-baud:
+hw.38400:\
+	:hw:tc=38400-baud:
+hw.57600:\
+	:hw:tc=57600-baud:
+hw.76800:\
+	:hw:tc=76800-baud:
+hw.115200:\
+	:hw:tc=115200-baud:
+
+#
+# Fast, fixed-DCE-speed modem with hardware flow control enabled.
+# Modern modems can negotiate the telco line speed and keep the DCE speed
+# fixed.  This is highly recommended if you can configure your modem to do
+# so.  The :hf: enables hardware flow control.  Note that high data rates
+# require at least a 16550A UART for proper operation (the higher-end
+# multiport cards like Digiboard, RISCom and MAXPEED will also work).
+# Unbuffered serial ports will drop data and be very unreliable at high
+# data rates (9600 baud or less is recommended).
+#
+bidir.57600|bidirectional line, locked DCE speed:\
+	:bi:sp#57600:
+bidir.57600-hf|bidirectional line, locked DCE speed, hardware flow:\
+	:bi:hf:sp#57600:
+t57600:\
+	:sp#57600:
+t57600-hf:\
+	:hf:sp#57600:
+
+#
+# 2400/1200/300 Dialup rotary (can start either way)
+#
+D2400|d2400|Fast-Dial-2400:\
+	:nx=D1200:tc=2400-baud:
+3|D1200|Fast-Dial-1200:\
+	:nx=D300:tc=1200-baud:
+5|D300|Fast-Dial-300:\
+	:nx=D2400:tc=300-baud:
+
+#
+# 9600/2400/1200 Dialup rotary
+# The "bidir" entry allows dial-in and dial-out on same device
+#
+bidir.9600:\
+	:bi:nx=t2400a:tc=9600-baud:
+t9600a:\
+	:nx=t2400a:tc=9600-baud:
+t2400a:\
+	:nx=t1200a:tc=2400-baud:
+t1200a:\
+	:nx=t9600a:tc=1200-baud:
+
+#
+# 19200/9600/2400/1200 Dialup rotary
+# The "bidir" entry allows dial-in and dial-out on same device
+#
+bidir.19200:\
+	:bi:nx=t9600:tc=19200-baud:
+t19200:\
+	:nx=t9600:tc=19200-baud:
+t9600:\
+	:nx=t2400:tc=9600-baud:
+t2400:\
+	:nx=t1200:tc=2400-baud:
+t1200:\
+	:nx=t19200:tc=1200-baud:
+
+#
+# Odd special case terminals
+#
+-|tty33|asr33|Pity the poor user of this beast:\
+	:tc=110-baud:
+
+4|Console|Console Decwriter II:\
+	:rw:tc=300-baud:
+
+e|Console-1200|Console Decwriter III:\
+	:rw:tc=1200-baud:
+
+l|lsi chess terminal:\
+	:sp#300:
+
+X|Xwindow|X Window System:\
+	:rw:sp#9600:
+
+#
+# Wierdo special case for fast crt's with hardcopy devices
+#
+8|T9600|CRT with hardcopy:\
+	:nx=T300:tc=9600-baud:
+9|T300|CRT with hardcopy (300):\
+	:nx=T9600:tc=300-baud:
+
+#
+# Plugboard, and misc other terminals
+#
+plug-9600|Plugboard-9600:\
+	:pf#1:tc=9600-baud:
+p|P9600|Plugboard-9600-rotary:\
+	:pf#1:nx=P300:tc=9600-baud:
+q|P300|Plugboard-300:\
+	:pf#1:nx=P1200:tc=300-baud:
+r|P1200|Plugboard-1200:\
+	:pf#1:nx=P9600:tc=1200-baud:
+
+#
+# XXXX Port selector
+#
+s|DSW|Port Selector:\
+	:ps:sp#2400:
+
+#
+# Auto-baud speed detect entry for Micom 600.
+# Special code in getty will switch this out
+# to one of the NNN-baud entries.
+#
+A|Auto-baud:\
+	:ab:sp#2400:m0=parenb,parodd:

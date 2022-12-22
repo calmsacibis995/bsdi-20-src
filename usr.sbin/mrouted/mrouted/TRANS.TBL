@@ -1,0 +1,10 @@
+F CONFIG_C.GZ;1                     	config.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MROUTED_.000;1                    	mrouted.8.gz
+F MROUTED_.GZ;1                     	mrouted.conf.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/mrouted/mrouted
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F ROUTE_C.GZ;1                      	route.c.gz
+F VIF_C.GZ;1                        	vif.c.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,17 @@
+F ALLOCA.S;1                        	alloca.s
+F DIVREM.M4;1                       	divrem.m4
+F FABS.S;1                          	fabs.s
+F FIXUNSDF.S;1                      	fixunsdfsi.s
+F FREXP.C;1                         	frexp.c
+F ISINF.C;1                         	isinf.c
+F ISNAN.C;1                         	isnan.c
+F LDEXP.C;1                         	ldexp.c
+F MAKEFILE.INC;1                    	Makefile.inc
+F MODF.S;1                          	modf.s
+F MUL.S;1                           	mul.s
+F SAVEREGS.S;1                      	saveregs.s
+F SETJMP.S;1                        	setjmp.s
+F SIGSETJM.S;1                      	sigsetjmp.s
+F UMUL.S;1                          	umul.s
+F _MAP.;1                           	.MAP
+F _SETJMP.S;1                       	_setjmp.s

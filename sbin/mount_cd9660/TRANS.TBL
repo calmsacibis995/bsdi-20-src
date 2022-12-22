@@ -1,0 +1,5 @@
+F MAKEFILE.;1                       	Makefile
+F MOUNT_CD.8;1                      	mount_cd9660.8
+F MOUNT_CD.C;1                      	mount_cd9660.c
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/mount_cd9660
+F _MAP.;1                           	.MAP

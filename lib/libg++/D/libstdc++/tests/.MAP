@@ -1,0 +1,15 @@
+F CHANGELO.;1                       	ChangeLog
+F CONFIGUR.IN;1                     	configure.in
+F MAKEFILE.IN;1                     	Makefile.in
+F TCOMPLEX.CC;1                     	tcomplex.cc
+F TCOMPLEX.EXP;1                    	tcomplex.exp
+F TCOMPLEX.INP;1                    	tcomplex.inp
+F TLIST.CC;1                        	tlist.cc
+F TLIST.EXP;1                       	tlist.exp
+F TMAP.CC;1                         	tmap.cc
+F TMAP.EXP;1                        	tmap.exp
+F TSTRING.CC;1                      	tstring.cc
+F TSTRING.EXP;1                     	tstring.exp
+F TSTRING.INP;1                     	tstring.inp
+F TVECTOR.CC;1                      	tvector.cc
+F TVECTOR.EXP;1                     	tvector.exp

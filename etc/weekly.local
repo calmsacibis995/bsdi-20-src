@@ -1,0 +1,32 @@
+#!/bin/sh -
+#
+#	BSDI weekly.local,v 2.1 1995/02/03 05:54:50 polk Exp
+#
+# weekly.local
+#
+
+cd /
+
+#
+# to enable: chown nobody /var/db/locate.database
+#
+echo ""; echo "Rebuilding locate database:"
+echo /usr/libexec/locate.updatedb | nice -5 su -m nobody 2>/dev/null
+
+#
+# to enable: cp /dev/null /var/db/core.db
+# /var/db/core.db contains a list of files to exclude from the report
+#
+echo ""; echo "Core list:"
+[ -f /var/db/core.db ] && {
+    locate '.*/core' | grep -vf /var/db/core.db
+    # if you want to remove the files append ``| xargs rm -f'' above
+}
+
+#
+# Uncomment to enable weekly removal of old .o files fron /usr/src and /usr/obj
+#
+#echo ""; echo "Removing old .o files:"
+#find /usr/src /usr/obj -name '*.o' -atime +21 -print -a -exec rm -f {} \;
+
+exit 0

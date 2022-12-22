@@ -1,0 +1,8 @@
+F REFCLOCK.000;1                    	refclock_omega.c.gz
+F REFCLOCK.001;1                    	refclock_mx4200.c.gz
+F REFCLOCK.002;1                    	refclock_msfees.c.gz
+F REFCLOCK.003;1                    	refclock_leitch.c.gz
+F REFCLOCK.004;1                    	refclock_gpstm.c.gz
+F REFCLOCK.005;1                    	refclock_datum.c.gz
+F REFCLOCK.GZ;1                     	refclock_parse.c.gz
+F _MAP.GZ;1                         	.MAP.gz

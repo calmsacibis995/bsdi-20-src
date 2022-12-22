@@ -1,0 +1,25 @@
+F LIBCOMPA.GZ;1                     	libcompat.except.gz
+F LIBCURSE.GZ;1                     	libcurses.except.gz
+F LIBC_CON.GZ;1                     	libc.const.gz
+F LIBC_EXC.GZ;1                     	libc.except.gz
+F LIBICE_E.GZ;1                     	libICE.except.gz
+F LIBRPC_E.GZ;1                     	librpc.except.gz
+F LIBSM_EX.GZ;1                     	libSM.except.gz
+F LIBX11_E.GZ;1                     	libX11.except.gz
+F LIBXAW_E.GZ;1                     	libXaw.except.gz
+F LIBXEXT_.GZ;1                     	libXext.except.gz
+F LIBXMU_E.GZ;1                     	libXmu.except.gz
+F LIBXT_CO.GZ;1                     	libXt.const.gz
+F LIBXT_EX.GZ;1                     	libXt.except.gz
+F LOADER_C.GZ;1                     	loader.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKSHLIB.GZ;1                      	mkshlib.gz
+F MKSHLIB_.GZ;1                     	mkshlib.8.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/shlib
+F SHLIB.GZ;1                        	shlib.gz
+F SHLIB_8.GZ;1                      	shlib.8.gz
+F SHLIB_MA.GZ;1                     	shlib.map.gz
+F SHLICC.GZ;1                       	shlicc.gz
+F SHLICC_1.GZ;1                     	shlicc.1.gz
+F SHLICRT0.GZ;1                     	shlicrt0.s.gz
+F _MAP.GZ;1                         	.MAP.gz

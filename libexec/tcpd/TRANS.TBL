@@ -1,0 +1,9 @@
+D GROT                              	grot
+D LIB                               	lib
+F MAKEFILE.;1                       	Makefile
+F MAKEFILE.DEF;1                    	Makefile.defs
+D SAFE_FIN                          	safe_finger
+D TCPD                              	tcpd
+D TRY                               	try
+D TRY-FROM                          	try-from
+F _MAP.;1                           	.MAP

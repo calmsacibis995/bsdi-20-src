@@ -1,0 +1,11 @@
+F CHANGELO.;1                       	ChangeLog
+F CREDITS.;1                        	CREDITS
+D DOC                               	doc
+F INSTALL.;1                        	INSTALL
+D KERNEL                            	kernel
+F MAKEFILE.;1                       	Makefile
+F README.;1                         	README
+D READMES                           	READMEs
+D SRC                               	src
+D TESTDIR                           	testdir
+F TODO.;1                           	TODO

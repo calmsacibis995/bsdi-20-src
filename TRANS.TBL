@@ -1,0 +1,15 @@
+D BIN                               	bin
+F CONTENTS.;1                       	CONTENTS
+F COPYRGHT.;1                       	COPYRGHT
+D ETC                               	etc
+F FIND.;1                           	find
+D INCLUDE                           	include
+D LIB                               	lib
+D LIBEXEC                           	libexec
+F MAKEFILE.;1                       	Makefile
+D OLD                               	old
+D SBIN                              	sbin
+D SHARE                             	share
+D SYS                               	sys
+D USR.BIN                           	usr.bin
+D USR.SBI                           	usr.sbin

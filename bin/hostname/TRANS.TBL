@@ -1,0 +1,5 @@
+F HOSTNAME.1;1                      	hostname.1
+F HOSTNAME.C;1                      	hostname.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/bin/hostname
+F _MAP.;1                           	.MAP

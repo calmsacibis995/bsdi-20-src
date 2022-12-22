@@ -1,0 +1,17 @@
+F AIX.GZ;1                          	aix.gz
+F AUX.GZ;1                          	aux.gz
+F BSDI.GZ;1                         	bsdi.gz
+F DECOSF1.GZ;1                      	decosf1.gz
+F DECOSF2.GZ;1                      	decosf2.gz
+F HPUX.GZ;1                         	hpux.gz
+F LINUX.GZ;1                        	linux.gz
+F NOTES-XN.GZ;1                     	notes-xntp-v3.gz
+F PARSE.GZ;1                        	parse.gz
+F README.GZ;1                       	README.gz
+F REFCLOCK.GZ;1                     	refclocks.gz
+F RS6000.GZ;1                       	rs6000.gz
+F SGI.GZ;1                          	sgi.gz
+F SOLARIS.GZ;1                      	solaris.gz
+F SUN4.GZ;1                         	sun4.gz
+F SVR4-DEL.GZ;1                     	svr4-dell.gz
+F _MAP.GZ;1                         	.MAP.gz

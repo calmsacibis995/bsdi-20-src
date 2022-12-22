@@ -1,0 +1,24 @@
+F CCL_C.GZ;1                        	ccl.c.gz
+F COPYING.GZ;1                      	COPYING.gz
+F DFA_C.GZ;1                        	dfa.c.gz
+F ECS_C.GZ;1                        	ecs.c.gz
+F FLEXDEF_.GZ;1                     	flexdef.h.gz
+F FLEXDOC_.GZ;1                     	flexdoc.1.gz
+F GEN_C.GZ;1                        	gen.c.gz
+D GROT                              	grot
+F LEX_1.GZ;1                        	lex.1.gz
+D LIB                               	lib
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MISC_C.GZ;1                       	misc.c.gz
+F NFA_C.GZ;1                        	nfa.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/lex
+F PARSE_Y.GZ;1                      	parse.y.gz
+F README.GZ;1                       	README.gz
+F SCAN_L.GZ;1                       	scan.l.gz
+F SKEL_C.GZ;1                       	skel.c.gz
+F SYM_C.GZ;1                        	sym.c.gz
+F TBLCMP_C.GZ;1                     	tblcmp.c.gz
+F VERSION_.GZ;1                     	version.h.gz
+F YYLEX_C.GZ;1                      	yylex.c.gz
+F _MAP.GZ;1                         	.MAP.gz

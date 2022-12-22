@@ -1,0 +1,10 @@
+D COMMON                            	common
+D COMMON_S                          	common_source
+D IEEE                              	ieee
+F MAKEFILE.;1                       	Makefile
+D MC68881                           	mc68881
+D NATIONAL                          	national
+L OBJ.;1                            	obj	/usr/cdrom_obj/lib/libmvm/libstdc++i.mantsas/includes
+F README.;1                         	README
+D TAHOE                             	tahoe
+D VAX                               	vax

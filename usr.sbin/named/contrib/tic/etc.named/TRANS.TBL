@@ -1,0 +1,12 @@
+F BOOT_PRM.GZ;1                     	boot.prm.gz
+F BOOT_SEC.GZ;1                     	boot.sec.gz
+F BOOT_SLV.GZ;1                     	boot.slv.gz
+F CACHE.GZ;1                        	cache.gz
+F HOSTS_CN.GZ;1                     	hosts.cname.gz
+F HOSTS_MA.GZ;1                     	hosts.main.gz
+F HOSTS_MX.GZ;1                     	hosts.mx.gz
+F HOSTS_NS.GZ;1                     	hosts.ns.gz
+F HOSTS_SO.GZ;1                     	hosts.soa.gz
+F HOSTS_WK.GZ;1                     	hosts.wks.gz
+F SERIAL.GZ;1                       	serial.gz
+F _MAP.GZ;1                         	.MAP.gz

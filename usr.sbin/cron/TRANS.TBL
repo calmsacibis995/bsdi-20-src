@@ -1,0 +1,27 @@
+F CHANGES.GZ;1                      	CHANGES.gz
+F COMPAT_H.GZ;1                     	compat.h.gz
+F CONFIG_H.GZ;1                     	config.h.gz
+F CRON_8.GZ;1                       	cron.8.gz
+F CRON_C.GZ;1                       	cron.c.gz
+F CRON_H.GZ;1                       	cron.h.gz
+F DATABASE.GZ;1                     	database.c.gz
+F DO_COMMA.GZ;1                     	do_command.c.gz
+F ENTRY_C.GZ;1                      	entry.c.gz
+F ENV_C.GZ;1                        	env.c.gz
+F EXTERNS_.GZ;1                     	externs.h.gz
+F FEATURES.GZ;1                     	FEATURES.gz
+D GROT                              	grot
+F INSTALL_.GZ;1                     	INSTALL.vixie.gz
+F JOB_C.GZ;1                        	job.c.gz
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.vixie.gz
+F MISC_C.GZ;1                       	misc.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/cron
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F POPEN_C.GZ;1                      	popen.c.gz
+F README_V.GZ;1                     	README.vixie.gz
+F ROOTTAB_.GZ;1                     	roottab.src.gz
+F TESTTAB_.GZ;1                     	testtab.src.gz
+F THANKS.GZ;1                       	THANKS.gz
+F USER_C.GZ;1                       	user.c.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,15 @@
+F ALLMASQU.GZ;1                     	allmasquerade.m4.gz
+F ALWAYS_A.GZ;1                     	always_add_domain.m4.gz
+F BITDOMAI.GZ;1                     	bitdomain.m4.gz
+F DOMAINTA.GZ;1                     	domaintable.m4.gz
+F MAILERTA.GZ;1                     	mailertable.m4.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NOCANONI.GZ;1                     	nocanonify.m4.gz
+F NODNS_M4.GZ;1                     	nodns.m4.gz
+F NOTSTICK.GZ;1                     	notsticky.m4.gz
+F NOUUCP_M.GZ;1                     	nouucp.m4.gz
+F NULLCLIE.GZ;1                     	nullclient.m4.gz
+F REDIRECT.GZ;1                     	redirect.m4.gz
+F USE_CW_F.GZ;1                     	use_cw_file.m4.gz
+F UUCPDOMA.GZ;1                     	uucpdomain.m4.gz
+F _MAP.GZ;1                         	.MAP.gz

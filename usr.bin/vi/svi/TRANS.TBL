@@ -1,0 +1,14 @@
+F SVI_CONF.GZ;1                     	svi_confirm.c.gz
+F SVI_CURS.GZ;1                     	svi_curses.c.gz
+F SVI_EX_C.GZ;1                     	svi_ex.c.gz
+F SVI_GET_.GZ;1                     	svi_get.c.gz
+F SVI_LINE.GZ;1                     	svi_line.c.gz
+F SVI_REFR.GZ;1                     	svi_refresh.c.gz
+F SVI_RELA.GZ;1                     	svi_relative.c.gz
+F SVI_SCRE.000;1                    	svi_screen.c.gz
+F SVI_SCRE.GZ;1                     	svi_screen.h.gz
+F SVI_SMAP.GZ;1                     	svi_smap.c.gz
+F SVI_SPLI.GZ;1                     	svi_split.c.gz
+F SVI_TERM.GZ;1                     	svi_term.c.gz
+F SVI_UTIL.GZ;1                     	svi_util.c.gz
+F _MAP.GZ;1                         	.MAP.gz

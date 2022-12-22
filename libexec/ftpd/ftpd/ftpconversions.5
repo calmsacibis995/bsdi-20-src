@@ -1,0 +1,33 @@
+.\" SCCSID: @(#)ftpconversions.5    1.2 1/28/93
+.TH ftpconversions 5 
+.SH Name
+ftpconversions \- ftpd conversions database
+.SH Description
+.NXR "conversions file" "format"
+The conversions known by 
+.MS ftpd 1
+and their attributes are stored in an ASCII file that
+is structured as below.
+Each line in the file provides a description for a single
+.IR conversion.
+Fields are separated by colons (:).
+.PP
+    %s:%s:%s:%s:%s:%s:%s:%s
+     1  2  3  4  5  6  7  8
+
+    Field          Description
+      1             strip prefix
+      2             strip postfix
+      3             addon prefix
+      4             addon postfix
+      5             external command
+      6             types
+      7             options
+      8             description
+.SH Known Problems
+The conversions mechanism does not currently support the strip prefix
+and addon prefix fields.
+.SH Files
+.PN FTPLIB/ftpconversions
+.SH See Also
+ftpd(1), ftpaccess(5)

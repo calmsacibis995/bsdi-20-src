@@ -1,0 +1,25 @@
+F ANALYZE_.GZ;1                     	analyze.c.gz
+F CMPBUF_C.GZ;1                     	cmpbuf.c.gz
+F CMPBUF_H.GZ;1                     	cmpbuf.h.gz
+F CONFIG_H.GZ;1                     	config.h.gz
+F CONTEXT_.GZ;1                     	context.c.gz
+F DIFF_1.GZ;1                       	diff.1.gz
+F DIFF_C.GZ;1                       	diff.c.gz
+F DIFF_H.GZ;1                       	diff.h.gz
+F DIR_C.GZ;1                        	dir.c.gz
+F ED_C.GZ;1                         	ed.c.gz
+F GETOPT1_.GZ;1                     	getopt1.c.gz
+F GETOPT_C.GZ;1                     	getopt.c.gz
+F GETOPT_H.GZ;1                     	getopt.h.gz
+F IFDEF_C.GZ;1                      	ifdef.c.gz
+F IO_C.GZ;1                         	io.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NORMAL_C.GZ;1                     	normal.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/diff/diff
+F REGEX_C.GZ;1                      	regex.c.gz
+F REGEX_H.GZ;1                      	regex.h.gz
+F SIDE_C.GZ;1                       	side.c.gz
+F SYSTEM_H.GZ;1                     	system.h.gz
+F UTIL_C.GZ;1                       	util.c.gz
+F VERSION_.GZ;1                     	version.c.gz
+F _MAP.GZ;1                         	.MAP.gz

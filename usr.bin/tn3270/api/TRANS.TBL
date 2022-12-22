@@ -1,0 +1,16 @@
+F APILIB_C.GZ;1                     	apilib.c.gz
+F APILIB_H.GZ;1                     	apilib.h.gz
+F API_BSD_.GZ;1                     	api_bsd.c.gz
+F API_EXCH.000;1                    	api_exch.c.gz
+F API_EXCH.GZ;1                     	api_exch.h.gz
+F ASC_EBC_.000;1                    	asc_ebc.c.gz
+F ASC_EBC_.GZ;1                     	asc_ebc.h.gz
+F ASTOSC_C.GZ;1                     	astosc.c.gz
+F ASTOSC_H.GZ;1                     	astosc.h.gz
+F DCTYPE_C.GZ;1                     	dctype.c.gz
+F DCTYPE_H.GZ;1                     	dctype.h.gz
+F DISP_ASC.000;1                    	disp_asc.c.gz
+F DISP_ASC.GZ;1                     	disp_asc.h.gz
+F EBC_DISP.000;1                    	ebc_disp.c.gz
+F EBC_DISP.GZ;1                     	ebc_disp.h.gz
+F _MAP.GZ;1                         	.MAP.gz

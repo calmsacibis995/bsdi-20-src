@@ -1,0 +1,14 @@
+F FTRUNCAT.GZ;1                     	ftruncate.c.gz
+F GETTIMEO.GZ;1                     	gettimeofday.c.gz
+F INET_ADD.GZ;1                     	inet_addr.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKTEMP_C.GZ;1                     	mktemp.c.gz
+F PUTENV_C.GZ;1                     	putenv.c.gz
+F SETENV_C.GZ;1                     	setenv.c.gz
+F SETITIME.GZ;1                     	setitimer.c.gz
+F STRCASEC.GZ;1                     	strcasecmp.c.gz
+F STRERROR.GZ;1                     	strerror.c.gz
+F STRPBRK_.GZ;1                     	strpbrk.c.gz
+F STRTOUL_.GZ;1                     	strtoul.c.gz
+F WRITEV_C.GZ;1                     	writev.c.gz
+F _MAP.GZ;1                         	.MAP.gz

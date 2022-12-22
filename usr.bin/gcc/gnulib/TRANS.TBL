@@ -1,0 +1,9 @@
+D DIST                              	DIST
+D G__                               	g++
+D HP300                             	hp300
+D I386                              	i386
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/gcc/gnulib
+D TAHOE                             	tahoe
+D VAX                               	vax
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,20 @@
+F CMDS_C.GZ;1                       	cmds.c.gz
+F CMDTAB_C.GZ;1                     	cmdtab.c.gz
+F DISKS_C.GZ;1                      	disks.c.gz
+F DISKS_H.GZ;1                      	disks.h.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F FETCH_C.GZ;1                      	fetch.c.gz
+F IOSTAT_C.GZ;1                     	iostat.c.gz
+F KEYBOARD.GZ;1                     	keyboard.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MBUFS_C.GZ;1                      	mbufs.c.gz
+F NETCMDS_.GZ;1                     	netcmds.c.gz
+F NETSTAT_.GZ;1                     	netstat.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/systat
+F PIGS_C.GZ;1                       	pigs.c.gz
+F SWAP_C.GZ;1                       	swap.c.gz
+F SYSTAT_1.GZ;1                     	systat.1.gz
+F SYSTAT_H.GZ;1                     	systat.h.gz
+F VMSTAT_C.GZ;1                     	vmstat.c.gz
+F _MAP.GZ;1                         	.MAP.gz

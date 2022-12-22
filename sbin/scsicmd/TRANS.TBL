@@ -1,0 +1,10 @@
+F BOMB_C.GZ;1                       	bomb.c.gz
+F BOMB_H.GZ;1                       	bomb.h.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/scsicmd
+F SCSICMD_.000;1                    	scsicmd.h.gz
+F SCSICMD_.GZ;1                     	scsicmd.8.gz
+F SUPPORT_.GZ;1                     	support.c.gz
+F TABLE_C.GZ;1                      	table.c.gz
+F _MAP.GZ;1                         	.MAP.gz

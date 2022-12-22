@@ -1,0 +1,22 @@
+F AF_C.GZ;1                         	af.c.gz
+F AF_H.GZ;1                         	af.h.gz
+F DEFS_H.GZ;1                       	defs.h.gz
+F IF_C.GZ;1                         	if.c.gz
+F INET_C.GZ;1                       	inet.c.gz
+F INPUT_C.GZ;1                      	input.c.gz
+F INTERFAC.GZ;1                     	interface.h.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/routed
+F OUTPUT_C.GZ;1                     	output.c.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+D QUERY                             	query
+F ROUTED_8.GZ;1                     	routed.8.gz
+F STARTUP_.GZ;1                     	startup.c.gz
+F TABLES_C.GZ;1                     	tables.c.gz
+F TABLE_H.GZ;1                      	table.h.gz
+F TIMER_C.GZ;1                      	timer.c.gz
+D TRACE                             	trace
+F TRACE_C.GZ;1                      	trace.c.gz
+F TRACE_H.GZ;1                      	trace.h.gz
+F _MAP.GZ;1                         	.MAP.gz

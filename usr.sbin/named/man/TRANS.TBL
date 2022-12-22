@@ -1,0 +1,17 @@
+F DIG_1.GZ;1                        	dig.1.gz
+F DNSQUERY.GZ;1                     	dnsquery.1.gz
+F GETHOSTB.GZ;1                     	gethostbyname.3.gz
+F GETNETEN.GZ;1                     	getnetent.3.gz
+F HOSTNAME.GZ;1                     	hostname.7.gz
+F HOST_1.GZ;1                       	host.1.gz
+F MAILADDR.GZ;1                     	mailaddr.7.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NAMED-XF.GZ;1                     	named-xfer.8.gz
+F NAMED_8.GZ;1                      	named.8.gz
+F NAMED_RE.000;1                    	named.restart.8.gz
+F NAMED_RE.GZ;1                     	named.reload.8.gz
+F NDC_8.GZ;1                        	ndc.8.gz
+F NSLOOKUP.GZ;1                     	nslookup.8.gz
+F RESOLVER.000;1                    	resolver.3.gz
+F RESOLVER.GZ;1                     	resolver.5.gz
+F _MAP.GZ;1                         	.MAP.gz

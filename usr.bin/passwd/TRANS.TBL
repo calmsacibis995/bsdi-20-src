@@ -1,0 +1,9 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F KPASSWD_.GZ;1                     	kpasswd_proto.h.gz
+F KRB_PASS.GZ;1                     	krb_passwd.c.gz
+F LOCAL_PA.GZ;1                     	local_passwd.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/passwd
+F PASSWD_1.GZ;1                     	passwd.1.gz
+F PASSWD_C.GZ;1                     	passwd.c.gz
+F _MAP.GZ;1                         	.MAP.gz

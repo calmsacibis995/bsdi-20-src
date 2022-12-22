@@ -1,0 +1,5 @@
+D COMPACT                           	compact
+D DISKSETU                          	disksetup
+F MAKEFILE.;1                       	Makefile
+F MAKEFILE.INC;1                    	Makefile.inc
+D TALK                              	talk

@@ -1,0 +1,22 @@
+F AUTHENC_.GZ;1                     	authenc.c.gz
+F COMMANDS.GZ;1                     	commands.c.gz
+F DEFINES_.GZ;1                     	defines.h.gz
+F EXTERNS_.GZ;1                     	externs.h.gz
+F FDSET_H.GZ;1                      	fdset.h.gz
+F GENERAL_.GZ;1                     	general.h.gz
+F GENGET_C.GZ;1                     	genget.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NETWORK_.GZ;1                     	network.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/telnet
+F README.GZ;1                       	README.gz
+F RING_C.GZ;1                       	ring.c.gz
+F RING_H.GZ;1                       	ring.h.gz
+F SYS_BSD_.GZ;1                     	sys_bsd.c.gz
+F TELNET_1.GZ;1                     	telnet.1.gz
+F TELNET_C.GZ;1                     	telnet.c.gz
+F TERMINAL.GZ;1                     	terminal.c.gz
+F TN3270_C.GZ;1                     	tn3270.c.gz
+F TYPES_H.GZ;1                      	types.h.gz
+F UTILITIE.GZ;1                     	utilities.c.gz
+F _MAP.GZ;1                         	.MAP.gz

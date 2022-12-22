@@ -1,0 +1,5 @@
+F ADDGROUP.000;1                    	addgroup.pl.gz
+F ADDGROUP.GZ;1                     	addgroup.8.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/adm/addgroup
+F _MAP.GZ;1                         	.MAP.gz

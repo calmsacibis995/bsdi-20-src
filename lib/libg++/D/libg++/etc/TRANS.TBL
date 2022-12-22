@@ -1,0 +1,12 @@
+D ADT-EXAM                          	ADT-examples
+D BENCHMAR                          	benchmarks
+F CHANGELO.;1                       	ChangeLog
+F CONFIGUR.IN;1                     	configure.in
+D FIB                               	fib
+D GRAPH                             	graph
+F HINTS.;1                          	HINTS
+D LF                                	lf
+F MAKEFILE.IN;1                     	Makefile.in
+D PLOTFILE                          	PlotFile3D
+D TRIE-GEN                          	trie-gen
+F _MAP.;1                           	.MAP

@@ -1,0 +1,9 @@
+F 4_4BSD.DIS;1                      	4.4BSD.dist
+F 4_4BSD.ROO;1                      	4.4BSD.root
+F 4_4BSD.USR;1                      	4.4BSD.usr
+F 4_4BSD.VAR;1                      	4.4BSD.var
+F BSDI_ROO.DIS;1                    	BSDI.root.dist
+F BSDI_USR.DIS;1                    	BSDI.usr.dist
+F BSDI_VAR.DIS;1                    	BSDI.var.dist
+F SPECIAL.;1                        	special
+F _MAP.;1                           	.MAP

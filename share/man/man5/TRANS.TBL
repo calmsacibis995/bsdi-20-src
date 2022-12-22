@@ -1,0 +1,26 @@
+F ACCT_5.GZ;1                       	acct.5.gz
+F A_OUT_5.GZ;1                      	a.out.5.gz
+F CAT_5.GZ;1                        	cat.5.gz
+F CORE_5.GZ;1                       	core.5.gz
+F DIR_5.GZ;1                        	dir.5.gz
+F DISKTAB_.GZ;1                     	disktab.5.gz
+F FSTAB_5.GZ;1                      	fstab.5.gz
+F FS_5.GZ;1                         	fs.5.gz
+F GROUP_5.GZ;1                      	group.5.gz
+F HOSTS_5.GZ;1                      	hosts.5.gz
+F HOSTS_EQ.GZ;1                     	hosts.equiv.5.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NETWORKS.GZ;1                     	networks.5.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/man/man5
+F PASSWD_5.GZ;1                     	passwd.5.gz
+F PHONES_5.GZ;1                     	phones.5.gz
+F PRINTCAP.GZ;1                     	printcap.5.gz
+F PROTOCOL.GZ;1                     	protocols.5.gz
+F REMOTE_5.GZ;1                     	remote.5.gz
+F RESOLVER.GZ;1                     	resolver.5.gz
+F SERVICES.GZ;1                     	services.5.gz
+F SHELLS_5.GZ;1                     	shells.5.gz
+F STAB_5.GZ;1                       	stab.5.gz
+F TYPES_5.GZ;1                      	types.5.gz
+F UTMP_5.GZ;1                       	utmp.5.gz
+F _MAP.GZ;1                         	.MAP.gz

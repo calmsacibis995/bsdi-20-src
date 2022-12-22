@@ -1,0 +1,9 @@
+F CMDS_C.GZ;1                       	cmds.c.gz
+F CMDTAB_C.GZ;1                     	cmdtab.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/timed/timedc
+F TIMEDC_8.GZ;1                     	timedc.8.gz
+F TIMEDC_C.GZ;1                     	timedc.c.gz
+F TIMEDC_H.GZ;1                     	timedc.h.gz
+F _MAP.GZ;1                         	.MAP.gz

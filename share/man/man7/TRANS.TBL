@@ -1,0 +1,13 @@
+F ASCII_7.GZ;1                      	ascii.7.gz
+F ENVIRON_.GZ;1                     	environ.7.gz
+F HIER_7.GZ;1                       	hier.7.gz
+F HOSTNAME.GZ;1                     	hostname.7.gz
+F INTRO_7.GZ;1                      	intro.7.gz
+F MAILADDR.GZ;1                     	mailaddr.7.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MDOC_7.GZ;1                       	mdoc.7.gz
+F MDOC_SAM.GZ;1                     	mdoc.samples.7.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/share/man/man7
+F OPERATOR.GZ;1                     	operator.7.gz
+F RS-232_7.GZ;1                     	rs-232.7.gz
+F _MAP.GZ;1                         	.MAP.gz

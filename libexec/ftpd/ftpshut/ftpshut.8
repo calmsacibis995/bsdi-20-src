@@ -1,0 +1,79 @@
+.\" SCCSID: @(#)ftpshut.8   1.2 1/26/93
+.TH ftpshut 8
+.SH Name
+ftpshut \- close down the ftp servers at a given time
+.SH Syntax
+.B ftpshut
+[
+.B \-l
+min] [
+.B \-d
+min]
+.I time [ warning-message ... ]
+.SH Description
+.NXR "ftpshut command"
+.NXR "system" "shutting down ftp"
+The
+.PN ftpshut
+command
+provides an automated shutdown procedure that a superuser
+can use to notify ftp users
+when the ftp server is shutting down.
+.PP
+The
+.I time
+is the time at which
+.PN ftpshut
+will bring the ftp servers down. 
+It may be the word
+`now',
+indicating an immediate shutdown,
+or specify a future time in one of two formats:
+.I + number
+or
+.I HHMM.
+The first form brings the ftp servers down in
+.I number
+minutes.
+The second brings the ftp servers down at the time of day indicated,
+using a 24\-hour clock format.
+.PP
+Ten minutes before shutdown, or immediately if
+.PN ftpshut
+is timed for less than ten minutes, new ftp
+access will be disabled.  This time may be 
+adjusted through the -l flag.
+.PP
+Five minutes before shutdown, or immediately if
+.PN ftpshut
+is timed for less than five minutes, all
+current ftp connections will be disconnected.
+This time may be adjusted through the -d flag.
+.PP
+The 
+.I [ warning-message ... ]
+will be formatted to be 75 characters wide.
+.PN ftpshut
+knows about the actual string length of
+the magic cookies.
+.PP
+The following magic cookies are available:
+      %s      time system is going to shut down
+      %r      time new connections will be denied
+      %d      time current connections will be dropped
+      %C      current working directory
+	  %E      the maintainer's email address as defined in ftpaccess.
+      %F      free space in partition of CWD (kbytes)
+              [not currently supported on all systems]
+      %L      local host name
+      %M      maximum allowed number of users in this class
+      %N      current number of users in this class
+      %R      remote host name
+      %T      local time (form Thu Nov 15 17:12:42 1990)
+      %U      username given at login time
+.SH Restrictions
+You can kill the servers only between now and 23:59, if
+you use the absolute time for 
+.PN ftpshut.
+.SH See Also
+shutdown(1), ftpaccess(5)

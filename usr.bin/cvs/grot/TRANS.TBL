@@ -1,0 +1,5 @@
+F CONFIGUR.GZ;1                     	configure.gz
+F INSTALL.GZ;1                      	INSTALL.gz
+F MAKEFILE.GZ;1                     	Makefile.in.gz
+D MAN                               	man
+F _MAP.GZ;1                         	.MAP.gz

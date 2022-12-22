@@ -1,0 +1,244 @@
+INSTALLATION INSTRUCTIONS
+
+1.  edit src/pathnames.h to conform to your needs.  
+
+    _PATH_FTPUSERS  "/etc/ftpusers"
+        The file that lists users that can never ftp in.  Usually contains
+        root and all usernames not connected to a real person (eg. bin, sync,
+        nobody, etc.)
+    _PATH_FTPACCESS "/usr/local/etc/ftpaccess"
+        The configuration file for the server.
+    _PATH_FTPHOSTS  "/etc/ftphosts"
+        The individual user access configuration file.
+**  _PATH_EXECPATH  "/bin/ftp-exec"
+        The directory that contains additional binaries for use with the
+        SITE EXEC command.
+    _PATH_PIDNAMES  "/usr/local/daemon/ftpd/ftp.pids-%s"
+        The filename template for pid files.  The %s gets automagically 
+        replaced by the proper classname.  There will be as many pid files
+        as there are classes in your ftpaccess.
+    _PATH_CVT       "/usr/local/etc/ftpconversions"
+        The file that contains the conversion (file -> file.Z, etc) 
+        configuration.  See ftpconversions.5 for a description of the format.
+    _PATH_XFERLOG   "/usr/adm/xferlog"
+        The file where all logging information is placed.
+    _PATH_PRIVATE   "/etc/ftpgroups"
+        The group password file for use with the SITE GROUP and SITE GPASS
+        commands.  See ftpaccess.5 for a description of the format.
+    _PATH_UTMP      "/etc/utmp"
+        Where your utmp file lives.
+    _PATH_WTMP      "/usr/adm/wtmp"
+        Where your wtmp file lives.
+    _PATH_LASTLOG   "/usr/adm/lastlog"
+        Where your lastlog file lives.
+    _PATH_BSHELL    "/bin/sh"
+        Where bourne shell lives
+    _PATH_DEVNULL   "/dev/null"
+        What /dev/null is.  I can't imagine that this could ever be different.
+
+**  This path is relative to ~ftp.  To add the same functionality for real
+    users, create a symbolic link from ~ftp/_PATH_EXEC to /_PATH_EXEC.
+
+2a. build xxx
+
+    where xxx is one of:
+        gen : generic make (copy this when porting to a new system)
+        aix : IBM AIX
+        bsd : BSDI bsd/386
+        dgx : Data General Unix
+        dyn : Dynix
+        hpx : HP-UX
+		isc : ISC
+        lnx : Linux (tested on 0.99p8)
+        nx2 : NeXTstep 2.x
+        nx3 : NeXTstep 3.x
+        osf : OSF/1
+        ptx : ???
+        sgi : SGI Irix 4.0.5a
+        sny : Sony NewsOS
+        sol : SunOS 5.x / Solaris 2.x
+        s41 : SunOS 4.1.x (requires acc or gcc 2.3.3 or better)
+                          (if you must use gcc 1.4.2, mail me for a patch)
+        ult : Ultrix 4.x
+
+    If cc complains about strunames, typenames, modenames, ... being undefined
+    you need to install support/ftp.h as /usr/include/arpa/ftp.h (always make
+    a backup of the old ftp.h just in case!) and do the build again.  The new
+    ftp.h should be a compatible superset of your existing ftp.h, so you
+    shouldn't have problems with this replacement.
+
+    If you are using gcc...  Make sure that you the include files have been
+    properly "fixed" according to the gcc 2.3.3 INSTALL instructions.  If
+    the server crashes before printing the banner message (during a vprintf)
+    this is most probably the cause.
+
+    Some machines may not have a definition of pid_t; so if your compiler
+    complains about this you should add to src/config.h
+
+            typedef int pid_t;
+
+2b. If your system is not defined above...
+        cp src/config/config.gen src/config/config.xxx
+        cp src/makefiles/Makefile.gen src/makefiles/Makefile.xxx
+        cp support/makefiles/Makefile.gen support/makefiles/Makefile.xxx
+
+    Edit the three files appropriately.  Go back to step 2a.
+
+3.  build install
+
+4.  edit /etc/inetd.conf to point to the new ftpd
+
+5.  on BSD-ish systems: kill -1 `ps t"?" | grep inetd`
+    on SGI systems: /etc/killall -HUP inetd
+
+6.  for the server to support creation of .tar.Z files of directories, you
+    need GNU tar installed [remember to put a copy in the anonymous ftp
+    hierarchy].  If you need a copy, it is available from
+    wuarchive.wustl.edu [128.252.135.4] in /gnu.
+
+7.  copy /wherever/compress to ~ftp/bin/compress.
+
+8.  copy the ftpconversions, ftpusers, and ftpgroups files to the 
+    locations specifed in pathnames.h.  There are examples of these
+    files in the doc/examples directory.
+
+9.  create the directory for the SITE EXEC programs, as specified in 
+    pathnames.h.  Put any executables that you want anonymous users to 
+    be able to run in this directory.  Be careful what you put here.
+
+10. run bin/ckconfig to make sure that all the support files are
+    properly installed.
+
+
+SOME NOTES ABOUT THE FTP SERVER:
+
+1.  You need to have at least *one* class defined in the ftpaccess file.
+    In the next release, this will change.
+
+2.  The ftpd(8) man page that came with your Operating System should do a
+    good job of explaining how to set up the anonymous ftp hierarchy.
+    At the very least, you will need ~ftp/bin (mode: 111 ---x--x--x)
+    with a copy of "ls" (mode: 111 ---x--x--x) and ~ftp/etc 
+    (mode: 111 ---x--x--x) with an /etc/passwd.
+
+3.  Don't put encrypted passwords in ~ftp/etc/passwd.  In fact, all you
+    really need is entries for root and ftp.  "ls" is the only part
+    of the server that uses this file.
+
+4.  Anonymous FTP may have some troubles on machines which use dynamic
+    shared libraries.  The most common of these is SunOS 4.1.x.  You
+    will have trouble with using the binaries in ~ftp/bin if those
+    binaries were compiled using those shared libraries, as the
+    chroot() that ftpd does for anonymous users to ~ftp means that
+    those links to the static libraries are lost.  You cannot make a
+    hard link or soft link to the libraries as the chroot will make
+    those links meaningless. There are two ways to fix this:
+
+    1) Track down, using ldd, all the shared libs used by each binary you
+       want to put in ~ftp/bin.  Then copy these into their
+       corresponding places in ~ftp: i.e., /usr/lib/ld.so must be
+       copied into ~ftp/usr/lib/ld.so.  However, ldd does not always
+       show all the files that a compiled program may try to reference;
+       if you use trace you can see every system call a binary makes,
+       and that should show you every dependency.  If you compiled with
+       gcc, there are likely to be lots of references made.
+
+    2) Recompile any binary you wish to put in ~ftp/bin (ls, gzip, gtar,
+       etc) using the -Bstatic (or -static in gcc) option in the CFLAGS
+       *and* LDFLAGS options in their respective makefiles.  You can
+       get GNU versions of ls and gzip and everything else from
+       wuarchive.wustl.edu.  This is the easiest and most foolproof
+       method - the statically compiled binaries may be a tad bigger,
+       but you can use strip to pare down the size.
+    [thanks to Brian Behlendorf for rewriting #4 more elegantly.]
+
+5.  Make sure that you have a /etc/shells that lists all valid shells on
+    your system.  Otherwise, those who have shells not listed there will
+    not be able to log in.  [Yes, this is the expected behaivor.]
+
+    Under Solaris 2.1, there is no /etc/shells by default.
+
+6.  Under Solaris 2.1, you need to have the following in ~ftp/dev
+      crw-rw-rw-  1 root      11,  42 Mar 24 17:00 tcp
+      cr--r--r--  1 root      13,  12 Mar 24 16:23 zero
+
+7.  Under OSF/1, you need ~ftp/etc/sia/siainitgood.
+
+8.  Under DEC Ultrix, you need ~ftp/etc/svc.conf
+
+9.  NeXT systems:  You need a copy of /usr/shlib/libsys_s.B.shlib in 
+    ~ftp/usr/shlib/libsys_s.B.shlib.  Make sure that ~ftp/usr, ~ftp/usr/shlib
+    are mode 0555 (dr-xr-xr-x) and ~ftp/usr/shlib/libsys_s.B.shlib is mode 
+    0555 (-r-xr-xr-x).
+
+10. If you are using this system under Linux, you will get lots of warnings
+    about problems when you compile - Just ignore them...
+    You will probably need at least libc4.3.3 and gcc2.3.3 to compile this..
+    You will also get (for now at least) errors (sometimes) when you do an
+    ls or dir command.. This is a bug in the current Linux libraries..
+    It will say :-
+    425 Can not build Data Connection. Transport Endpoint Already Connected.
+    (Or something like that...) Just retype the ls/dir command until it works
+    all other commands work fine..
+                                [karl@hci.national-physical-lab.co.uk]
+
+11. Certains files need to be inside the anonymous ftp hierarchy.
+    They are all referenced after the chroot(~ftp):
+        all messages (deny, welcome, etc.)
+        shutdown 
+        _PATH_EXECPATH
+
+12. In order for shutdown to work properly for real, guest, and anonymous
+    users -- you must create a link.  
+    
+    For example... if shutdown is defined to be /etc/shutmsg:
+        root# ln -s ~ftp/etc/shutmsg /etc/shutmsg
+
+    That way, when ftpshut creates the shutdown message, it will be
+    within the real user space and the anonymous user space.
+
+13. I would like to publically thank all the beta-testers that I have
+    had for this release.  They are (in alphabetical order):
+
+        ajudge@maths.tcd.ie
+        amoss@cs.huji.ac.il (Amos Shapira)
+        archive-admins@uunet.uu.net (UUNET Technologies)
+        bartm@cv.ruu.nl (Bart Muyzer)
+        corrigan@ucsd.edu
+        datta@cs.uwp.edu (Dave Datta)
+        eduard.vopicka@vse.cs (Eduard Vopicka)
+        explorer@iastate.edu (Michael Graff)
+        ghelmer@dsuvax.dsu.edu (Guy Helmer)
+        gruner@informatik.tu-muenchen.de
+        guenther@ira.uka.de
+        jeff@onion.rain.com
+        john.ladwig@soils.umn.edu (John Ladwig)
+        kdb@unx.sas.com
+        lenny@icus.com
+        mau@ipifidpt.difi.unipi.it
+        maw@paradigm.co.za
+        mcb@compaq.com
+        mike@atlas.physchem.chemie.uni-tuebingen.de
+        mjo@fmsrl7.srl.ford.com (Mike J. O'Connor)
+        mr@cica.indiana.edu (Mike Regoli)
+        rich@Rice.edu
+        sblair@dell.com
+        steve@sccsi.com (Steve Nuchia)
+        tin@smsc.sony.com
+        x920031@rubb.rz.ruhr-uni-bochum.de
+
+14. There are two mailing lists available that discuss the server.
+    They are wu-ftpd and wu-ftpd-announce.  To subscribe to either 
+    send a "subscribe <listname>" message to listserv@wunet.wustl.edu
+
+15. If you use the server (and like it!) -- send me a note.  Since
+    this project is funded from a grant, it would be nice to show the
+    superiors how widely used it is.  If you have really bizarre
+    problems that you can not figure out, feel free to mail me and I
+    will try to help.  I warn you that response time may be a bit slow...
+    But I will do my best to help.
+
+--
+Bryan D. O'Connor
+Office of the Network Coordinator                    bryan@fegmania.wustl.edu
+Washington University in Saint Louis         http://fegmania.wustl.edu/~bryan

@@ -1,0 +1,5 @@
+F DUMPFS.8;1                        	dumpfs.8
+F DUMPFS.C;1                        	dumpfs.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/dumpfs
+F _MAP.;1                           	.MAP

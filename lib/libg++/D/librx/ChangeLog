@@ -1,0 +1,146 @@
+Sat Nov  5 20:01:46 1994  Jason Merrill  (jason@phydeaux.cygnus.com)
+
+	* Makefile.in (LIBCFLAGS): New variable.
+	(.c.o): Use it.
+
+Thu Sep  1 16:23:21 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.c: applied patches from H J Lu to unrot BSD compatibility
+	code.
+
+Mon Aug 29 16:48:57 1994  Ian Lance Taylor  (ian@sanguine.cygnus.com)
+
+	* Makefile.in (AR_FLAGS): Define.
+	(librx.a): Use $(AR) and $(AR_FLAGS).
+
+Fri Aug 26 11:37:36 1994  Ian Lance Taylor  (ian@cygnus.com)
+
+	* configure.in: Call AC_PROG_CPP explicitly.
+	* configure: Rebuilt.
+
+Thu Aug 25 18:19:47 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.[ch], configure.in: use __const__ instead of
+	AC_CONST.  Only include stdio once.  Don't check
+	for memory.h.
+
+Tue Aug 16 12:12:01 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.[ch]: LGPL instead of GPL
+
+Mon Aug 15 16:24:16 1994  Per Bothner  (bothner@kalessin.cygnus.com)
+
+	* rx.h (rx_search):  When checking if we've gotten to the end,
+	handle the case that we're searching backwards.
+
+Tue Jun 21 12:40:50 1994  Jim Kingdon  (kingdon@lioth.cygnus.com)
+
+	* rx.c (re_rx_search): New function, exports rx_search.
+
+	* Makefile.in (clean): Also remove librx.a.
+
+Fri Jun  3 12:16:45 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.c(re_search_2_fetch_char): fixed a bug that caused it to
+	ignore OFFSET.
+
+Thu May 26 14:05:17 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.[ch]: From: Michael Rendell <michael@maple.cs.mun.ca> 
+
+	``The problem seems to lie in the casting between pointers and
+	integers (pointers on the alpha are 64 bits, ints 32 bits, longs
+	64 bits).  The core dump happens in rx_compactify_nfa(), in the
+	first for loop in the while(eclose) loop -- rx_hash_find() returns
+	0, which is dereferenced.''
+	
+	The patch changed the type of rx_hash_masks to long and
+	also a use of `int' to hold a side effect in rx_search.
+
+Sat May 14 00:45:14 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.c, rx.h: rearranged all the code
+	so that all the rx functions can be exported
+	or hidden (define RX_WANT_RX_DEFS when compiling
+	and when including rx.h).
+
+Wed May 11 01:15:56 1994  Tom Lord  (lord@rtl.cygnus.com)
+
+	* rx.c, rx.h: added rx_search -- searching in
+	arbitrarily fragmented strings, continuation support.
+
+Wed May  4 13:56:55 1994  Tom Lord  (lord@rtl.cygnus.com)
+
+	* rx.c, rx.h: Started independent maintainence 
+	  of these.
+
+------ version 0.04 ------
+
+Fri May 13 02:31:13 1994  Tom Lord  (lord@x1.cygnus.com)
+
+	* rx.c: eliminated the weirdo custom allocators.
+	Fixed some bugs (but lost the ChangeLog entries).
+
+Wed May 11 06:09:31 1994  Chip Salzenberg  (chip@fin.uucp)
+
+	* rx.c (rx_superstate_eclosure_union): Always return a value.
+
+------ version 0.03 ------
+Fri Aug  6 01:57:28 1993  Tom Lord  (lord@unix1.andrew.cmu.edu)
+
+	* rx.c (re_search_2): sped up the fastmap search a little
+	  to as to not be slower than regex.c on simple patterns.
+	  Rx will still lose by a couple instructions in some degenerate
+	  cases but mostly will win.
+
+Thu Aug  5 11:39:57 1993  Tom Lord  (lord@thisbe.weh.andrew.cmu.edu)
+
+	* rx.c (re_search_2 & compilation front-ends): cache the starting
+	  superset of super-nfa's so that it isn't necessary to do an
+	  eclosure union for every call to re_search_2.
+
+	* rx.c (re_search_2): (from Eric Backus) arrange to call
+	  alloca(0) from a shallower stack frame than re_search_2
+	  if callling it at all.
+
+	  This could use a better cpp test.  Right now, an extra function
+	  call is added to re_search_2 unles __GNUC__ is defined.  If
+	  there were something like _HAVE_LOSER_ALLOCA_....
+	  
+	* rx.c (rx_compile, re_search_2, several new fns):
+	  changed the order of side effect lists so that possible
+	  futures that begin with complex effects more to the right
+	  are explored after futures more to the left.  Added
+	  a noop complex effect to alts and stars to guarantee
+	  they are explored in the right order.  An optimization
+	  after the parse removes some from the alts (and not all
+	  stars get them in the first place).  Changed the `best
+	  match' criterea -- now that possible futures are ordered
+	  posixly, we only want to check the length of the match.
+	  For a given length, the best subexpression partitioning
+	  is the first one found.
+
+	  A side effect of this is that Rx will always return the
+	  same register assignements for a given regexp/input text.
+	  Bummer :-) / 2.
+
+
+------ version 0.02 ------
+
+ed Jul 21 13:10:56 1993  Tom Lord  (lord@unix8.andrew.cmu.edu)
+
+	* rx.c (re_search_2): elaborated on the rule for picking the 
+	  best match so that the lengths of subexpressions are taken
+	  into account.  This is for Posix compatability.
+
+
+------ version 0.01 ------
+
+Sun Jun 13 17:20:35 1993  Tom Lord  (lord@tsunami.ucc.andrew.cmu.edu)
+
+	* This is the first release of rx.c.  Although some of the code
+	  is derived from regex.c, there is not much continuity between
+	  the two implementations.
+
+
+

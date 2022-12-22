@@ -1,0 +1,8 @@
+D GEN                               	gen
+D NET                               	net
+D STDLIB                            	stdlib
+D STRING                            	string
+D SYS                               	sys
+F SYS.H;1                           	SYS.h
+F _ERRFIX.;1                        	:errfix
+F _MAP.;1                           	.MAP

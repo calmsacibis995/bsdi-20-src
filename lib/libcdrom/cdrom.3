@@ -1,0 +1,161 @@
+.\" Copyright (c) 1992 Berkeley Software Design, Inc. All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"
+.\" 	BSDI cdrom.3,v 2.1 1995/02/03 06:56:36 polk Exp
+.\"
+.Dd March 1, 1992
+.Dt CDROM 3
+.Os
+.Sh NAME
+.Nm cdrom
+.Nd control audio functions of cdrom drives
+.Sh SYNOPSIS
+.Fd #include <sys/cdrom.h>
+.Ft struct cdinfo *
+.Fn cdopen "char *path"
+.Ft int
+.Fn cdclose "struct cdinfo *cdinfo"
+.Ft int
+.Fn cdplay "struct cdinfo *cdinfo" "int start_frame" "int end_frame"
+.Ft int
+.Fn cdstop "struct cdinfo *cdinfo"
+.Ft int
+.Fn cdstatus "struct cdinfo *cdinfo" "struct cdstatus *cdstatus"
+.Ft int
+.Fn cdeject "struct cdinfo *cdinfo"
+.Ft int
+.Fn cdvolume "struct cdinfo *cdinfo" "int volume"
+.Ft void
+.Fn frame_to_msf "int frame" "int *minp" "int *secp" "int *framep"
+.Ft int
+.Fn msf_to_frame "int min" "int sec" "int frame"
+.Sh DESCRIPTION
+This library implements a device independent interface to control the
+audio features of CD-ROM drives.  First, the CD-ROM drive must be
+opened, using the function
+.Fn cdopen .
+The pathname should be the c partition of the character device,
+for example
+.Pa /dev/rsd1c
+or
+.Pa /dev/rmcd0c .
+Alternatively, if the file name is passed as NULL, then the
+value of the environment variable
+.Ev CDROM
+is used.  If this is also NULL, then 
+.Pa /dev/rcdrom
+is tried.  SCSI devices may only be accessed as root.  The structure
+returned by
+.Fn cdopen
+contains the following fields, which you may examine but not change
+(along with some other fields for internal use):
+.Bd -literal
+struct cdinfo {
+	int	ntracks;
+	struct	track_info *tracks;
+	int	total_frames;
+};
+.Ed
+.Pp
+The field
+.Fa ntracks
+tells the number of audio tracks on the disk.  The
+.Fa tracks
+field points to an array giving details about each track.  The total
+playing time of the disk is given in the field
+.Fa total_frames .
+Each frame contains audio data for 1/75th of a second.
+.Pp
+The
+.Fa track_info
+structure contains the following fields (among others):
+.Bd -literal
+struct track_info {
+	int	track_num;
+	int	start_frame;
+	int	nframes;
+};
+.Ed
+.Pp
+The 
+.Fa track_num
+gives the track number for this entry.  Normally, the first track on a
+disk is number 1, but the creator of the disk may have assigned a
+different starting number.  The field
+.Fa start_frame
+gives the absolute frame number of the start of this track, and
+.Fa nframes
+is the length of the track, both measured in units of 1/75th of a
+second.
+.Pp
+The function
+.Fn cdclose
+closes the associated file descriptor, and frees any memory that was
+allocated by 
+.Fn cdopen .
+This function does not do any other important work, so it is not
+necessary to go to extra trouble to ensure that it is called before
+the process exits.  For most drives playing will continue if it is in
+progress when
+.Fn cdclose
+is called, or when the process exits.
+.Pp
+The function
+.Fn cdplay
+starts playing audio starting and ending at the given absolute frames.
+The function
+.Fn cdstop
+stops the current play operation.
+.Pp
+The function
+.Fn cdstatus
+may be used at any time to find out what the CD-ROM drive is doing,
+and to determine the current frame number, if playing is in progress.
+It fills in a structure that has the following fields (among others):
+.Bd -literal
+struct cdstatus {
+	enum	cdstate state;
+	int	control;
+	int	track_num;
+	int	index_num;
+	int	rel_frame;
+	int	abs_frame;
+};
+.Ed
+.Pp
+The state is one of
+.Fa cdstate_unknown ,
+.Fa cdstate_stopped ,
+.Fa cdstate_playing
+or
+.Fa cdstate_paused .
+It is dependent on the particular drive whether the state will be
+stopped or paused after a 
+.Fa cdstop
+operation.  If the drive is currently playing, then the rest of the
+fields are valid, and give the current position.  The field
+.Fa abs_frame
+has the proper format to use as an argument to 
+.Fn cdplay .
+For example, to implement a pause and resume feature, the current
+position can be recorded with a call to
+.Fn cdstatus ,
+then the playing would be stopped with
+.Fn cdstop .
+To resume, call 
+.Fn cdplay
+starting at the saved position.
+.Pp
+The function
+.Fn cdeject
+ejects the caddy, if that makes sense for the underlying drive.
+.Pp
+The function
+.Fn cdvolume
+sets the volume level of the audio output.  The second argument is an
+integer between 0 (lowest volume) and 100 (full volume).
+Unfortunately, not all cdrom drives implement this function, and in
+those that do, the sensitivity of the control varies greatly.
+.Sh SEE ALSO
+.Xr cdctl 1

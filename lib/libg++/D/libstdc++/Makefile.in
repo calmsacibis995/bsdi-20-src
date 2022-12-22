@@ -1,0 +1,145 @@
+# Copyright (C) 1994 Free Software Foundation
+
+# This file is part of the GNU ANSI C++ Library.  This library is free
+# software; you can redistribute it and/or modify it under the terms of
+# the GNU General Public License as published by the Free Software
+# Foundation; either version 2, or (at your option) any later version.
+
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with GNU CC; see the file COPYING.  If not, write to
+# the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+
+VERSION = 2.6.1
+
+OBJS = new.o cstring.o stddef.o typeinfo.o exception.o
+SUBLIBS = stmp-string stmp-complex
+
+# C++ headers with no extension
+HEADERS = cassert cctype cerrno cfloat ciso646 climits clocale cmath complex \
+	  csetjmp csignal cstdarg cstddef cstdio cstdlib cstring ctime \
+	  cwchar cwctype new stddef string exception
+
+ARLIB   = libstdc++.a
+SHLIB   = libstdc++.so
+SHFLAGS = 
+SHDEPS  =
+
+LIBS    = $(ARLIB)
+
+IO_DIR    = ../libio
+LIBIBERTY = libiberty
+
+LIBIBERTY_OBJS = `cat ../$(LIBIBERTY)/needed-list` strerror.o
+
+#### package, host, target, and site dependent Makefile fragments come in here.
+##
+
+tooldir = $(exec_prefix)/$(target)
+INSTALLDIR = $(libdir)
+
+MOSTLYCLEAN_JUNK = $(SUBLIBS) tlib*.a *.s *.ii list
+CLEAN_JUNK = $(LIBS)
+
+.PHONY: libs
+libs: $(LIBS)
+
+list: $(IO_DIR)/iostream.list $(OBJS) $(SUBLIBS) stl/stl.list \
+  ../$(LIBIBERTY)/libiberty.a
+	-rm -f tlist
+	touch tlist
+	echo *.o >> tlist
+	for f in `cat $(IO_DIR)/iostream.list` ; do \
+	  echo "$(IO_DIR)/$$f" >> tlist ; \
+	done
+	for f in $(LIBIBERTY_OBJS) ; do \
+	  echo "../$(LIBIBERTY)/$$f" >> tlist ; \
+	done
+	mv tlist list
+
+$(ARLIB): list stl/stl.list
+	-rm -f t$(ARLIB)
+	$(AR) $(AR_FLAGS) t$(ARLIB) `cat list`
+	cd stl;  $(AR) $(AR_FLAGS) ../t$(ARLIB) `cat stl.list`
+	mv t$(ARLIB) $(ARLIB)
+	$(RANLIB) $(ARLIB)
+
+$(SHLIB): list stl.list
+	$(CXX) $(SHFLAGS) -shared -o $(SHLIB) `cat list stl.list` $(SHDEPS)
+
+$(IO_DIR)/iostream.list: force
+	cd $(IO_DIR) ; $(MAKE) $(FLAGS_TO_PASS) iostream.list
+
+stl/stl.list: force
+	cd stl ; $(MAKE) $(FLAGS_TO_PASS) stl.list
+
+stl.list: stl/stl.list
+	rm -f tstl.list
+	touch tstl.list
+	for f in `cat stl/stl.list` ; do \
+	  echo "stl/$$f" >> tstl.list ; \
+	done
+	mv tstl.list stl.list
+
+../$(LIBIBERTY)/libiberty.a:
+	cd ../$(LIBIBERTY) ; $(MAKE) $(FLAGS_TO_PASS)
+
+STRFUNCS = REP MAIN TRAITS ADDSS ADDPS ADDCS ADDSP ADDSC \
+	   EQSS EQPS EQCS EQSP EQSC \
+	   NESS NEPS NECS NESP NESC EXTRACT INSERT
+
+# Later do wide strings, too.
+stmp-string: ${srcdir}/sinst.cc ${srcdir}/bastring.hI ${srcdir}/bastring.ccI \
+	     straits.hI
+	for name in $(STRFUNCS); do \
+	  echo c$${name}; \
+	  $(COMPILE.cc) -DC -D$${name} ${srcdir}/sinst.cc -o c$${name}.o; \
+	  if [ $$? -eq 0 ]; then true; else exit 1; fi; \
+	done
+	touch stmp-string
+
+COMFUNCS = MAIN ADDCC ADDCF ADDFC SUBCC SUBCF SUBFC MULCC MULCF MULFC DIVCC \
+	   DIVCF DIVFC PLUS MINUS EQCC EQCF EQFC NECC NECF NEFC ABS ARG POLAR \
+	   CONJ NORM COS COSH EXP LOG POWCC POWCF POWCI POWFC SIN SINH SQRT \
+	   EXTRACT INSERT
+
+stmp-complex: ${srcdir}/cinst.cc ${srcdir}/complext.hI ${srcdir}/complext.ccI \
+	      ${srcdir}/dcomplex.hI ${srcdir}/ldcomplex.hI
+	for N in $(COMFUNCS); do \
+	  echo f$${N}; \
+	  $(COMPILE.cc) -DF -D$${N} ${srcdir}/cinst.cc -o f$${N}.o; \
+	  if [ $$? -eq 0 ]; then true; else exit 1; fi; \
+	  echo d$${N}; \
+	  $(COMPILE.cc) -DD -D$${N} ${srcdir}/cinst.cc -o d$${N}.o; \
+	  if [ $$? -eq 0 ]; then true; else exit 1; fi; \
+	  echo ld$${N}; \
+	  $(COMPILE.cc) -DLD -D$${N} ${srcdir}/cinst.cc -o ld$${N}.o; \
+	  if [ $$? -eq 0 ]; then true; else exit 1; fi; \
+	done
+	touch stmp-complex
+
+INCLUDES = $(HEADERS) *.h *I
+
+.PHONY: install
+install:
+	cd $(srcdir); \
+	for FILE in $(INCLUDES) ; do \
+		rm -f $(gxx_includedir)/$$FILE ; \
+		$(INSTALL_DATA) $$FILE $(gxx_includedir)/$$FILE ; \
+		chmod a-x $(gxx_includedir)/$$FILE ; \
+	done
+	for FILE in $(LIBS) ; do \
+		rm -f $(INSTALLDIR)/$$FILE ; \
+		$(INSTALL_DATA) $$FILE $(INSTALLDIR)/$$FILE ; \
+		if [ $$FILE = $(ARLIB) ] ; then \
+			$(RANLIB) $(INSTALLDIR)/$$FILE ; \
+		fi ; \
+		chmod a-x $(INSTALLDIR)/$$FILE ; \
+	done
+
+.PHONY: force
+force:

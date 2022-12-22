@@ -1,0 +1,23 @@
+F APPRENTI.GZ;1                     	apprentice.c.gz
+F ASCMAGIC.GZ;1                     	ascmagic.c.gz
+F COMPRESS.GZ;1                     	compress.c.gz
+F FILE_1.GZ;1                       	file.1.gz
+F FILE_C.GZ;1                       	file.c.gz
+F FILE_H.GZ;1                       	file.h.gz
+F FSMAGIC_.GZ;1                     	fsmagic.c.gz
+D GROT                              	grot
+F IS_TAR_C.GZ;1                     	is_tar.c.gz
+F LEGAL_NO.GZ;1                     	LEGAL.NOTICE.gz
+D MAGIC                             	magic
+F MAINT.GZ;1                        	MAINT.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F NAMES_H.GZ;1                      	names.h.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/file
+F PATCHLEV.GZ;1                     	patchlevel.h.gz
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F PRINT_C.GZ;1                      	print.c.gz
+F README.GZ;1                       	README.gz
+F README_B.GZ;1                     	README.BSDI.gz
+F SOFTMAGI.GZ;1                     	softmagic.c.gz
+F TAR_H.GZ;1                        	tar.h.gz
+F _MAP.GZ;1                         	.MAP.gz

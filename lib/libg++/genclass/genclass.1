@@ -1,0 +1,32 @@
+.\" Copyright (c) 1993 Berkeley Software Design, Inc.
+.\" All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"
+.\"	BSDI genclass.1,v 2.1 1995/02/03 08:31:51 polk Exp
+.Dd Dec 20, 1993
+.Dt GENCLASS 1
+.Os
+.Sh NAME
+.Nm genclass
+.Nd generate a class from a prototype (template)
+.Sh SYNOPSIS
+.Nm genclass
+.Li \-list
+.br
+.Nm genclass
+.Li \-catalog
+.br
+.Nm genclass
+.Ar type1 Li ref|val Ar proto Op Ar out_prefix
+.br
+.Nm genclass
+.Li \-2 Ar type1 Li ref|val Ar type2
+.Li ref|val Ar proto Op Ar out_prefix
+.Sh DESCRIPTION
+The
+.Nm genclass
+command builds a class from a prototype file.
+This was used in the days before C++ had templates.
+New code should use templates.
+For more information, consult the GNU documentation.

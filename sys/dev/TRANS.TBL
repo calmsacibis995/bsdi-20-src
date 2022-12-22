@@ -1,0 +1,6 @@
+F CDVAR_H.GZ;1                      	cdvar.h.gz
+F CD_C.GZ;1                         	cd.c.gz
+F DISK_SUB.GZ;1                     	disk_subr.c.gz
+D SCSI                              	scsi
+F VNIOCTL_.GZ;1                     	vnioctl.h.gz
+F VN_C.GZ;1                         	vn.c.gz

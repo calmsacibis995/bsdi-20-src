@@ -1,0 +1,148 @@
+======================
+= FTPD 2.x CHANGELOG =
+======================
+
+If upgrading from version 2.1A or earlier, please read the
+CAVEAT at the bottom of this file.
+
+Fixes in wu-ftpd-2.4
+ o  removed some race conditions
+ o  fixed a spelling mistake
+ o  now uses sys/syslog.h on Ultrix systems
+
+Fixes in wu-ftpd-2.3
+ o  renumbering to avoid confusing with trojan version
+
+Fixes in wu-ftpd-2.2
+ o  fixed bug in path processing of SITE EXEC commands.
+ o  rewrote parts of private.c parsing routine.  fixes problems with
+    overloading definition of gid_t.
+ o  added support for class lists in separate file from UUNET
+ o  changed a couple of occurrences of stat() to lstat() in delete()
+    and renamefrom()
+ o  changed #ifdef LOG_LOCAL7 to #ifdef FACILITY in ftpd.c
+
+Fixes in wu-ftpd-2.1f
+ o  fixed NeXT config problem with NGROUPS_MAX
+ o  fixed multiple response bug with ftp|anonymous in /etc/ftpusers file
+ o  fixed BUS ERROR on upload on Sun 4.1.x systems
+
+Fixes in wu-ftpd-2.1e
+ o  fixed class determination code from failing after failed attempt
+ o  moved ACCESS DENIED syslog messages to LOG_NOTICE from LOG_INFO
+ o  fixed problems with NFS and server running as root.
+ o  fixed problems with APPEND/OVERWRITE (thanks to J. Zawinski).
+ o  patched SCO files to work with 3.2.4 (thanks to E. Vopicka).
+ o  fixed problems with uid/gid's (hopefully for the last time...).
+ o  Changed upload examples in ftpaccess.5 to be correct.
+ o  allow for escaped #s in the ftpaccess file.  (For path-filter, mostly).
+ o  hostacc.c patches by abe@vic.cc.purdue.edu.
+ o  ftpshut.c: fixed file open problem when shutdown not defined.
+ o  added acl_remove() to fix problems with dangling PIDs in PID files.
+ o  Fixed bug with real users > limit hanging clients.
+
+Fixes in wu-ftpd-2.1d
+ o  **lost**
+
+Fixes in wu-ftpd-2.1c
+ o  fixed stupid bug with non-initialized pointers in *_check() functions.
+
+Fixes in wu-ftpd-2.1b
+ o  Append now works again.  A previous fix to solved files not getting 
+       truncated properly had broken it.
+ o  Double conversions were not working properly for some conversions.
+ o  Minor HP-UX portability problems corrected.
+ o  Minor Host Access case sensitivity bug fixed.
+ o  syslog after chroot fixed for SunOS by addition of TCP version of 
+       syslog functions.  (it is syslog.c in the support directory)
+ o  Data General support added.
+ o  ISC support added.
+ o  Added "rename  <type>  <yes|no>" option to prevent renaming files.
+ o  Fixed unsigned int comparisons to -1
+ o  added ckconfig program for checking proper locations of config files.
+ o  changed syntax of "upload" command to include which ftp hierarchy it 
+       pertains.
+ o  fixed some documentation bugs.
+
+Fixes in wu-ftpd-2.1a
+ o  tabs were put back into the Makefiles for aix.
+ o  acl_join() did not open the pid file is pidfd was invalid.
+ o  acl_join() did not unlock the pid file if user was already in there.
+
+Fixes in wu-ftpd-2.1
+ o   xferstats: updated version written by Dave Datta.  (datta@cs.uwp.edu)
+ o   upload: default was to not allow uploads ever.  This is backwards, if
+       no upload keywords are given, it should act like a normal server.
+ o   double conversion: double conversion stuff works now... but  you know that
+       already.  Included is a gzip2comp (in util) for converting from
+       gzip format to compress.
+ o   cwd_beenhere(): now calls realpath(".", cwd) to figure out the path.
+       This works for people in directories that are private.  That
+       is that some component of their path is not readable by them.
+       (cwdir() fails in such a case.)
+ o  upload: trying to set a file mode of 0000 would fail.  This is now
+       possible.
+ o  makedir: Did not work properly for real users.  This has also been 
+       fixed.
+ o  fixed up support for NeXT and other systems.  I can not test these things,
+       so there are bound to be problems.
+ o  getgrent.c: removed the need for getgrent.c from the support library.
+       This caused problems with systems running yellow pages (NIS).
+       All gids in the private file are now parsed before the chroot().
+       This gives us one less open file descriptor.
+ o  upload/truncate: STORE was not properly trunctating files when 
+       overwriting them.
+ o  upload failing with directories in makedir/put commands: STORE and
+       MAKEDIR were failing when giving full path names.
+ o  process ids: multiple process ids were written into the pid-files when
+       a failed login attempt was made.  This caused problems with
+       usage counts.
+ o  %E magic cookie: the %E cookie gets replaced with the "email" string
+       from the ftpaccess file.
+ o  %F magic cookie: added trivial support for Solaris 2.1 (at least).
+       If you fix this for your system, send me a patch.
+ o  %N magic cookie: did not work after the chroot().  The pid file has
+       to remain open for the duration of the server's life now in
+       order for this to work.
+ o  support/paths.h: removed the need for this file.  It caused more
+       problems than it was worth.  The two #defines that were used
+       were moved to src/pathnames.h
+ o  upload * no dirs: you can now specify a directory that does not allow
+       uploads but does allow the creation of directories.
+ o  alias list: you can now get a listing of what aliases are available.
+       at the ftp prompt type "quote site alias".
+ o  cdpath: you can now specify a cdpath (like the csh variable).
+ o  email: you can specify an email address for the maintainer of the
+       archive.  This string will be used for the %E magic cookie.
+
+==========
+= CAVEAT =
+==========
+
+There has been a change in the syntax of the "upload" keyword in the
+ftpaccess file.
+
+OLD syntax: upload <dir glob> <yes|no> <user> <group> <dirs|nodirs>
+NEW syntax: upload <hierarchy> <dir glob> <yes|no> <user> <group> <dirs|nodirs>
+
+The <hierarchy> argument is the ftp hierarchy that the upload command
+now applies to.  This allows for the "upload" keyword to be used by
+guest and anonymous users, instead of just anonymous.
+
+To migrate your < 2.1A ftpaccess to 2.1B or greater, just add the home 
+directory of the ftp account to each upload line.  
+
+For example:
+ ftp:*:10000:31:FTP user:/home/ftp:/bin/true
+
+[2.1A ftpaccess]
+ upload  *           yes
+ upload  /bin/*      no
+ upload  /etc/*      no
+ upload  /incoming*  yes  bryan onc   0644    nodirs
+
+[2.1B or greater ftpaccess]
+ upload  /home/ftp  *           yes
+ upload  /home/ftp  /bin/*      no
+ upload  /home/ftp  /etc/*      no
+ upload  /home/ftp  /incoming*  yes  bryan onc   0644    nodirs

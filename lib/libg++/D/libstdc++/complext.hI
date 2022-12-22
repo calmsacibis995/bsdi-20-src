@@ -1,0 +1,273 @@
+// The template and inlines for the -*- C++ -*- complex number classes.
+// Copyright (C) 1994 Free Software Foundation
+
+// This file is part of the GNU ANSI C++ Library.  This library is free
+// software; you can redistribute it and/or modify it under the terms of
+// the GNU General Public License as published by the Free Software
+// Foundation; either version 2, or (at your option) any later version.
+
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with GNU CC; see the file COPYING.  If not, write to
+// the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+
+// As a special exception, if you link this library with files compiled
+// with a GNU compiler to produce an executable, this does not cause the
+// resulting executable to be covered by the GNU General Public License.
+// This exception does not however invalidate any other reasons why the
+// executable file might be covered by the GNU General Public License.
+
+// Written by Jason Merrill based upon the specification in the 27 May 1994
+// C++ working paper, ANSI document X3J16/94-0098.
+
+#ifdef __GNUG__
+#pragma interface
+#endif
+
+#include <cmath>
+
+template <class FLOAT>
+class __complex
+{
+public:
+  __complex (FLOAT r = 0, FLOAT i = 0): re (r), im (i) { }
+  __complex& operator += (__complex);
+  __complex& operator -= (__complex);
+  __complex& operator *= (__complex);
+  __complex& operator /= (__complex);
+private:
+  FLOAT re, im;
+
+  friend FLOAT real (__complex);
+  friend FLOAT imag (__complex);
+};
+
+// Declare specializations.
+class __complex<double>;
+class __complex<long double>;
+
+template <class FLOAT>
+inline __complex<FLOAT>&
+__complex<FLOAT>::operator += (__complex<FLOAT> r)
+{
+  re += r.re;
+  im += r.im;
+  return *this;
+}
+
+template <class FLOAT>
+inline __complex<FLOAT>&
+__complex<FLOAT>::operator -= (__complex<FLOAT> r)
+{
+  re -= r.re;
+  im -= r.im;
+  return *this;
+}
+
+template <class FLOAT>
+inline __complex<FLOAT>&
+__complex<FLOAT>::operator *= (__complex<FLOAT> r)
+{
+  FLOAT f = re * r.re - im * r.im;
+  im = re * r.im + im * r.re;
+  re = f;
+  return *this;
+}
+
+template <class FLOAT> inline FLOAT
+imag (__complex<FLOAT> x)
+{
+  return x.im;
+}
+
+template <class FLOAT> inline FLOAT
+real (__complex<FLOAT> x)
+{
+  return x.re;
+}
+
+#ifdef __GNUG__
+extern template float imag (__complex<float>);
+extern template float real (__complex<float>);
+#endif
+
+template <class FLOAT> inline __complex<FLOAT>
+operator + (__complex<FLOAT> x, __complex<FLOAT> y)
+{
+  return __complex<FLOAT> (real (x) + real (y), imag (x) + imag (y));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator + (__complex<FLOAT> x, FLOAT y)
+{
+  return __complex<FLOAT> (real (x) + y, imag (x));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator + (FLOAT x, __complex<FLOAT> y)
+{
+  return __complex<FLOAT> (x + real (y), imag (y));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator - (__complex<FLOAT> x, __complex<FLOAT> y)
+{
+  return __complex<FLOAT> (real (x) - real (y), imag (x) - imag (y));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator - (__complex<FLOAT> x, FLOAT y)
+{
+  return __complex<FLOAT> (real (x) - y, imag (x));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator - (FLOAT x, __complex<FLOAT> y)
+{
+  return __complex<FLOAT> (x - real (y), - imag (y));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator * (__complex<FLOAT> x, __complex<FLOAT> y)
+{
+  return __complex<FLOAT> (real (x) * real (y) - imag (x) * imag (y),
+			   real (x) * imag (y) + imag (x) * real (y));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator * (__complex<FLOAT> x, FLOAT y)
+{
+  return __complex<FLOAT> (real (x) * y, imag (x) * y);
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator * (FLOAT x, __complex<FLOAT> y)
+{
+  return __complex<FLOAT> (x * real (y), x * imag (y));
+}
+
+template <class FLOAT> __complex<FLOAT>
+operator / (__complex<FLOAT> x, FLOAT y)
+{
+  return __complex<FLOAT> (real (x) / y, imag (x) / y);
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator + (__complex<FLOAT> x)
+{
+  return x;
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+operator - (__complex<FLOAT> x)
+{
+  return __complex<FLOAT> (-real (x), -imag (x));
+}
+
+template <class FLOAT> inline bool
+operator == (__complex<FLOAT> x, __complex<FLOAT> y)
+{
+  return real (x) == real (y) && imag (x) == imag (y);
+}
+
+template <class FLOAT> inline bool
+operator == (__complex<FLOAT> x, FLOAT y)
+{
+  return real (x) == y && imag (x) == 0;
+}
+
+template <class FLOAT> inline bool
+operator == (FLOAT x, __complex<FLOAT> y)
+{
+  return x == real (y) && imag (y) == 0;
+}
+
+template <class FLOAT> inline bool
+operator != (__complex<FLOAT> x, __complex<FLOAT> y)
+{
+  return real (x) != real (y) || imag (x) != imag (y);
+}
+
+template <class FLOAT> inline bool
+operator != (__complex<FLOAT> x, FLOAT y)
+{
+  return real (x) != y || imag (x) != 0;
+}
+
+template <class FLOAT> inline bool
+operator != (FLOAT x, __complex<FLOAT> y)
+{
+  return x != real (y) || imag (y) != 0;
+}
+
+template <class FLOAT> inline FLOAT
+abs (__complex<FLOAT> x)
+{
+  return hypot (real (x), imag (x));
+}
+
+template <class FLOAT> inline FLOAT
+arg (__complex<FLOAT> x)
+{
+  return atan2 (imag (x), real (x));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+polar (FLOAT r, FLOAT t)
+{
+  return __complex<FLOAT> (r * cos (t), r * sin (t));
+}
+
+template <class FLOAT> inline __complex<FLOAT>
+conj (__complex<FLOAT> x) 
+{
+  return __complex<FLOAT> (real (x), -imag (x));
+}
+
+template <class FLOAT> inline FLOAT
+norm (__complex<FLOAT> x)
+{
+  return real (x) * real (x) + imag (x) * imag (x);
+}
+
+// Declarations of templates in complext.ccI
+
+template <class FLOAT> __complex<FLOAT> operator / (__complex<FLOAT>,
+						    __complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> operator / (FLOAT, __complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> cos (__complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> cosh (__complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> exp (__complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> log (__complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> pow (__complex<FLOAT>,
+					     __complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> pow (__complex<FLOAT>, FLOAT);
+template <class FLOAT> __complex<FLOAT> pow (__complex<FLOAT>, int);
+template <class FLOAT> __complex<FLOAT> pow (FLOAT, __complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> sin (__complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> sinh (__complex<FLOAT>);
+template <class FLOAT> __complex<FLOAT> sqrt (__complex<FLOAT>);
+
+class istream;
+class ostream;
+template <class FLOAT> istream& operator >> (istream&, __complex<FLOAT>&);
+template <class FLOAT> ostream& operator << (ostream&, __complex<FLOAT>);
+
+// Specializations and such
+
+template <class FLOAT>
+inline __complex<float>
+_float_complex(const __complex<FLOAT>& r)
+{
+  return __complex<float> (real (r), imag (r));
+}
+
+#include <dcomplex.hI>
+#include <ldcomplex.hI>
+
+// Declare the instantiations.
+#include <cinst.hI>

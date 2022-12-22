@@ -1,0 +1,13 @@
+F BYTEORDE.GZ;1                     	byteorder.c.gz
+F JITTER_C.GZ;1                     	jitter.c.gz
+F KERN_C.GZ;1                       	kern.c.gz
+F LONGSIZE.GZ;1                     	longsize.c.gz
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.tmpl.gz
+F NTPTIME_.GZ;1                     	ntptime.c.gz
+F PRECISIO.GZ;1                     	precision.c.gz
+F README.GZ;1                       	README.gz
+F TESTRS60.GZ;1                     	testrs6000.c.gz
+F TICKADJ_.GZ;1                     	tickadj.c.gz
+F TIMETRIM.GZ;1                     	timetrim.c.gz
+F _MAP.GZ;1                         	.MAP.gz

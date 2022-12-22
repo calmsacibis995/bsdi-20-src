@@ -1,0 +1,27 @@
+# map for /home
+/defaults 	type:=nfs;opts:=rw,spongy,intr,tcp;rhost:=${key/};rfs:=${path}
+
+rip		host!=rip;rfs:=/a;	host==rip;type:=link;fs:=/a
+picasso		host!=picasso;rfs:=/a;	host==picasso;type:=link;fs:=/a
+chez		host!=chez;rfs:=/a;	host==chez;type:=link;fs:=/a
+pissaro		host!=pissaro;rfs:=/a;	host==pissaro;type:=link;fs:=/a
+gauguin		host!=gauguin;rfs:=/a	host==gauguin;type:=link;fs:=/a
+
+liberty		host!=liberty;rfs:=/u;rhost:=liberty.BSDI.COM	host==liberty;type:=link;fs:=/u
+bsdi		host!=BSDI.COM;rfs:=/bsdi/home;rhost:=BSDI.COM;opts=rw,spongy,intr	host==BSDI.COM;type:=link;fs:=/bsdi/home
+
+
+vangogh		type:=auto;pref:=vangogh/;fs:=${map}
+vangogh/a	host!=vangogh;rfs:=/a	host==vangogh;type:=link;fs:=/a
+vangogh/b	host!=vangogh;rfs:=/b	host==vangogh;type:=link;fs:=/b
+vangogh/c	host!=vangogh;rfs:=/c	host==vangogh;type:=link;fs:=/c
+
+okeeffe		type:=auto;pref:=okeeffe/;fs:=${map}
+okeeffe/a	host!=vangogh;rfs:=/okeeffe/a;rhost:=vangogh; \
+		host==vangogh;type:=link;fs:=/okeeffe/a
+#okeeffe/b	host!=okeeffe;rfs:=/b	host==okeeffe;type:=link;fs:=/b
+#okeeffe/c	host!=okeeffe;rfs:=/c	host==okeeffe;type:=link;fs:=/c
+
+calder		type:=auto;pref:=calder/;fs:=${map}
+calder/a	;
+#calder/b	;

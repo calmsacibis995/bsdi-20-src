@@ -1,0 +1,30 @@
+CC     = gcc
+AR     = ar cq
+RANLIB = ranlib
+LIBC   = /lib/libc.a
+IFLAGS = 
+LFLAGS = 
+CFLAGS = -O -DDEBUG ${IFLAGS} ${LFLAGS}
+
+SRCS   = strcasestr.c ftw.c
+OBJS   = strcasestr.o ftw.o
+
+all: $(OBJS)
+	-rm -f libsupport.a
+	${AR} libsupport.a $(OBJS)
+	${RANLIB} libsupport.a
+
+clean:
+	-rm -f *.o libsupport.a
+
+ftp.h:
+	install -c -m 444 ftp.h /usr/include/arpa
+
+paths.h:
+	install -c -m 444 paths.h /usr/include
+
+strcasestr.o: strcasestr.c
+	${CC} ${CFLAGS} -c strcasestr.c
+
+ftw.o: ftw.c
+	${CC} ${CFLAGS} -c ftw.c

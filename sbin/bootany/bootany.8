@@ -1,0 +1,79 @@
+.\" Copyright (c) 1994 Berkeley Software Design, Inc.
+.\" All rights reserved.
+.\"
+.\" BSDI	bootany.8,v 2.1 1995/02/03 07:12:12 polk Exp
+.\"
+.Dd "December 5,1994"
+.Dt BOOTANY 8
+.Os
+.Sh NAME
+.Nm bootany
+.Nd install/update bootany master boot record
+.Sh SYNOPSIS
+.Nm bootany
+.Op Fl dfinz
+.Op Fl A Ar part
+.Op Fl F Ar bootfile
+.Op Fl s Ar savembr
+.Ar MBR
+.Op Ar D:MBR
+.Sh DESCRIPTION
+.Pp
+The
+.Nm bootany
+utility allows the installation of the bootany master boot record (MBR)
+or editing of the partitions from which to boot.  The bootany MBR allows
+booting from up to 4 partitions on either of the disks accessible through
+the BIOS.  Although BSD/OS, starting with version 2, may be booted from
+either disk defined by the BIOS, other operating systems may not be able
+to be booted from other than the first disk.
+.Pp
+.Ar MBR
+should refer to the primary disk (e.g., /dev/rwd0c or /dev/rsd0c).
+In order to boot from the second drive, it must be specified as
+.Ar D:MBR
+(e.g., /dev/rwd1c).
+.Pp
+With no options,
+.Nm bootany
+lists the current partitions from which to boot.
+The options available are:
+.Bl -tag -width Ds
+.It Fl A
+Set the partition defined by
+.Ar part ,
+which must be a number between 1 and 4,
+as the current active partition.
+.It Fl d
+Treat the secondary drive as bootable with no FDISK table (i.e. it
+is dedicated to BSD/OS.)
+.It Fl f
+Print the FDISK tables as well as bootany tables.
+.It Fl F
+Use
+.Ar bootfile as the path to the file which contains the bootany MBR
+instead of /usr/bootstraps/bootany.sys.
+.It Fl i
+Ask for each of the partitions if they are bootable, and if so,
+what to call them.
+.It Fl n
+Install a new copy of bootany.sys.
+.It Fl s
+Save a copy of the old MBR in
+.Ar savembr .
+.It Fl z
+Zero the bootany tables.  If specified with the
+.Fl i
+flag, the tables are first zeroed and then interactive
+mode is entered.
+.El
+.Pp
+The
+.nm bootany
+program is called by
+.Xr disksetup 8
+to install the BSD/OS MBR.
+.Sh FILES
+/usr/bootstraps/bootany.sys
+.Sh SEE ALSO
+.Xr disksetup 8

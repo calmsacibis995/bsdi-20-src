@@ -1,0 +1,12 @@
+root::0:0::0:0:System Administrator:/root:/bin/csh
+daemon:*:1:1::0:0:System Daemon:/:/dev/null
+sys:*:2:2::0:0:Operating System:/tmp:/dev/null
+bin:*:3:7::0:0:BSDI Software:/usr/bsdi:/dev/null
+operator:*:5:5::0:0:System Operator:/usr/opr:/dev/null
+uucp:*:6:6::0:0:UNIX-to-UNIX Copy:/var/spool/uucppublic:/usr/libexec/uucico
+games:*:7:13::0:0:Games Pseudo-user:/usr/games:/dev/null
+news:*:9:8::0:0:USENET News,,,:/var/news/etc:/dev/null
+demo:*:10:13::0:0:Demo User:/usr/demo:/dev/null
+www:*:51:84::0:0:WWW-server:/var/www:/dev/null
+nobody:*:32767:32766::0:0:Unprivileged user:/nonexistent:/dev/null
+nonroot:*:65534:32766::0:0:Non-root root user for NFS:/nonexistent:/dev/null

@@ -1,0 +1,126 @@
+/*	BSDI README,v 2.1 1995/02/03 09:18:44 polk Exp	*/
+
+This is the README for the password file update library.
+
+There are three ways this can be used:
+
+   1.	To lock against other changes (i.e., vipw).  In this case all
+	we really need is the descriptor for /etc/master.passwd.
+
+   2.	To (re)build the databases from scratch (i.e., pwd_mkdb).  In
+	this case we need the input master file, each (new) database,
+	and (optional) a new `old style' passwd file.  The new files
+	are just temporaries, and the last step is to rename these
+	temporaries, with the lock file being renamed last.  Note that
+	the new databases are built sequentially (which saves on paging).
+
+   3.	To update the files in place (chpass, passwd, etc).  This is the
+	most complex case.  Here we need the original master file, a
+	new master file, the original databases, and a new `old style'
+	file (again optional).  The new files are built from the originals,
+	then the two databases are updated in place, and finally the new
+	files are renamed as for case two.
+
+	NOTE: case 3 can only be used when the name and uid are not
+	changing (or when adding a new entry at the end).
+
+The locking details are hidden from users, as are the names of the
+various files.  What shows through is that there are two DBs, the
+`insecure' and `secure' databases, and an optional `old style'
+file, as well as the input `master' file.
+
+In all cases, pw_init() is used to set things up.  It takes a
+pointer to a pwinfo structure and (optional) flags:
+
+   PW_MAKEOLD  - make an old-style /etc/passwd file
+   PW_STRIPDIR - work in . rather than in /etc (or wherever pw files live)
+   PW_WARNROOT - warn if root has `unusual' entry
+   PW_NOLINK   - do not link to master.passwd
+
+(Currently these flags are only meaningful for from-scratch builds.)
+
+If the caller just wants to lock, the call sequence is:
+
+	pw_init(&pw, flags);
+	if (pw_lock(&pw, O_NONBLOCK) < 0) {
+		if (errno == EWOULDBLOCK) { already locked; }
+		err...
+	}
+	... stuff while locked ...
+	pw_unlock(&pw);
+
+If the caller wants to rebuild from a new master file, the sequence is:
+
+	pw_init(&pw, flags);
+	catch_signals;		/* see below; or simply block */
+	pw_unlimit();		/* or earlier */
+	/* optional pw_lock here, but can rebuild w/out lock */
+	if (pw_rebuild(&pw, input_master_file_name, cachesize))
+		err...
+
+	block_signals;		/* see below */
+	(void)fchmod(fileno(pw.pw_master.pf_fp), PW_PERM_SECURE); /* ??? */
+	if (pw_install(&pw))	/* also unlocks */
+		err...
+	exit(0);
+
+If the caller wants to replace and/or append entries, the sequence is:
+
+	pw_init(&pw, flags);
+	/* can catch signals here, then pw_lock */
+	block_signals;		/* catching not currently viable */
+	pw_unlimit();
+	/* do pw_lock here, if not done earlier */
+	if (pw_inplace(&pw))
+		err...
+
+	while (pw_next(&pw, &pwd, &errflag)) {
+		if (replacing &pwd with &new) {
+			if (pw_enter(&pw, &pwd, &new))
+				err...
+		} else {
+			if (pw_enter(&pw, &pwd, &pwd))
+				err...
+		}
+	}
+	if (errflag)
+		err...
+	if (stuff to add) {
+		if (pw_enter(&pw, NULL, &new))
+			err...
+	}
+	if (pw_ipend(&pw))
+		err...
+	if (pw_install(&pw))	/* also unlocks */
+		err...
+	exit(0);
+
+Signals can be caught or blocked with pw_sigs():
+
+	pw_sigs(NULL, NULL);
+	/* signals are now blocked */
+
+or:
+
+	sigset_t sigs;
+	struct sigaction act;
+
+	act.sa_handler = cleanup;
+	act.sa_flags = 0;
+	pw_sigs(&sigs, &act);
+	/* signals are now caught, delivery to cleanup() */
+	...
+	(void)sigprocmask(SIG_BLOCK, &set, NULL);
+	/* signals are now blocked */
+
+In any case, after an error the program should call pw_abort().
+This will remove any temporary files.  The program can then unlock
+and exit (or try again or whatever).
+
+An independent routine, pw_split(), can be used to split up and
+verify any arbitrary text line as a passwd line.  It returns an
+error message (in a static buffer), or NULL if OK.
+
+Except for pw_split, routines that can return an errors print the
+error, then return -1.  Since pw_next's return value is 1 for `keep
+going', it returns its error flag through a pointer instead.

@@ -1,0 +1,5 @@
+F DEV_MKDB.000;1                    	dev_mkdb.c.gz
+F DEV_MKDB.GZ;1                     	dev_mkdb.8.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/dev_mkdb
+F _MAP.GZ;1                         	.MAP.gz

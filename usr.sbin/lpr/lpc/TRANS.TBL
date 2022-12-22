@@ -1,0 +1,9 @@
+F CMDS_C.GZ;1                       	cmds.c.gz
+F CMDTAB_C.GZ;1                     	cmdtab.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F LPC_8.GZ;1                        	lpc.8.gz
+F LPC_C.GZ;1                        	lpc.c.gz
+F LPC_H.GZ;1                        	lpc.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/lpr/lpc
+F _MAP.GZ;1                         	.MAP.gz

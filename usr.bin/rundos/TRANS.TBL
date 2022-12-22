@@ -1,0 +1,9 @@
+D DEBUG                             	debug
+D KERNEL                            	kernel
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.inc.gz
+F README.GZ;1                       	README.gz
+F ROMBIOS.GZ;1                      	rombios.gz
+D ROMBIOS_                          	rombios_source
+D RUNDOS                            	rundos
+F _MAP.GZ;1                         	.MAP.gz

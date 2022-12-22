@@ -1,0 +1,17 @@
+F DINODE_H.GZ;1                     	dinode.h.gz
+F DIR_H.GZ;1                        	dir.h.gz
+F INODE_H.GZ;1                      	inode.h.gz
+F LOCKF_H.GZ;1                      	lockf.h.gz
+F QUOTA_H.GZ;1                      	quota.h.gz
+F UFSMOUNT.GZ;1                     	ufsmount.h.gz
+F UFS_BMAP.GZ;1                     	ufs_bmap.c.gz
+F UFS_DISK.GZ;1                     	ufs_disksubr.c.gz
+F UFS_EXTE.GZ;1                     	ufs_extern.h.gz
+F UFS_IHAS.GZ;1                     	ufs_ihash.c.gz
+F UFS_INOD.GZ;1                     	ufs_inode.c.gz
+F UFS_LOCK.GZ;1                     	ufs_lockf.c.gz
+F UFS_LOOK.GZ;1                     	ufs_lookup.c.gz
+F UFS_QUOT.GZ;1                     	ufs_quota.c.gz
+F UFS_READ.GZ;1                     	ufs_readwrite.c.gz
+F UFS_VFSO.GZ;1                     	ufs_vfsops.c.gz
+F UFS_VNOP.GZ;1                     	ufs_vnops.c.gz

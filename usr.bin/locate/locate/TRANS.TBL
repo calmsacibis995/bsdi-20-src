@@ -1,0 +1,8 @@
+F LOCATE_1.GZ;1                     	locate.1.gz
+F LOCATE_C.GZ;1                     	locate.c.gz
+F LOCATE_H.GZ;1                     	locate.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/locate/locate
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F UPDATEDB.GZ;1                     	updatedb.csh.gz
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,15 @@
+F CONFIG.C;1                        	config.c
+F CRYPTO.C;1                        	crypto.c
+F CRYPTO.H;1                        	crypto.h
+F ERROR.H;1                         	error.h
+D GROT                              	grot
+F IDENTD.8;1                        	identd.8
+F IDENTD.C;1                        	identd.c
+F IDENTD.H;1                        	identd.h
+F KERNEL.C;1                        	kernel.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/identdEpporttestmmon6/includes
+F PARSE.C;1                         	parse.c
+F PATHS.H;1                         	paths.h
+F PROXY.C;1                         	proxy.c
+F VERSION.C;1                       	version.c

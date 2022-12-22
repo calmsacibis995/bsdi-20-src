@@ -1,0 +1,10 @@
+F ISO8859-.GZ;1                     	ISO8859-1.gz
+F JAPANESE.GZ;1                     	Japanese-EUC.gz
+F LDEF_H.GZ;1                       	ldef.h.gz
+F LEX_L.GZ;1                        	lex.l.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MKLOCALE.GZ;1                     	mklocale.1.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/mklocale
+F POSIX-UT.GZ;1                     	POSIX-UTF2.gz
+F YACC_Y.GZ;1                       	yacc.y.gz
+F _MAP.GZ;1                         	.MAP.gz

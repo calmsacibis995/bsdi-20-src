@@ -1,0 +1,11 @@
+F CHANGELO.;1                       	ChangeLog
+F CONFIGUR.IN;1                     	configure.in
+F COPYING.;1                        	COPYING
+F GPERF.1;1                         	gperf.1
+F GPERF.INF;1                       	gperf.info
+F GPERF.TEX;1                       	gperf.texi
+F MAKEFILE.IN;1                     	Makefile.in
+F README.;1                         	README
+D SRC                               	src
+D TESTS                             	tests
+F _MAP.;1                           	.MAP

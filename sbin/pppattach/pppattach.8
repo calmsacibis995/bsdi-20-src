@@ -1,0 +1,111 @@
+.\" Copyright (c) 1993 Berkeley Software Design, Inc. All rights reserved.
+.\" The Berkeley Software Design Inc. software License Agreement specifies
+.\" the terms and conditions for redistribution.
+.\"	BSDI pppattach.8,v 2.1 1995/02/03 07:31:18 polk Exp
+.Dd February 24, 1993
+.Dt PPPATTACH 8
+.Os
+.Sh NAME
+.Nm pppattach
+.Nd attach serial lines as PPP network interfaces
+.Sh SYNOPSIS
+.Nm pppattach
+.Op Fl i Ar n
+.Op Fl s Ar baudrate
+.Ar ttyname
+.Sh DESCRIPTION
+.Nm Pppattach
+is used to assign a tty line to a network interface
+with the point-to-point protocol (PPP).
+Use of this command is recommended on dedicated
+lines only; for dial-up lines use
+.Nm ppp
+instead.
+.Pp
+.Nm Pppattach
+may be called before or after
+the interface was configured up with
+.Nm ifconfig ;
+the PPP startup sequence will not be initiated
+until both conditions (i.e. line is attached
+and interface is up) are met.
+Loading the interface addresses with
+.Nm ifconfig
+first may help to avoid some problems with routing
+software.
+.Pp
+After the line has been attached,
+.Nm pppattach
+will wait until the connection is dropped.
+To reestablish a connection,
+.Nm pppattach
+should be
+invoked again.
+.Pp
+The following arguments are supported by
+.Nm pppattach :
+.Bl -tag -width Ar
+.It Fl i Ar ppp Ns Em N
+Selects the interface to attach the line to.
+If no interface is specified,
+.Nm pppattach
+will select one with no line attached.
+However, it is useful to specify the interface
+explicitly to avoid confusion because
+.Nm ifconfig
+needs the exact interface name.
+.It Fl s Ar baudrate
+Sets the transmission speed on the line.
+If this option is omitted, the transmission speed
+will not be changed (i.e. the speed last configured
+on the line will be used).
+.It Ar ttyname
+Specifies the name of the tty device.
+.Ar Ttyname
+should be a string of the form
+.Ql ttyXX ,
+or
+.Ql /dev/ttyXX .
+.El
+.Pp
+Only the super-user may attach a network interface.
+.Pp
+To detach the interface, use
+.Dq Li Nm ifconfig Ar interface-name Cm down
+(it will cause the termination of the
+.Nm pppattach
+process).
+Killing
+.Nm pppattach
+will interrupt the communication immediately but
+will not configure the interface down.
+.Ar Interface-name
+is the name that is shown by
+.Xr netstat 1
+as
+.Dq pppN
+where
+.Ar N
+is the number of the interface.
+.Sh EXAMPLES
+.Bd -literal -offset indent -compact
+pppattach ttyh8
+pppattach -s 19200 -i 3 /dev/tty01
+.Ed
+.Sh DIAGNOSTICS
+Messages indicating the specified interface does not exist, there is
+no such tty line, the specified transmission speed is not valid,
+the user is not privileged.
+.Sh SEE ALSO
+.Xr netstat 1 ,
+.Xr ifconfig 8 ,
+.Xr ppp 8 ,
+.Xr pppconfig 8 ,
+.Xr netintro 4 ,
+.Xr ppp 4 ,
+.Xr appp 4
+.Sh HISTORY
+The
+.Nm pppattach
+command is
+.Ud .

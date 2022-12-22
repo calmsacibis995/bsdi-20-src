@@ -1,0 +1,19 @@
+.\" SCCSID: @(#)ftpwho.1   1.2 1/26/93
+.TH ftpwho 1
+.SH Name
+ftpwho \- show current process information for each ftp user.
+.SH Syntax
+.B ftpwho
+.SH Description
+.NXR "ftpwho command"
+.NXR "system" "show ftpd process information"
+The
+.PN ftpwho
+command
+shows the current process information for each user logged into
+the ftp server.
+.PN ftpwho.
+.SH Restrictions
+Not very useful if the server was compiled without SETPROCTITLE.
+.SH See Also
+ftpcount(1)

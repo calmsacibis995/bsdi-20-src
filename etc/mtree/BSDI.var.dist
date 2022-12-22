@@ -1,0 +1,139 @@
+#	  fs: /var
+#	  by: polk
+#	date: Wed Mar 10 13:42:47 MST 1993
+
+account	type=dir uname=root gname=wheel mode=0755
+..
+backups	type=dir uname=root gname=wheel mode=0755
+..
+cron	type=dir uname=root gname=wheel mode=0700
+	tabs	type=dir uname=root gname=wheel mode=0700
+	..
+..
+db	type=dir uname=root gname=wheel mode=0755
+	locate.database	type=file uname=nobody gname=nogroup mode=0644
+	tripwire	type=dir uname=root gname=wheel mode=0755
+	..
+..
+emacs	type=dir uname=root gname=wheel mode=0755
+	lock	type=dir uname=root gname=wheel mode=01777
+	..
+..
+games	type=dir uname=games gname=wheel mode=0755
+	hackdir	type=dir uname=games gname=wheel mode=0755
+		save type=dir uname=games gname=wheel mode=0755
+		..
+	..
+	larn	type=dir uname=games gname=wheel mode=0755
+	..
+	phantasia	type=dir uname=games gname=wheel mode=0755
+	..
+..
+log	type=dir uname=root gname=wheel mode=0755
+	httpd	type=dir uname=www gname=www mode=0775
+	..
+	news	type=dir uname=news gname=news mode=0775
+		OLD	type=dir uname=news gname=news mode=0775
+		..
+	..
+	uucp	type=dir uname=uucp gname=uucp mode=0775
+		status	type=dir uname=uucp gname=uucp mode=0775
+		..
+	..
+..
+mail	type=dir uname=root gname=mail mode=0775
+..
+msgs	type=dir uname=root gname=wheel mode=0755
+..
+news	type=dir uname=news gname=news mode=0755
+	etc	type=dir uname=news gname=news mode=0755
+	..
+	locks	type=dir uname=news gname=news mode=0755
+	..
+	run	type=dir uname=news gname=news mode=0755
+	..
+	spool	type=dir uname=news gname=news mode=0755
+		in.coming	type=dir uname=news gname=news mode=0755
+			bad	type=dir uname=news gname=news mode=0755
+			..
+			tmp	type=dir uname=news gname=news mode=0755
+			..
+		..
+		out.going	type=dir uname=news gname=news mode=0755
+		..
+	..
+..
+preserve	type=dir uname=root gname=wheel mode=0755
+..
+quotas	type=dir uname=root gname=wheel mode=0755
+..
+run	type=dir uname=root gname=wheel mode=0755
+..
+rwho	type=dir uname=root gname=wheel mode=0755
+..
+spool	type=dir uname=root gname=wheel mode=0755
+	at	type=dir uname=root gname=wheel mode=0755
+		past	type=dir uname=root gname=wheel mode=0755
+		..
+	..
+	flexfax	type=dir uname=uucp gname=uucp mode=0775
+		bin	type=dir uname=uucp gname=uucp mode=0775
+		..
+		cinfo	type=dir uname=uucp gname=uucp mode=0775
+		..
+		docq	type=dir uname=uucp gname=uucp mode=0775
+		..
+		etc	type=dir uname=uucp gname=uucp mode=0775
+		..
+		info	type=dir uname=uucp gname=uucp mode=0775
+		..
+		log	type=dir uname=uucp gname=uucp mode=0775
+		..
+		recvq	type=dir uname=uucp gname=uucp mode=0775
+		..
+		sendq	type=dir uname=uucp gname=uucp mode=0775
+		..
+		status	type=dir uname=uucp gname=uucp mode=0775
+		..
+		tmp	type=dir uname=uucp gname=uucp mode=1777
+		..
+	..
+	ftp	type=dir uname=root gname=wheel mode=0755
+		bin	type=dir uname=root gname=wheel mode=0755
+		..
+		hidden	type=dir uname=root gname=wheel mode=0111
+		..
+		pub	type=dir uname=root gname=wheel mode=0755
+		..
+	..
+	lpd	type=dir uname=root gname=wheel mode=0755
+	..
+	mqueue	type=dir uname=root gname=wheel mode=0755
+	..
+	output	type=dir uname=root gname=wheel mode=0755
+	..
+	secretmail	type=dir uname=root gname=wheel mode=0755
+	..
+	uucp	type=dir uname=uucp gname=uucp mode=0775
+		.Xqtdir	type=dir uname=uucp gname=uucp mode=0775
+		..
+	..
+	uucppublic	type=dir uname=uucp gname=daemon mode=01777
+	..
+..
+tmp	type=dir uname=root gname=wheel mode=01777
+	vi.recover	type=dir uname=root gname=wheel mode=01777
+	..
+..
+www	type=dir uname=www gname=www mode=0755
+	cgi-bin	type=dir uname=www gname=www mode=0755
+	..
+	conf	type=dir uname=www gname=www mode=0755
+	..
+	docs	type=dir uname=www gname=www mode=0755
+		bsdi	type=dir uname=www gname=www mode=0755
+		..
+	..
+	icons	type=dir uname=www gname=www mode=0755
+	..
+..

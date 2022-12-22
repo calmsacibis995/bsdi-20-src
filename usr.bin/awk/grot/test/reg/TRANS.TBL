@@ -1,0 +1,16 @@
+F EXP-EQ_A.GZ;1                     	exp-eq.awk.gz
+F EXP-EQ_G.GZ;1                     	exp-eq.good.gz
+F EXP-EQ_I.GZ;1                     	exp-eq.in.gz
+F EXP_AWK.GZ;1                      	exp.awk.gz
+F EXP_GOOD.GZ;1                     	exp.good.gz
+F EXP_IN.GZ;1                       	exp.in.gz
+F FUNC2_AW.GZ;1                     	func2.awk.gz
+F FUNC2_GO.GZ;1                     	func2.good.gz
+F FUNC2_IN.GZ;1                     	func2.in.gz
+F FUNC_AWK.GZ;1                     	func.awk.gz
+F FUNC_GOO.GZ;1                     	func.good.gz
+F FUNC_IN.GZ;1                      	func.in.gz
+F LOG_AWK.GZ;1                      	log.awk.gz
+F LOG_GOOD.GZ;1                     	log.good.gz
+F LOG_IN.GZ;1                       	log.in.gz
+F _MAP.GZ;1                         	.MAP.gz

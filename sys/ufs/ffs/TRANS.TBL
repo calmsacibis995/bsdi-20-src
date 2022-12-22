@@ -1,0 +1,9 @@
+F FFS_ALLO.GZ;1                     	ffs_alloc.c.gz
+F FFS_BALL.GZ;1                     	ffs_balloc.c.gz
+F FFS_EXTE.GZ;1                     	ffs_extern.h.gz
+F FFS_INOD.GZ;1                     	ffs_inode.c.gz
+F FFS_SUBR.GZ;1                     	ffs_subr.c.gz
+F FFS_TABL.GZ;1                     	ffs_tables.c.gz
+F FFS_VFSO.GZ;1                     	ffs_vfsops.c.gz
+F FFS_VNOP.GZ;1                     	ffs_vnops.c.gz
+F FS_H.GZ;1                         	fs.h.gz

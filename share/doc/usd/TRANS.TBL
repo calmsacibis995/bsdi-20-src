@@ -1,0 +1,14 @@
+F 00_CONTE.GZ;1                     	00.contents.gz
+D 04.CSH                            	04.csh
+D 07.MAI                            	07.mail
+D 11.VIT                            	11.vitut
+D 12.EXR                            	12.exref
+D 13.VIR                            	13.viref
+D 18.MSD                            	18.msdiffs
+D 19.MEM                            	19.memacros
+D 20.MER                            	20.meref
+D 30.ROG                            	30.rogue
+D 31.TRE                            	31.trek
+F MAKEFILE.GZ;1                     	Makefile.gz
+F TITLE.GZ;1                        	Title.gz
+F _MAP.GZ;1                         	.MAP.gz

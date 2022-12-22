@@ -1,0 +1,10 @@
+#	BSDI phones,v 2.1 1995/02/03 05:54:22 polk Exp
+#
+#	@(#)phones      8.1 (Berkeley) 6/9/93
+#
+# phones -- remote host phone number data base
+# see tip(1), phones(5), remote(5)
+#
+#system phone
+remote	1234567890
+dial9	9=1234567890

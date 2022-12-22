@@ -1,0 +1,14 @@
+F DIRS_C.GZ;1                       	dirs.c.gz
+F EXTERN_H.GZ;1                     	extern.h.gz
+F INTERACT.GZ;1                     	interactive.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/sbin/restore
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F RESTORE_.000;1                    	restore.8.gz
+F RESTORE_.001;1                    	restore.c.gz
+F RESTORE_.GZ;1                     	restore.h.gz
+F SYMTAB_C.GZ;1                     	symtab.c.gz
+F TAPE_C.GZ;1                       	tape.c.gz
+F UTILITIE.GZ;1                     	utilities.c.gz
+F _MAP.GZ;1                         	.MAP.gz

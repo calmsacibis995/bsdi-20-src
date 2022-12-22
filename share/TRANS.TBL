@@ -1,0 +1,14 @@
+D DICT                              	dict
+D DOC                               	doc
+F MAKEFILE.000;1                    	Makefile.gz
+F MAKEFILE.GZ;1                     	Makefile.inc.gz
+D MAN                               	man
+D ME                                	me
+D MISC                              	misc
+D MK                                	mk
+D SKEL                              	skel
+D TABSET                            	tabset
+D TERMCAP                           	termcap
+D TMAC                              	tmac
+D ZONEINFO                          	zoneinfo
+F _MAP.GZ;1                         	.MAP.gz

@@ -1,0 +1,5 @@
+F MAIL.000;1                        	mail.local.c
+F MAIL.LOC;1                        	mail.local.8
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/libexec/mail.localrdtestmmon6/includes
+F PATHNAME.H;1                      	pathnames.h

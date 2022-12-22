@@ -1,0 +1,9 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F LPDCHAR_.GZ;1                     	lpdchar.c.gz
+F LPD_8.GZ;1                        	lpd.8.gz
+F LPD_C.GZ;1                        	lpd.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.sbin/lpr/lpd
+F PRINTJOB.GZ;1                     	printjob.c.gz
+F RECVJOB_.GZ;1                     	recvjob.c.gz
+F _MAP.GZ;1                         	.MAP.gz

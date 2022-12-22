@@ -1,0 +1,9 @@
+F DES_RW_C.GZ;1                     	des_rw.c.gz
+F KCMD_C.GZ;1                       	kcmd.c.gz
+F KRB_H.GZ;1                        	krb.h.gz
+F KRCMD_C.GZ;1                      	krcmd.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/rlogin
+F RLOGIN_1.GZ;1                     	rlogin.1.gz
+F RLOGIN_C.GZ;1                     	rlogin.c.gz
+F _MAP.GZ;1                         	.MAP.gz

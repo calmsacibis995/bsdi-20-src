@@ -1,0 +1,16 @@
+F CHANGELO.GZ;1                     	ChangeLog.gz
+D CONTRIB                           	contrib
+F COPYING.GZ;1                      	COPYING.gz
+F COPYING_.GZ;1                     	COPYING.LIB.gz
+F CVSINIT.GZ;1                      	cvsinit.gz
+D DOC                               	doc
+D EXAMPLES                          	examples
+D GROT                              	grot
+D LIB                               	lib
+F MAKEFILE.GZ;1                     	Makefile.gz
+D MKMODULE                          	mkmodules
+F README.GZ;1                       	README.gz
+D SRC                               	src
+F TODO.GZ;1                         	TODO.gz
+F _CVSIGNO.GZ;1                     	.cvsignore.gz
+F _MAP.GZ;1                         	.MAP.gz

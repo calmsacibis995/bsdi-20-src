@@ -1,0 +1,17 @@
+F ATOF-IEE.GZ;1                     	atof-ieee.c.gz
+F ATOF-VAX.GZ;1                     	atof-vax.c.gz
+F A_OUT_GN.GZ;1                     	a.out.gnu.h.gz
+F I386-OPC.GZ;1                     	i386-opcode.h.gz
+F I386_C.GZ;1                       	i386.c.gz
+F I386_H.GZ;1                       	i386.h.gz
+F I860-OPC.GZ;1                     	i860-opcode.h.gz
+F I860_C.GZ;1                       	i860.c.gz
+F I860_H.GZ;1                       	i860.h.gz
+F M-HPUX_H.GZ;1                     	m-hpux.h.gz
+F M-SUN3_H.GZ;1                     	m-sun3.h.gz
+F M68K-OPC.GZ;1                     	m68k-opcode.h.gz
+F M68K_C.GZ;1                       	m68k.c.gz
+F M68K_H.GZ;1                       	m68k.h.gz
+F MAKEFILE.000;1                    	Makefile.i386.gz
+F MAKEFILE.GZ;1                     	Makefile.hp300.gz
+F _MAP.GZ;1                         	.MAP.gz

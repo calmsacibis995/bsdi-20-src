@@ -1,0 +1,9 @@
+F EXTERN_H.GZ;1                     	extern.h.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/tftp
+F TFTPSUBS.000;1                    	tftpsubs.c.gz
+F TFTPSUBS.GZ;1                     	tftpsubs.h.gz
+F TFTP_1.GZ;1                       	tftp.1.gz
+F TFTP_C.GZ;1                       	tftp.c.gz
+F _MAP.GZ;1                         	.MAP.gz

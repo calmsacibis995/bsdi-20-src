@@ -1,0 +1,5 @@
+F CAP_MKDB.000;1                    	cap_mkdb.c.gz
+F CAP_MKDB.GZ;1                     	cap_mkdb.1.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/cap_mkdb
+F _MAP.GZ;1                         	.MAP.gz

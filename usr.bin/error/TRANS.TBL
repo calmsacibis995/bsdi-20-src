@@ -1,0 +1,12 @@
+F ERROR_1.GZ;1                      	error.1.gz
+F ERROR_H.GZ;1                      	error.h.gz
+F FILTER_C.GZ;1                     	filter.c.gz
+F INPUT_C.GZ;1                      	input.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/error
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F PI_C.GZ;1                         	pi.c.gz
+F SUBR_C.GZ;1                       	subr.c.gz
+F TOUCH_C.GZ;1                      	touch.c.gz
+F _MAP.GZ;1                         	.MAP.gz

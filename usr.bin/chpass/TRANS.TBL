@@ -1,0 +1,11 @@
+F CHPASS_1.GZ;1                     	chpass.1.gz
+F CHPASS_C.GZ;1                     	chpass.c.gz
+F CHPASS_H.GZ;1                     	chpass.h.gz
+F EDIT_C.GZ;1                       	edit.c.gz
+F FIELD_C.GZ;1                      	field.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/chpass
+F PATHNAME.GZ;1                     	pathnames.h.gz
+F TABLE_C.GZ;1                      	table.c.gz
+F UTIL_C.GZ;1                       	util.c.gz
+F _MAP.GZ;1                         	.MAP.gz

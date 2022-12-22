@@ -1,0 +1,14 @@
+F DEVNAME.C;1                       	devname.c
+F DISKLABE.C;1                      	disklabel.c
+F DKCKSUM.C;1                       	dkcksum.c
+F LOGIN.C;1                         	login.c
+F LOGIN_TT.C;1                      	login_tty.c
+F LOGOUT.C;1                        	logout.c
+F LOGWTMP.C;1                       	logwtmp.c
+F MAKEFILE.;1                       	Makefile
+L OBJ.;1                            	obj	/usr/cdrom_obj/lib/libutil
+D PASSWD                            	passwd
+F PTY.C;1                           	pty.c
+F SETPROCT.C;1                      	setproctitle.c
+F SETTERM.C;1                       	setterm.c
+F _MAP.;1                           	.MAP

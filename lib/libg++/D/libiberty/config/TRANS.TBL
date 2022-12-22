@@ -1,0 +1,15 @@
+F MH-A68BS.;1                       	mh-a68bsd
+F MH-AIX.;1                         	mh-aix
+F MH-APOLL.;1                       	mh-apollo68
+F MH-CXUX7.;1                       	mh-cxux7
+F MH-GO32.;1                        	mh-go32
+F MH-HPBSD.;1                       	mh-hpbsd
+F MH-HPUX.;1                        	mh-hpux
+F MH-IRIX4.;1                       	mh-irix4
+F MH-LYNXO.;1                       	mh-lynxos
+F MH-NCR30.;1                       	mh-ncr3000
+F MH-RISCI.;1                       	mh-riscix
+F MH-SYSV.;1                        	mh-sysv
+F MH-SYSV4.;1                       	mh-sysv4
+F MT-SUNOS.;1                       	mt-sunos4
+F _MAP.;1                           	.MAP

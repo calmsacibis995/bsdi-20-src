@@ -1,0 +1,23 @@
+F CHKSUM_C.GZ;1                     	chksum.c.gz
+F CICO_ARG.GZ;1                     	cico_args.c.gz
+F CICO_H.GZ;1                       	cico.h.gz
+F CONNECT_.GZ;1                     	Connect.c.gz
+F CONTROL_.GZ;1                     	Control.c.gz
+F DEVICES_.GZ;1                     	devices.h.gz
+F DIALLERS.GZ;1                     	Diallers.c.gz
+F DO_CICO_.GZ;1                     	do_cico.c.gz
+F F_PROTO_.GZ;1                     	f_proto.c.gz
+F G_PROTO_.GZ;1                     	g_proto.c.gz
+F MAIN_C.GZ;1                       	main.c.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+F MESG_C.GZ;1                       	Mesg.c.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/uucp/uucico
+F PROTOCOL.GZ;1                     	Protocol.h.gz
+F SEQUENCE.GZ;1                     	Sequence.c.gz
+F STATUS_C.GZ;1                     	Status.c.gz
+F T_PROTO_.GZ;1                     	t_proto.c.gz
+F UUCICO_8.GZ;1                     	uucico.8.gz
+F UUCP_PRO.GZ;1                     	uucp_protocols.gz
+F UU_TERMI.000;1                    	uu_termios.c.gz
+F UU_TERMI.GZ;1                     	uu_termios.h.gz
+F _MAP.GZ;1                         	.MAP.gz

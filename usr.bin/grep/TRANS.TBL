@@ -1,0 +1,20 @@
+F COPYING.GZ;1                      	COPYING.gz
+F DFA_C.GZ;1                        	dfa.c.gz
+F DFA_H.GZ;1                        	dfa.h.gz
+F GETPAGES.GZ;1                     	getpagesize.h.gz
+F GREP_1.GZ;1                       	grep.1.gz
+F GREP_C.GZ;1                       	grep.c.gz
+F GREP_H.GZ;1                       	grep.h.gz
+D GROT                              	grot
+F KWSET_C.GZ;1                      	kwset.c.gz
+F KWSET_H.GZ;1                      	kwset.h.gz
+F MAKEFILE.GZ;1                     	Makefile.gz
+L OBJ.;1                            	obj	/usr/cdrom_obj/usr.bin/grep
+F OBSTACK_.000;1                    	obstack.c.gz
+F OBSTACK_.GZ;1                     	obstack.h.gz
+F README_G.GZ;1                     	README.gnu.gz
+F REGEX_C.GZ;1                      	regex.c.gz
+F REGEX_H.GZ;1                      	regex.h.gz
+F SEARCH_C.GZ;1                     	search.c.gz
+D TESTS                             	tests
+F _MAP.GZ;1                         	.MAP.gz
